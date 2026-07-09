@@ -9,9 +9,9 @@ import (
 	"io"
 )
 
-/**
- * Model for initing client
- */
+// Description:
+//
+// Model for initing client
 type Config struct {
 	// accesskey id
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
@@ -20,26 +20,66 @@ type Config struct {
 	// security token
 	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
 	// http protocol
+	//
+	// example:
+	//
+	// http
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// read timeout
+	//
+	// example:
+	//
+	// 10
 	ReadTimeout *int `json:"readTimeout,omitempty" xml:"readTimeout,omitempty"`
 	// connect timeout
+	//
+	// example:
+	//
+	// 10
 	ConnectTimeout *int `json:"connectTimeout,omitempty" xml:"connectTimeout,omitempty"`
 	// http proxy
+	//
+	// example:
+	//
+	// http://localhost
 	HttpProxy *string `json:"httpProxy,omitempty" xml:"httpProxy,omitempty"`
 	// https proxy
+	//
+	// example:
+	//
+	// https://localhost
 	HttpsProxy *string `json:"httpsProxy,omitempty" xml:"httpsProxy,omitempty"`
 	// endpoint
+	//
+	// example:
+	//
+	// cs.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// proxy white list
+	//
+	// example:
+	//
+	// http://localhost
 	NoProxy *string `json:"noProxy,omitempty" xml:"noProxy,omitempty"`
 	// max idle conns
+	//
+	// example:
+	//
+	// 3
 	MaxIdleConns *int `json:"maxIdleConns,omitempty" xml:"maxIdleConns,omitempty"`
 	// user agent
+	//
+	// example:
+	//
+	// Alibabacloud/1
 	UserAgent *string `json:"userAgent,omitempty" xml:"userAgent,omitempty"`
 	// socks5 proxy
 	Socks5Proxy *string `json:"socks5Proxy,omitempty" xml:"socks5Proxy,omitempty"`
 	// socks5 network
+	//
+	// example:
+	//
+	// TCP
 	Socks5NetWork *string `json:"socks5NetWork,omitempty" xml:"socks5NetWork,omitempty"`
 	// 长链接最大空闲时长
 	MaxIdleTimeMillis *int `json:"maxIdleTimeMillis,omitempty" xml:"maxIdleTimeMillis,omitempty"`
@@ -154,8 +194,14 @@ type BaiResourceLocation struct {
 	// 资源定位类型
 	// HTTP_URL：资源url
 	// STRING_BASE64：资源base64字符串（不带base64头部）
+	// example:
+	//
+	// HTTP_URL, STRING_BASE64
 	LocationType *string `json:"location_type,omitempty" xml:"location_type,omitempty" require:"true"`
 	// 资源定位值
+	// example:
+	//
+	// abc
 	LocationValue *string `json:"location_value,omitempty" xml:"location_value,omitempty" require:"true"`
 }
 
@@ -180,13 +226,28 @@ func (s *BaiResourceLocation) SetLocationValue(v string) *BaiResourceLocation {
 // iot平台权限数据
 type IotBasicPermissionData struct {
 	// 权限编码
+	// example:
+	//
+	// ADD_DEVICE
 	PermissionCode *string `json:"permission_code,omitempty" xml:"permission_code,omitempty" require:"true"`
 	// 权限名称
+	// example:
+	//
+	// 注册设备
 	PermissionName *string `json:"permission_name,omitempty" xml:"permission_name,omitempty" require:"true"`
+	// 权限内容
+	// example:
+	//
 	// 权限内容
 	PermissionData *string `json:"permission_data,omitempty" xml:"permission_data,omitempty" require:"true"`
 	// 权限类型
+	// example:
+	//
+	// 权限类型
 	PermissionType *string `json:"permission_type,omitempty" xml:"permission_type,omitempty" require:"true"`
+	// 权限模块
+	// example:
+	//
 	// 权限模块
 	Module *string `json:"module,omitempty" xml:"module,omitempty" require:"true"`
 }
@@ -227,20 +288,44 @@ func (s *IotBasicPermissionData) SetModule(v string) *IotBasicPermissionData {
 // sdk信息
 type SdkModel struct {
 	// 主键id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 修改时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 设备SDK公钥
+	// example:
+	//
+	// MEUCIDxNwV7tXGlZ9VW19p...
 	VerifyKey *string `json:"verify_key,omitempty" xml:"verify_key,omitempty" require:"true"`
 	// SDK版本号
+	// example:
+	//
+	// mqV1.0
 	SdkVersionStr *string `json:"sdk_version_str,omitempty" xml:"sdk_version_str,omitempty"`
 	// sdk模型
+	// example:
+	//
+	// {"version":"1.0.0"}
 	MetaModel *string `json:"meta_model,omitempty" xml:"meta_model,omitempty"`
 	// 平台
+	// example:
+	//
+	// windows
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// 公司名称
+	// example:
+	//
+	// alipay
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 }
 
@@ -295,8 +380,14 @@ func (s *SdkModel) SetCorpName(v string) *SdkModel {
 // GoodsIdAndCount
 type GoodsIdAndCount struct {
 	// 商品id
+	// example:
+	//
+	// 23123131
 	GoodsSkuId *int64 `json:"goods_sku_id,omitempty" xml:"goods_sku_id,omitempty" require:"true"`
 	// 商品采购数量
+	// example:
+	//
+	// 100
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty" require:"true"`
 }
 
@@ -321,24 +412,54 @@ func (s *GoodsIdAndCount) SetCount(v int64) *GoodsIdAndCount {
 // ProductKey信息
 type ProductKeyModel struct {
 	// 主键id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 更新时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 设备端ProductKey
+	// example:
+	//
+	// DEV-0101
 	ProductKey *string `json:"product_key,omitempty" xml:"product_key,omitempty" require:"true"`
 	// 场景码
+	// example:
+	//
+	// testScene
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 租户Id
+	// example:
+	//
+	// testTenant
 	TenantName *string `json:"tenant_name,omitempty" xml:"tenant_name,omitempty" require:"true"`
 	// 数据模型id
+	// example:
+	//
+	// model_001
 	DataModelId *string `json:"data_model_id,omitempty" xml:"data_model_id,omitempty" require:"true"`
 	// sdk前缀
+	// example:
+	//
+	// sdk_
 	SdkVersionPrefix *string `json:"sdk_version_prefix,omitempty" xml:"sdk_version_prefix,omitempty" require:"true"`
 	// 制造商
+	// example:
+	//
+	// alibaba
 	Manufacturer *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
 	// 顾客
+	// example:
+	//
+	// alipay
 	Customer *string `json:"customer,omitempty" xml:"customer,omitempty"`
 }
 
@@ -403,24 +524,54 @@ func (s *ProductKeyModel) SetCustomer(v string) *ProductKeyModel {
 // 场景码信息
 type SceneModel struct {
 	// 主键id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 修改时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 场景名
+	// example:
+	//
+	// testScene
 	SceneName *string `json:"scene_name,omitempty" xml:"scene_name,omitempty" require:"true"`
 	// 是否托管
+	// example:
+	//
+	// ESCROWED
 	Escrowed *string `json:"escrowed,omitempty" xml:"escrowed,omitempty"`
 	// 私钥密码
+	// example:
+	//
+	// MEUCI..
 	PrivateKeyPassword *string `json:"private_key_password,omitempty" xml:"private_key_password,omitempty"`
 	// 租户
+	// example:
+	//
+	// testTenant
 	TenantName *string `json:"tenant_name,omitempty" xml:"tenant_name,omitempty"`
 	// 场景类型
+	// example:
+	//
+	// 共享单车
 	SceneType *string `json:"scene_type,omitempty" xml:"scene_type,omitempty"`
 	// 是否跳过中台数据校验处理
+	// example:
+	//
+	// true, false
 	SkipPegasus *bool `json:"skip_pegasus,omitempty" xml:"skip_pegasus,omitempty"`
 	// 定制数据处理类 , 使用用逗号分隔
+	// example:
+	//
+	// XXX_GPS_PROCESSOR
 	CustomerProcessor *string `json:"customer_processor,omitempty" xml:"customer_processor,omitempty"`
 }
 
@@ -485,32 +636,74 @@ func (s *SceneModel) SetCustomerProcessor(v string) *SceneModel {
 // 数据校验失败返回体
 type DataVerifyFailureData struct {
 	// 主键id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// Alipay-0101
+	// example:
+	//
+	// 场景码
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 设备ID
+	// example:
+	//
+	// device_id_001
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
 	// 发行设备ID
+	// example:
+	//
+	// 00202009111700539276
 	DisDeviceId *string `json:"dis_device_id,omitempty" xml:"dis_device_id,omitempty"`
 	// 类型：0:数据上报;1:数据完整性校验
+	// example:
+	//
+	// 0
 	Type *int64 `json:"type,omitempty" xml:"type,omitempty" require:"true"`
 	// c89b65a2e3afd604977c0....
+	// example:
+	//
+	// 公钥
 	PublicKey *string `json:"public_key,omitempty" xml:"public_key,omitempty"`
 	// 验签类型：0(RAW_DATA)；1(公钥格式为PEM)；2(公钥格式为DER)
+	// example:
+	//
+	// 0
 	FormatType *int64 `json:"format_type,omitempty" xml:"format_type,omitempty"`
 	// 验证内容hash
+	// example:
+	//
+	// aa5304221185b370ea84d...
 	ContentId *string `json:"content_id,omitempty" xml:"content_id,omitempty"`
 	// 验证内容
+	// example:
+	//
+	// {"content":"demo",...}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// 签名
+	// example:
+	//
+	// 9b47e12b0ddb8df...
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// 错误信息
+	// example:
+	//
+	// 数据验真失败
 	FailMessage *string `json:"fail_message,omitempty" xml:"fail_message,omitempty"`
 	// 补充数据
+	// example:
+	//
+	// {“DEVICE-ID”:"DEMO-001"}
 	ExtraData *string `json:"extra_data,omitempty" xml:"extra_data,omitempty"`
 	// 数据来源：0(普通数据上报)；1(MAAS数据上报)；2(设备业务数据上报);3(标签流转)
+	// example:
+	//
+	// 0
 	Source *int64 `json:"source,omitempty" xml:"source,omitempty"`
 }
 
@@ -595,8 +788,14 @@ func (s *DataVerifyFailureData) SetSource(v int64) *DataVerifyFailureData {
 // iotx时间
 type TripDuration struct {
 	// 时间
+	// example:
+	//
+	// "1.2"
 	Value *string `json:"value,omitempty" xml:"value,omitempty" require:"true"`
 	// 时间单位
+	// example:
+	//
+	// "h"
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty" require:"true"`
 }
 
@@ -618,23 +817,79 @@ func (s *TripDuration) SetUnit(v string) *TripDuration {
 	return s
 }
 
+// 字典对象
+type DictionaryInfoBO struct {
+	// 字典key
+	// example:
+	//
+	// key1
+	Label *string `json:"label,omitempty" xml:"label,omitempty" require:"true"`
+	// 字典value
+	// example:
+	//
+	// a
+	Value *string `json:"value,omitempty" xml:"value,omitempty" require:"true"`
+}
+
+func (s DictionaryInfoBO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DictionaryInfoBO) GoString() string {
+	return s.String()
+}
+
+func (s *DictionaryInfoBO) SetLabel(v string) *DictionaryInfoBO {
+	s.Label = &v
+	return s
+}
+
+func (s *DictionaryInfoBO) SetValue(v string) *DictionaryInfoBO {
+	s.Value = &v
+	return s
+}
+
 // 租户信息
 type PermissionedTenantModel struct {
 	// 主键Id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 修改时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 租户名称
+	// example:
+	//
+	// testTenant
 	TenantName *string `json:"tenant_name,omitempty" xml:"tenant_name,omitempty" require:"true"`
 	// 公司名称
+	// example:
+	//
+	// alipay
 	OrgName *string `json:"org_name,omitempty" xml:"org_name,omitempty" require:"true"`
 	// 租户所有人标识
+	// example:
+	//
+	// alipay
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// 网关私钥
+	// example:
+	//
+	// MEUCIDxNw...
 	GatewayPrivateKey *string `json:"gateway_private_key,omitempty" xml:"gateway_private_key,omitempty"`
 	// 网关公钥
+	// example:
+	//
+	// MEUCID...
 	GatewayPublicKey *string `json:"gateway_public_key,omitempty" xml:"gateway_public_key,omitempty"`
 }
 
@@ -689,14 +944,29 @@ func (s *PermissionedTenantModel) SetGatewayPublicKey(v string) *PermissionedTen
 // 查询业务数据交易结果对象数据
 type QueryChainDataTransactionResultData struct {
 	// 所属业务
+	// example:
+	//
+	// SMART_CAR_KEY
 	BizScene *string `json:"biz_scene,omitempty" xml:"biz_scene,omitempty" require:"true"`
 	// 数据资产类型
+	// example:
+	//
+	// 123
 	DataScene *string `json:"data_scene,omitempty" xml:"data_scene,omitempty" require:"true"`
 	// 资产ID
+	// example:
+	//
+	// 123
 	AssetId *string `json:"asset_id,omitempty" xml:"asset_id,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// ASDFGHJK
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 业务数据hash
+	// example:
+	//
+	// 123
 	TextHash *string `json:"text_hash,omitempty" xml:"text_hash,omitempty" require:"true"`
 	// 时间
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
@@ -743,19 +1013,37 @@ func (s *QueryChainDataTransactionResultData) SetTimestamp(v int64) *QueryChainD
 // 商品单点鉴定结果
 type BaiGoodsPointIdentificationResult struct {
 	// 鉴定点大项名称
+	// example:
+	//
+	// 内包装
 	PointName *string `json:"point_name,omitempty" xml:"point_name,omitempty" require:"true"`
 	// 鉴定点子项名称
+	// example:
+	//
+	// 顶部
 	SubPointName *string `json:"sub_point_name,omitempty" xml:"sub_point_name,omitempty" require:"true"`
 	// 单点鉴定结果
 	// REAL：鉴定为真
 	// FAKE：鉴定为假
 	// UNABLE_IDENTIFY：无法鉴定
+	// example:
+	//
+	// REAL
 	Result *string `json:"result,omitempty" xml:"result,omitempty" require:"true"`
 	// 鉴定分数
+	// example:
+	//
+	// 0.92
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
 	// 用户侧的鉴定点point_id，直接将用户传入的user_point_id返回
+	// example:
+	//
+	// 100
 	UserPointId *string `json:"user_point_id,omitempty" xml:"user_point_id,omitempty"`
 	// 鉴定评价
+	// example:
+	//
+	// 完全同一，趋于同一，不同一
 	AppraiseMessage *string `json:"appraise_message,omitempty" xml:"appraise_message,omitempty"`
 	// 鉴定点图片资源定位符
 	ResourceLocation *BaiResourceLocation `json:"resource_location,omitempty" xml:"resource_location,omitempty"`
@@ -807,10 +1095,19 @@ func (s *BaiGoodsPointIdentificationResult) SetResourceLocation(v *BaiResourceLo
 // 商品数字指纹子鉴定项鉴定结果
 type GoodsDigitalFingerprintPointIdentificationResult struct {
 	// 子鉴定项
+	// example:
+	//
+	// 子鉴定项
 	SubPointName *string `json:"sub_point_name,omitempty" xml:"sub_point_name,omitempty" require:"true"`
 	// 商品数字指纹鉴定子项鉴定结果
+	// example:
+	//
+	// REAL
 	Result *string `json:"result,omitempty" xml:"result,omitempty" require:"true"`
 	// 鉴定子项鉴定得分
+	// example:
+	//
+	// 0.92
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty" require:"true"`
 }
 
@@ -840,22 +1137,49 @@ func (s *GoodsDigitalFingerprintPointIdentificationResult) SetGrade(v string) *G
 // 二轮车操作日志
 type EBikeOperationLog struct {
 	// 日志时间
+	// example:
+	//
+	// 2018-10-10 10:10
 	Time *string `json:"time,omitempty" xml:"time,omitempty" require:"true"`
 	// 租户
+	// example:
+	//
+	// XXXXX
 	Tenant *string `json:"tenant,omitempty" xml:"tenant,omitempty" require:"true"`
 	// 小程序应用Id
+	// example:
+	//
+	// 7006071575519
 	AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
 	// 用户id
+	// example:
+	//
+	// 700607
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 	// 设备id
+	// example:
+	//
+	// DEVICE700607157
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
 	// 操作时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty" require:"true"`
 	// 操作描述
+	// example:
+	//
+	// 开锁成功
 	OperateDesc *string `json:"operate_desc,omitempty" xml:"operate_desc,omitempty" require:"true"`
 	// 操作是否成功
+	// example:
+	//
+	// true, false
 	Success *bool `json:"success,omitempty" xml:"success,omitempty" require:"true"`
 	// 日志等级(info、warn、error)
+	// example:
+	//
+	// info
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
@@ -915,10 +1239,19 @@ func (s *EBikeOperationLog) SetLevel(v string) *EBikeOperationLog {
 // 商品数字指纹鉴定点
 type GoodsDigitalFingerprintPoint struct {
 	// 鉴定点子项
+	// example:
+	//
+	// 正面
 	SubPointName *string `json:"sub_point_name,omitempty" xml:"sub_point_name,omitempty" require:"true"`
 	// 微观图片url
+	// example:
+	//
+	// http://1001
 	MicroImageUrl *string `json:"micro_image_url,omitempty" xml:"micro_image_url,omitempty" require:"true"`
 	// 宏观图片url
+	// example:
+	//
+	// http://xxxx1002
 	MacroImageUrl *string `json:"macro_image_url,omitempty" xml:"macro_image_url,omitempty" require:"true"`
 }
 
@@ -948,23 +1281,50 @@ func (s *GoodsDigitalFingerprintPoint) SetMacroImageUrl(v string) *GoodsDigitalF
 // 告警策略
 type AlertStrategy struct {
 	// 主键ID
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 创建时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 更新时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 租户
+	// example:
+	//
+	// alipay
 	TenantName *string `json:"tenant_name,omitempty" xml:"tenant_name,omitempty" require:"true"`
 	// 场景码
 	//
+	// example:
+	//
+	// alipay-0101
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
 	// 策略类型：DEBUG（技术联调）；MONITOR（生产监控）
+	// example:
+	//
+	// MONITOR
 	StrategyType *string `json:"strategy_type,omitempty" xml:"strategy_type,omitempty" require:"true"`
 	// 策略详情，json格式
+	// example:
+	//
+	// [{  "alert_method": "DING_TALK",   "addresses": "",  "alert_strategy": "",   "params": {     "fail_days" : 10   } }, {  "alert_method": "EMAIL",   "addresses": "",  "alert_strategy": "",  "params": {       } }]
 	StrategyDetail *string `json:"strategy_detail,omitempty" xml:"strategy_detail,omitempty" require:"true"`
 	// 是否启用，默认false
+	// example:
+	//
+	// true, false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty" require:"true"`
 	// 备注
+	// example:
+	//
+	// 这是一条测试数据
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -1024,14 +1384,29 @@ func (s *AlertStrategy) SetRemark(v string) *AlertStrategy {
 // 商品的鉴定点图片信息
 type BaiGoodsPoint struct {
 	// 鉴定点名称
+	// example:
+	//
+	// 内包装
 	PointName *string `json:"point_name,omitempty" xml:"point_name,omitempty" require:"true"`
 	// 鉴定点子项
+	// example:
+	//
+	// 正面
 	SubPointName *string `json:"sub_point_name,omitempty" xml:"sub_point_name,omitempty" require:"true"`
 	// 鉴定点图片的url
+	// example:
+	//
+	// https://xxxxxx/a.png
 	ImageUrl *string `json:"image_url,omitempty" xml:"image_url,omitempty"`
 	// 图片内容base64编码的字符串，该字段与image_url至少一个非空，同时传入以image_url为准
+	// example:
+	//
+	// /9j/4QyXRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEa......
 	ImageBase64 *string `json:"image_base64,omitempty" xml:"image_base64,omitempty"`
 	// 用户侧鉴定单关联id
+	// example:
+	//
+	// 100
 	UserPointId *string `json:"user_point_id,omitempty" xml:"user_point_id,omitempty"`
 }
 
@@ -1071,10 +1446,19 @@ func (s *BaiGoodsPoint) SetUserPointId(v string) *BaiGoodsPoint {
 // 设备采购订单元素
 type IotBasicDeviceOrderItem struct {
 	// 蚂蚁链IoT平台设备唯一ID
+	// example:
+	//
+	// 12321321
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 设备唯一编号
+	// example:
+	//
+	// 12321321
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备金额，精确到小数后两位
+	// example:
+	//
+	// 234.01
 	PaymentAmount *string `json:"payment_amount,omitempty" xml:"payment_amount,omitempty" require:"true"`
 }
 
@@ -1101,21 +1485,91 @@ func (s *IotBasicDeviceOrderItem) SetPaymentAmount(v string) *IotBasicDeviceOrde
 	return s
 }
 
+// OTA 对外设备展示标识
+type DeviceIdentity struct {
+	// EKYT 全局唯一设备 ID
+	// example:
+	//
+	// FF9999995FF1020260610262F9D641B9
+	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty"`
+	// 可信唯一产品标识
+	// example:
+	//
+	// 5C7ku13XSCK1a7AKzR
+	TrustProductKey *string `json:"trust_product_key,omitempty" xml:"trust_product_key,omitempty"`
+	// 可信唯一设备标识
+	// example:
+	//
+	// device_7480821483460534272
+	TrustDeviceId *string `json:"trust_device_id,omitempty" xml:"trust_device_id,omitempty"`
+	// 设备名称
+	// example:
+	//
+	// 02:27:06:a6:10:ae
+	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
+}
+
+func (s DeviceIdentity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeviceIdentity) GoString() string {
+	return s.String()
+}
+
+func (s *DeviceIdentity) SetTuid(v string) *DeviceIdentity {
+	s.Tuid = &v
+	return s
+}
+
+func (s *DeviceIdentity) SetTrustProductKey(v string) *DeviceIdentity {
+	s.TrustProductKey = &v
+	return s
+}
+
+func (s *DeviceIdentity) SetTrustDeviceId(v string) *DeviceIdentity {
+	s.TrustDeviceId = &v
+	return s
+}
+
+func (s *DeviceIdentity) SetDeviceName(v string) *DeviceIdentity {
+	s.DeviceName = &v
+	return s
+}
+
 // 原始数据包
 type RawData struct {
 	// 链上设备id
+	// example:
+	//
+	// 1122
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty"`
 	// 数据内容
+	// example:
+	//
+	// {"a","11"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 设备id
+	// example:
+	//
+	// 433
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
 	// 上链哈希
+	// example:
+	//
+	// 5533
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 上链时间
 	TxTime *int64 `json:"tx_time,omitempty" xml:"tx_time,omitempty" require:"true"`
 	// 链上外围设备ID
+	// example:
+	//
+	// 123123
 	ChainPeripheralId *string `json:"chain_peripheral_id,omitempty" xml:"chain_peripheral_id,omitempty"`
 	// 外围设备ID
+	// example:
+	//
+	// 123123
 	PeripheralId *string `json:"peripheral_id,omitempty" xml:"peripheral_id,omitempty"`
 }
 
@@ -1165,9 +1619,18 @@ func (s *RawData) SetPeripheralId(v string) *RawData {
 // iot平台角色信息
 type IotBasicRolePermission struct {
 	// 角色编码
+	// example:
+	//
+	// 角色编码
 	RoleCode *string `json:"role_code,omitempty" xml:"role_code,omitempty" require:"true"`
 	// 角色名称
+	// example:
+	//
+	// 角色名称
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty" require:"true"`
+	// 权限列表
+	// example:
+	//
 	// 权限列表
 	PermissionList []*IotBasicPermissionData `json:"permission_list,omitempty" xml:"permission_list,omitempty" require:"true" type:"Repeated"`
 }
@@ -1195,13 +1658,74 @@ func (s *IotBasicRolePermission) SetPermissionList(v []*IotBasicPermissionData) 
 	return s
 }
 
+// OTA 模块定位信息
+type ModuleLocator struct {
+	// 模块定位信息：EKYT_MID / MODULE_NAME / CHANNEL_EXTERNAL_ID
+	// example:
+	//
+	// EKYT_MID
+	LocatorType *string `json:"locator_type,omitempty" xml:"locator_type,omitempty" require:"true"`
+	// EKYT 模块 ID
+	// example:
+	//
+	// fda6f23a7767486d9d5f29e7567a2004
+	Mid *string `json:"mid,omitempty" xml:"mid,omitempty"`
+	// 模块名称
+	// example:
+	//
+	// BLE
+	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty"`
+	// channel 维度外部模块 ID
+	// example:
+	//
+	// 123456
+	ExternalId *string `json:"external_id,omitempty" xml:"external_id,omitempty"`
+}
+
+func (s ModuleLocator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleLocator) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleLocator) SetLocatorType(v string) *ModuleLocator {
+	s.LocatorType = &v
+	return s
+}
+
+func (s *ModuleLocator) SetMid(v string) *ModuleLocator {
+	s.Mid = &v
+	return s
+}
+
+func (s *ModuleLocator) SetModuleName(v string) *ModuleLocator {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *ModuleLocator) SetExternalId(v string) *ModuleLocator {
+	s.ExternalId = &v
+	return s
+}
+
 // 商品数字指纹鉴定结果
 type GoodsDigitalFingerprintIdentifyResultData struct {
 	// 鉴定结果
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 	// 鉴定结果描述
+	// example:
+	//
+	// 描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
 	// 商品数字指纹鉴定点鉴定结果列表
+	// example:
+	//
+	// {"sub_point_name":"正面","result":"REAL","grade":"0.92"}
 	PointIdentificationResults []*GoodsDigitalFingerprintPointIdentificationResult `json:"point_identification_results,omitempty" xml:"point_identification_results,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -1231,15 +1755,30 @@ func (s *GoodsDigitalFingerprintIdentifyResultData) SetPointIdentificationResult
 // 部标设备数据
 type JtData struct {
 	// 数据的可信平台唯一ID
+	// example:
+	//
+	// 123
 	TrustiotId *int64 `json:"trustiot_id,omitempty" xml:"trustiot_id,omitempty" require:"true"`
 	// IoT可信平台设备唯一ID
+	// example:
+	//
+	// 123
 	TrustiotEntityId *int64 `json:"trustiot_entity_id,omitempty" xml:"trustiot_entity_id,omitempty" require:"true"`
 	// 上报原文解析处理之后的数据
+	// example:
+	//
+	// processed_content
 	ProcessedContent *string `json:"processed_content,omitempty" xml:"processed_content,omitempty" require:"true"`
 	// 和上一次上报数据里程对比，新增的里程数
+	// example:
+	//
+	// 123
 	DeltaMileage *int64 `json:"delta_mileage,omitempty" xml:"delta_mileage,omitempty"`
 	// 正常位置信息：LOCATION
 	// 告警信息：ALARM_BASIC、 ALARM_ADAS、 ALARM_DSM、 ALARM_ACCELEROMETER
+	// example:
+	//
+	// 数据标识
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty" require:"true"`
 	// 告警子类型
 	// //ADAS
@@ -1264,10 +1803,19 @@ type JtData struct {
 	// 11701: 急加速
 	// 11702: 急减速
 	// 11703: 急转弯
+	// example:
+	//
+	// 10001
 	AlarmSubType *int64 `json:"alarm_sub_type,omitempty" xml:"alarm_sub_type,omitempty"`
 	// 关联设备唯一ID
+	// example:
+	//
+	// 123
 	RelatedTrustEntityId *string `json:"related_trust_entity_id,omitempty" xml:"related_trust_entity_id,omitempty"`
 	// 日报日期
+	// example:
+	//
+	// 2023-12-01
 	ReportDate *string `json:"report_date,omitempty" xml:"report_date,omitempty"`
 }
 
@@ -1322,12 +1870,24 @@ func (s *JtData) SetReportDate(v string) *JtData {
 // 租赁合同信息
 type RentContractInfo struct {
 	// 租赁合同ID
+	// example:
+	//
+	// 2c952456827828cdedad06afccef75a9f2c2840cbb6b0b659f653da1e5916cb2
 	ContractId *string `json:"contract_id,omitempty" xml:"contract_id,omitempty" require:"true"`
 	// 租约时间
+	// example:
+	//
+	// 6个月 或 1年
 	LeaseTime *string `json:"lease_time,omitempty" xml:"lease_time,omitempty" require:"true"`
 	// 入住时间
+	// example:
+	//
+	// 2006-01-02 15:04:05
 	CheckinDate *string `json:"checkin_date,omitempty" xml:"checkin_date,omitempty" require:"true"`
 	// 退租时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	CheckoutDate *string `json:"checkout_date,omitempty" xml:"checkout_date,omitempty" require:"true"`
 }
 
@@ -1362,33 +1922,72 @@ func (s *RentContractInfo) SetCheckoutDate(v string) *RentContractInfo {
 // 通过设备ID注册发行时的设备参数
 type RegByDeviceIdParm struct {
 	// 一般是业务上唯一的设备ID/资产编码
+	// example:
+	//
+	// 1122
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 数据模型ID
+	// example:
+	//
+	// 7033986596836630528
 	DeviceDataModelId *string `json:"device_data_model_id,omitempty" xml:"device_data_model_id,omitempty"`
 	// 固定填写RAW_DATA
+	// example:
+	//
+	// RAW_DATA
 	DeviceFeature *string `json:"device_feature,omitempty" xml:"device_feature,omitempty"`
 	// true : 设备ID已存在时返回存在的设备关联字段;
 	// false : 设备ID已存在时直接抛出异常；
+	// example:
+	//
+	// true, false
 	WithExistDeviceId *bool `json:"with_exist_device_id,omitempty" xml:"with_exist_device_id,omitempty"`
 	// 设备类型编码，联系蚂蚁侧获取设备类型编码
 	DeviceTypeCode *int64 `json:"device_type_code,omitempty" xml:"device_type_code,omitempty" require:"true"`
 	// 设备单价 单位：分
+	// example:
+	//
+	// 1000
 	InitialPrice *int64 `json:"initial_price,omitempty" xml:"initial_price,omitempty"`
 	// 出厂时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	FactoryTime *string `json:"factory_time,omitempty" xml:"factory_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 投放时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 额外信息，联系蚂蚁侧获取参数格式
+	// example:
+	//
+	// {...}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 	// 资产所有人标识（统一社会信用代码）
+	// example:
+	//
+	// 91310101MA1FPCXA3G
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// 资产所有人名称
+	// example:
+	//
+	// 蚂蚁区块链科技（上海）有限公司
 	OwnerName *string `json:"owner_name,omitempty" xml:"owner_name,omitempty"`
 	// 设备IMEI
+	// example:
+	//
+	// 861037055012207
 	DeviceImei *string `json:"device_imei,omitempty" xml:"device_imei,omitempty"`
 	// 设备名称/设备型号
+	// example:
+	//
+	// 64.0V30AH
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
 	// 生产厂商名
+	// example:
+	//
+	// 浙江一厂
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 }
 
@@ -1474,17 +2073,32 @@ func (s *RegByDeviceIdParm) SetCorpName(v string) *RegByDeviceIdParm {
 type SdkPageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
 	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*SdkModel `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -1524,8 +2138,14 @@ func (s *SdkPageResponse) SetPageData(v []*SdkModel) *SdkPageResponse {
 // code,name
 type CodeListView struct {
 	// 数据code
+	// example:
+	//
+	// ahog
 	DataCode *string `json:"data_code,omitempty" xml:"data_code,omitempty" require:"true"`
 	// 数据名称
+	// example:
+	//
+	// name
 	DataName *string `json:"data_name,omitempty" xml:"data_name,omitempty" require:"true"`
 }
 
@@ -1550,14 +2170,29 @@ func (s *CodeListView) SetDataName(v string) *CodeListView {
 // 凭证申请接口返回参数
 type CarKeyInitData struct {
 	// IIFFAA 根密钥
+	// example:
+	//
+	// fs
 	RootPubKey *string `json:"root_pub_key,omitempty" xml:"root_pub_key,omitempty" require:"true"`
 	// IIFAA 设备唯一ID
+	// example:
+	//
+	// e2eer
 	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty" require:"true"`
 	// 业务密钥
+	// example:
+	//
+	// erw
 	BizPrivKey *string `json:"biz_priv_key,omitempty" xml:"biz_priv_key,omitempty" require:"true"`
 	// 设备唯一密钥
+	// example:
+	//
+	// fdsw
 	DevicePrivKey *string `json:"device_priv_key,omitempty" xml:"device_priv_key,omitempty" require:"true"`
 	// 无感空车凭证
+	// example:
+	//
+	// rew
 	KeyLessAuthy *string `json:"key_less_authy,omitempty" xml:"key_less_authy,omitempty" require:"true"`
 }
 
@@ -1597,32 +2232,71 @@ func (s *CarKeyInitData) SetKeyLessAuthy(v string) *CarKeyInitData {
 // iotbasic-应用列表信息
 type IotbasicAppManagerPageInfo struct {
 	// 应用类型
+	// example:
+	//
+	// apk
 	FileFormat *string `json:"file_format,omitempty" xml:"file_format,omitempty" require:"true"`
 	// 应用大小
 	FileSize *int64 `json:"file_size,omitempty" xml:"file_size,omitempty" require:"true"`
 	// 应用模块名称
+	// example:
+	//
+	// 温控设备客户端
 	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty" require:"true"`
 	// 设备品类code
+	// example:
+	//
+	// code
 	DeviceCategory *string `json:"device_category,omitempty" xml:"device_category,omitempty" require:"true"`
 	// 设备品类名称
+	// example:
+	//
+	// name
 	DeviceCategoryName *string `json:"device_category_name,omitempty" xml:"device_category_name,omitempty" require:"true"`
 	// 应用模块包名
+	// example:
+	//
+	// packageName
 	PackageName *string `json:"package_name,omitempty" xml:"package_name,omitempty" require:"true"`
 	// 应用描述
+	// example:
+	//
+	// desc
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// 应用版本号
+	// example:
+	//
+	// 1.0
 	ApkVersion *string `json:"apk_version,omitempty" xml:"apk_version,omitempty" require:"true"`
 	// 应用包类型（整包：0/差分：1）
+	// example:
+	//
+	// 0
 	ApkType *int64 `json:"apk_type,omitempty" xml:"apk_type,omitempty" require:"true"`
 	// 应用名称
+	// example:
+	//
+	// apkName
 	ApkName *string `json:"apk_name,omitempty" xml:"apk_name,omitempty" require:"true"`
 	// 应用包id
+	// example:
+	//
+	// apkId
 	ApkId *string `json:"apk_id,omitempty" xml:"apk_id,omitempty" require:"true"`
 	// 下载次数
+	// example:
+	//
+	// 0
 	DownloadCount *int64 `json:"download_count,omitempty" xml:"download_count,omitempty" require:"true"`
 	// 安装次数
+	// example:
+	//
+	// 0
 	InstallCount *int64 `json:"install_count,omitempty" xml:"install_count,omitempty" require:"true"`
 	// 设备型号
+	// example:
+	//
+	// model
 	DeviceModel *string `json:"device_model,omitempty" xml:"device_model,omitempty"`
 }
 
@@ -1707,22 +2381,49 @@ func (s *IotbasicAppManagerPageInfo) SetDeviceModel(v string) *IotbasicAppManage
 // 四轮车驾驶事件
 type FourWheelerCarEvent struct {
 	// 驾驶事件的类型，如正常驾驶、碰撞、急转弯、启动熄火等。
+	// example:
+	//
+	// 1
 	EventType *string `json:"event_type,omitempty" xml:"event_type,omitempty" require:"true"`
 	// 驾驶事件的结束时间
+	// example:
+	//
+	// 1736152040551
 	EndTime *int64 `json:"end_time,omitempty" xml:"end_time,omitempty" require:"true"`
 	// 驾驶事件发生地点的经度坐标
+	// example:
+	//
+	// 121.4737
 	Lng *string `json:"lng,omitempty" xml:"lng,omitempty" require:"true"`
 	// 驾驶事件发生地点的纬度坐标
+	// example:
+	//
+	// 31.2304
 	Lat *string `json:"lat,omitempty" xml:"lat,omitempty" require:"true"`
 	// 驾驶事件开始的速度
+	// example:
+	//
+	// 60
 	StartSpeed *string `json:"start_speed,omitempty" xml:"start_speed,omitempty"`
 	// 驾驶事件结束时的速度
+	// example:
+	//
+	// 45
 	EndSpeed *string `json:"end_speed,omitempty" xml:"end_speed,omitempty"`
 	// 驾驶过程中的平均速度
+	// example:
+	//
+	// 52.5
 	AverageSpeed *string `json:"average_speed,omitempty" xml:"average_speed,omitempty"`
 	// 驾驶过程中车辆的转弯角度
+	// example:
+	//
+	// 90
 	TurningAngle *string `json:"turning_angle,omitempty" xml:"turning_angle,omitempty"`
 	// 驾驶事件的持续时间（以秒为单位)
+	// example:
+	//
+	// 10
 	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
 }
 
@@ -1783,38 +2484,89 @@ func (s *FourWheelerCarEvent) SetDuration(v string) *FourWheelerCarEvent {
 type IotBasicDeviceQueryResponse struct {
 	// 设备名称
 	//
+	// example:
+	//
+	// 智能防疫一体机
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty" require:"true"`
 	// 设备序列号
+	// example:
+	//
+	// CN12300x
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备品类名称
+	// example:
+	//
+	// 智能防疫机
 	DeviceCategoryName *string `json:"device_category_name,omitempty" xml:"device_category_name,omitempty" require:"true"`
 	// 设备型号
+	// example:
+	//
+	// PL10
 	DeviceModel *string `json:"device_model,omitempty" xml:"device_model,omitempty" require:"true"`
 	// 设备状态
+	// example:
+	//
+	// online
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty"`
 	// 设备安装位置
+	// example:
+	//
+	// 浙江省杭州市西湖区
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	// 设备注册时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	RegisterTime *string `json:"register_time,omitempty" xml:"register_time,omitempty" require:"true"`
 	// 设备厂商
+	// example:
+	//
+	// 蚂蚁数科
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty" require:"true"`
 	// 租户ID
+	// example:
+	//
+	// 2088xx
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 客户名称
+	// example:
+	//
+	// 测试客户xx
 	CustomerName *string `json:"customer_name,omitempty" xml:"customer_name,omitempty" require:"true"`
 	// 异常错误码
+	// example:
+	//
+	// SMILE_INIT_ERROR
 	AbnormalCode *string `json:"abnormal_code,omitempty" xml:"abnormal_code,omitempty"`
 	// 设备唯一身份id
+	// example:
+	//
+	// did:private:12dsadadadf
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty"`
 	// 账号ID
+	// example:
+	//
+	// 12321321
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	// 账户名称
+	// example:
+	//
+	// 张三
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true"`
 	// 设备服务状态
+	// example:
+	//
+	// INIT
 	ServiceStatus *string `json:"service_status,omitempty" xml:"service_status,omitempty" require:"true"`
 	// 应用版本号
+	// example:
+	//
+	// 1.1.13
 	AppVersion *string `json:"app_version,omitempty" xml:"app_version,omitempty" require:"true"`
 	// 服务有效期
+	// example:
+	//
+	// 2024-4-01
 	ValidityTime *string `json:"validity_time,omitempty" xml:"validity_time,omitempty"`
 }
 
@@ -1914,12 +2666,24 @@ func (s *IotBasicDeviceQueryResponse) SetValidityTime(v string) *IotBasicDeviceQ
 // 租户关联信息请求结构体
 type TenantBindInfoReq struct {
 	// 租户关联扩展信息
+	// example:
+	//
+	// "CN,北京"
 	Extension *string `json:"extension,omitempty" xml:"extension,omitempty"`
 	// 业务类型，默认空
+	// example:
+	//
+	// null
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 组织机构代码，可为中文
+	// example:
+	//
+	// "12345"
 	TenantUid *string `json:"tenant_uid,omitempty" xml:"tenant_uid,omitempty" require:"true"`
 	// 组织结构名称
+	// example:
+	//
+	// "xx公司xx部门"
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty" require:"true"`
 }
 
@@ -1951,21 +2715,68 @@ func (s *TenantBindInfoReq) SetUserName(v string) *TenantBindInfoReq {
 	return s
 }
 
+// provision数据
+type Data struct {
+	// provision数据
+	// example:
+	//
+	// 123XXX
+	ProvisionData *string `json:"provision_data,omitempty" xml:"provision_data,omitempty" require:"true"`
+	// 余量
+	// example:
+	//
+	// 0
+	Remaining *int64 `json:"remaining,omitempty" xml:"remaining,omitempty"`
+}
+
+func (s Data) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Data) GoString() string {
+	return s.String()
+}
+
+func (s *Data) SetProvisionData(v string) *Data {
+	s.ProvisionData = &v
+	return s
+}
+
+func (s *Data) SetRemaining(v int64) *Data {
+	s.Remaining = &v
+	return s
+}
+
 // iotbasic设备模型固定属性失败内容
 type IotbasicDeviceModelFixedAttributeFailInfo struct {
 	// 属性说明
+	// example:
+	//
+	// name
 	AttributeName *string `json:"attribute_name,omitempty" xml:"attribute_name,omitempty" require:"true"`
 	// 属性名称
+	// example:
+	//
+	// value
 	AttributeValue *string `json:"attribute_value,omitempty" xml:"attribute_value,omitempty" require:"true"`
 	// 数据值类型 字符串：string 数字：long
+	// example:
+	//
+	// string
 	DataType *string `json:"data_type,omitempty" xml:"data_type,omitempty" require:"true"`
 	// dataType为string时，表示数据长度最小值 dataType为long时，表示数据范围最小值
 	DataRangeMin *int64 `json:"data_range_min,omitempty" xml:"data_range_min,omitempty" require:"true"`
 	// dataType为string时，表示数据长度最大值 dataType为long时，表示数据范围最大值
 	DataRangeMax *int64 `json:"data_range_max,omitempty" xml:"data_range_max,omitempty" require:"true"`
 	// 失败code
+	// example:
+	//
+	// code
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty" require:"true"`
 	// 失败消息
+	// example:
+	//
+	// message
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty" require:"true"`
 }
 
@@ -2015,8 +2826,14 @@ func (s *IotbasicDeviceModelFixedAttributeFailInfo) SetErrorMessage(v string) *I
 // JT设备所关联实体设备信息
 type RelatedEntity struct {
 	// 所关联实体的类型
+	// example:
+	//
+	// COSTOMER_ENETITY
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty" require:"true"`
 	// 所关联实体的trustiot唯一ID
+	// example:
+	//
+	// 7006071575276187649
 	RelatedEntityTrustiotId *int64 `json:"related_entity_trustiot_id,omitempty" xml:"related_entity_trustiot_id,omitempty" require:"true"`
 }
 
@@ -2041,20 +2858,44 @@ func (s *RelatedEntity) SetRelatedEntityTrustiotId(v int64) *RelatedEntity {
 // 设备注册 请求对象
 type IotBasicDeviceRegisterInfo struct {
 	// 设备规格
+	// example:
+	//
+	// xxx
 	DeviceSpecs *string `json:"device_specs,omitempty" xml:"device_specs,omitempty" require:"true"`
 	// 设备型号
+	// example:
+	//
+	// xxx
 	DeviceModel *string `json:"device_model,omitempty" xml:"device_model,omitempty" require:"true"`
 	// 设备名称
+	// example:
+	//
+	// test
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// xx
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备标签
+	// example:
+	//
+	// telpo
 	NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	// 安装位置
+	// example:
+	//
+	// 杭州市
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	// 设备扩展信息
+	// example:
+	//
+	// [{ "txHash" : "2c952456827828cdedad06afccef75a9f2c2840cbb6b0b659f653da1e5916cb2" }]
 	DeviceExt *string `json:"device_ext,omitempty" xml:"device_ext,omitempty"`
 	// 设备安全认证ID
+	// example:
+	//
+	// secid
 	SecId *string `json:"sec_id,omitempty" xml:"sec_id,omitempty"`
 }
 
@@ -2106,11 +2947,49 @@ func (s *IotBasicDeviceRegisterInfo) SetSecId(v string) *IotBasicDeviceRegisterI
 	return s
 }
 
+// 模块版本上报数据信息
+type ModuleVersionItem struct {
+	// 模块定位信息
+	// example:
+	//
+	// undefined
+	ModuleLocator *ModuleLocator `json:"module_locator,omitempty" xml:"module_locator,omitempty"`
+	// 当前模块版本号
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ModuleVersionItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleVersionItem) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleVersionItem) SetModuleLocator(v *ModuleLocator) *ModuleVersionItem {
+	s.ModuleLocator = v
+	return s
+}
+
+func (s *ModuleVersionItem) SetVersion(v string) *ModuleVersionItem {
+	s.Version = &v
+	return s
+}
+
 // 客户自定义实体
 type CustomEntityInfo struct {
 	// 客户自定义实体类型，默认为JSSDK_ACCOUNT
+	// example:
+	//
+	// JSSDK_ACCOUNT
 	CustomerEntityType *string `json:"customer_entity_type,omitempty" xml:"customer_entity_type,omitempty" require:"true"`
 	// 客户自定义实体内容
+	// example:
+	//
+	// {...}
 	CustomerEntityContent *string `json:"customer_entity_content,omitempty" xml:"customer_entity_content,omitempty" require:"true"`
 }
 
@@ -2135,12 +3014,18 @@ func (s *CustomEntityInfo) SetCustomerEntityContent(v string) *CustomEntityInfo 
 // 溯源码比对请求体
 type BaiQrcodeComparisonReqData struct {
 	// 扫码操作id，多次请求的trace_id相同代表短时间内在扫同一个码
+	// example:
+	//
+	// trace_id_001
 	TraceId *string `json:"trace_id,omitempty" xml:"trace_id,omitempty" require:"true" maxLength:"128"`
 	// query图片定位信息
 	QueryImageLocation *BaiResourceLocation `json:"query_image_location,omitempty" xml:"query_image_location,omitempty" require:"true"`
 	// gallery图片定位信息
 	GalleryImageLocation *BaiResourceLocation `json:"gallery_image_location,omitempty" xml:"gallery_image_location,omitempty" require:"true"`
 	// 是否允许降级
+	// example:
+	//
+	// true, false
 	Downgrade *bool `json:"downgrade,omitempty" xml:"downgrade,omitempty" require:"true"`
 }
 
@@ -2175,12 +3060,24 @@ func (s *BaiQrcodeComparisonReqData) SetDowngrade(v bool) *BaiQrcodeComparisonRe
 // 创建xr用户通行证结果信息
 type XrUserTicketResultInfo struct {
 	// xr通行证资源池名称
+	// example:
+	//
+	// 资源池001
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 购买数量，失败列表有值
+	// example:
+	//
+	// 10
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
 	// 失败原因，失败列表有值
+	// example:
+	//
+	// 参数错误
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
 	// 通行证编号，成功列表有值
+	// example:
+	//
+	// 123123
 	XrTicketCode *string `json:"xr_ticket_code,omitempty" xml:"xr_ticket_code,omitempty"`
 }
 
@@ -2215,24 +3112,54 @@ func (s *XrUserTicketResultInfo) SetXrTicketCode(v string) *XrUserTicketResultIn
 // 仓库实体身份附加参数请求结构体，应用在注册/更新API的ThingExtraParams
 type WarehouseReqModel struct {
 	// 详细地址
+	// example:
+	//
+	// 北京海淀区
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// 面积 平方米单位*1e4
+	// example:
+	//
+	// 1000000
 	Area *int64 `json:"area,omitempty" xml:"area,omitempty"`
 	// 海拔 米单位*1e2
+	// example:
+	//
+	// 0
 	Elevation *int64 `json:"elevation,omitempty" xml:"elevation,omitempty"`
 	// 仓库高度 米单位*1e2
+	// example:
+	//
+	// 1000
 	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
 	// 纬度 度数单位*1e9
+	// example:
+	//
+	// 0
 	Latitude *int64 `json:"latitude,omitempty" xml:"latitude,omitempty"`
 	// 经度 度数单位*1e9
+	// example:
+	//
+	// 35000000000
 	Longitude *int64 `json:"longitude,omitempty" xml:"longitude,omitempty"`
 	// 所在国家，中国
+	// example:
+	//
+	// 中国
 	Nation *string `json:"nation,omitempty" xml:"nation,omitempty"`
 	// 其他信息
+	// example:
+	//
+	// "自定义"
 	OtherInfo *string `json:"other_info,omitempty" xml:"other_info,omitempty"`
 	// 仓库状态, AVAILABLE, IN_USE, DELETED, 自定义
+	// example:
+	//
+	// "AVAILABLE"
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 仓库类型
+	// example:
+	//
+	// "自定义"
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -2298,25 +3225,49 @@ func (s *WarehouseReqModel) SetType(v string) *WarehouseReqModel {
 type PurchaseOrderInfoDetail struct {
 	// 租赁订单号
 	//
+	// example:
+	//
+	// dadadasda
 	OrderNumber *string `json:"order_number,omitempty" xml:"order_number,omitempty" require:"true"`
 	// 收货人姓名
 	//
+	// example:
+	//
+	// 立敢
 	ConsigneeName *string `json:"consignee_name,omitempty" xml:"consignee_name,omitempty" require:"true"`
 	// 收货人身份证号
+	// example:
+	//
+	// 424234324324234
 	ConsigneeIdNumber *string `json:"consignee_id_number,omitempty" xml:"consignee_id_number,omitempty" require:"true"`
 	// 收货人手机号
 	//
+	// example:
+	//
+	// 13400113344
 	ConsigneePhone *string `json:"consignee_phone,omitempty" xml:"consignee_phone,omitempty" require:"true"`
 	// 收货人地址
+	// example:
+	//
+	// 北京市海淀区XXXXXXXX
 	ConsigneeAddress *string `json:"consignee_address,omitempty" xml:"consignee_address,omitempty" require:"true"`
 	// 供货商名称
 	//
+	// example:
+	//
+	// fsafsafaf
 	SupplierName *string `json:"supplier_name,omitempty" xml:"supplier_name,omitempty" require:"true"`
 	// 供货商租户id
 	//
+	// example:
+	//
+	// fsffafaf
 	SupplierId *string `json:"supplier_id,omitempty" xml:"supplier_id,omitempty" require:"true"`
 	// 采购商id
 	//
+	// example:
+	//
+	// fafsafaf
 	LeaseId *string `json:"lease_id,omitempty" xml:"lease_id,omitempty" require:"true"`
 	// 商品信息列表
 	GoodsIdAndCount []*GoodsIdAndCount `json:"goods_id_and_count,omitempty" xml:"goods_id_and_count,omitempty" require:"true" type:"Repeated"`
@@ -2378,8 +3329,14 @@ func (s *PurchaseOrderInfoDetail) SetGoodsIdAndCount(v []*GoodsIdAndCount) *Purc
 // 授权返回实体
 type GrantDeviceInfo struct {
 	// 授权ID
+	// example:
+	//
+	// 00000001
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 授权ID
+	// example:
+	//
+	// m6XFxJeTpllXZQ3BEZCyhovWZjoiCqqW
 	AuthRecordId *string `json:"auth_record_id,omitempty" xml:"auth_record_id,omitempty" require:"true"`
 }
 
@@ -2404,12 +3361,24 @@ func (s *GrantDeviceInfo) SetAuthRecordId(v string) *GrantDeviceInfo {
 // iotbasic发布批次信息
 type IotbasicReleaseOrderInfo struct {
 	// 应用名称
+	// example:
+	//
+	// 应用名称
 	ApkName *string `json:"apk_name,omitempty" xml:"apk_name,omitempty" require:"true"`
 	// 应用版本号
+	// example:
+	//
+	// apkVersion
 	ApkVersion *string `json:"apk_version,omitempty" xml:"apk_version,omitempty" require:"true"`
 	// 工单id
+	// example:
+	//
+	// orderId
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 工单名称
+	// example:
+	//
+	// orderName
 	OrderName *string `json:"order_name,omitempty" xml:"order_name,omitempty" require:"true"`
 	// 发布批次状态
 	// 升级中：IN_PROGRESS
@@ -2420,14 +3389,23 @@ type IotbasicReleaseOrderInfo struct {
 	// 全部成功：ALL_SUCCESS
 	// 全部失败：ALL_FAILED
 	// 全部取消：ALL_CANCELED
+	// example:
+	//
+	// IN_PROGRESS
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 发布时间
+	// example:
+	//
+	// 2024-06-06 11:11:11
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty" require:"true"`
 	// 设备升级总数
 	ReleaseTotal *int64 `json:"release_total,omitempty" xml:"release_total,omitempty" require:"true"`
 	// 设备升级完成数
 	ReleaseFinished *int64 `json:"release_finished,omitempty" xml:"release_finished,omitempty" require:"true"`
 	// 工单状态变更时间
+	// example:
+	//
+	// 2024-06-06 11:11:11
 	StatusChangeTime *string `json:"status_change_time,omitempty" xml:"status_change_time,omitempty" require:"true"`
 }
 
@@ -2487,10 +3465,19 @@ func (s *IotbasicReleaseOrderInfo) SetStatusChangeTime(v string) *IotbasicReleas
 // iotbasic项目空间信息
 type ProjectSpaceInfo struct {
 	// 项目名称
+	// example:
+	//
+	// 温控节能
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty" require:"true"`
 	// 项目编码
+	// example:
+	//
+	// TEMP_CONTROL
 	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty" require:"true"`
 	// 项目描述
+	// example:
+	//
+	// 这是描述
 	ProjectDesc *string `json:"project_desc,omitempty" xml:"project_desc,omitempty"`
 }
 
@@ -2520,8 +3507,14 @@ func (s *ProjectSpaceInfo) SetProjectDesc(v string) *ProjectSpaceInfo {
 // 实例信息列表
 type InstanceInfo struct {
 	// 实例id
+	// example:
+	//
+	// 设备001
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
 	// 实例名称
+	// example:
+	//
+	// 12313
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty" require:"true"`
 }
 
@@ -2546,18 +3539,36 @@ func (s *InstanceInfo) SetInstanceName(v string) *InstanceInfo {
 // 查询交易结果信息
 type QueryTransactionResultInfo struct {
 	// 区块hash
+	// example:
+	//
+	// 123
 	BlockHash *string `json:"block_hash,omitempty" xml:"block_hash,omitempty"`
 	// 父区块hash
+	// example:
+	//
+	// 123
 	ParentBlockHash *string `json:"parent_block_hash,omitempty" xml:"parent_block_hash,omitempty"`
 	// 交易时间戳
+	// example:
+	//
+	// 123
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 	// 该交易所能消耗的最大gas
 	Gas *int64 `json:"gas,omitempty" xml:"gas,omitempty"`
 	// 交易发起方账户
+	// example:
+	//
+	// 123
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
 	// 交易接收方账户
+	// example:
+	//
+	// 123
 	To *string `json:"to,omitempty" xml:"to,omitempty"`
 	// 交易类型
+	// example:
+	//
+	// 123
 	TxType *string `json:"tx_type,omitempty" xml:"tx_type,omitempty"`
 	// 交易返回的数据
 	Data *QueryChainDataTransactionResultData `json:"data,omitempty" xml:"data,omitempty"`
@@ -2614,8 +3625,14 @@ func (s *QueryTransactionResultInfo) SetData(v *QueryChainDataTransactionResultD
 // 设备不可操作标识类
 type DeviceDisableData struct {
 	// 设备sn号
+	// example:
+	//
+	// sn123
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 厂商
+	// example:
+	//
+	// telpo
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty" require:"true"`
 }
 
@@ -2640,18 +3657,39 @@ func (s *DeviceDisableData) SetCorpName(v string) *DeviceDisableData {
 // 设备属性关系对象
 type IotDeviceAttributeRelationshipData struct {
 	// id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	// 设备品类名称
+	// example:
+	//
+	// 智能防疫机一体机
 	DeviceCategory *string `json:"device_category,omitempty" xml:"device_category,omitempty" require:"true"`
 	// 关系类型
+	// example:
+	//
+	// CORP
 	RelationType *string `json:"relation_type,omitempty" xml:"relation_type,omitempty" require:"true"`
 	// 厂商名称
+	// example:
+	//
+	// 天波
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	// 设备型号
+	// example:
+	//
+	// TPS980
 	DeviceModel *string `json:"device_model,omitempty" xml:"device_model,omitempty"`
 	// 设备规格
+	// example:
+	//
+	// 安卓标准版
 	DeviceSpecs *string `json:"device_specs,omitempty" xml:"device_specs,omitempty"`
 	// 硬件模块
+	// example:
+	//
+	// 测温头
 	HardwareModule *string `json:"hardware_module,omitempty" xml:"hardware_module,omitempty"`
 }
 
@@ -2701,8 +3739,14 @@ func (s *IotDeviceAttributeRelationshipData) SetHardwareModule(v string) *IotDev
 // 创建订单失败的返回结构体
 type InsertPurchaseOrderFailInfo struct {
 	// 订单ID
+	// example:
+	//
+	// safsafafafa
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 订单保存失败的原因
+	// example:
+	//
+	// fasfasfasfa
 	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty" require:"true"`
 }
 
@@ -2727,32 +3771,74 @@ func (s *InsertPurchaseOrderFailInfo) SetFailReason(v string) *InsertPurchaseOrd
 // 菜鸟分拣机设备监控信息
 type ScfLeaseEqpInfo struct {
 	// 设备类型
+	// example:
+	//
+	// 分拣机
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
 	// 运营日期
+	// example:
+	//
+	// 20210720
 	OperationDate *string `json:"operation_date,omitempty" xml:"operation_date,omitempty"`
 	// 修改时间
+	// example:
+	//
+	// 2021-07-20 14:08:17
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
 	// 维修金比例
+	// example:
+	//
+	// 50
 	MaintenanceMoney *string `json:"maintenance_money,omitempty" xml:"maintenance_money,omitempty"`
 	// 当日设备维修记录
+	// example:
+	//
+	// error
 	MaintainRecord *string `json:"maintain_record,omitempty" xml:"maintain_record,omitempty"`
 	// 设备识别号
+	// example:
+	//
+	// 10010100101
 	DeviceNo *string `json:"device_no,omitempty" xml:"device_no,omitempty"`
 	// 创建时间
+	// example:
+	//
+	// 2021-07-20 14:08:17
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	// 当日分拣单数
+	// example:
+	//
+	// 131222
 	SortingNum *string `json:"sorting_num,omitempty" xml:"sorting_num,omitempty"`
 	// 当日运营时长,单位分钟
+	// example:
+	//
+	// 1231321
 	OperationMinute *string `json:"operation_minute,omitempty" xml:"operation_minute,omitempty"`
 	// 04:00-16:00分拣单数/（派件分拣单数）
+	// example:
+	//
+	// 130012
 	AmNum *string `json:"am_num,omitempty" xml:"am_num,omitempty"`
 	// 16:00-04:00分拣单数/ （揽件分拣单数)
+	// example:
+	//
+	// 1210
 	PmNum *string `json:"pm_num,omitempty" xml:"pm_num,omitempty"`
 	// id
+	// example:
+	//
+	// 3
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// 设备验收日期
+	// example:
+	//
+	// 2021-07-20 11:33:59
 	DeviceAcceptanceDate *string `json:"device_acceptance_date,omitempty" xml:"device_acceptance_date,omitempty"`
 	// 数据更新时间
+	// example:
+	//
+	// 2021-07-20 11:32:35
 	DataUpdateTime *string `json:"data_update_time,omitempty" xml:"data_update_time,omitempty"`
 }
 
@@ -2837,19 +3923,40 @@ func (s *ScfLeaseEqpInfo) SetDataUpdateTime(v string) *ScfLeaseEqpInfo {
 // 房源信息同步实体类
 type HouseInfo struct {
 	// 房源唯一ID
+	// example:
+	//
+	// a87
 	HouseId *string `json:"house_id,omitempty" xml:"house_id,omitempty" require:"true"`
 	// 租赁模式
+	// example:
+	//
+	// 合租
 	LeaseMode *string `json:"lease_mode,omitempty" xml:"lease_mode,omitempty"`
 	// 面积平方
+	// example:
+	//
+	// 120㎡
 	Acreage *string `json:"acreage,omitempty" xml:"acreage,omitempty"`
 	// 房源类型：0住宅、1别墅、
 	// 2商铺、3写字楼
+	// example:
+	//
+	// 0
 	Structure *int64 `json:"structure,omitempty" xml:"structure,omitempty" require:"true"`
 	// 房屋地址
+	// example:
+	//
+	// hz
 	Addr *string `json:"addr,omitempty" xml:"addr,omitempty"`
 	// 门锁设备DID
+	// example:
+	//
+	// L91923
 	LockId *string `json:"lock_id,omitempty" xml:"lock_id,omitempty"`
 	// 电表设备DID
+	// example:
+	//
+	// A87345
 	AmmeterId *string `json:"ammeter_id,omitempty" xml:"ammeter_id,omitempty"`
 }
 
@@ -2899,6 +4006,9 @@ func (s *HouseInfo) SetAmmeterId(v string) *HouseInfo {
 // 信物链存证请求结构体
 type EvidenceStorageReq struct {
 	// 业务数据，原文上链，或者加密（label若为CRYPTO）上链，上链后的业务数据，通过授权可被区块链其他业务方查询
+	// example:
+	//
+	// [{"content":"{业务数据}","label":"CRYPTO","timestamp":0}]
 	BizData *string `json:"biz_data,omitempty" xml:"biz_data,omitempty"`
 	// 不同上链方式
 	// 空/"": 默认
@@ -2906,16 +4016,31 @@ type EvidenceStorageReq struct {
 	// "IOTPAY": 支付
 	// "CZ": 存证
 	// "RAW":文本
+	// example:
+	//
+	// "CZ"
 	Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
 	// 上链实体id(设备/空间)
 	// 不可和project_uid同时为空
+	// example:
+	//
+	// "did:iot:a9147bd2b83d4732b56dc06b346588f5619f80a2d4d2412fab535cbd37293a00"
 	IotDid *string `json:"iot_did,omitempty" xml:"iot_did,omitempty"`
 	// 需要上链的证据的哈希值
+	// example:
+	//
+	// "ace1213412313"
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
 	// 上链的附属信息
+	// example:
+	//
+	// "附属信息json"
 	MetaJson *string `json:"meta_json,omitempty" xml:"meta_json,omitempty"`
 	// 上链的项目id,
 	// 不可和iot_did同时为空
+	// example:
+	//
+	// "上链的项目id"
 	ProjectUid *string `json:"project_uid,omitempty" xml:"project_uid,omitempty"`
 }
 
@@ -2960,14 +4085,29 @@ func (s *EvidenceStorageReq) SetProjectUid(v string) *EvidenceStorageReq {
 // iotbasic项目品类信息
 type CategoryInfo struct {
 	// 品类名称
+	// example:
+	//
+	// 电力仪表
 	CategoryName *string `json:"category_name,omitempty" xml:"category_name,omitempty" require:"true"`
 	// 品类编码
+	// example:
+	//
+	// ant_power_meter
 	CategoryCode *string `json:"category_code,omitempty" xml:"category_code,omitempty" require:"true"`
 	// 描述内容
+	// example:
+	//
+	// 这是描述
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// 行业
+	// example:
+	//
+	// 工业
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty" require:"true"`
 	// 场景
+	// example:
+	//
+	// 智能工业
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 }
 
@@ -3007,16 +4147,34 @@ func (s *CategoryInfo) SetScene(v string) *CategoryInfo {
 // 收集信息
 type CollectContent struct {
 	// 链上设备ID（与可信设备ID至少填一项）
+	// example:
+	//
+	// 1122
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty"`
 	// 可信设备ID（与链上设备ID至少填一项）
+	// example:
+	//
+	// 7006071575519457281
 	TrustiotDeviceId *int64 `json:"trustiot_device_id,omitempty" xml:"trustiot_device_id,omitempty"`
 	// 收集的内容
+	// example:
+	//
+	// {"name","1"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 对内容的签名
+	// example:
+	//
+	// wwexe02j
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty" require:"true"`
 	// 服务端发送的扩展数据（非可信设备直接产生的数据）
+	// example:
+	//
+	// {"extraKey":"extraValue"}
 	ExtraData *string `json:"extra_data,omitempty" xml:"extra_data,omitempty"`
 	// 数据模型Id
+	// example:
+	//
+	// 00000001
 	DataModelId *string `json:"data_model_id,omitempty" xml:"data_model_id,omitempty"`
 }
 
@@ -3061,16 +4219,34 @@ func (s *CollectContent) SetDataModelId(v string) *CollectContent {
 // 租期信息
 type RentBillItem struct {
 	// 租约分期ID
+	// example:
+	//
+	// 12321321
 	BillItemId *string `json:"bill_item_id,omitempty" xml:"bill_item_id,omitempty" require:"true"`
 	// 租约分期名称
+	// example:
+	//
+	// 第几期
 	BillItemName *string `json:"bill_item_name,omitempty" xml:"bill_item_name,omitempty"`
 	// 租期开始日期
+	// example:
+	//
+	// 2006-01-02 15:04:05
 	BillItemBegin *string `json:"bill_item_begin,omitempty" xml:"bill_item_begin,omitempty" require:"true"`
 	// 租期结束日期
+	// example:
+	//
+	// 2006-02-02 15:04:05
 	BillItemEnd *string `json:"bill_item_end,omitempty" xml:"bill_item_end,omitempty" require:"true"`
 	// 租约金额
+	// example:
+	//
+	// 5000
 	BillItemMoney *string `json:"bill_item_money,omitempty" xml:"bill_item_money,omitempty" require:"true"`
 	// 租约支付状态
+	// example:
+	//
+	// 待支付，已支付，支付失败
 	PaymentState *string `json:"payment_state,omitempty" xml:"payment_state,omitempty"`
 }
 
@@ -3115,6 +4291,9 @@ func (s *RentBillItem) SetPaymentState(v string) *RentBillItem {
 // 溯源二维码生成请求的请求数据
 type BaiQrcodeGenerateReqData struct {
 	// 二维码的码值
+	// example:
+	//
+	// TEST1234567890
 	QrcodeContent *string `json:"qrcode_content,omitempty" xml:"qrcode_content,omitempty" require:"true"`
 }
 
@@ -3134,12 +4313,24 @@ func (s *BaiQrcodeGenerateReqData) SetQrcodeContent(v string) *BaiQrcodeGenerate
 // 实体上链数据
 type EntityChainData struct {
 	// 实体ID
+	// example:
+	//
+	// 123456
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty" require:"true"`
 	// 数据原文
+	// example:
+	//
+	// content
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 数据原文对应的签名
+	// example:
+	//
+	// 1ac3dfe2
 	Sign *string `json:"sign,omitempty" xml:"sign,omitempty" require:"true"`
 	// 数据原文上链哈希
+	// example:
+	//
+	// 1f2a9ec2b
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 }
 
@@ -3174,16 +4365,34 @@ func (s *EntityChainData) SetTxHash(v string) *EntityChainData {
 // 数据模型
 type DataModel struct {
 	//  数据模型Id
+	// example:
+	//
+	// 112233
 	DataModelId *string `json:"data_model_id,omitempty" xml:"data_model_id,omitempty" require:"true"`
 	// 数据模型名称
+	// example:
+	//
+	// 检测设备模型
 	DataModelName *string `json:"data_model_name,omitempty" xml:"data_model_name,omitempty"`
 	// 数据模型
+	// example:
+	//
+	// {          "PIC-URL": {                 "type": "string",                 "require":false              } }
 	DataModel *string `json:"data_model,omitempty" xml:"data_model,omitempty" require:"true"`
 	// 数据模型类别
+	// example:
+	//
+	// ORDER
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 用户自定义版本
+	// example:
+	//
+	// V1.0
 	CustomerVersion *string `json:"customer_version,omitempty" xml:"customer_version,omitempty"`
 	// 数据样例
+	// example:
+	//
+	// {"name":"zhangsan"}
 	DataDemo *string `json:"data_demo,omitempty" xml:"data_demo,omitempty"`
 }
 
@@ -3228,12 +4437,24 @@ func (s *DataModel) SetDataDemo(v string) *DataModel {
 // 溯源防伪码生成请求的响应数据
 type BaiQrcodeGenerateRespData struct {
 	// 二维码的base64字符串
+	// example:
+	//
+	// /9j/4QyXRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEa......
 	GenerateResult *string `json:"generate_result,omitempty" xml:"generate_result,omitempty" require:"true"`
 	// 生成结果码
+	// example:
+	//
+	// 200
 	GenerateCode *string `json:"generate_code,omitempty" xml:"generate_code,omitempty" require:"true"`
 	// 用于异常场景下细化错误信息
+	// example:
+	//
+	// 码值不正确
 	GenerateMessage *string `json:"generate_message,omitempty" xml:"generate_message,omitempty" require:"true"`
 	// 生成失败时的解决方案，用于异常场景下细化错误信息
+	// example:
+	//
+	// 请调整码值重试
 	UnableGenerateSolution *string `json:"unable_generate_solution,omitempty" xml:"unable_generate_solution,omitempty" require:"true"`
 }
 
@@ -3268,18 +4489,39 @@ func (s *BaiQrcodeGenerateRespData) SetUnableGenerateSolution(v string) *BaiQrco
 // 充电明细信息
 type ChargeDetail struct {
 	// 开始时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	DetailStartTime *string `json:"detail_start_time,omitempty" xml:"detail_start_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 结束时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	DetailEndTime *string `json:"detail_end_time,omitempty" xml:"detail_end_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 时段电价，小数点后4位
+	// example:
+	//
+	// 10.1010
 	ElecPrice *string `json:"elec_price,omitempty" xml:"elec_price,omitempty"`
 	// 时段服务费价格，小数点后4位
+	// example:
+	//
+	// 12.6222
 	ServicePrice *string `json:"service_price,omitempty" xml:"service_price,omitempty"`
 	// 时段充电量，单位：度，小数点后2位
+	// example:
+	//
+	// 12.12
 	DetailPower *string `json:"detail_power,omitempty" xml:"detail_power,omitempty" require:"true"`
 	// 时段电费，小数点后2位
+	// example:
+	//
+	// 10.10
 	DetailElecMoney *string `json:"detail_elec_money,omitempty" xml:"detail_elec_money,omitempty"`
 	// 时段服务费，小数点后2位
+	// example:
+	//
+	// 10.10
 	DetailServiceMoney *string `json:"detail_service_money,omitempty" xml:"detail_service_money,omitempty"`
 }
 
@@ -3329,20 +4571,44 @@ func (s *ChargeDetail) SetDetailServiceMoney(v string) *ChargeDetail {
 // xr通行证批量创建成功列表
 type XrTicketPoolSuccessList struct {
 	// 租户id
+	// example:
+	//
+	// 租户id
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 资源id
+	// example:
+	//
 	// 资源id
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty" require:"true"`
 	// 有效期
+	// example:
+	//
+	// 2022-10-02
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty" require:"true"`
 	// 体验时长
+	// example:
+	//
+	// 60(单位分)
 	TestTime *int64 `json:"test_time,omitempty" xml:"test_time,omitempty" require:"true"`
 	// vr设备集合
+	// example:
+	//
+	// json或数组
 	XrApps *string `json:"xr_apps,omitempty" xml:"xr_apps,omitempty"`
 	// 券池最大数
+	// example:
+	//
+	// 200
 	MaxPoolCount *int64 `json:"max_pool_count,omitempty" xml:"max_pool_count,omitempty" require:"true"`
+	// 券池名称
+	// example:
+	//
 	// 券池名称
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty" require:"true"`
 }
 
@@ -3394,23 +4660,149 @@ func (s *XrTicketPoolSuccessList) SetXrVerificationType(v string) *XrTicketPoolS
 	return s
 }
 
+// 智能体信息视图对象
+type AgentInfoVO struct {
+	// 智能体ID
+	// example:
+	//
+	// 7265889323732762624
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+	// 智能体名称
+	// example:
+	//
+	// 小蚁
+	AgentName *string `json:"agent_name,omitempty" xml:"agent_name,omitempty" require:"true"`
+	// 语言编码
+	// example:
+	//
+	// zh
+	LangCode *string `json:"lang_code,omitempty" xml:"lang_code,omitempty" require:"true"`
+	// 音色ID
+	// example:
+	//
+	// longjing_v2
+	TtsVoiceId *string `json:"tts_voice_id,omitempty" xml:"tts_voice_id,omitempty" require:"true"`
+	// 系统提示词
+	// example:
+	//
+	// 你是一个某某智能体
+	SystemPrompt *string `json:"system_prompt,omitempty" xml:"system_prompt,omitempty" require:"true"`
+	// 可选模型列表
+	// example:
+	//
+	// [{"label":"qwen-plus","value":"qwen-plus"},{"label":"glm4.7","value":"glm4.7"},{"label":"glm5","value":"glm5"}]
+	LlmModelList []*DictionaryInfoBO `json:"llm_model_list,omitempty" xml:"llm_model_list,omitempty" type:"Repeated"`
+	// 可选音色列表
+	// example:
+	//
+	// [{"label":"甜甜（女声普通话）","value":"Tina"},{"label":"拉迪奥·戈尔（男声葡萄牙语）","value":"Radio Gol"}]
+	TtsVoiceList []*DictionaryInfoBO `json:"tts_voice_list,omitempty" xml:"tts_voice_list,omitempty" type:"Repeated"`
+	// 可选语言列表
+	// example:
+	//
+	// [{"label": "中文","value": "zh"},{"label": "英文","value": "en"}]
+	LanguageList []*DictionaryInfoBO `json:"language_list,omitempty" xml:"language_list,omitempty" type:"Repeated"`
+	// 父模板智能体名称
+	// example:
+	//
+	// 小蚁模板
+	ParentTemplateAgentName *string `json:"parent_template_agent_name,omitempty" xml:"parent_template_agent_name,omitempty"`
+}
+
+func (s AgentInfoVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentInfoVO) GoString() string {
+	return s.String()
+}
+
+func (s *AgentInfoVO) SetAgentId(v string) *AgentInfoVO {
+	s.AgentId = &v
+	return s
+}
+
+func (s *AgentInfoVO) SetAgentName(v string) *AgentInfoVO {
+	s.AgentName = &v
+	return s
+}
+
+func (s *AgentInfoVO) SetLangCode(v string) *AgentInfoVO {
+	s.LangCode = &v
+	return s
+}
+
+func (s *AgentInfoVO) SetTtsVoiceId(v string) *AgentInfoVO {
+	s.TtsVoiceId = &v
+	return s
+}
+
+func (s *AgentInfoVO) SetSystemPrompt(v string) *AgentInfoVO {
+	s.SystemPrompt = &v
+	return s
+}
+
+func (s *AgentInfoVO) SetLlmModelList(v []*DictionaryInfoBO) *AgentInfoVO {
+	s.LlmModelList = v
+	return s
+}
+
+func (s *AgentInfoVO) SetTtsVoiceList(v []*DictionaryInfoBO) *AgentInfoVO {
+	s.TtsVoiceList = v
+	return s
+}
+
+func (s *AgentInfoVO) SetLanguageList(v []*DictionaryInfoBO) *AgentInfoVO {
+	s.LanguageList = v
+	return s
+}
+
+func (s *AgentInfoVO) SetParentTemplateAgentName(v string) *AgentInfoVO {
+	s.ParentTemplateAgentName = &v
+	return s
+}
+
 // 要素关系信息
 type AssetElementRelationInfo struct {
 	// 来源要素ID
+	// example:
+	//
+	// 112233
 	SourceElementId *string `json:"source_element_id,omitempty" xml:"source_element_id,omitempty" require:"true"`
 	// 目标要素ID
+	// example:
+	//
+	// 112233
 	TargetElementId *string `json:"target_element_id,omitempty" xml:"target_element_id,omitempty" require:"true"`
 	// 关联类型
+	// example:
+	//
+	// 1
 	RelationType *int64 `json:"relation_type,omitempty" xml:"relation_type,omitempty" require:"true"`
 	// 关联依据类型
+	// example:
+	//
+	// NORMAL
 	RelationDependencyType *string `json:"relation_dependency_type,omitempty" xml:"relation_dependency_type,omitempty"`
 	// 关联依据
+	// example:
+	//
+	// {...}
 	RelationDependency *string `json:"relation_dependency,omitempty" xml:"relation_dependency,omitempty"`
 	// 项目ID
+	// example:
+	//
+	// 112233
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty" require:"true"`
 	// 来源要素名称
+	// example:
+	//
+	// 来源要素
 	SourceElementName *string `json:"source_element_name,omitempty" xml:"source_element_name,omitempty" require:"true"`
 	// 目标要素名称
+	// example:
+	//
+	// 目标要素
 	TargetElementName *string `json:"target_element_name,omitempty" xml:"target_element_name,omitempty" require:"true"`
 }
 
@@ -3465,13 +4857,22 @@ func (s *AssetElementRelationInfo) SetTargetElementName(v string) *AssetElementR
 // 更新设备和空间关联请求结构体
 type UpdateDeviceSpaceReq struct {
 	// API要更新的设备DID
+	// example:
+	//
+	// "did:iot:xxxxx"
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 0-全部更新 (暂不支持)
 	// 1-添加
 	// 2-删除
 	//
+	// example:
+	//
+	// 1
 	UpdateMode *int64 `json:"update_mode,omitempty" xml:"update_mode,omitempty" require:"true"`
 	// API要更新的设备部署库位
+	// example:
+	//
+	// ["did:iot:xxxx","did:iot:xxxxx"]
 	DeviceSpace []*string `json:"device_space,omitempty" xml:"device_space,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -3501,12 +4902,24 @@ func (s *UpdateDeviceSpaceReq) SetDeviceSpace(v []*string) *UpdateDeviceSpaceReq
 // 设备注册失败对象
 type IotBasicDeviceRegisterFail struct {
 	// 设备名称
+	// example:
+	//
+	// 12321321
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// 2088xx
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 错误编码
+	// example:
+	//
+	// code
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// 错误描述
+	// example:
+	//
+	// message
 	Message *string `json:"message,omitempty" xml:"message,omitempty" require:"true"`
 }
 
@@ -3541,28 +4954,61 @@ func (s *IotBasicDeviceRegisterFail) SetMessage(v string) *IotBasicDeviceRegiste
 // 设备信息
 type Device struct {
 	// 设备ID，一般是设备的出厂编码或业务上的资产ID
+	// example:
+	//
+	// 123ABC
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 数据模型Id
+	// example:
+	//
+	// 112233
 	DeviceDataModelId *string `json:"device_data_model_id,omitempty" xml:"device_data_model_id,omitempty" require:"true"`
 	// 场景码
+	// example:
+	//
+	// SCENE1
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// imei号
+	// example:
+	//
+	// 223344
 	DeviceImei *string `json:"device_imei,omitempty" xml:"device_imei,omitempty" require:"true"`
 	// 设备名称
+	// example:
+	//
+	// 设备1号
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
 	// 设备厂商名称
+	// example:
+	//
+	// 浙江一厂
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	// 设备ICCID
 	//
 	//
+	// example:
+	//
+	// a1234
 	DeviceIccid *string `json:"device_iccid,omitempty" xml:"device_iccid,omitempty"`
 	// 设备扩展信息
+	// example:
+	//
+	// {“”:""}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 	// 设备链上Id
+	// example:
+	//
+	// 223344
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty" require:"true"`
 	// 上链哈希
+	// example:
+	//
+	// 3344
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 上链时间
+	// example:
+	//
+	// 224455
 	TxTime *int64 `json:"tx_time,omitempty" xml:"tx_time,omitempty" require:"true"`
 	// 设备类型编码，必填，对应资管平台中的设备类型
 	//
@@ -3589,16 +5035,34 @@ type Device struct {
 	// 垃圾分类回收 4001
 	//
 	// 洗车机 5000
+	// example:
+	//
+	// 5000
 	DeviceTypeCode *int64 `json:"device_type_code,omitempty" xml:"device_type_code,omitempty" require:"true"`
 	// 单价
+	// example:
+	//
+	// 1000
 	InitialPrice *int64 `json:"initial_price,omitempty" xml:"initial_price,omitempty" require:"true"`
 	// 投放时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 出厂时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	FactoryTime *string `json:"factory_time,omitempty" xml:"factory_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 设备状态，取值范围：NORMAL、OFFLINE、UNREGISTER
+	// example:
+	//
+	// NORMAL
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty"`
 	// 可信设备ID
+	// example:
+	//
+	// 7006071575276187649
 	TrustiotDeviceId *int64 `json:"trustiot_device_id,omitempty" xml:"trustiot_device_id,omitempty" require:"true"`
 }
 
@@ -3698,10 +5162,19 @@ func (s *Device) SetTrustiotDeviceId(v int64) *Device {
 // 新增厂商字典时需要传的产品信息
 type AddProductInfo struct {
 	// 产品名称
+	// example:
+	//
+	// 防疫一体机
 	ProductName *string `json:"product_name,omitempty" xml:"product_name,omitempty" require:"true"`
 	// 产品code
+	// example:
+	//
+	// face_smart
 	ProductCode *string `json:"product_code,omitempty" xml:"product_code,omitempty" require:"true"`
 	// 产品描述
+	// example:
+	//
+	// 智能防疫机
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -3731,18 +5204,36 @@ func (s *AddProductInfo) SetRemark(v string) *AddProductInfo {
 // 设备实体请求结构体，应用在注册/更新API的ThingsExtraParams
 type DeviceRegisterReqModel struct {
 	// 保留
+	// example:
+	//
+	// 0
 	AuthLevel *int64 `json:"auth_level,omitempty" xml:"auth_level,omitempty"`
 	// 设备属性字符串，
 	// 阿里云设备类型，填入三元组
+	// example:
+	//
+	// "设备属性"
 	DeviceAttribute *string `json:"device_attribute,omitempty" xml:"device_attribute,omitempty"`
 	// 物模型ID，参考其他文档
+	// example:
+	//
+	// "模型ID"
 	DeviceModelId *string `json:"device_model_id,omitempty" xml:"device_model_id,omitempty"`
 	// 可传入自定义信息
+	// example:
+	//
+	// "自定义字段"
 	OtherInfo *string `json:"other_info,omitempty" xml:"other_info,omitempty"`
 	// 业务自定义，可以传入该实体的w3c服务节点
+	// example:
+	//
+	// "服务端点"
 	ServiceEndpoint *string `json:"service_endpoint,omitempty" xml:"service_endpoint,omitempty"`
 	// 保留，默认
 	//     STATUS_REGISTERED(3)
+	// example:
+	//
+	// null
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -3787,8 +5278,14 @@ func (s *DeviceRegisterReqModel) SetStatus(v string) *DeviceRegisterReqModel {
 // 设备远程操作对象
 type DeviceOperateInfo struct {
 	// 蚂蚁链iot平台设备ID
+	// example:
+	//
+	// 213
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 设备签名
+	// example:
+	//
+	// sua8e
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty" require:"true"`
 }
 
@@ -3813,8 +5310,14 @@ func (s *DeviceOperateInfo) SetSignature(v string) *DeviceOperateInfo {
 // 菜鸟设备监控信息获取请求体
 type ScfLeaseEqpInfoQueryRequest struct {
 	// 设备识别号
+	// example:
+	//
+	// 10010100101
 	DeviceNo *string `json:"device_no,omitempty" xml:"device_no,omitempty" require:"true"`
 	// 运营日期
+	// example:
+	//
+	// 2021-07-20 11:34:00
 	OperationDate *string `json:"operation_date,omitempty" xml:"operation_date,omitempty" require:"true"`
 }
 
@@ -3839,37 +5342,88 @@ func (s *ScfLeaseEqpInfoQueryRequest) SetOperationDate(v string) *ScfLeaseEqpInf
 // 用户通行证详情
 type XrUserTicketDetail struct {
 	// 业务类型
+	// example:
+	//
+	// XR_LEASE
 	BizScene *string `json:"biz_scene,omitempty" xml:"biz_scene,omitempty" require:"true"`
 	// 所属客户
+	// example:
+	//
+	// QWERTYUI
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 用户通行证编码
+	// example:
+	//
+	// 8613356
 	XrTicketCode *string `json:"xr_ticket_code,omitempty" xml:"xr_ticket_code,omitempty" require:"true"`
 	// xr通行证资源池名称
+	// example:
+	//
+	// 资源池001
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 用户id
+	// example:
+	//
+	// 2088**
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 	// 资源id
+	// example:
+	//
+	// xsadds
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty" require:"true"`
 	// 资源名称
+	// example:
+	//
+	// 资源001
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty" require:"true"`
 	// 用户通行证状态
+	// example:
+	//
+	// 待核销
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 有效期
+	// example:
+	//
+	// 2023-03-28
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty" require:"true"`
 	// 实例id
+	// example:
+	//
+	// 86871
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
 	// 核销时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	XrVerificationTime *string `json:"xr_verification_time,omitempty" xml:"xr_verification_time,omitempty"`
 	// 体验开始时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	SampleStartTime *string `json:"sample_start_time,omitempty" xml:"sample_start_time,omitempty"`
 	// 体验结束时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	SampleEndTime *string `json:"sample_end_time,omitempty" xml:"sample_end_time,omitempty"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty" require:"true"`
 	// 实例名称
+	// example:
+	//
+	// 实例001
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
 	// 体验时长，分
+	// example:
+	//
+	// 60
 	TestTime *int64 `json:"test_time,omitempty" xml:"test_time,omitempty" require:"true"`
+	// vr应用集合
+	// example:
+	//
 	// vr应用集合
 	XrApps *string `json:"xr_apps,omitempty" xml:"xr_apps,omitempty"`
 }
@@ -3986,10 +5540,19 @@ type DidBaseQueryReq struct {
 	// * "thingsAttached"关联实体列表（例：库位关联设备）
 	// * "authLevel"     授权等级
 	// * "thingServiceEndpoint" 服务列表
+	// example:
+	//
+	// ["如下1","如下2"]
 	DataFilter []*string `json:"data_filter,omitempty" xml:"data_filter,omitempty" require:"true" type:"Repeated"`
 	// 是否从链上查询，从链上查询将返回txHash值
+	// example:
+	//
+	// false
 	OnChain *bool `json:"on_chain,omitempty" xml:"on_chain,omitempty" require:"true"`
 	// 需要查询的实体Did列表，同一次查询的Did须为相同类型
+	// example:
+	//
+	// ["did:iot:xxxx","did:iot:yyyyy"]
 	ThingsDidList []*string `json:"things_did_list,omitempty" xml:"things_did_list,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -4019,10 +5582,19 @@ func (s *DidBaseQueryReq) SetThingsDidList(v []*string) *DidBaseQueryReq {
 // 设备信息
 type DeviceInfos struct {
 	// tuid
+	// example:
+	//
+	// ""
 	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty"`
 	// 设备状态
+	// example:
+	//
+	// online
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty"`
 	// ota version
+	// example:
+	//
+	// ""
 	DeviceOtaVersion *string `json:"device_ota_version,omitempty" xml:"device_ota_version,omitempty"`
 }
 
@@ -4049,13 +5621,94 @@ func (s *DeviceInfos) SetDeviceOtaVersion(v string) *DeviceInfos {
 	return s
 }
 
+// 会话内容
+type AiAgentChatHistoryBO struct {
+	// 客户端ID
+	// example:
+	//
+	// 00:ba:cc
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty" require:"true"`
+	// 客户端类型
+	// example:
+	//
+	// ESP32
+	ClientType *string `json:"client_type,omitempty" xml:"client_type,omitempty" require:"true"`
+	// 对话内容
+	// example:
+	//
+	// ...对话内容
+	ConversationContent *string `json:"conversation_content,omitempty" xml:"conversation_content,omitempty" require:"true"`
+	// 对话类型
+	// example:
+	//
+	// request
+	ConversationType *string `json:"conversation_type,omitempty" xml:"conversation_type,omitempty" require:"true"`
+	// 会话ID
+	// example:
+	//
+	// 7468486322254688256
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	// 对话时间（格式化后的时间）
+	// example:
+	//
+	// 2026-06-24 21:32:59
+	Time *string `json:"time,omitempty" xml:"time,omitempty" require:"true"`
+}
+
+func (s AiAgentChatHistoryBO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiAgentChatHistoryBO) GoString() string {
+	return s.String()
+}
+
+func (s *AiAgentChatHistoryBO) SetClientId(v string) *AiAgentChatHistoryBO {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AiAgentChatHistoryBO) SetClientType(v string) *AiAgentChatHistoryBO {
+	s.ClientType = &v
+	return s
+}
+
+func (s *AiAgentChatHistoryBO) SetConversationContent(v string) *AiAgentChatHistoryBO {
+	s.ConversationContent = &v
+	return s
+}
+
+func (s *AiAgentChatHistoryBO) SetConversationType(v string) *AiAgentChatHistoryBO {
+	s.ConversationType = &v
+	return s
+}
+
+func (s *AiAgentChatHistoryBO) SetSessionId(v string) *AiAgentChatHistoryBO {
+	s.SessionId = &v
+	return s
+}
+
+func (s *AiAgentChatHistoryBO) SetTime(v string) *AiAgentChatHistoryBO {
+	s.Time = &v
+	return s
+}
+
 // 商品鉴定返回结果
 type BaiGoodsComparisonResponse struct {
 	// 鉴定结果（REAL：为真   FAKE：为假   UNABLE_IDENTIFY：无法鉴定）
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 	// 鉴定补充信息
+	// example:
+	//
+	// 鉴定成功
 	IdentificationMessage *string `json:"identification_message,omitempty" xml:"identification_message,omitempty"`
 	// 鉴定信息code
+	// example:
+	//
+	// 200
 	IdentificationCode *string `json:"identification_code,omitempty" xml:"identification_code,omitempty"`
 }
 
@@ -4085,14 +5738,29 @@ func (s *BaiGoodsComparisonResponse) SetIdentificationCode(v string) *BaiGoodsCo
 // 租户分页查询结果
 type PermissionedTenantPageResponse struct {
 	// 页数
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*PermissionedTenantModel `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -4132,14 +5800,29 @@ func (s *PermissionedTenantPageResponse) SetPageData(v []*PermissionedTenantMode
 // 任务信息
 type TaskInfo struct {
 	// 升级计划Id
+	// example:
+	//
+	// 234
 	PlanId *int64 `json:"plan_id,omitempty" xml:"plan_id,omitempty" minimum:"0"`
 	// 刷库计划步骤id
+	// example:
+	//
+	// 234
 	PlanStepId *int64 `json:"plan_step_id,omitempty" xml:"plan_step_id,omitempty" minimum:"0"`
 	// 任务id
+	// example:
+	//
+	// 234
 	TaskId *int64 `json:"task_id,omitempty" xml:"task_id,omitempty" minimum:"0"`
 	// action_id
+	// example:
+	//
+	// 234
 	ActionId *int64 `json:"action_id,omitempty" xml:"action_id,omitempty" minimum:"0"`
 	// 任务类型
+	// example:
+	//
+	// 升级，溯源
 	TaskType *string `json:"task_type,omitempty" xml:"task_type,omitempty" require:"true"`
 }
 
@@ -4182,16 +5865,31 @@ type BaiGoodsIdentificationRespData struct {
 	// REAL：鉴定为真
 	// FAKE：鉴定为假
 	// UNABLE_IDENTIFY：无法鉴定
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 	// 整体鉴定分数
+	// example:
+	//
+	// 0.99
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty" require:"true"`
 	// 整体鉴定报告描述
+	// example:
+	//
+	// AI鉴定成功
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 鉴定点鉴定结果列表
 	PointIdentificationResults []*BaiGoodsPointIdentificationResult `json:"point_identification_results,omitempty" xml:"point_identification_results,omitempty" require:"true" type:"Repeated"`
 	// 鉴定评价
+	// example:
+	//
+	// 完全同一，趋于同一，和不同一
 	AppraiseMessage *string `json:"appraise_message,omitempty" xml:"appraise_message,omitempty"`
 	// 用户自定义字符串，系统不做处理，会在响应体中带回
+	// example:
+	//
+	// state
 	OutState *string `json:"out_state,omitempty" xml:"out_state,omitempty"`
 }
 
@@ -4234,15 +5932,23 @@ func (s *BaiGoodsIdentificationRespData) SetOutState(v string) *BaiGoodsIdentifi
 }
 
 // iot平台用户信息
-//
 type IotBasicUserInfo struct {
 	// 租户ID
+	// example:
+	//
+	// DWWS2D
 	Tenant *string `json:"tenant,omitempty" xml:"tenant,omitempty" require:"true"`
 	// 金融云用户Id
 	//
+	// example:
+	//
+	// 12321321
 	CloudUserId *string `json:"cloud_user_id,omitempty" xml:"cloud_user_id,omitempty" require:"true"`
 	// 金融云平台的登录名
 	//
+	// example:
+	//
+	// xxx@alitest.com
 	LoginName *string `json:"login_name,omitempty" xml:"login_name,omitempty" require:"true"`
 	// 权限集合
 	PermissionList []*IotBasicRolePermission `json:"permission_list,omitempty" xml:"permission_list,omitempty" require:"true" type:"Repeated"`
@@ -4281,6 +5987,9 @@ type DistributeDataPackage struct {
 	// 原始数据
 	DataList []*RawData `json:"data_list,omitempty" xml:"data_list,omitempty" require:"true" type:"Repeated"`
 	// 发行设备Id
+	// example:
+	//
+	// 244
 	DistributeDeviceId *string `json:"distribute_device_id,omitempty" xml:"distribute_device_id,omitempty" require:"true"`
 	// 打包时间
 	PackageTime *int64 `json:"package_time,omitempty" xml:"package_time,omitempty" require:"true"`
@@ -4312,25 +6021,58 @@ func (s *DistributeDataPackage) SetPackageTime(v int64) *DistributeDataPackage {
 // 设备物模型行程统计信息
 type DeviceTripProperties struct {
 	// 上报时间
+	// example:
+	//
+	// 1765794345159
 	ReportTime *string `json:"report_time,omitempty" xml:"report_time,omitempty" require:"true"`
+	// 1
+	// example:
+	//
 	// 1
 	PowerStatus *string `json:"power_status,omitempty" xml:"power_status,omitempty" require:"true"`
 	// 1
+	// example:
+	//
+	// 1
 	EnduranceMileage *string `json:"endurance_mileage,omitempty" xml:"endurance_mileage,omitempty" require:"true"`
+	// 1
+	// example:
+	//
 	// 1
 	TotalMileage *string `json:"total_mileage,omitempty" xml:"total_mileage,omitempty" require:"true"`
 	// 1
+	// example:
+	//
+	// 1
 	Speed *string `json:"speed,omitempty" xml:"speed,omitempty" require:"true"`
+	// 1
+	// example:
+	//
 	// 1
 	Coord *string `json:"coord,omitempty" xml:"coord,omitempty" require:"true"`
 	// 1
+	// example:
+	//
+	// 1
 	Location *string `json:"location,omitempty" xml:"location,omitempty" require:"true"`
+	// 1
+	// example:
+	//
 	// 1
 	Rein *string `json:"rein,omitempty" xml:"rein,omitempty" require:"true"`
 	// 1
+	// example:
+	//
+	// 1
 	SpdBd *string `json:"spd_bd,omitempty" xml:"spd_bd,omitempty" require:"true"`
 	// 1
+	// example:
+	//
+	// 1
 	Cs *string `json:"cs,omitempty" xml:"cs,omitempty" require:"true"`
+	// 1
+	// example:
+	//
 	// 1
 	Eqst *string `json:"eqst,omitempty" xml:"eqst,omitempty" require:"true"`
 }
@@ -4401,8 +6143,14 @@ func (s *DeviceTripProperties) SetEqst(v string) *DeviceTripProperties {
 // iotbasic项目品类行业场景内容
 type IotbasicCategoryIndustrySceneInfo struct {
 	// 行业
+	// example:
+	//
+	// 工业
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty" require:"true"`
 	// 场景
+	// example:
+	//
+	// 智能工业
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 }
 
@@ -4427,12 +6175,21 @@ func (s *IotbasicCategoryIndustrySceneInfo) SetScene(v string) *IotbasicCategory
 // iotbasic设备模型固定属性
 type IotbasicDeviceModelFixedAttributeInfo struct {
 	// 属性说明
+	// example:
+	//
+	// name
 	AttributeName *string `json:"attribute_name,omitempty" xml:"attribute_name,omitempty" require:"true"`
 	// 属性名称
+	// example:
+	//
+	// value
 	AttributeValue *string `json:"attribute_value,omitempty" xml:"attribute_value,omitempty" require:"true"`
 	// 数据值类型
 	// 字符串：string
 	// 数字：long
+	// example:
+	//
+	// string
 	DataType *string `json:"data_type,omitempty" xml:"data_type,omitempty" require:"true"`
 	// dataType为string时，表示数据长度最小值
 	// dataType为long时，表示数据范围最小值
@@ -4478,28 +6235,64 @@ func (s *IotbasicDeviceModelFixedAttributeInfo) SetDataRangeMax(v int64) *Iotbas
 // 批量定时控车 批次详情
 type BatchJobDetail struct {
 	// 批次Id
+	// example:
+	//
+	// ""
 	BatchId *string `json:"batch_id,omitempty" xml:"batch_id,omitempty"`
 	// 批次名称
+	// example:
+	//
+	// ""
 	BatchName *string `json:"batch_name,omitempty" xml:"batch_name,omitempty"`
 	// 批次状态
+	// example:
+	//
+	// ""
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 租户Id
+	// example:
+	//
+	// ""
 	TenantId *int64 `json:"tenant_id,omitempty" xml:"tenant_id,omitempty"`
 	// 触发模式
+	// example:
+	//
+	// ""
 	TriggerMode *string `json:"trigger_mode,omitempty" xml:"trigger_mode,omitempty"`
 	// 定时执行时间戳
+	// example:
+	//
+	// 1765794345159
 	ScheduledTime *int64 `json:"scheduled_time,omitempty" xml:"scheduled_time,omitempty"`
 	// 实际开始时间戳
+	// example:
+	//
+	// 1765794345159
 	ActualStartTime *int64 `json:"actual_start_time,omitempty" xml:"actual_start_time,omitempty"`
 	// 实际结束时间戳
+	// example:
+	//
+	// 1765794345159
 	ActualEndTime *int64 `json:"actual_end_time,omitempty" xml:"actual_end_time,omitempty"`
 	// 总设备数
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 	// 成功数
+	// example:
+	//
+	// 1
 	SuccessCount *int64 `json:"success_count,omitempty" xml:"success_count,omitempty"`
 	// 失败数
+	// example:
+	//
+	// 1
 	FailedCount *int64 `json:"failed_count,omitempty" xml:"failed_count,omitempty"`
 	// 操作人
+	// example:
+	//
+	// ""
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 }
 
@@ -4574,26 +6367,59 @@ func (s *BatchJobDetail) SetOperator(v string) *BatchJobDetail {
 // 行程详情
 type TripDetail struct {
 	// 行程id
+	// example:
+	//
+	// T20251210140000001
 	TripId *string `json:"trip_id,omitempty" xml:"trip_id,omitempty" require:"true"`
 	// 开始时间
+	// example:
+	//
+	// 1765794345159
 	StartTime *int64 `json:"start_time,omitempty" xml:"start_time,omitempty" require:"true"`
 	// 结束时间
+	// example:
+	//
+	// 1765794345159
 	EndTime *int64 `json:"end_time,omitempty" xml:"end_time,omitempty" require:"true"`
 	// 行驶里程
+	// example:
+	//
+	// 36.9
 	Mileage *string `json:"mileage,omitempty" xml:"mileage,omitempty" require:"true"`
 	// 单次用时
+	// example:
+	//
+	// "duration":{ "value":"79", "unit":"h" },
 	Duration *TripDuration `json:"duration,omitempty" xml:"duration,omitempty" require:"true"`
 	// 最高速度
+	// example:
+	//
+	// 86
 	MaxSpeed *string `json:"max_speed,omitempty" xml:"max_speed,omitempty" require:"true"`
 	// 平均速度
+	// example:
+	//
+	// 32
 	AvgSpeed *string `json:"avg_speed,omitempty" xml:"avg_speed,omitempty" require:"true"`
 	// 开始地址
+	// example:
+	//
+	// 上海市浦东新区张江高科技园区博云路
 	FirstAddress *string `json:"first_address,omitempty" xml:"first_address,omitempty" require:"true"`
 	// 结束地址
+	// example:
+	//
+	// 上海市浦东新区张江高科技园区博云路
 	LastAddress *string `json:"last_address,omitempty" xml:"last_address,omitempty" require:"true"`
 	// 最开始定位时间
+	// example:
+	//
+	// 1733841605000
 	FirstLocationTime *int64 `json:"first_location_time,omitempty" xml:"first_location_time,omitempty" require:"true"`
 	// 最后结束定位时间
+	// example:
+	//
+	// 1733845195000
 	LastLocationTime *int64 `json:"last_location_time,omitempty" xml:"last_location_time,omitempty" require:"true"`
 }
 
@@ -4663,16 +6489,34 @@ func (s *TripDetail) SetLastLocationTime(v int64) *TripDetail {
 // 通行证批量创建失败列表
 type XrTicketPoolFailList struct {
 	// 券名称
+	// example:
+	//
+	// 券名称
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
+	// 资源id
+	// example:
+	//
 	// 资源id
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty" require:"true"`
 	// 错误码
+	// example:
+	//
+	// ok
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty" require:"true"`
+	// 租户id
+	// example:
+	//
 	// 租户id
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 错误信息
+	// example:
+	//
+	// 错误信息
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty" require:"true"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty" require:"true"`
 }
 
@@ -4717,6 +6561,9 @@ func (s *XrTicketPoolFailList) SetXrVerificationType(v string) *XrTicketPoolFail
 // BAI提供的OCR接口返回值
 type BaiOcrResponse struct {
 	// 返回的结果体
+	// example:
+	//
+	// {"backResult":{"issue":"XXXX","endDate":"20231010","startDate":"20131010"}}
 	Data *string `json:"data,omitempty" xml:"data,omitempty" require:"true"`
 }
 
@@ -4736,10 +6583,19 @@ func (s *BaiOcrResponse) SetData(v string) *BaiOcrResponse {
 // 获取设备授权返回信息
 type EmpowerDeviceInfo struct {
 	// 设备ID
+	// example:
+	//
+	// 00000001
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// ACCEPTED(接受)/REVOKED(撤销)
+	// example:
+	//
+	// ACCEPTED
 	AuthStatus *string `json:"auth_status,omitempty" xml:"auth_status,omitempty" require:"true"`
 	// 移除授权时间，毫秒级时间戳
+	// example:
+	//
+	// 1781690409
 	RemoveTime *int64 `json:"remove_time,omitempty" xml:"remove_time,omitempty"`
 }
 
@@ -4769,6 +6625,9 @@ func (s *EmpowerDeviceInfo) SetRemoveTime(v int64) *EmpowerDeviceInfo {
 // 溯源防伪码质检请求的请求数据
 type BaiQrcodeVerifyReqData struct {
 	// 二维码图片url
+	// example:
+	//
+	// http://xxxxxx
 	QueryImageUrl *string `json:"query_image_url,omitempty" xml:"query_image_url,omitempty" require:"true"`
 }
 
@@ -4788,20 +6647,44 @@ func (s *BaiQrcodeVerifyReqData) SetQueryImageUrl(v string) *BaiQrcodeVerifyReqD
 // 线下场设备元素
 type XrVerificationModelVo struct {
 	// 核销资源生成的实例，xr设备对应设备did
+	// example:
+	//
+	// qsdfskjes
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
 	// 生成的实例名称，xr设备就的对应的具体设备sn
+	// example:
+	//
+	// 设备sn
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty" require:"true"`
 	// 线下场有效期
+	// example:
+	//
+	// 2022-10-02 09:10:09
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty" require:"true"`
 	// 服务状态：INIT初始化、SERVICING服务中、PAUSED已暂停、EXPIRED停用
+	// example:
+	//
+	// INIT
 	SeviceStatus *string `json:"sevice_status,omitempty" xml:"sevice_status,omitempty" require:"true"`
 	// 设备状态：INIT 初始化、ONLINE 在线、OFFLINE 离线、FAULT 故障、ACTIVATED 激活
+	// example:
+	//
+	// ONLINE
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty" require:"true"`
+	// 唯一ID，对应线下场code
+	// example:
+	//
 	// 唯一ID，对应线下场code
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty" require:"true"`
 	// 对应线下场名称
+	// example:
+	//
+	// 对应线下场名称
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty" require:"true"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
 }
 
@@ -4856,10 +6739,19 @@ func (s *XrVerificationModelVo) SetType(v string) *XrVerificationModelVo {
 // 业务状态信息
 type BizStatusInfoOp struct {
 	// 业务状态类型
+	// example:
+	//
+	// SMART_CAR_KEY
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty" require:"true"`
 	// 业务状态
+	// example:
+	//
+	// unbound
 	BizStatus *string `json:"biz_status,omitempty" xml:"biz_status,omitempty" require:"true"`
 	// 时间
+	// example:
+	//
+	// 2018-10-10 10:10:00
 	OpTime *string `json:"op_time,omitempty" xml:"op_time,omitempty" require:"true"`
 }
 
@@ -4886,11 +6778,99 @@ func (s *BizStatusInfoOp) SetOpTime(v string) *BizStatusInfoOp {
 	return s
 }
 
+// OTA 任务永久取消结果项
+type IotxOtaTaskPermanentCancelResult struct {
+	// 通道
+	// example:
+	//
+	// EKYT_BLE
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// OTA批次id
+	// example:
+	//
+	// 7d715afe5a374179892078a9a11f16ab
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty"`
+	// OTA任务ID
+	// example:
+	//
+	// 11117c96d904415fa1570736703d3f0c
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// OTA固件包ID
+	// example:
+	//
+	// 25c3f69752244678a84f663e4d48a56a
+	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty" require:"true"`
+	// 是否成功
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 失败错误码
+	// example:
+	//
+	// SYSTEM_ERROR
+	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	// 错误信息
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
+}
+
+func (s IotxOtaTaskPermanentCancelResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IotxOtaTaskPermanentCancelResult) GoString() string {
+	return s.String()
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetChannel(v string) *IotxOtaTaskPermanentCancelResult {
+	s.Channel = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetJobId(v string) *IotxOtaTaskPermanentCancelResult {
+	s.JobId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetTaskId(v string) *IotxOtaTaskPermanentCancelResult {
+	s.TaskId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetFirmwareId(v string) *IotxOtaTaskPermanentCancelResult {
+	s.FirmwareId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetSuccess(v bool) *IotxOtaTaskPermanentCancelResult {
+	s.Success = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetErrorCode(v string) *IotxOtaTaskPermanentCancelResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelResult) SetErrorMessage(v string) *IotxOtaTaskPermanentCancelResult {
+	s.ErrorMessage = &v
+	return s
+}
+
 // 实体身份注册请求结构体
 type ThingsDidRegisterReq struct {
 	// 业务编码，暂时保留，不需传入
+	// example:
+	//
+	// null
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 信物链实体的所有者的分布式身份
+	// example:
+	//
+	// "did:mychain:xxxxx"
 	OwnerTenantDid *string `json:"owner_tenant_did,omitempty" xml:"owner_tenant_did,omitempty"`
 	// 信物链实体附加信息 不同实体身份，有不同的json组织格式...
 	// 参考
@@ -4899,10 +6879,19 @@ type ThingsDidRegisterReq struct {
 	// CorporateReqModel，
 	// WarehouseReqModel，
 	//
+	// example:
+	//
+	// "附加信息"
 	ThingExtraParams *string `json:"thing_extra_params,omitempty" xml:"thing_extra_params,omitempty"`
 	// 原始id，租户内同一类型实体唯一
+	// example:
+	//
+	// "租户下唯一ID"
 	ThingOriginId *string `json:"thing_origin_id,omitempty" xml:"thing_origin_id,omitempty" require:"true"`
 	// 实体原始名称
+	// example:
+	//
+	// "摄像头a"
 	ThingOriginName *string `json:"thing_origin_name,omitempty" xml:"thing_origin_name,omitempty" require:"true"`
 	// 信物链实体身份
 	// DID_TYPE_DEVICE_ALIYUN(0): 阿里云设备
@@ -4913,10 +6902,19 @@ type ThingsDidRegisterReq struct {
 	// DID_TYPE_CORPORATE(65536): 组织实体
 	// DID_TYPE_WAREHOUSE(131072)：仓库实体
 	// DID_TYPE_SPACE(196608)： 空间实体
+	// example:
+	//
+	// 0
 	ThingType *int64 `json:"thing_type,omitempty" xml:"thing_type,omitempty" require:"true"`
 	// 实体版本
+	// example:
+	//
+	// "1.0.0"
 	ThingVersion *string `json:"thing_version,omitempty" xml:"thing_version,omitempty" require:"true"`
 	// 信物链实体的使用方的分布式身份列表
+	// example:
+	//
+	// ["did:mychain:xxxx1","did:mychain:xxxx2"]
 	UserDid []*string `json:"user_did,omitempty" xml:"user_did,omitempty" type:"Repeated"`
 }
 
@@ -4971,10 +6969,19 @@ func (s *ThingsDidRegisterReq) SetUserDid(v []*string) *ThingsDidRegisterReq {
 // 数据上链失败结果
 type DeviceCollectFail struct {
 	// 上链数据采集ID
+	// example:
+	//
+	// 81htq898
 	CollectId *string `json:"collect_id,omitempty" xml:"collect_id,omitempty" require:"true"`
 	// 错误码
+	// example:
+	//
+	// bad_param
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// 错误信息
+	// example:
+	//
+	// 参数错误
 	Message *string `json:"message,omitempty" xml:"message,omitempty" require:"true"`
 }
 
@@ -5006,11 +7013,17 @@ type BaiGoodsPointQueryRespData struct {
 	// 识别结果
 	// true：识别到鉴定点
 	// false：未识别到鉴定点
+	// example:
+	//
+	// true
 	Detection *bool `json:"detection,omitempty" xml:"detection,omitempty" require:"true"`
 	// 鉴定结果
 	// REAL：鉴定为真
 	// FAKE：鉴定为假
 	// UNABLE_IDENTIFY：无法鉴定
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 }
 
@@ -5037,12 +7050,24 @@ type BaiQrcodeVerifyRespData struct {
 	// 鉴定结果
 	// REAL：通过
 	// UNABLE_IDENTIFY：无法鉴定
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 	// 辅助识别结果码
+	// example:
+	//
+	// 700
 	IdentificationCode *string `json:"identification_code,omitempty" xml:"identification_code,omitempty" require:"true"`
 	// 辅助识别信息
+	// example:
+	//
+	// 二维码不符合标准
 	IdentificationMessage *string `json:"identification_message,omitempty" xml:"identification_message,omitempty" require:"true"`
 	// 无法鉴定时的解决方案
+	// example:
+	//
+	// 请重新印刷
 	UnableIdentifySolution *string `json:"unable_identify_solution,omitempty" xml:"unable_identify_solution,omitempty" require:"true"`
 }
 
@@ -5077,14 +7102,29 @@ func (s *BaiQrcodeVerifyRespData) SetUnableIdentifySolution(v string) *BaiQrcode
 // 多媒体文件
 type JtMedia struct {
 	// 多媒体ID
+	// example:
+	//
+	// 123
 	MediaId *string `json:"media_id,omitempty" xml:"media_id,omitempty" require:"true"`
 	// 文件名称
+	// example:
+	//
+	// xxxx.jpg
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 可访问的url
+	// example:
+	//
+	// https://oss.com/53/85855.jpg?sign=xxx
 	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
 	// 上传时间
+	// example:
+	//
+	// 1687859592688
 	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true"`
 	// 多媒体类型枚举：IMAGE 图像；AUDIO 音频；VIDEO视频； UN_KNOW  未知；
+	// example:
+	//
+	// IMAGE
 	MediaType *string `json:"media_type,omitempty" xml:"media_type,omitempty" require:"true"`
 }
 
@@ -5124,12 +7164,24 @@ func (s *JtMedia) SetMediaType(v string) *JtMedia {
 // iotx行程统计
 type TripStatistics struct {
 	// 总里程
+	// example:
+	//
+	// 23
 	TotalMileage *string `json:"total_mileage,omitempty" xml:"total_mileage,omitempty" require:"true"`
 	// 时间体
+	// example:
+	//
+	// "totalDuration":{ "value":"79", "unit":"h" }
 	TotalDuration *TripDuration `json:"total_duration,omitempty" xml:"total_duration,omitempty" require:"true"`
 	// 总次数
+	// example:
+	//
+	// 12
 	TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty" require:"true"`
 	// 时期码
+	// example:
+	//
+	// 2
 	PeriodCode *int64 `json:"period_code,omitempty" xml:"period_code,omitempty" require:"true"`
 }
 
@@ -5164,6 +7216,9 @@ func (s *TripStatistics) SetPeriodCode(v int64) *TripStatistics {
 // 商品鉴定点检测接口响应数据
 type BaiGoodsPointCheckRespData struct {
 	// 图片是否有效，无效则需要提示重拍
+	// example:
+	//
+	// true, false
 	Valid *bool `json:"valid,omitempty" xml:"valid,omitempty" require:"true"`
 }
 
@@ -5183,18 +7238,39 @@ func (s *BaiGoodsPointCheckRespData) SetValid(v bool) *BaiGoodsPointCheckRespDat
 // 批量定时任务详情
 type TaskDetail struct {
 	// 批次id
+	// example:
+	//
+	// ""
 	BatchId *string `json:"batch_id,omitempty" xml:"batch_id,omitempty"`
 	// tuid
+	// example:
+	//
+	// ""
 	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty"`
 	// device_name
+	// example:
+	//
+	// ""
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
 	// 状态
+	// example:
+	//
+	// ""
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 调用时间
+	// example:
+	//
+	// 1765794345159
 	InvokeTime *int64 `json:"invoke_time,omitempty" xml:"invoke_time,omitempty"`
 	// 错误信息
+	// example:
+	//
+	// ""
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
 	// 重试次数
+	// example:
+	//
+	// 1
 	RetryCount *int64 `json:"retry_count,omitempty" xml:"retry_count,omitempty"`
 }
 
@@ -5244,14 +7320,29 @@ func (s *TaskDetail) SetRetryCount(v int64) *TaskDetail {
 // 事件数据领域参数
 type EventSpecs struct {
 	// 物模型事件ID
+	// example:
+	//
+	// 7084744398341955584
 	EventModelId *string `json:"event_model_id,omitempty" xml:"event_model_id,omitempty" require:"true"`
 	// 是否返回上链HASH，缺省值按false处理
+	// example:
+	//
+	// true, false
 	ReturnHash *bool `json:"return_hash,omitempty" xml:"return_hash,omitempty"`
 	// 业务数据标识
+	// example:
+	//
+	// ORDER
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 提交日期
+	// example:
+	//
+	// 2024-08-15
 	SubmitDate *string `json:"submit_date,omitempty" xml:"submit_date,omitempty"`
 	// 是否是补数据内容
+	// example:
+	//
+	// true, false
 	IsRepaired *bool `json:"is_repaired,omitempty" xml:"is_repaired,omitempty"`
 }
 
@@ -5292,17 +7383,32 @@ func (s *EventSpecs) SetIsRepaired(v bool) *EventSpecs {
 type DataVerifyFailureDataPageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
 	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*DataVerifyFailureData `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -5342,20 +7448,44 @@ func (s *DataVerifyFailureDataPageResponse) SetPageData(v []*DataVerifyFailureDa
 // TSM CommonCmd
 type TsmCommonCmd struct {
 	// private byte cla;
+	// example:
+	//
+	// 00
 	Cla *int64 `json:"cla,omitempty" xml:"cla,omitempty" require:"true"`
 	//  host challenge data.
+	// example:
+	//
+	// [0,0]
 	Data []*int64 `json:"data,omitempty" xml:"data,omitempty" require:"true" type:"Repeated"`
 	// private byte ins;
+	// example:
+	//
+	// 00
 	Ins *int64 `json:"ins,omitempty" xml:"ins,omitempty" require:"true"`
 	//  private byte lc;
+	// example:
+	//
+	// lc
 	Lc *int64 `json:"lc,omitempty" xml:"lc,omitempty" require:"true"`
 	// private byte le = (byte) 0x00;
+	// example:
+	//
+	// 0
 	Le *int64 `json:"le,omitempty" xml:"le,omitempty"`
 	// private Boolean needSecurityHandle = Boolean.TRUE;
+	// example:
+	//
+	// true, false
 	NeedSecurityHandle *bool `json:"need_security_handle,omitempty" xml:"need_security_handle,omitempty"`
 	// private byte p1;
+	// example:
+	//
+	// 00
 	P1 *int64 `json:"p1,omitempty" xml:"p1,omitempty" require:"true"`
 	// private byte p2 = (byte) 0x00;
+	// example:
+	//
+	// 00
 	P2 *int64 `json:"p2,omitempty" xml:"p2,omitempty" require:"true"`
 }
 
@@ -5410,18 +7540,39 @@ func (s *TsmCommonCmd) SetP2(v int64) *TsmCommonCmd {
 // xr通行证批量创建请求
 type XrTicketPoolBatchReq struct {
 	// 资源id
+	// example:
+	//
+	// 资源id
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty" require:"true"`
+	// 通行证有效期
+	// example:
+	//
 	// 通行证有效期
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty" require:"true"`
 	// 体验时长
+	// example:
+	//
+	// 60(单位分)
 	TestTime *int64 `json:"test_time,omitempty" xml:"test_time,omitempty" require:"true"`
 	// vr设备集合
+	// example:
+	//
+	// json或数组
 	XrApps *string `json:"xr_apps,omitempty" xml:"xr_apps,omitempty"`
 	// 券池最大出票数
+	// example:
+	//
+	// 100
 	MaxPoolCount *int64 `json:"max_pool_count,omitempty" xml:"max_pool_count,omitempty" require:"true"`
+	// 通行证名称
+	// example:
+	//
 	// 通行证名称
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty" require:"true"`
 }
 
@@ -5471,10 +7622,19 @@ func (s *XrTicketPoolBatchReq) SetXrVerificationType(v string) *XrTicketPoolBatc
 // 设备管控 失败对象
 type DeviceControlFail struct {
 	// 设备did
+	// example:
+	//
+	// 123
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 操作失败code
+	// example:
+	//
+	// bad_param
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// 操作失败信息
+	// example:
+	//
+	// 参数错误
 	Message *string `json:"message,omitempty" xml:"message,omitempty" require:"true"`
 }
 
@@ -5502,42 +7662,83 @@ func (s *DeviceControlFail) SetMessage(v string) *DeviceControlFail {
 }
 
 // 通过设备注册发行时的设备参数 （与RegByDeviceIdParam的区别在于设备端有无植入蚂蚁SDK或模组）
-//
 type RegByDeviceParm struct {
 	// 一般是业务上唯一的设备ID/资产编码
 	//
+	// example:
+	//
+	// 1122
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 数据模型ID
+	// example:
+	//
+	// 7033986596836630528
 	DeviceDataModelId *string `json:"device_data_model_id,omitempty" xml:"device_data_model_id,omitempty"`
 	// 设备端经过蚂蚁SDK或模组初始化得到的注册信息
+	// example:
+	//
+	// 73546f6b656e323031323131313332393235303230303033
 	DeviceRegContent *string `json:"device_reg_content,omitempty" xml:"device_reg_content,omitempty" require:"true"`
 	// 蚂蚁侧SDK或模组对device_reg_content的签名
+	// example:
+	//
+	// a573546f6b656e323031323131313332393235303230303033
 	DeviceRegSignature *string `json:"device_reg_signature,omitempty" xml:"device_reg_signature,omitempty" require:"true"`
 	// sdk版本号，由蚂蚁侧提供
+	// example:
+	//
+	// ma1-t1-0.1.1-00.04.54
 	SdkId *string `json:"sdk_id,omitempty" xml:"sdk_id,omitempty" require:"true"`
 	// 设备类型编码，联系蚂蚁侧获取设备类型编码
 	//
+	// example:
+	//
+	// 1001
 	DeviceTypeCode *int64 `json:"device_type_code,omitempty" xml:"device_type_code,omitempty" require:"true"`
 	// 设备单价 单位：分
 	//
+	// example:
+	//
+	// 1000
 	InitialPrice *int64 `json:"initial_price,omitempty" xml:"initial_price,omitempty"`
 	// 出厂时间
 	//
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	FactoryTime *string `json:"factory_time,omitempty" xml:"factory_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 投放时间
 	//
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 额外信息，联系蚂蚁侧获取参数格式
 	//
+	// example:
+	//
+	// {...}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 	// 资产所有人标识（统一社会信用代码）
 	//
+	// example:
+	//
+	// 91310101MA1FPCXA3G
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// 资产所有人名称
+	// example:
+	//
+	// 蚂蚁区块链科技（上海）有限公司
 	OwnerName *string `json:"owner_name,omitempty" xml:"owner_name,omitempty"`
 	// 设备名称/型号
+	// example:
+	//
+	// 64.0V30AH
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
 	// 设备IMEI
+	// example:
+	//
+	// 823456712312345
 	DeviceImei *string `json:"device_imei,omitempty" xml:"device_imei,omitempty"`
 }
 
@@ -5622,32 +7823,74 @@ func (s *RegByDeviceParm) SetDeviceImei(v string) *RegByDeviceParm {
 // xr通行证券池分页返回
 type XrTicketPoolItem struct {
 	// 业务类型
+	// example:
+	//
+	// XR_LEASE
 	BizScene *string `json:"biz_scene,omitempty" xml:"biz_scene,omitempty"`
+	// 通行证名称
+	// example:
+	//
 	// 通行证名称
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty"`
 	// 资源id
+	// example:
+	//
+	// 1
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// 有效期
+	// example:
+	//
+	// 2022-10-02
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty"`
 	// 体验时长
+	// example:
+	//
+	// 15(单位分钟)
 	TestTime *int64 `json:"test_time,omitempty" xml:"test_time,omitempty"`
 	// 通行证状态：EXPIRED：已过期  VALID：有效  SALED：已出售
+	// example:
+	//
+	// 通行证状态
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 判断已发放数量>0(USED：已使用)  判断已发放数量=0(NOT_USED：未使用)
+	// example:
+	//
+	// USED
 	UseStatus *string `json:"use_status,omitempty" xml:"use_status,omitempty"`
+	// 资源名称
+	// example:
+	//
 	// 资源名称
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty"`
 	// 设备集合
+	// example:
+	//
+	// json 或数组
 	XrApps *string `json:"xr_apps,omitempty" xml:"xr_apps,omitempty"`
 	// 券池最大票数
+	// example:
+	//
+	// 133
 	MaxPoolCount *int64 `json:"max_pool_count,omitempty" xml:"max_pool_count,omitempty"`
 	// 租户id
+	// example:
+	//
+	// ADSAERDS
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty"`
 	// 剩余可用券数量
+	// example:
+	//
+	// 100
 	SurplusCount *int64 `json:"surplus_count,omitempty" xml:"surplus_count,omitempty"`
 	// 已发放数量 （总数-剩余数量）
+	// example:
+	//
+	// 12
 	IssuedCount *int64 `json:"issued_count,omitempty" xml:"issued_count,omitempty"`
 }
 
@@ -5732,22 +7975,49 @@ func (s *XrTicketPoolItem) SetIssuedCount(v int64) *XrTicketPoolItem {
 // kyt 凭证申请参数
 type KytApplyParams struct {
 	// 设备类型
+	// example:
+	//
+	// tw_car
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
 	// 凭证类型
+	// example:
+	//
+	// mcu_dk_cred
 	CredType *string `json:"cred_type,omitempty" xml:"cred_type,omitempty"`
 	// 品牌
+	// example:
+	//
+	// JL
 	BrandId *string `json:"brand_id,omitempty" xml:"brand_id,omitempty" require:"true"`
 	// 凭证内容
+	// example:
+	//
+	// []
 	GenerateCode *string `json:"generate_code,omitempty" xml:"generate_code,omitempty"`
 	// 协议类型
+	// example:
+	//
+	// ble
 	ProtocolType *string `json:"protocol_type,omitempty" xml:"protocol_type,omitempty" require:"true"`
 	// 无感参数
+	// example:
+	//
+	// 1
 	KeyLess *string `json:"key_less,omitempty" xml:"key_less,omitempty" require:"true"`
 	// mac
+	// example:
+	//
+	// F8:5F:56:F6:05:BC
 	Mac *string `json:"mac,omitempty" xml:"mac,omitempty" require:"true"`
 	// ble_name
+	// example:
+	//
+	// ble_
 	BleName *string `json:"ble_name,omitempty" xml:"ble_name,omitempty" require:"true"`
 	// 通道
+	// example:
+	//
+	// DT
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 }
 
@@ -5807,10 +8077,19 @@ func (s *KytApplyParams) SetChannel(v string) *KytApplyParams {
 // 信物链证据基本组成结构体
 type EvidenceBaseModel struct {
 	// 业务数据
+	// example:
+	//
+	// [{"content":"{业务数据}","label":"CRYPTO","timestamp":0}]
 	BizData *string `json:"biz_data,omitempty" xml:"biz_data,omitempty"`
 	// 证据哈希值
+	// example:
+	//
+	// "证据哈希值"
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
 	// 证据附属信息字段
+	// example:
+	//
+	// "证据附属信息"
 	MetaJson *string `json:"meta_json,omitempty" xml:"meta_json,omitempty"`
 }
 
@@ -5840,10 +8119,19 @@ func (s *EvidenceBaseModel) SetMetaJson(v string) *EvidenceBaseModel {
 // 行程列表
 type TripView struct {
 	// 开始时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	TripBeginTime *string `json:"trip_begin_time,omitempty" xml:"trip_begin_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 结束时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	TripEndTime *string `json:"trip_end_time,omitempty" xml:"trip_end_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 行驶公里数
+	// example:
+	//
+	// 22
 	TripTotalDistance *int64 `json:"trip_total_distance,omitempty" xml:"trip_total_distance,omitempty" require:"true"`
 	// 用时
 	TripTime *int64 `json:"trip_time,omitempty" xml:"trip_time,omitempty" require:"true"`
@@ -5880,16 +8168,28 @@ func (s *TripView) SetTripTime(v int64) *TripView {
 // 行程统计详情
 type TripTraceView struct {
 	// 开始时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	BeginTime *string `json:"begin_time,omitempty" xml:"begin_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 结束时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 平均速度
 	AvgSpeed *int64 `json:"avg_speed,omitempty" xml:"avg_speed,omitempty" require:"true"`
 	// 最大速度
 	MaxSpeed *int64 `json:"max_speed,omitempty" xml:"max_speed,omitempty" require:"true"`
 	// 最后定位时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	LastLocationTime *string `json:"last_location_time,omitempty" xml:"last_location_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 最后定位地址
+	// example:
+	//
+	// 河南省郑州市
 	LastLocation *string `json:"last_location,omitempty" xml:"last_location,omitempty" require:"true"`
 }
 
@@ -5934,8 +8234,14 @@ func (s *TripTraceView) SetLastLocation(v string) *TripTraceView {
 // tlsnotary文件认证成功后上传到oss的文件链接列表
 type TlsnotaryUploadOssLinks struct {
 	// 证书链摘要文件的oss链接
+	// example:
+	//
+	// tlsnotary/{taskId}.json
 	CertChainDigestLink *string `json:"cert_chain_digest_link,omitempty" xml:"cert_chain_digest_link,omitempty" require:"true"`
 	// 邮件eml文件的oss链接
+	// example:
+	//
+	// tlsnotary/{taskId}.eml
 	EmlFileLink *string `json:"eml_file_link,omitempty" xml:"eml_file_link,omitempty" require:"true"`
 }
 
@@ -5957,9 +8263,74 @@ func (s *TlsnotaryUploadOssLinks) SetEmlFileLink(v string) *TlsnotaryUploadOssLi
 	return s
 }
 
+// 设备定位信息
+type DeviceLocator struct {
+	// 设备唯一标识定位方式：TUID / TRUST_DEVICE_ID / TRUST_PRODUCT_DEVICE
+	// example:
+	//
+	// TUID
+	LocatorType *string `json:"locator_type,omitempty" xml:"locator_type,omitempty" require:"true"`
+	// EKYT 全局唯一设备 ID
+	// example:
+	//
+	// FF9999995FF1020260610262F9D641B9
+	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty"`
+	// 可信物联设备唯一标识
+	// example:
+	//
+	// device_7470008018051342336
+	TrustDeviceId *string `json:"trust_device_id,omitempty" xml:"trust_device_id,omitempty"`
+	// 可信物联产品唯一标识
+	// example:
+	//
+	// 5C7ku13XSCK1a7AKzR
+	TrustProductKey *string `json:"trust_product_key,omitempty" xml:"trust_product_key,omitempty"`
+	// 设备名称
+	// example:
+	//
+	// 863091061327685
+	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
+}
+
+func (s DeviceLocator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeviceLocator) GoString() string {
+	return s.String()
+}
+
+func (s *DeviceLocator) SetLocatorType(v string) *DeviceLocator {
+	s.LocatorType = &v
+	return s
+}
+
+func (s *DeviceLocator) SetTuid(v string) *DeviceLocator {
+	s.Tuid = &v
+	return s
+}
+
+func (s *DeviceLocator) SetTrustDeviceId(v string) *DeviceLocator {
+	s.TrustDeviceId = &v
+	return s
+}
+
+func (s *DeviceLocator) SetTrustProductKey(v string) *DeviceLocator {
+	s.TrustProductKey = &v
+	return s
+}
+
+func (s *DeviceLocator) SetDeviceName(v string) *DeviceLocator {
+	s.DeviceName = &v
+	return s
+}
+
 // 二维码识别响应结构体
 type BaiQrcodeParseRespData struct {
 	// 二维码内容
+	// example:
+	//
+	// 1234567890
 	CodeValue []*string `json:"code_value,omitempty" xml:"code_value,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -5979,14 +8350,26 @@ func (s *BaiQrcodeParseRespData) SetCodeValue(v []*string) *BaiQrcodeParseRespDa
 // 实体身份更新请求结构体，设备/仓库/空间/组织
 type ThingsDidUpdateReq struct {
 	// 业务类型，默认空
+	// example:
+	//
+	// null
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 待更新的实体did
+	// example:
+	//
+	// "did:iot:xxxxx"
 	ThingDid *string `json:"thing_did,omitempty" xml:"thing_did,omitempty" require:"true"`
 	// 更新内容，参考更新请求不同实体类型结构体，对应不同实体类型不一样
 	// 信物链实体附加信息 不同实体身份，有不同的json组织格式，
 	// 参考 DeviceRegisterReqModel， SpaceRegisterReqModel， CorporateReqModel， WarehouseReqModel，
+	// example:
+	//
+	// 参考结构体
 	ThingExtraParams *string `json:"thing_extra_params,omitempty" xml:"thing_extra_params,omitempty"`
 	// 更新后的实体版本
+	// example:
+	//
+	// "1.0.1"
 	ThingVersion *string `json:"thing_version,omitempty" xml:"thing_version,omitempty" require:"true"`
 }
 
@@ -6021,14 +8404,29 @@ func (s *ThingsDidUpdateReq) SetThingVersion(v string) *ThingsDidUpdateReq {
 // 标签流转上链返回txHash
 type LabelChainResult struct {
 	// 标签ID
+	// example:
+	//
+	// 86F000001A51C02000000010
 	LabelId *string `json:"label_id,omitempty" xml:"label_id,omitempty" require:"true"`
 	// 业务资产ID，接入方自行定义
+	// example:
+	//
+	// XXX
 	AssetId *string `json:"asset_id,omitempty" xml:"asset_id,omitempty"`
 	// 标签最近一次上链的txHash
+	// example:
+	//
+	// 855e7ba37a0f227e384691e250f90bb2240adf11839016cf08506c9aa5c11cef
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 错误码
+	// example:
+	//
+	// XXXX
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
 	// 错误信息
+	// example:
+	//
+	// xxxxx
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty" require:"true"`
 }
 
@@ -6068,16 +8466,34 @@ func (s *LabelChainResult) SetErrorMsg(v string) *LabelChainResult {
 // iotbasic数控设备信息
 type IotbasicDigitalKeyDeviceInfo struct {
 	// 设备id
+	// example:
+	//
+	// 125839
 	Devid *string `json:"devid,omitempty" xml:"devid,omitempty" require:"true"`
 	// 设备名称
+	// example:
+	//
+	// 867186033894659
 	DevName *string `json:"dev_name,omitempty" xml:"dev_name,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// 9726001010008SC30N96
 	Sn *string `json:"sn,omitempty" xml:"sn,omitempty" require:"true"`
 	// Ccid
+	// example:
+	//
+	// 898602B1191870002179
 	Ccid *string `json:"ccid,omitempty" xml:"ccid,omitempty" require:"true"`
 	// Msisdn
+	// example:
+	//
+	// 1064818313682
 	Msisdn *string `json:"msisdn,omitempty" xml:"msisdn,omitempty" require:"true"`
 	// tbox固件版本号(16进制)
+	// example:
+	//
+	// 80000109
 	Ver *string `json:"ver,omitempty" xml:"ver,omitempty" require:"true"`
 }
 
@@ -6122,6 +8538,9 @@ func (s *IotbasicDigitalKeyDeviceInfo) SetVer(v string) *IotbasicDigitalKeyDevic
 // 二维码识别请求
 type BaiQrcodeParseReqData struct {
 	// 待识别图片的url
+	// example:
+	//
+	// http://testImage.com/xxxxx
 	ImageUrl *string `json:"image_url,omitempty" xml:"image_url,omitempty" require:"true"`
 }
 
@@ -6141,18 +8560,39 @@ func (s *BaiQrcodeParseReqData) SetImageUrl(v string) *BaiQrcodeParseReqData {
 // 部标设备信息
 type JtDevice struct {
 	// 设备ID
+	// example:
+	//
+	// STRING 123ABC
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 场景码
+	// example:
+	//
+	// 123ABC
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 可信设备ID
+	// example:
+	//
+	// 7006071575276187649
 	TrustiotDeviceId *int64 `json:"trustiot_device_id,omitempty" xml:"trustiot_device_id,omitempty" require:"true"`
 	// 设备注册时间
+	// example:
+	//
+	// 1686497064968
 	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true"`
 	// 设备是否在线
+	// example:
+	//
+	// true, false
 	Online *bool `json:"online,omitempty" xml:"online,omitempty" require:"true"`
 	// 设备型号
+	// example:
+	//
+	// 丰图T8
 	DeviceModel *string `json:"device_model,omitempty" xml:"device_model,omitempty"`
 	// 终端型号
+	// example:
+	//
+	// 型号A
 	TerminalType *string `json:"terminal_type,omitempty" xml:"terminal_type,omitempty"`
 }
 
@@ -6202,8 +8642,14 @@ func (s *JtDevice) SetTerminalType(v string) *JtDevice {
 // iotbasic ota模块信息
 type IotbasicOtaModuleInfo struct {
 	// OTA模块名称
+	// example:
+	//
+	// barcodeScanner
 	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty" require:"true"`
 	// 最新版本号
+	// example:
+	//
+	// 1.1.1
 	LastVersion *string `json:"last_version,omitempty" xml:"last_version,omitempty"`
 }
 
@@ -6228,22 +8674,49 @@ func (s *IotbasicOtaModuleInfo) SetLastVersion(v string) *IotbasicOtaModuleInfo 
 // 电脑型号信息
 type ComputerInfo struct {
 	// 颜色
+	// example:
+	//
+	// 红色
 	Colour *string `json:"colour,omitempty" xml:"colour,omitempty"`
 	// 色值
+	// example:
+	//
+	// #BA0F2F
 	ColourNumber *string `json:"colour_number,omitempty" xml:"colour_number,omitempty"`
 	// 电脑型号
+	// example:
+	//
+	// X100
 	ComputerModel *string `json:"computer_model,omitempty" xml:"computer_model,omitempty"`
 	// 配置参数
+	// example:
+	//
+	// {""}
 	ConfigParam *string `json:"config_param,omitempty" xml:"config_param,omitempty"`
 	// 显卡
+	// example:
+	//
+	// GTX3080
 	VideoCard *string `json:"video_card,omitempty" xml:"video_card,omitempty"`
 	// 屏幕
+	// example:
+	//
+	// 27
 	ScreenSize *string `json:"screen_size,omitempty" xml:"screen_size,omitempty"`
 	// 电脑CPU
+	// example:
+	//
+	// i9
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty" require:"true"`
 	// 电脑内存
+	// example:
+	//
+	// 16GB
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty" require:"true"`
 	// 电脑硬盘
+	// example:
+	//
+	// 500GB
 	DiskSize *string `json:"disk_size,omitempty" xml:"disk_size,omitempty" require:"true"`
 }
 
@@ -6303,16 +8776,28 @@ func (s *ComputerInfo) SetDiskSize(v string) *ComputerInfo {
 // 信物链存证查询请求结构体
 type EvidenceQueryInfoReq struct {
 	// 暂时保留
+	// example:
+	//
+	// null
 	DeviceSignature *string `json:"device_signature,omitempty" xml:"device_signature,omitempty"`
 	// 暂时保留
+	// example:
+	//
+	// null
 	DeviceUid *string `json:"device_uid,omitempty" xml:"device_uid,omitempty"`
 	// 不同上链方式
 	// "CZ": 普通存证
 	// "IOTPAY": 支付存证
 	// "RAW": 文本上链
 	// "TTTS": 溯源存证
+	// example:
+	//
+	// "CZ"
 	QueryType *string `json:"query_type,omitempty" xml:"query_type,omitempty" require:"true"`
 	// 查询的链上交易txHash
+	// example:
+	//
+	// "516e981c8b62c6ef08dc99b5f5165ab2a8592b5a116298788f95bbd45d0cc499"
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 }
 
@@ -6347,14 +8832,26 @@ func (s *EvidenceQueryInfoReq) SetTxHash(v string) *EvidenceQueryInfoReq {
 // AI商品鉴定请求信息
 type BaiGoodsComparisonReqData struct {
 	// 品类
+	// example:
+	//
+	// 奢侈品
 	Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
 	// 品牌
+	// example:
+	//
+	// GUCCI
 	Brand *string `json:"brand,omitempty" xml:"brand,omitempty" require:"true"`
 	// 款式
+	// example:
+	//
+	// Gucci Diana
 	Style *string `json:"style,omitempty" xml:"style,omitempty" require:"true"`
 	// 商品鉴定点列表
 	GoodsPoints []*BaiGoodsPoint `json:"goods_points,omitempty" xml:"goods_points,omitempty" require:"true" type:"Repeated"`
 	// 用户自定义字符串，系统不做处理，会在响应体中带回
+	// example:
+	//
+	// state
 	OutState *string `json:"out_state,omitempty" xml:"out_state,omitempty"`
 }
 
@@ -6391,15 +8888,176 @@ func (s *BaiGoodsComparisonReqData) SetOutState(v string) *BaiGoodsComparisonReq
 	return s
 }
 
+// OTA 未完成升级任务展示对象
+type UnfinishedUpgradeTaskVO struct {
+	// OTA 任务所属通道：TUYA_4G / EKYT_BLE / IOT_AGENT_BLE
+	// example:
+	//
+	// TUYA_4G
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// OTA 任务 ID
+	// example:
+	//
+	// fc5068e629284b3a8c4424b109583705
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// 任务对应的设备展示标识
+	// example:
+	//
+	// undefined
+	DeviceIdentity *DeviceIdentity `json:"device_identity,omitempty" xml:"device_identity,omitempty"`
+	// 任务对应的 OTA 模块定位信息
+	// example:
+	//
+	// undefined
+	ModuleLocator *ModuleLocator `json:"module_locator,omitempty" xml:"module_locator,omitempty"`
+	// 任务源版本号
+	// example:
+	//
+	// 1.0.0
+	SrcVersion *string `json:"src_version,omitempty" xml:"src_version,omitempty"`
+	// 任务目标版本号
+	// example:
+	//
+	// 1.0.0
+	DestVersion *string `json:"dest_version,omitempty" xml:"dest_version,omitempty"`
+	// 设备当前模块版本号
+	// example:
+	//
+	// 1.0.0
+	CurVersion *string `json:"cur_version,omitempty" xml:"cur_version,omitempty"`
+	// 固件包 ID
+	// example:
+	//
+	// 25c3f69752244678a84f663e4d48a56a
+	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty"`
+	// OTA 批次 ID
+	// example:
+	//
+	// 3a1fd361e7984e15afca3450d9b0df8b
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty"`
+	// 升级提示文案
+	// example:
+	//
+	// 升级提示文案
+	UpgradeDesc *string `json:"upgrade_desc,omitempty" xml:"upgrade_desc,omitempty"`
+	// 升级模式：CHECK -检测升级 / REMIND - 提醒升级/ FORCE - 强制升级
+	// example:
+	//
+	// CHECK
+	UpgradeMode *string `json:"upgrade_mode,omitempty" xml:"upgrade_mode,omitempty"`
+	// 任务状态：CONFIRM / QUEUED / NOTIFIED / IN_PROGRESS / FAILED / CANCELED 等
+	// example:
+	//
+	// CONFIRM
+	TaskStatus *string `json:"task_status,omitempty" xml:"task_status,omitempty"`
+	// 任务创建时间
+	// example:
+	//
+	// 1782973123964
+	UtcCreate *string `json:"utc_create,omitempty" xml:"utc_create,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	// 任务最后更新时间
+	// example:
+	//
+	// 1782973123964
+	UtcModified *string `json:"utc_modified,omitempty" xml:"utc_modified,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s UnfinishedUpgradeTaskVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnfinishedUpgradeTaskVO) GoString() string {
+	return s.String()
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetChannel(v string) *UnfinishedUpgradeTaskVO {
+	s.Channel = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetTaskId(v string) *UnfinishedUpgradeTaskVO {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetDeviceIdentity(v *DeviceIdentity) *UnfinishedUpgradeTaskVO {
+	s.DeviceIdentity = v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetModuleLocator(v *ModuleLocator) *UnfinishedUpgradeTaskVO {
+	s.ModuleLocator = v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetSrcVersion(v string) *UnfinishedUpgradeTaskVO {
+	s.SrcVersion = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetDestVersion(v string) *UnfinishedUpgradeTaskVO {
+	s.DestVersion = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetCurVersion(v string) *UnfinishedUpgradeTaskVO {
+	s.CurVersion = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetFirmwareId(v string) *UnfinishedUpgradeTaskVO {
+	s.FirmwareId = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetJobId(v string) *UnfinishedUpgradeTaskVO {
+	s.JobId = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetUpgradeDesc(v string) *UnfinishedUpgradeTaskVO {
+	s.UpgradeDesc = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetUpgradeMode(v string) *UnfinishedUpgradeTaskVO {
+	s.UpgradeMode = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetTaskStatus(v string) *UnfinishedUpgradeTaskVO {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetUtcCreate(v string) *UnfinishedUpgradeTaskVO {
+	s.UtcCreate = &v
+	return s
+}
+
+func (s *UnfinishedUpgradeTaskVO) SetUtcModified(v string) *UnfinishedUpgradeTaskVO {
+	s.UtcModified = &v
+	return s
+}
+
 // iotbasic设备模型属性失败结果
 type IotbasicDeviceModelAttributeFailInfo struct {
 	// 型号
+	// example:
+	//
+	// A2
 	ModelValue *string `json:"model_value,omitempty" xml:"model_value,omitempty" require:"true"`
 	// 规格列表 为空表示使用标准规格
 	SpecsList []*string `json:"specs_list,omitempty" xml:"specs_list,omitempty" type:"Repeated"`
 	// 失败code
+	// example:
+	//
+	// code
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty" require:"true"`
 	// 失败消息
+	// example:
+	//
+	// message
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty" require:"true"`
 }
 
@@ -6434,14 +9092,29 @@ func (s *IotbasicDeviceModelAttributeFailInfo) SetErrorMessage(v string) *Iotbas
 // 收集数据返回的上链结果
 type SendCollectorResult struct {
 	// 数据的链上哈希
+	// example:
+	//
+	// 2c952456827828cdedad06afccef75a9f2c2840cbb6b0b659f653da1e5916cb2
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 原入参的数组索引
+	// example:
+	//
+	// 0
 	OriginalIndex *int64 `json:"original_index,omitempty" xml:"original_index,omitempty" require:"true"`
 	// 失败数据对应的异常码，成功时该字段为空
+	// example:
+	//
+	// params.invalid
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
 	// 异常信息
+	// example:
+	//
+	// 可信设备与DEVICE-ID不匹配
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
 	// 返回的扩展信息
+	// example:
+	//
+	// {"assetId":"Q02GYQGAY5","labelId":"86F000001A51A01000003836"}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -6482,16 +9155,31 @@ func (s *SendCollectorResult) SetExtraInfo(v string) *SendCollectorResult {
 type EBikeOperationLogPageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*EBikeOperationLog `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -6531,8 +9219,14 @@ func (s *EBikeOperationLogPageResponse) SetPageData(v []*EBikeOperationLog) *EBi
 // 指纹图片入库是否成功
 type GoodsDigitalFingerprintRegisterResultData struct {
 	// 指纹图片入库是否成功
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty" require:"true"`
 	// 失败原因
+	// example:
+	//
+	// describe
 	Describe *string `json:"describe,omitempty" xml:"describe,omitempty"`
 }
 
@@ -6557,20 +9251,44 @@ func (s *GoodsDigitalFingerprintRegisterResultData) SetDescribe(v string) *Goods
 // iotbasic设备升级列表信息
 type IotbasicReleaseDeviceInfo struct {
 	// 应用名称
+	// example:
+	//
+	// 应用名称
 	ApkName *string `json:"apk_name,omitempty" xml:"apk_name,omitempty" require:"true"`
 	// 应用版本号
+	// example:
+	//
+	// apkVersion
 	ApkVersion *string `json:"apk_version,omitempty" xml:"apk_version,omitempty" require:"true"`
 	// 工单id
+	// example:
+	//
+	// orderId
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 工单名称
+	// example:
+	//
+	// orderName
 	OrderName *string `json:"order_name,omitempty" xml:"order_name,omitempty" require:"true"`
 	// 任务id
+	// example:
+	//
+	// taskId
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty" require:"true"`
 	// 设备升级任务唯一id
+	// example:
+	//
+	// orderDetailId
 	OrderDetailId *string `json:"order_detail_id,omitempty" xml:"order_detail_id,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// deviceSn
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备id
+	// example:
+	//
+	// deviceId
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 设备升级状态
 	// 待确认：CONFIRM
@@ -6581,10 +9299,19 @@ type IotbasicReleaseDeviceInfo struct {
 	// 升级失败：FAILED
 	// 已取消：CANCELED
 	// 升级超时：TIMEOUT
+	// example:
+	//
+	// QUEUED
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 发布时间
+	// example:
+	//
+	// 2024-06-06 11:11:11
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty"`
 	// 升级完成时间
+	// example:
+	//
+	// 2024-06-06 11:11:11
 	UpgradeTime *string `json:"upgrade_time,omitempty" xml:"upgrade_time,omitempty"`
 }
 
@@ -6654,12 +9381,24 @@ func (s *IotbasicReleaseDeviceInfo) SetUpgradeTime(v string) *IotbasicReleaseDev
 // 租户项目创建请求结构体模型
 type TenantProjectCreateReq struct {
 	// 业务类型，默认空
+	// example:
+	//
+	// null
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 可选的，项目关联的区块链类型，1/2/3代表存证/合约等类型
+	// example:
+	//
+	// 1
 	BlockchainType *int64 `json:"blockchain_type,omitempty" xml:"blockchain_type,omitempty"`
 	// 可选的，项目关联的区块链uid
+	// example:
+	//
+	// 1111111
 	BlockchainUid *string `json:"blockchain_uid,omitempty" xml:"blockchain_uid,omitempty"`
 	// 租户下唯一项目名称，用以标识项目聚合的存证等信息
+	// example:
+	//
+	// "唯一项目名称"
 	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty" require:"true"`
 }
 
@@ -6694,14 +9433,29 @@ func (s *TenantProjectCreateReq) SetProjectName(v string) *TenantProjectCreateRe
 // 设备硬件模块信息体
 type IotBasicDeviceHardWareModule struct {
 	// 所属规格
+	// example:
+	//
+	// 12321321
 	SpecsId *int64 `json:"specs_id,omitempty" xml:"specs_id,omitempty" require:"true"`
 	// 硬件模块ID
+	// example:
+	//
+	// 12321321
 	HardwareModuleId *int64 `json:"hardware_module_id,omitempty" xml:"hardware_module_id,omitempty" require:"true"`
 	// 模块名称
+	// example:
+	//
+	// 反扫头
 	HardwareModuleName *string `json:"hardware_module_name,omitempty" xml:"hardware_module_name,omitempty" require:"true"`
 	// 模块编码
+	// example:
+	//
+	// REVERSE_SCANNING_HEAD
 	HardwareModuleValue *string `json:"hardware_module_value,omitempty" xml:"hardware_module_value,omitempty" require:"true"`
 	// 模块参数
+	// example:
+	//
+	// {"size":102}
 	HardwareModuleParam *string `json:"hardware_module_param,omitempty" xml:"hardware_module_param,omitempty" require:"true"`
 }
 
@@ -6741,18 +9495,39 @@ func (s *IotBasicDeviceHardWareModule) SetHardwareModuleParam(v string) *IotBasi
 // 行程统计概览
 type TripStatisticsView struct {
 	// 过去七天内所有行驶记录的总里程	，单位km
+	// example:
+	//
+	// 20km
 	TotalDistance *string `json:"total_distance,omitempty" xml:"total_distance,omitempty" require:"true"`
 	// 行驶总用时
+	// example:
+	//
+	// 3
 	TotalDuration *string `json:"total_duration,omitempty" xml:"total_duration,omitempty" require:"true"`
 	// 骑行次数
+	// example:
+	//
+	// 2
 	TripCount *string `json:"trip_count,omitempty" xml:"trip_count,omitempty" require:"true"`
 	// 最近一次行驶的里程
+	// example:
+	//
+	// 2
 	LastTripDistance *string `json:"last_trip_distance,omitempty" xml:"last_trip_distance,omitempty" require:"true"`
 	// 最近一次行驶的平均速度	，单位  km/h
+	// example:
+	//
+	// 45
 	LastTripAvgSpeed *string `json:"last_trip_avg_speed,omitempty" xml:"last_trip_avg_speed,omitempty" require:"true"`
 	// 最近一次行驶的最大速度
+	// example:
+	//
+	// 50
 	LastTripMaxSpeed *string `json:"last_trip_max_speed,omitempty" xml:"last_trip_max_speed,omitempty" require:"true"`
 	// 最后一次行驶用时
+	// example:
+	//
+	// 8
 	LastTripSpendTime *string `json:"last_trip_spend_time,omitempty" xml:"last_trip_spend_time,omitempty" require:"true"`
 }
 
@@ -6802,12 +9577,24 @@ func (s *TripStatisticsView) SetLastTripSpendTime(v string) *TripStatisticsView 
 // 订单同步失败结果
 type DeviceOrderFail struct {
 	// 订单id
+	// example:
+	//
+	// 90
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 设备did
+	// example:
+	//
+	// asdfg
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 返回code
+	// example:
+	//
+	// Fail
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// 失败
+	// example:
+	//
+	// 返回信息
 	Message *string `json:"message,omitempty" xml:"message,omitempty" require:"true"`
 }
 
@@ -6842,12 +9629,24 @@ func (s *DeviceOrderFail) SetMessage(v string) *DeviceOrderFail {
 // 二维码验真接口返回值
 type BaiQrcodeComparisonRespData struct {
 	// 识别结果（REAL：真   FAKE：假   UNABLE_IDENTIFY：无法识别）
+	// example:
+	//
+	// REAL
 	IdentificationResult *string `json:"identification_result,omitempty" xml:"identification_result,omitempty" require:"true"`
 	// 辅助识别结果码
+	// example:
+	//
+	// 200
 	IdentificationCode *string `json:"identification_code,omitempty" xml:"identification_code,omitempty"`
 	// 辅助识别信息
+	// example:
+	//
+	// 识别成功
 	IdentificationMessage *string `json:"identification_message,omitempty" xml:"identification_message,omitempty"`
 	// 无法识别时提示的解决方案
+	// example:
+	//
+	// 调整焦距
 	UnableIdentifySolution *string `json:"unable_identify_solution,omitempty" xml:"unable_identify_solution,omitempty"`
 }
 
@@ -6882,6 +9681,9 @@ func (s *BaiQrcodeComparisonRespData) SetUnableIdentifySolution(v string) *BaiQr
 // 收集标签数据
 type CollectLabelContent struct {
 	// 链上设备ID
+	// example:
+	//
+	// XXXXX
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty" require:"true"`
 	// 1.设备端上报数据内容
 	// 2.与设备上报的数据一致，服务端不可修改
@@ -6889,12 +9691,21 @@ type CollectLabelContent struct {
 	// 4.映射 Label 对象结构化存储
 	// 5.转为JSON后如果是JSONObject 映射单个 Label
 	// 6.转为JSON后如果是JSONArray 映射多个 Label
+	// example:
+	//
+	// XXXXX
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// content的签名
 	// 与设备上报的签名保持一致，服务端不可修改
+	// example:
+	//
+	// XXXXX
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty" require:"true"`
 	// 未经设备签名的附加数据JSON String
 	// 注意：如果 content 批量解析 ，extraData也会批量复制融入解析后的content
+	// example:
+	//
+	// XXXXX
 	ExtraData *string `json:"extra_data,omitempty" xml:"extra_data,omitempty"`
 }
 
@@ -6926,11 +9737,69 @@ func (s *CollectLabelContent) SetExtraData(v string) *CollectLabelContent {
 	return s
 }
 
+// Session 视图对象
+type AgentSessionVO struct {
+	// 会话ID
+	// example:
+	//
+	// 7468486322254688256
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	// 用户ID
+	// example:
+	//
+	// 7468486322254688256
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	// 会话创建时间
+	// example:
+	//
+	// 2026-06-24 21:32:59
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	// 会话修改时间
+	// example:
+	//
+	// 2026-06-24 21:32:59
+	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s AgentSessionVO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentSessionVO) GoString() string {
+	return s.String()
+}
+
+func (s *AgentSessionVO) SetSessionId(v string) *AgentSessionVO {
+	s.SessionId = &v
+	return s
+}
+
+func (s *AgentSessionVO) SetUserId(v string) *AgentSessionVO {
+	s.UserId = &v
+	return s
+}
+
+func (s *AgentSessionVO) SetGmtCreate(v string) *AgentSessionVO {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *AgentSessionVO) SetGmtModified(v string) *AgentSessionVO {
+	s.GmtModified = &v
+	return s
+}
+
 // 数据上链成功结果数据
 type DeviceCollectResult struct {
 	// 上链数据采集ID
+	// example:
+	//
+	// j8o12u38
 	CollectId *string `json:"collect_id,omitempty" xml:"collect_id,omitempty" require:"true"`
 	// 上链id
+	// example:
+	//
+	// auit98
 	AntchainId *string `json:"antchain_id,omitempty" xml:"antchain_id,omitempty"`
 }
 
@@ -6955,10 +9824,19 @@ func (s *DeviceCollectResult) SetAntchainId(v string) *DeviceCollectResult {
 // 可信设备ID及其关联的设备ID
 type TrustiotDeviceIdMap struct {
 	// 可信设备ID
+	// example:
+	//
+	// 7006413673662394390
 	TrustiotDeviceId *int64 `json:"trustiot_device_id,omitempty" xml:"trustiot_device_id,omitempty" require:"true"`
 	// 设备ID
+	// example:
+	//
+	// 1122
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 设备注册的上链哈希
+	// example:
+	//
+	// ba9de337190b017ea6255bffa226ea5ed91cbb03babb42e5a35d652ca30cdce1
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty" require:"true"`
 }
 
@@ -6989,17 +9867,32 @@ func (s *TrustiotDeviceIdMap) SetChainDeviceId(v string) *TrustiotDeviceIdMap {
 type ProductKeyPageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
 	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*ProductKeyModel `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -7039,16 +9932,34 @@ func (s *ProductKeyPageResponse) SetPageData(v []*ProductKeyModel) *ProductKeyPa
 // 代扣服务返回对象
 type AntdigitalWithHoldResponse struct {
 	// 网关返回码
+	// example:
+	//
+	// 10000
 	Code *string `json:"code,omitempty" xml:"code,omitempty" require:"true"`
 	// 网关返回码描述
+	// example:
+	//
+	// Business Failed
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty" require:"true"`
 	// 务返回码
+	// example:
+	//
+	// ACQ.TRADE_HAS_SUCCESS
 	SubCode *string `json:"sub_code,omitempty" xml:"sub_code,omitempty" require:"true"`
 	// 业务返回码描述
+	// example:
+	//
+	// 交易已被支付
 	SubMsg *string `json:"sub_msg,omitempty" xml:"sub_msg,omitempty" require:"true"`
 	// 结果返回内容
+	// example:
+	//
+	// {__}
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// 响应签名
+	// example:
+	//
+	// DZXh8eeTuAHoYE3w1J+POiPhfDxOYBfUNn1lkeT/V7P4zJdyojWEa6IZs6Hz0yDW5Cp/viufUb5I0/V5WENS3OYR8zRedqo6D+fUTdLHdc+EFyCkiQhBxIzgngPdPdfp1PIS7BdhhzrsZHbRqb7o4k3Dxc+AAnFauu4V6Zdwczo=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty" require:"true"`
 }
 
@@ -7093,12 +10004,24 @@ func (s *AntdigitalWithHoldResponse) SetSignature(v string) *AntdigitalWithHoldR
 // 二级商户信息
 type SubMerchantParams struct {
 	// 子商户的商户id
+	// example:
+	//
+	// 2088123412341234
 	SubMerchantId *string `json:"sub_merchant_id,omitempty" xml:"sub_merchant_id,omitempty" require:"true"`
 	// 子商户的商户名称
+	// example:
+	//
+	// 滴滴出行
 	SubMerchantName *string `json:"sub_merchant_name,omitempty" xml:"sub_merchant_name,omitempty" require:"true"`
 	// 子商户的服务名称
+	// example:
+	//
+	// 滴滴出行免密支付
 	SubMerchantServiceName *string `json:"sub_merchant_service_name,omitempty" xml:"sub_merchant_service_name,omitempty" require:"true"`
 	// 子商户的服务描述
+	// example:
+	//
+	// 免密付车费，单次最高500
 	SubMerchantServiceDescription *string `json:"sub_merchant_service_description,omitempty" xml:"sub_merchant_service_description,omitempty" require:"true"`
 }
 
@@ -7133,20 +10056,44 @@ func (s *SubMerchantParams) SetSubMerchantServiceDescription(v string) *SubMerch
 // 上链数据结果集
 type ChainModelResult struct {
 	// 所属业务
+	// example:
+	//
+	// XR_LEASE
 	BizScene *string `json:"biz_scene,omitempty" xml:"biz_scene,omitempty" require:"true"`
 	// 资产类型
+	// example:
+	//
+	// LOCK_RECORD
 	DataScene *string `json:"data_scene,omitempty" xml:"data_scene,omitempty" require:"true"`
+	// 资产id
+	// example:
+	//
 	// 资产id
 	AssetId *string `json:"asset_id,omitempty" xml:"asset_id,omitempty" require:"true"`
 	// 资产数据内容json
+	// example:
+	//
+	// {}
 	AssetData *string `json:"asset_data,omitempty" xml:"asset_data,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// SDFJAG
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 上链时间
+	// example:
+	//
+	// 2022-10-02 09:10:09
 	TxTime *string `json:"tx_time,omitempty" xml:"tx_time,omitempty" require:"true"`
+	// 业务ID
+	// example:
+	//
 	// 业务ID
 	BusinessId *string `json:"business_id,omitempty" xml:"business_id,omitempty" require:"true"`
 	// 上链id
+	// example:
+	//
+	// 123
 	AntchainId *string `json:"antchain_id,omitempty" xml:"antchain_id,omitempty" require:"true"`
 }
 
@@ -7201,26 +10148,59 @@ func (s *ChainModelResult) SetAntchainId(v string) *ChainModelResult {
 // 空间实体身份附加参数请求结构体，应用在注册/更新API的ThingExtraParams
 type SpaceRegisterReqModel struct {
 	// 面积 平方米单位*1e4
+	// example:
+	//
+	// 10000
 	Area *int64 `json:"area,omitempty" xml:"area,omitempty"`
 	// 自定义业务类型，例如选择：危险品/非危险品/食品
+	// example:
+	//
+	// "biz_type"
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 海拔 米单位*1e2
+	// example:
+	//
+	// 0
 	Elevation *int64 `json:"elevation,omitempty" xml:"elevation,omitempty"`
 	// 高度 米单位*1e2
+	// example:
+	//
+	// 123
 	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
 	// 纬度 度数单位*1e9
+	// example:
+	//
+	// 0
 	Latitude *int64 `json:"latitude,omitempty" xml:"latitude,omitempty"`
 	// 经度 度数单位*1e9
+	// example:
+	//
+	// 35000000000
 	Longitude *int64 `json:"longitude,omitempty" xml:"longitude,omitempty"`
 	// 自定义其他字段
+	// example:
+	//
+	// "自定义"
 	OtherInfo *string `json:"other_info,omitempty" xml:"other_info,omitempty"`
 	// 父类型，在业务中自定义关联，例如仓位的父节点是仓库
+	// example:
+	//
+	// “did:iot:xxxx”
 	ParentDid *string `json:"parent_did,omitempty" xml:"parent_did,omitempty"`
 	// 可填入符合w3c did定义的服务节点
+	// example:
+	//
+	// "xxxx"
 	ServiceEndpoint *string `json:"service_endpoint,omitempty" xml:"service_endpoint,omitempty"`
 	// 空间状态，自定义
+	// example:
+	//
+	// "IN_USE"
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// 空间类型，例如冷藏/冷冻/通道/平面/立体
+	// example:
+	//
+	// “平面“
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -7290,22 +10270,49 @@ func (s *SpaceRegisterReqModel) SetType(v string) *SpaceRegisterReqModel {
 // xr用户通行证分页结果信息
 type XrUserTicketPageInfo struct {
 	// 用户id
+	// example:
+	//
+	// 2088**
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 	// 用户通行证编码
+	// example:
+	//
+	// 2739875205
 	XrTicketCode *string `json:"xr_ticket_code,omitempty" xml:"xr_ticket_code,omitempty" require:"true"`
 	// xr通行证资源池名称
+	// example:
+	//
+	// 资源池001
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 资源名称
+	// example:
+	//
+	// 资源001
 	ResourceName *string `json:"resource_name,omitempty" xml:"resource_name,omitempty" require:"true"`
 	// 用户通行证状态
+	// example:
+	//
+	// VALID
 	Status *string `json:"status,omitempty" xml:"status,omitempty" require:"true"`
 	// 有效期
+	// example:
+	//
+	// 2023-04-06
 	ValidTime *string `json:"valid_time,omitempty" xml:"valid_time,omitempty" require:"true"`
 	// 所属业务
+	// example:
+	//
+	// XR_LEASE
 	BizScene *string `json:"biz_scene,omitempty" xml:"biz_scene,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// QWERTYUI
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 核销类型
+	// example:
+	//
+	// XR_DEVICE
 	XrVerificationType *string `json:"xr_verification_type,omitempty" xml:"xr_verification_type,omitempty" require:"true"`
 }
 
@@ -7365,18 +10372,39 @@ func (s *XrUserTicketPageInfo) SetXrVerificationType(v string) *XrUserTicketPage
 // 标签流转历史
 type LabelTrace struct {
 	// 操作内容
+	// example:
+	//
+	// XXXXX
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// 链上哈希
+	// example:
+	//
+	// XXXXX
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 上链时间
+	// example:
+	//
+	// XXXXX
 	TxTime *string `json:"tx_time,omitempty" xml:"tx_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 上链失败的错误码
+	// example:
+	//
+	// XXXXX
 	ErrorCode *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
 	// 上链失败的错误信息
+	// example:
+	//
+	// XXXXX
 	ErrorMsg *string `json:"error_msg,omitempty" xml:"error_msg,omitempty"`
 	// 是否上链成功
+	// example:
+	//
+	// true, false
 	IsSuccess *bool `json:"is_success,omitempty" xml:"is_success,omitempty"`
 	// 标签对应资产版本号
+	// example:
+	//
+	// 1
 	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -7426,25 +10454,49 @@ func (s *LabelTrace) SetVersion(v int64) *LabelTrace {
 // 外围设备信息
 type Peripheral struct {
 	// 外围设备Id
+	// example:
+	//
+	// 123
 	PeripheralId *string `json:"peripheral_id,omitempty" xml:"peripheral_id,omitempty" require:"true"`
 	// 数据模型id
 	//
+	// example:
+	//
+	// 123456
 	PeripheralDataModelId *string `json:"peripheral_data_model_id,omitempty" xml:"peripheral_data_model_id,omitempty" require:"true"`
 	// 场景码
 	//
+	// example:
+	//
+	// scene1
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 外围设备名称
 	//
+	// example:
+	//
+	// 锂电池1
 	PeripheralName *string `json:"peripheral_name,omitempty" xml:"peripheral_name,omitempty"`
 	// 厂商名称
 	//
+	// example:
+	//
+	// 宁德时代1
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	// 链上外围设备Id
 	//
+	// example:
+	//
+	// 123123
 	ChainPeripheralId *string `json:"chain_peripheral_id,omitempty" xml:"chain_peripheral_id,omitempty" require:"true"`
 	// 链上哈希
+	// example:
+	//
+	// txhash123
 	TxHash *string `json:"tx_hash,omitempty" xml:"tx_hash,omitempty" require:"true"`
 	// 上链时间
+	// example:
+	//
+	// 1605076751000
 	TxTime *int64 `json:"tx_time,omitempty" xml:"tx_time,omitempty" require:"true"`
 	// 设备类型编码，必填，对应资管平台中的设备类型
 	//
@@ -7471,12 +10523,24 @@ type Peripheral struct {
 	// 垃圾分类回收 4001
 	//
 	// 洗车机 5000
+	// example:
+	//
+	// 3000
 	DeviceTypeCode *int64 `json:"device_type_code,omitempty" xml:"device_type_code,omitempty" require:"true"`
 	// 单价，单位分
+	// example:
+	//
+	// 1000
 	InitialPrice *int64 `json:"initial_price,omitempty" xml:"initial_price,omitempty" require:"true"`
 	// 出厂时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	FactoryTime *string `json:"factory_time,omitempty" xml:"factory_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 投放时间
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	ReleaseTime *string `json:"release_time,omitempty" xml:"release_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 }
 
@@ -7551,12 +10615,24 @@ func (s *Peripheral) SetReleaseTime(v string) *Peripheral {
 // 订单计费数据
 type OrderPushInfo struct {
 	// 订单号
+	// example:
+	//
+	// 208395
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 时间戳，取订单上链timestamp字段
+	// example:
+	//
+	// 1665490037182
 	OrderCollectTime *string `json:"order_collect_time,omitempty" xml:"order_collect_time,omitempty" require:"true"`
 	// 订单总金额
+	// example:
+	//
+	// 12000.37
 	TotalAmount *string `json:"total_amount,omitempty" xml:"total_amount,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// 1
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 }
 
@@ -7591,12 +10667,24 @@ func (s *OrderPushInfo) SetTenantId(v string) *OrderPushInfo {
 // 证书授权信息查询结果
 type SkuGrantStockInfoResp struct {
 	// 产品型号
+	// example:
+	//
+	// TEST-MODEL-0001
 	ProductModel *string `json:"product_model,omitempty" xml:"product_model,omitempty"`
 	// 产品形式，取值范围： SOFTWARE_HARDWARE：软硬一体（SE方案）, SOFTWARE：纯软（非SE方案）
+	// example:
+	//
+	// SOFTWARE_HARDWARE
 	ProductForm *string `json:"product_form,omitempty" xml:"product_form,omitempty"`
 	// 凭证种类列表，取值范围： ["PAYMENT"]：支付码， ["PAYMENT","TRANSIT"]：支付码+乘车码
+	// example:
+	//
+	// ["PAYMENT"]
 	Features []*string `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
 	// 授权数量(指当前证书凭证种类下未消耗的证书数量)
+	// example:
+	//
+	// 10
 	CertNum *int64 `json:"cert_num,omitempty" xml:"cert_num,omitempty"`
 }
 
@@ -7631,8 +10719,14 @@ func (s *SkuGrantStockInfoResp) SetCertNum(v int64) *SkuGrantStockInfoResp {
 // 订单同步成功列表
 type DeviceOrderResult struct {
 	// 上链id
+	// example:
+	//
+	// amdfgs
 	AntchainId *string `json:"antchain_id,omitempty" xml:"antchain_id,omitempty" require:"true"`
 	// 订单id
+	// example:
+	//
+	// 34
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 }
 
@@ -7657,12 +10751,24 @@ func (s *DeviceOrderResult) SetOrderId(v string) *DeviceOrderResult {
 // 物模型事件VO
 type ThingModelEventVO struct {
 	// 名称
+	// example:
+	//
+	// 设备状态数据
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 物模型功能Id
+	// example:
+	//
+	// 7067312861108285440
 	FeatureId *string `json:"feature_id,omitempty" xml:"feature_id,omitempty" require:"true"`
 	// 业务标识
+	// example:
+	//
+	// LOCATION
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty" require:"true"`
 	// 事件属性列表
+	// example:
+	//
+	// [...]
 	EventProperties *string `json:"event_properties,omitempty" xml:"event_properties,omitempty" require:"true"`
 }
 
@@ -7697,16 +10803,34 @@ func (s *ThingModelEventVO) SetEventProperties(v string) *ThingModelEventVO {
 // 设备注册结果对象
 type IotBasicDeviceRegisterResult struct {
 	// 设备did
+	// example:
+	//
+	// did:private:12dsadadadf
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 设备密钥
+	// example:
+	//
+	// 12321321
 	PrivateKey *string `json:"private_key,omitempty" xml:"private_key,omitempty" require:"true"`
 	// 设备名称
+	// example:
+	//
+	// test
 	DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// 12321321
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备认证密钥密文，需要下发安全认证SDK完成设备激活
+	// example:
+	//
+	// 123
 	SecKey *string `json:"sec_key,omitempty" xml:"sec_key,omitempty"`
 	// 设备认证密钥状态
+	// example:
+	//
+	// servicing
 	ServiceStatus *string `json:"service_status,omitempty" xml:"service_status,omitempty"`
 }
 
@@ -7751,6 +10875,9 @@ func (s *IotBasicDeviceRegisterResult) SetServiceStatus(v string) *IotBasicDevic
 // iotbasic设备模型属性
 type IotbasicDeviceModelAttributeInfo struct {
 	// 型号
+	// example:
+	//
+	// A2
 	ModelValue *string `json:"model_value,omitempty" xml:"model_value,omitempty" require:"true"`
 	// 规格列表
 	// 为空表示使用标准规格
@@ -7778,8 +10905,14 @@ func (s *IotbasicDeviceModelAttributeInfo) SetSpecsList(v []*string) *IotbasicDe
 // 信物链实体身份注册请求结构体
 type ThingsDidBaseRegisterRequest struct {
 	// 信物链实体的所有者的分布式身份
+	// example:
+	//
+	// "did:mychain:6c9f6cde4f63103d25ab1d9893242547a8518d8f51bff1a9da44e4f8537a9816"
 	OwnerTenantDid *string `json:"owner_tenant_did,omitempty" xml:"owner_tenant_did,omitempty"`
 	// 信物链实体的使用方的分布式身份列表
+	// example:
+	//
+	// ["did:mychain:xxxx1","did:mychain:xxxx2"]
 	UserDid []*string `json:"user_did,omitempty" xml:"user_did,omitempty" type:"Repeated"`
 	// 信物链实体身份
 	// DID_TYPE_DEVICE_ALIYUN: 阿里云设备
@@ -7791,17 +10924,35 @@ type ThingsDidBaseRegisterRequest struct {
 	// DID_TYPE_CORPORATE:  组织实体
 	// DID_TYPE_WAREHOUSE：仓库实体
 	// DID_TYPE_SPACE： 空间实体
+	// example:
+	//
+	// "DID_TYPE_DEVICE_ALIYUN"
 	ThingType *string `json:"thing_type,omitempty" xml:"thing_type,omitempty" require:"true"`
 	// 原始id，租户内同一类型实体唯一
+	// example:
+	//
+	// "aaaa123"
 	ThingOriginId *string `json:"thing_origin_id,omitempty" xml:"thing_origin_id,omitempty" require:"true"`
 	// 实体原始名称
+	// example:
+	//
+	// "摄像头a11"
 	ThingOriginName *string `json:"thing_origin_name,omitempty" xml:"thing_origin_name,omitempty" require:"true"`
 	// 实体版本
+	// example:
+	//
+	// "1.0.0"
 	ThingVersion *string `json:"thing_version,omitempty" xml:"thing_version,omitempty" require:"true"`
 	// 业务编码
+	// example:
+	//
+	// null
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 信物链实体附加信息
 	// 不同实体身份，有不同的json组织格式，参考另外技术文档
+	// example:
+	//
+	// "附加信息"
 	ThingExtraParams *string `json:"thing_extra_params,omitempty" xml:"thing_extra_params,omitempty"`
 }
 
@@ -7857,17 +11008,32 @@ func (s *ThingsDidBaseRegisterRequest) SetThingExtraParams(v string) *ThingsDidB
 type AlertStrategyPageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
 	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*AlertStrategy `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -7908,17 +11074,32 @@ func (s *AlertStrategyPageResponse) SetPageData(v []*AlertStrategy) *AlertStrate
 type ScenePageResponse struct {
 	// 页数
 	//
+	// example:
+	//
+	// 1
 	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
 	// 页码
 	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 	// 总记录数
 	//
+	// example:
+	//
+	// 100
 	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
 	// 总页数
 	//
+	// example:
+	//
+	// 10
 	TotalPages *int64 `json:"total_pages,omitempty" xml:"total_pages,omitempty" require:"true"`
 	// 数据
+	// example:
+	//
+	// {...}
 	PageData []*SceneModel `json:"page_data,omitempty" xml:"page_data,omitempty" require:"true" type:"Repeated"`
 }
 
@@ -7961,36 +11142,72 @@ type OnlinePressureTestTask struct {
 	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 修改时间
 	//
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 产线场景码
 	//
+	// example:
+	//
+	// MAYI-0001
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 压测的目标设备可信信根设备的唯一标识，JSONArray字符串
 	//
+	// example:
+	//
+	// [ {"componentId": "864964060327592"} {"componentId": "864964060327592"} ]
 	ComponentIdList *string `json:"component_id_list,omitempty" xml:"component_id_list,omitempty" require:"true"`
 	// 客户侧的压测报告
 	//
+	// example:
+	//
+	// [ { "name":"流量消耗", "consumption":"100KB", "asExpected":true }, { "name":"功耗", "consumption":"25mA", "asExpected":true }, { "name":"OTA升级" "asExpected":true } ] }
 	CustomerPtReport *string `json:"customer_pt_report,omitempty" xml:"customer_pt_report,omitempty"`
 	// 压测开始时间
 	//
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	PtStartTime *string `json:"pt_start_time,omitempty" xml:"pt_start_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// 压测结束时间
 	//
+	// example:
+	//
+	// 2018-10-10T10:10:00Z
 	PtEndTime *string `json:"pt_end_time,omitempty" xml:"pt_end_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
 	// RUNNING: 正在执行 SUCCESS : 测试通过 FAILED : 测试不通过
 	//
+	// example:
+	//
+	// RUNNING
 	PtStatus *string `json:"pt_status,omitempty" xml:"pt_status,omitempty" require:"true"`
 	// 关联SIT环境的工单ID
 	//
+	// example:
+	//
+	// 1122
 	WorkOrderId *string `json:"work_order_id,omitempty" xml:"work_order_id,omitempty"`
 	// 关联SIT环境的项目ID
 	//
+	// example:
+	//
+	// 11223344
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty" require:"true"`
 	// 产线压测任务ID
+	// example:
+	//
+	// 11223344566
 	PtTaskId *string `json:"pt_task_id,omitempty" xml:"pt_task_id,omitempty" require:"true"`
 	// 压测不通过的原因
+	// example:
+	//
+	// 数据验签失败
 	FailureReason *string `json:"failure_reason,omitempty" xml:"failure_reason,omitempty" require:"true"`
 	// 拓展信息
+	// example:
+	//
+	// {...}
 	ExtraInfo *string `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
@@ -8070,24 +11287,54 @@ func (s *OnlinePressureTestTask) SetExtraInfo(v string) *OnlinePressureTestTask 
 // 客户对应设备
 type CustomerDeviceItem struct {
 	// id
+	// example:
+	//
+	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 	// 租户id
+	// example:
+	//
+	// tenant_id
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 账号id
+	// example:
+	//
 	// 账号id
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty" require:"true"`
 	//  设备品类-型号-规格
+	// example:
+	//
+	//  设备品类-型号-规格
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// SN
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备did
+	// example:
+	//
+	// dasdf
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
+	// 服务有效期
+	// example:
+	//
 	// 服务有效期
 	ValideTime *string `json:"valide_time,omitempty" xml:"valide_time,omitempty" require:"true"`
 	// 设备状态
+	// example:
+	//
+	// INIT
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty" require:"true"`
 	// 服务状态
+	// example:
+	//
+	// INIT
 	ServiceStatus *string `json:"service_status,omitempty" xml:"service_status,omitempty" require:"true"`
 	// 屏幕状态 开屏、锁屏
+	// example:
+	//
+	// 屏幕状态
 	ScreenStatus *string `json:"screen_status,omitempty" xml:"screen_status,omitempty"`
 }
 
@@ -8152,10 +11399,19 @@ func (s *CustomerDeviceItem) SetScreenStatus(v string) *CustomerDeviceItem {
 // 部标数据查询接口中返回的聚合统计指标结构体
 type JtExtraData struct {
 	// 查询的时间范围内的行驶总里程
+	// example:
+	//
+	// 312
 	DeltaMileage *int64 `json:"delta_mileage,omitempty" xml:"delta_mileage,omitempty" require:"true"`
 	// 最大车速
+	// example:
+	//
+	// 60
 	MaxSpeed *int64 `json:"max_speed,omitempty" xml:"max_speed,omitempty" require:"true"`
 	// 平均车速
+	// example:
+	//
+	// 60
 	AvgSpeed *int64 `json:"avg_speed,omitempty" xml:"avg_speed,omitempty" require:"true"`
 }
 
@@ -8185,33 +11441,75 @@ func (s *JtExtraData) SetAvgSpeed(v int64) *JtExtraData {
 // 信物链实体查询返回的数据结构，对应数据表字段
 type DidBaseQueryResp struct {
 	// 授权水平，0-默认关联授权
+	// example:
+	//
+	// 0
 	AuthLevel *int64 `json:"auth_level,omitempty" xml:"auth_level,omitempty"`
 	// 证书公钥，特定实体可查询
+	// example:
+	//
+	// ""
 	CertPublicKey *string `json:"cert_public_key,omitempty" xml:"cert_public_key,omitempty"`
 	// 证书文本，特定实体可以查询
+	// example:
+	//
+	// “”
 	CertText *string `json:"cert_text,omitempty" xml:"cert_text,omitempty"`
 	// DID扩展，设备/企业组织/仓库/空间的解析同ThingExtraParams
+	// example:
+	//
+	// ""
 	DidExtension *string `json:"did_extension,omitempty" xml:"did_extension,omitempty"`
 	// did公钥，特定w3c did实体可查询
+	// example:
+	//
+	// ""
 	DidPublicKey *string `json:"did_public_key,omitempty" xml:"did_public_key,omitempty"`
 	// DID用户名，w3c did实体可查询
+	// example:
+	//
+	// ""
 	DidUsername *string `json:"did_username,omitempty" xml:"did_username,omitempty"`
 	// 所有者DID
+	// example:
+	//
+	// "did:iot:xxxxx"
 	OwnerDid *string `json:"owner_did,omitempty" xml:"owner_did,omitempty"`
 	// 实体附属空间列表，例如仓库下属库位，设备关联库位等
+	// example:
+	//
+	// ["",""]
 	SpacesAttached []*string `json:"spaces_attached,omitempty" xml:"spaces_attached,omitempty" type:"Repeated"`
 	// 实体附属实体列表，例如空间关联设备列表
+	// example:
+	//
+	// ["",""]
 	ThingsAttached []*string `json:"things_attached,omitempty" xml:"things_attached,omitempty" type:"Repeated"`
 	// 实体属性，在阿里云iot设备，对应三元组
+	// example:
+	//
+	// ",,"
 	ThingAttribute *string `json:"thing_attribute,omitempty" xml:"thing_attribute,omitempty"`
 	// 原始ID
+	// example:
+	//
+	// "原始ID"
 	ThingId *string `json:"thing_id,omitempty" xml:"thing_id,omitempty"`
 	// 实体物模型id
+	// example:
+	//
+	// ""
 	ThingModelId *string `json:"thing_model_id,omitempty" xml:"thing_model_id,omitempty"`
 	// 服务端点，可实现w3c service endpoint
+	// example:
+	//
+	// ""
 	ThingServiceEndpoint *string `json:"thing_service_endpoint,omitempty" xml:"thing_service_endpoint,omitempty"`
 	// 设备状态需要是通过 updateStatus api更新，
 	// 其他状态通过updateThingsDid api更新
+	// example:
+	//
+	// 实体状态
 	ThingStatus *string `json:"thing_status,omitempty" xml:"thing_status,omitempty"`
 	// 实体类型，注册时候的类型
 	// 0: 阿里云设备
@@ -8222,12 +11520,24 @@ type DidBaseQueryResp struct {
 	// 65536: 组织身份
 	// 131072: 仓库身份
 	// 196608: 空间身份
+	// example:
+	//
+	// 0
 	ThingType *int64 `json:"thing_type,omitempty" xml:"thing_type,omitempty"`
 	// 实体版本
+	// example:
+	//
+	// "1.0.0"
 	ThingVersion *string `json:"thing_version,omitempty" xml:"thing_version,omitempty"`
 	// 使用者DID列表
+	// example:
+	//
+	// ["did:iot:xxxxx","did:iot:yyyyy"]
 	UserDidList []*string `json:"user_did_list,omitempty" xml:"user_did_list,omitempty" type:"Repeated"`
 	// 查询的did
+	// example:
+	//
+	// "did:iot:xxxx"
 	Did *string `json:"did,omitempty" xml:"did,omitempty"`
 }
 
@@ -8332,38 +11642,89 @@ func (s *DidBaseQueryResp) SetDid(v string) *DidBaseQueryResp {
 // 要素信息
 type AssetElementInfo struct {
 	// 项目ID
+	// example:
+	//
+	// 112233
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty" require:"true"`
 	// 要素ID
+	// example:
+	//
+	// 112233
 	ElementId *string `json:"element_id,omitempty" xml:"element_id,omitempty" require:"true"`
 	// 要素名称
+	// example:
+	//
+	// 注册要素
 	ElementName *string `json:"element_name,omitempty" xml:"element_name,omitempty"`
 	// 要素类型
+	// example:
+	//
+	// 资产要素
 	ElementType *string `json:"element_type,omitempty" xml:"element_type,omitempty" require:"true"`
 	// 数据来源渠道， 物理要素非必填；数据要素必填；
+	// example:
+	//
+	// MAAS
 	FromType *string `json:"from_type,omitempty" xml:"from_type,omitempty"`
 	// 平台领域类型， 物理要素非必填；数据要素必填；
+	// example:
+	//
+	// COLLECT_BIZ_DATA
 	DataElementType *string `json:"data_element_type,omitempty" xml:"data_element_type,omitempty"`
 	// 属性列表， 物理要素非必填；数据要素必填；
+	// example:
+	//
+	// [{...},{...}]
 	PropertyList *string `json:"property_list,omitempty" xml:"property_list,omitempty"`
 	// 数据上报频率
+	// example:
+	//
+	// {...}
 	Frequency *string `json:"frequency,omitempty" xml:"frequency,omitempty"`
 	// 物理要素类型码，包含iot和资管的
+	// example:
+	//
+	// {"iot":[23001], "tap":[1201]}
 	PhysicsElementTypeCode *string `json:"physics_element_type_code,omitempty" xml:"physics_element_type_code,omitempty" require:"true"`
 	// 业务类型
+	// example:
+	//
+	// ORDER
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty"`
 	// 该要素的存储位置， index代表数据流转顺序，location为库表/logstore名称，remark备注
+	// example:
+	//
+	// {...}
 	PersistentLocation *string `json:"persistent_location,omitempty" xml:"persistent_location,omitempty"`
 	// 要素实例信息，用于捞取最小闭环数据
+	// example:
+	//
+	// {"scene": "XXX", "entityId": ["XXX"], "featureId": "XXX", "startTime": "XXX", "endTime": "XXX"}
 	ElementInstanceConfig *string `json:"element_instance_config,omitempty" xml:"element_instance_config,omitempty"`
 	// 要素实例
+	// example:
+	//
+	// {...}
 	ElementInstanceInfo *string `json:"element_instance_info,omitempty" xml:"element_instance_info,omitempty"`
 	// 属性列表来源平台 1.IOT 2.DM
+	// example:
+	//
+	// 1
 	PropertySourceType *int64 `json:"property_source_type,omitempty" xml:"property_source_type,omitempty"`
 	// 拉取数据字段code请求值
+	// example:
+	//
+	// xxx
 	PropertySourceId *string `json:"property_source_id,omitempty" xml:"property_source_id,omitempty"`
 	// 要素主键字段信息
+	// example:
+	//
+	// identifier
 	PrimaryKeyInfo *string `json:"primary_key_info,omitempty" xml:"primary_key_info,omitempty"`
 	// 备注
+	// example:
+	//
+	// xxx
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -8463,8 +11824,14 @@ func (s *AssetElementInfo) SetRemark(v string) *AssetElementInfo {
 // 用户通行证创建详情
 type XrUserTicketInfo struct {
 	// xr通行证资源池名称
+	// example:
+	//
+	// 资源池001
 	XrTicketPoolName *string `json:"xr_ticket_pool_name,omitempty" xml:"xr_ticket_pool_name,omitempty" require:"true"`
 	// 购买数量
+	// example:
+	//
+	// 10
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty" require:"true"`
 }
 
@@ -8489,10 +11856,19 @@ func (s *XrUserTicketInfo) SetCount(v int64) *XrUserTicketInfo {
 // 用户操作集合
 type IotBasicUserRequest struct {
 	// 租户ID
+	// example:
+	//
+	// XRE2DAS
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 金融云用户id
+	// example:
+	//
+	// 12321321
 	CloudUserId *string `json:"cloud_user_id,omitempty" xml:"cloud_user_id,omitempty"`
 	// 登录名
+	// example:
+	//
+	// test@alibaba-inc.com
 	LoginName *string `json:"login_name,omitempty" xml:"login_name,omitempty"`
 }
 
@@ -8522,20 +11898,35 @@ func (s *IotBasicUserRequest) SetLoginName(v string) *IotBasicUserRequest {
 // 设备业务数据
 type BizContentGroup struct {
 	// 设备链上ID（与scene参数、可信设备ID至少有一个参数不为空）
+	// example:
+	//
+	// txhash123
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty"`
 	// 可信设备ID（与scene参数、设备链上ID至少有一个参数不为空）
+	// example:
+	//
+	// 7006071575519457281
 	TrustiotDeviceId *int64 `json:"trustiot_device_id,omitempty" xml:"trustiot_device_id,omitempty"`
 	// 业务Id
 	//
 	//
+	// example:
+	//
+	// 123123
 	BizId *string `json:"biz_id,omitempty" xml:"biz_id,omitempty" require:"true"`
 	// 业务类型
 	//
 	//
+	// example:
+	//
+	// 123123
 	BizType *string `json:"biz_type,omitempty" xml:"biz_type,omitempty" require:"true"`
 	// 数据内容 JSON字符串
 	//
 	//
+	// example:
+	//
+	// {"":"",""}
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 }
 
@@ -8575,6 +11966,9 @@ func (s *BizContentGroup) SetContent(v string) *BizContentGroup {
 // 行程详情
 type TripTrace struct {
 	// 定位数据
+	// example:
+	//
+	// 113.784416,22.747500
 	DeviceLocation *string `json:"device_location,omitempty" xml:"device_location,omitempty" require:"true"`
 }
 
@@ -8591,27 +11985,119 @@ func (s *TripTrace) SetDeviceLocation(v string) *TripTrace {
 	return s
 }
 
+// OTA 任务永久取消项
+type IotxOtaTaskPermanentCancelItem struct {
+	// OTA 执行通道：TUYA_4G / EKYT_BLE / IOT_AGENT_BLE
+	// example:
+	//
+	// TUYA_4G
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
+	// OTA 批次 ID
+	// example:
+	//
+	// HudGu1xGv6n69AD3bWt8020200
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty" require:"true"`
+	// OTA 任务 ID
+	// example:
+	//
+	// 11117c96d904415fa1570736703d3f0c
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty" require:"true"`
+	// 固件包 ID
+	// example:
+	//
+	// c5755816b95e4bc9b67c49a6a03eefc8
+	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty" require:"true"`
+	// OTA 模块名，用于日志和取消标记补充
+	// example:
+	//
+	// BLE
+	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty" require:"true"`
+}
+
+func (s IotxOtaTaskPermanentCancelItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IotxOtaTaskPermanentCancelItem) GoString() string {
+	return s.String()
+}
+
+func (s *IotxOtaTaskPermanentCancelItem) SetChannel(v string) *IotxOtaTaskPermanentCancelItem {
+	s.Channel = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelItem) SetJobId(v string) *IotxOtaTaskPermanentCancelItem {
+	s.JobId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelItem) SetTaskId(v string) *IotxOtaTaskPermanentCancelItem {
+	s.TaskId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelItem) SetFirmwareId(v string) *IotxOtaTaskPermanentCancelItem {
+	s.FirmwareId = &v
+	return s
+}
+
+func (s *IotxOtaTaskPermanentCancelItem) SetModuleName(v string) *IotxOtaTaskPermanentCancelItem {
+	s.ModuleName = &v
+	return s
+}
+
 // 查询设备交易结果对象数据
 type QueryDeviceTransactionResultData struct {
 	// 设备所属厂商
+	// example:
+	//
+	// corp
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty" require:"true"`
 	// 场景码,所属项目
+	// example:
+	//
+	// SMART_CAR_KEY
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
+	// IMEI
+	// example:
+	//
 	// IMEI
 	DeviceImei *string `json:"device_imei,omitempty" xml:"device_imei,omitempty"`
 	// 设备sn
+	// example:
+	//
+	// 设备sn123
 	DeviceSn *string `json:"device_sn,omitempty" xml:"device_sn,omitempty" require:"true"`
 	// 设备金额
+	// example:
+	//
+	// 1.05
 	Price *string `json:"price,omitempty" xml:"price,omitempty"`
 	// 设备分布式身份did
+	// example:
+	//
+	// did1223
 	DeviceDid *string `json:"device_did,omitempty" xml:"device_did,omitempty" require:"true"`
 	// 设备终端唯一ID
+	// example:
+	//
+	// tuid123
 	DeviceTuid *string `json:"device_tuid,omitempty" xml:"device_tuid,omitempty"`
 	// 设备参数:品类+型号+规格
+	// example:
+	//
+	// 123
 	DeviceSpecs *string `json:"device_specs,omitempty" xml:"device_specs,omitempty" require:"true"`
 	// 所属租户
+	// example:
+	//
+	// QWERTYUU
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
 	// 所属账号
+	// example:
+	//
+	// 123
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty" require:"true"`
 }
 
@@ -8676,18 +12162,39 @@ func (s *QueryDeviceTransactionResultData) SetAccountName(v string) *QueryDevice
 // 组织请求注册更新结构体，应用在注册/更新API的ThingExtraParams
 type CorporateReqModel struct {
 	// 组织地址
+	// example:
+	//
+	// xxxxx
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// 运营地址
+	// example:
+	//
+	// ""
 	BusinessAddress *string `json:"business_address,omitempty" xml:"business_address,omitempty"`
 	// 经营类目
+	// example:
+	//
+	// ""
 	BusinessScope *string `json:"business_scope,omitempty" xml:"business_scope,omitempty"`
 	// 注册时间，字符串类型
+	// example:
+	//
+	// "注册时间"
 	CertifyDate *string `json:"certify_date,omitempty" xml:"certify_date,omitempty"`
 	// 营业执照有效期，字符串
+	// example:
+	//
+	// ""
 	LicenceExpireDate *string `json:"licence_expire_date,omitempty" xml:"licence_expire_date,omitempty"`
 	// 国家
+	// example:
+	//
+	// CN
 	Nation *string `json:"nation,omitempty" xml:"nation,omitempty"`
 	// 组织类型
+	// example:
+	//
+	// LimitedCompany
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8737,12 +12244,24 @@ func (s *CorporateReqModel) SetType(v string) *CorporateReqModel {
 // 商品数字指纹注册用户信息
 type GoodsDigitalFingerprintUserInfo struct {
 	// 平台注册用户id
+	// example:
+	//
+	// 12207
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 	// 用户角色
+	// example:
+	//
+	// 渠道商/平台
 	UserRole *string `json:"user_role,omitempty" xml:"user_role,omitempty" require:"true"`
+	// 用户登录id来源
+	// example:
+	//
 	// 用户登录id来源
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
 	// 作为平台使用方，提供对应的渠道用户id列表
+	// example:
+	//
+	// ["1001","1002"]
 	RelationUserIdList []*string `json:"relation_user_id_list,omitempty" xml:"relation_user_id_list,omitempty" type:"Repeated"`
 }
 
@@ -8777,8 +12296,14 @@ func (s *GoodsDigitalFingerprintUserInfo) SetRelationUserIdList(v []*string) *Go
 // 收集标签数据（元数据，无签名）
 type CollectLabelRawContent struct {
 	// 1.设备端上报数据内容 2.与设备上报的数据一致，服务端不可修改 3.解析后需与DataModel匹配 4.映射 Label 对象结构化存储 5.转为JSON后如果是JSONObject 映射单个 Label 6.转为JSON后如果是JSONArray 映射多个 Label
+	// example:
+	//
+	// XXXXX
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 数据模型ID
+	// example:
+	//
+	// 001202103171566166669
 	DataModelId *string `json:"data_model_id,omitempty" xml:"data_model_id,omitempty" require:"true"`
 }
 
@@ -8803,18 +12328,39 @@ func (s *CollectLabelRawContent) SetDataModelId(v string) *CollectLabelRawConten
 // iotbasic数控设备信息（不包含出库信息）
 type IotbasicDigitalKeyDeviceNoShipInfo struct {
 	// 设备id
+	// example:
+	//
+	// 125839
 	Devid *string `json:"devid,omitempty" xml:"devid,omitempty" require:"true"`
 	// 设备sn
+	// example:
+	//
+	// 9726001010008SC30N96
 	Sn *string `json:"sn,omitempty" xml:"sn,omitempty" require:"true"`
 	// ccid
+	// example:
+	//
+	// 898602B1191870002179
 	Ccid *string `json:"ccid,omitempty" xml:"ccid,omitempty" require:"true"`
 	// imei
+	// example:
+	//
+	// 866311069827503
 	Imei *string `json:"imei,omitempty" xml:"imei,omitempty" require:"true"`
 	// tbox固件版本号(16进制)
+	// example:
+	//
+	// 80000109
 	Ver *string `json:"ver,omitempty" xml:"ver,omitempty" require:"true"`
 	// PEPS系统固件版本号(16进制)
+	// example:
+	//
+	// 81070205
 	PepsVer *string `json:"peps_ver,omitempty" xml:"peps_ver,omitempty" require:"true"`
 	// 蓝牙固件版本号(16进制)
+	// example:
+	//
+	// 80090204
 	BleVer *string `json:"ble_ver,omitempty" xml:"ble_ver,omitempty" require:"true"`
 }
 
@@ -8864,18 +12410,39 @@ func (s *IotbasicDigitalKeyDeviceNoShipInfo) SetBleVer(v string) *IotbasicDigita
 // 发行设备
 type DistributeDevice struct {
 	// 链上设备Id  （deviceType=DEVICE 时有值)
+	// example:
+	//
+	// 4533
 	ChainDeviceId *string `json:"chain_device_id,omitempty" xml:"chain_device_id,omitempty"`
 	// 设备id
+	// example:
+	//
+	// 1122
 	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty" require:"true"`
 	// 发行设备Id
+	// example:
+	//
+	// 4455
 	DistributeDeviceId *string `json:"distribute_device_id,omitempty" xml:"distribute_device_id,omitempty" require:"true"`
 	// 场景码
+	// example:
+	//
+	// SCENE
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty" require:"true"`
 	// 设备类型 DEVICE : 设备 、PERIPHERAL : 外围设备
+	// example:
+	//
+	// PERIPHERAL
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty" require:"true"`
 	// 链上外围设备Id（deviceType=PERIPHERAL 时有值)
+	// example:
+	//
+	// 123123
 	ChainPeripheralId *string `json:"chain_peripheral_id,omitempty" xml:"chain_peripheral_id,omitempty"`
 	// 设备状态，取值范围：NORMAL、OFFLINE、UNREGISTER
+	// example:
+	//
+	// NORMAL
 	DeviceStatus *string `json:"device_status,omitempty" xml:"device_status,omitempty"`
 }
 
@@ -8925,14 +12492,29 @@ func (s *DistributeDevice) SetDeviceStatus(v string) *DistributeDevice {
 // 事件数据
 type EventData struct {
 	// 数据内容
+	// example:
+	//
+	// { "DEVICE-ID": "ABC123", "IMEI": "868331011992179", "HEART-BEAT-TIME": 1699053387008 }
 	Content *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
 	// 可信设备ID
+	// example:
+	//
+	// 7213004826408435712
 	TrustIotDeviceId *int64 `json:"trust_iot_device_id,omitempty" xml:"trust_iot_device_id,omitempty"`
 	// 业务ID
+	// example:
+	//
+	// 20240815
 	BizId *string `json:"biz_id,omitempty" xml:"biz_id,omitempty"`
 	// 设备数据签名
+	// example:
+	//
+	// 8e084d95c5ac9198b01b9f6b8040b2daa35a3e2706a472295f52ec0966119383d7654eb2c1f67eb563194ab9d2197fcd8fcb5232308927e708257ebea8ce1cda
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// 设备数据间接上报时，服务端补充数据
+	// example:
+	//
+	// {"PRICE":2.2,"NUMBER":3}
 	ExtraData *string `json:"extra_data,omitempty" xml:"extra_data,omitempty"`
 }
 
@@ -8972,8 +12554,14 @@ func (s *EventData) SetExtraData(v string) *EventData {
 // 设备概览统计信息
 type DeviceOverViewResponse struct {
 	// 设备品类名称
+	// example:
+	//
+	// test_category
 	DeviceCategoryName *string `json:"device_category_name,omitempty" xml:"device_category_name,omitempty" require:"true"`
 	// 设备总数
+	// example:
+	//
+	// 2000
 	DeviceTotal *int64 `json:"device_total,omitempty" xml:"device_total,omitempty" require:"true"`
 }
 
@@ -8998,10 +12586,19 @@ func (s *DeviceOverViewResponse) SetDeviceTotal(v int64) *DeviceOverViewResponse
 // 手机型号信息
 type PhoneInfo struct {
 	// 颜色
+	// example:
+	//
+	// 红色
 	Colour *string `json:"colour,omitempty" xml:"colour,omitempty" require:"true"`
 	// 色值
+	// example:
+	//
+	// #BA0F2F
 	ColourNumber *string `json:"colour_number,omitempty" xml:"colour_number,omitempty" require:"true"`
 	// 内存大小
+	// example:
+	//
+	// 128GB
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty" require:"true"`
 }
 
@@ -9031,23 +12628,53 @@ func (s *PhoneInfo) SetMemory(v string) *PhoneInfo {
 // 设备规格信息体
 type IotBasicDeviceSpecs struct {
 	// 厂商编码
+	// example:
+	//
+	// telpo
 	CorpValue *string `json:"corp_value,omitempty" xml:"corp_value,omitempty" require:"true"`
 	// 厂商名称
+	// example:
+	//
+	// 天波
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty" require:"true"`
 	// 型号名称
+	// example:
+	//
+	// TPS1231
 	ModelName *string `json:"model_name,omitempty" xml:"model_name,omitempty" require:"true"`
 	// 型号编码
+	// example:
+	//
+	// TPS123
 	ModelValue *string `json:"model_value,omitempty" xml:"model_value,omitempty" require:"true"`
 	// 防疫机
+	// example:
+	//
+	// 设备品类名称
 	CategoryName *string `json:"category_name,omitempty" xml:"category_name,omitempty" require:"true"`
 	// 设备品类编码
+	// example:
+	//
+	// antmic
 	CategoryCode *string `json:"category_code,omitempty" xml:"category_code,omitempty" require:"true"`
 	// 规格ID
+	// example:
+	//
+	// 12321321
 	SpecsId *int64 `json:"specs_id,omitempty" xml:"specs_id,omitempty" require:"true"`
+	// 规格名称
+	// example:
+	//
 	// 规格名称
 	SpecsName *string `json:"specs_name,omitempty" xml:"specs_name,omitempty" require:"true"`
 	// 规格编码
+	// example:
+	//
+	// 规格编码
 	SpecsValue *string `json:"specs_value,omitempty" xml:"specs_value,omitempty" require:"true"`
+	// 规格参数
+	// example:
+	//
 	// 规格参数
 	SpecsParam *string `json:"specs_param,omitempty" xml:"specs_param,omitempty" require:"true"`
 }
@@ -9113,14 +12740,29 @@ func (s *IotBasicDeviceSpecs) SetSpecsParam(v string) *IotBasicDeviceSpecs {
 // 商品数字指纹信息
 type GoodsDigitalFingerprintInfo struct {
 	// 品类
+	// example:
+	//
+	// 奢侈品
 	Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
 	// 品牌
+	// example:
+	//
+	// GUCCI
 	Brand *string `json:"brand,omitempty" xml:"brand,omitempty" require:"true"`
 	// 款式
+	// example:
+	//
+	// Gucci Diana
 	Style *string `json:"style,omitempty" xml:"style,omitempty" require:"true"`
 	// 商品数字指纹鉴定点列表
+	// example:
+	//
+	// [{"sub_point_name":"正面","image_url":"http://xxxx1001"},{"sub_point_name":"背面","image_url":"http://xxxx1002"}]
 	GoodsPoints []*GoodsDigitalFingerprintPoint `json:"goods_points,omitempty" xml:"goods_points,omitempty" require:"true" type:"Repeated"`
 	// 商品id
+	// example:
+	//
+	// goodsId
 	GoodsId *string `json:"goods_id,omitempty" xml:"goods_id,omitempty" require:"true" maxLength:"128"`
 }
 
@@ -9160,16 +12802,28 @@ func (s *GoodsDigitalFingerprintInfo) SetGoodsId(v string) *GoodsDigitalFingerpr
 // 具备实体权限访问者更新请求
 type DidUpdateTenantReq struct {
 	// 待更新实体身份did
+	// example:
+	//
+	// "did:iot_xxxxx"
 	ThingDid *string `json:"thing_did,omitempty" xml:"thing_did,omitempty" require:"true"`
 	// 待更新访问者列表
+	// example:
+	//
+	// ["",""]
 	TenantList []*string `json:"tenant_list,omitempty" xml:"tenant_list,omitempty" require:"true" type:"Repeated"`
 	// 权限角色
 	// TENANT_ROLE_OWNER
 	// TENANT_ROLE_USER
 	// TENANT_ROLE_OBSERVER
+	// example:
+	//
+	// TENANT_ROLE_OWNER
 	TenantRole *string `json:"tenant_role,omitempty" xml:"tenant_role,omitempty" require:"true"`
 	// 增加权限：THINGS_OP_MODE_ADD
 	// 删除权限：THINGS_OP_MODE_REMOVE
+	// example:
+	//
+	// THINGS_OP_MODE_ADD
 	OpMode *string `json:"op_mode,omitempty" xml:"op_mode,omitempty" require:"true"`
 }
 
@@ -9204,14 +12858,26 @@ func (s *DidUpdateTenantReq) SetOpMode(v string) *DidUpdateTenantReq {
 // 订单批量同步单个请求体
 type DeviceorderRequest struct {
 	// 订单id
+	// example:
+	//
+	// 20034932
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty" require:"true"`
 	// 支付状态
+	// example:
+	//
+	// PAID,UNPAID,PAYMENT_FAILED
 	OrderStatus *string `json:"order_status,omitempty" xml:"order_status,omitempty" require:"true"`
 	// 商家唯一id
+	// example:
+	//
+	// 30099234
 	MerchantId *string `json:"merchant_id,omitempty" xml:"merchant_id,omitempty" require:"true"`
 	// 设备订单元素集合
 	OrderDeviceList []*IotBasicDeviceOrderItem `json:"order_device_list,omitempty" xml:"order_device_list,omitempty" require:"true" type:"Repeated"`
 	// 订单总金额，精确到小数点后两位
+	// example:
+	//
+	// 22220.98
 	TotalAmount *string `json:"total_amount,omitempty" xml:"total_amount,omitempty" require:"true"`
 }
 
@@ -9251,12 +12917,24 @@ func (s *DeviceorderRequest) SetTotalAmount(v string) *DeviceorderRequest {
 // 上链数据
 type CollectInfo struct {
 	// 资产ID
+	// example:
+	//
+	// 56165431
 	AssetId *string `json:"asset_id,omitempty" xml:"asset_id,omitempty" require:"true"`
 	// 数据资产类型
+	// example:
+	//
+	// LOCK
 	DataScene *string `json:"data_scene,omitempty" xml:"data_scene,omitempty" require:"true"`
 	// 资产数据内容，业务要上链的数据JSON格式
+	// example:
+	//
+	// {"a":xx,"b":xx}
 	AssetData *string `json:"asset_data,omitempty" xml:"asset_data,omitempty" require:"true"`
 	// 上链数据采集id
+	// example:
+	//
+	// 289hj98u
 	CollectId *string `json:"collect_id,omitempty" xml:"collect_id,omitempty" require:"true"`
 }
 
@@ -9291,8 +12969,14 @@ func (s *CollectInfo) SetCollectId(v string) *CollectInfo {
 // id,name
 type IdListView struct {
 	// 数据id
+	// example:
+	//
+	// 10
 	DataId *int64 `json:"data_id,omitempty" xml:"data_id,omitempty" require:"true"`
 	// 数据名称
+	// example:
+	//
+	// name
 	DataName *string `json:"data_name,omitempty" xml:"data_name,omitempty" require:"true"`
 }
 
@@ -9317,8 +13001,14 @@ func (s *IdListView) SetDataName(v string) *IdListView {
 // 键值对
 type XNameValuePair struct {
 	// 键名
+	// example:
+	//
+	// key
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 	// 键值
+	// example:
+	//
+	// value
 	Value *string `json:"value,omitempty" xml:"value,omitempty" require:"true"`
 }
 
@@ -12931,6 +16621,489 @@ func (s *GenerateMcpTokenResponse) SetResultMsg(v string) *GenerateMcpTokenRespo
 
 func (s *GenerateMcpTokenResponse) SetToken(v string) *GenerateMcpTokenResponse {
 	s.Token = &v
+	return s
+}
+
+type QueryIoaAgentRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 智能体ID
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	// 客户端ID，一般是设备MAC地址，若没有agentId时可传入client_id查询对应的agent_id
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+}
+
+func (s QueryIoaAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIoaAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIoaAgentRequest) SetAuthToken(v string) *QueryIoaAgentRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIoaAgentRequest) SetProductInstanceId(v string) *QueryIoaAgentRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIoaAgentRequest) SetAgentId(v string) *QueryIoaAgentRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *QueryIoaAgentRequest) SetClientId(v string) *QueryIoaAgentRequest {
+	s.ClientId = &v
+	return s
+}
+
+type QueryIoaAgentResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 智能体信息视图对象
+	AgentInfo *AgentInfoVO `json:"agent_info,omitempty" xml:"agent_info,omitempty"`
+}
+
+func (s QueryIoaAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIoaAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIoaAgentResponse) SetReqMsgId(v string) *QueryIoaAgentResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIoaAgentResponse) SetResultCode(v string) *QueryIoaAgentResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIoaAgentResponse) SetResultMsg(v string) *QueryIoaAgentResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIoaAgentResponse) SetAgentInfo(v *AgentInfoVO) *QueryIoaAgentResponse {
+	s.AgentInfo = v
+	return s
+}
+
+type SaveIoaAgentRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 智能体ID
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+	// 智能体名称
+	AgentName *string `json:"agent_name,omitempty" xml:"agent_name,omitempty"`
+	// 语言Code
+	LangCode *string `json:"lang_code,omitempty" xml:"lang_code,omitempty"`
+	// 音色ID
+	TtsVoiceId *string `json:"tts_voice_id,omitempty" xml:"tts_voice_id,omitempty"`
+	// 系统提示词
+	SystemPrompt *string `json:"system_prompt,omitempty" xml:"system_prompt,omitempty"`
+	// 父模板智能体ID
+	ParentTemplateAgentId *string `json:"parent_template_agent_id,omitempty" xml:"parent_template_agent_id,omitempty"`
+}
+
+func (s SaveIoaAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveIoaAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveIoaAgentRequest) SetAuthToken(v string) *SaveIoaAgentRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetProductInstanceId(v string) *SaveIoaAgentRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetAgentId(v string) *SaveIoaAgentRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetAgentName(v string) *SaveIoaAgentRequest {
+	s.AgentName = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetLangCode(v string) *SaveIoaAgentRequest {
+	s.LangCode = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetTtsVoiceId(v string) *SaveIoaAgentRequest {
+	s.TtsVoiceId = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetSystemPrompt(v string) *SaveIoaAgentRequest {
+	s.SystemPrompt = &v
+	return s
+}
+
+func (s *SaveIoaAgentRequest) SetParentTemplateAgentId(v string) *SaveIoaAgentRequest {
+	s.ParentTemplateAgentId = &v
+	return s
+}
+
+type SaveIoaAgentResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+}
+
+func (s SaveIoaAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveIoaAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveIoaAgentResponse) SetReqMsgId(v string) *SaveIoaAgentResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *SaveIoaAgentResponse) SetResultCode(v string) *SaveIoaAgentResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *SaveIoaAgentResponse) SetResultMsg(v string) *SaveIoaAgentResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+type QueryIoaTemplatesRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 智能体ID
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+	// 客户端ID（如MAC地址）
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty" require:"true"`
+}
+
+func (s QueryIoaTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIoaTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIoaTemplatesRequest) SetAuthToken(v string) *QueryIoaTemplatesRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesRequest) SetProductInstanceId(v string) *QueryIoaTemplatesRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesRequest) SetAgentId(v string) *QueryIoaTemplatesRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesRequest) SetClientId(v string) *QueryIoaTemplatesRequest {
+	s.ClientId = &v
+	return s
+}
+
+type QueryIoaTemplatesResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 智能体模板 VO集合
+	TemplateAgentList []*AgentInfoVO `json:"template_agent_list,omitempty" xml:"template_agent_list,omitempty" type:"Repeated"`
+}
+
+func (s QueryIoaTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIoaTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIoaTemplatesResponse) SetReqMsgId(v string) *QueryIoaTemplatesResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesResponse) SetResultCode(v string) *QueryIoaTemplatesResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesResponse) SetResultMsg(v string) *QueryIoaTemplatesResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIoaTemplatesResponse) SetTemplateAgentList(v []*AgentInfoVO) *QueryIoaTemplatesResponse {
+	s.TemplateAgentList = v
+	return s
+}
+
+type QueryAgentchatHistoryRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 会话ID
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	// 页码
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	// 分页大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
+}
+
+func (s QueryAgentchatHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAgentchatHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAgentchatHistoryRequest) SetAuthToken(v string) *QueryAgentchatHistoryRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryRequest) SetProductInstanceId(v string) *QueryAgentchatHistoryRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryRequest) SetSessionId(v string) *QueryAgentchatHistoryRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryRequest) SetPageIndex(v int64) *QueryAgentchatHistoryRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryRequest) SetPageSize(v int64) *QueryAgentchatHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryAgentchatHistoryResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 分页结果总数
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 当前页码 （从第一页开始）
+	PageNum *int64 `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	// 每页大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 总页数
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 对话内容集合
+	List []*AiAgentChatHistoryBO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s QueryAgentchatHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAgentchatHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAgentchatHistoryResponse) SetReqMsgId(v string) *QueryAgentchatHistoryResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetResultCode(v string) *QueryAgentchatHistoryResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetResultMsg(v string) *QueryAgentchatHistoryResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetTotal(v int64) *QueryAgentchatHistoryResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetPageNum(v int64) *QueryAgentchatHistoryResponse {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetPageSize(v int64) *QueryAgentchatHistoryResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetPages(v int64) *QueryAgentchatHistoryResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *QueryAgentchatHistoryResponse) SetList(v []*AiAgentChatHistoryBO) *QueryAgentchatHistoryResponse {
+	s.List = v
+	return s
+}
+
+type QueryAgentSessionsRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 客户端ID
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty" require:"true"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 页码
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	// 分页大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
+}
+
+func (s QueryAgentSessionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAgentSessionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAgentSessionsRequest) SetAuthToken(v string) *QueryAgentSessionsRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryAgentSessionsRequest) SetProductInstanceId(v string) *QueryAgentSessionsRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryAgentSessionsRequest) SetClientId(v string) *QueryAgentSessionsRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryAgentSessionsRequest) SetUserId(v string) *QueryAgentSessionsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryAgentSessionsRequest) SetPageIndex(v int64) *QueryAgentSessionsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QueryAgentSessionsRequest) SetPageSize(v int64) *QueryAgentSessionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryAgentSessionsResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 分页结果总数
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 当前页码 （从第一页开始）
+	PageNum *int64 `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	// 每页大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 总页数
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 会话集合
+	List []*AgentSessionVO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s QueryAgentSessionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAgentSessionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAgentSessionsResponse) SetReqMsgId(v string) *QueryAgentSessionsResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetResultCode(v string) *QueryAgentSessionsResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetResultMsg(v string) *QueryAgentSessionsResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetTotal(v int64) *QueryAgentSessionsResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetPageNum(v int64) *QueryAgentSessionsResponse {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetPageSize(v int64) *QueryAgentSessionsResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetPages(v int64) *QueryAgentSessionsResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *QueryAgentSessionsResponse) SetList(v []*AgentSessionVO) *QueryAgentSessionsResponse {
+	s.List = v
 	return s
 }
 
@@ -25506,6 +29679,769 @@ func (s *QueryElectrocarDeviceinfospageResponse) SetTotalSize(v int64) *QueryEle
 
 func (s *QueryElectrocarDeviceinfospageResponse) SetDeviceList(v []*DeviceInfos) *QueryElectrocarDeviceinfospageResponse {
 	s.DeviceList = v
+	return s
+}
+
+type QueryElectrocarOtaupgradecheckRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// 模块版本上报列表
+	ModuleVersions []*ModuleVersionItem `json:"module_versions,omitempty" xml:"module_versions,omitempty" type:"Repeated"`
+	// 是否返回已升级完成任务，默认 false
+	IncludeSuccess *bool `json:"include_success,omitempty" xml:"include_success,omitempty"`
+}
+
+func (s QueryElectrocarOtaupgradecheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarOtaupgradecheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarOtaupgradecheckRequest) SetAuthToken(v string) *QueryElectrocarOtaupgradecheckRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckRequest) SetProductInstanceId(v string) *QueryElectrocarOtaupgradecheckRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckRequest) SetDeviceLocator(v *DeviceLocator) *QueryElectrocarOtaupgradecheckRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckRequest) SetModuleVersions(v []*ModuleVersionItem) *QueryElectrocarOtaupgradecheckRequest {
+	s.ModuleVersions = v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckRequest) SetIncludeSuccess(v bool) *QueryElectrocarOtaupgradecheckRequest {
+	s.IncludeSuccess = &v
+	return s
+}
+
+type QueryElectrocarOtaupgradecheckResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 未完成 OTA 任务列表
+	Tasks []*UnfinishedUpgradeTaskVO `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	// Hub 通道查询是否失败
+	HubQueryFailed *bool `json:"hub_query_failed,omitempty" xml:"hub_query_failed,omitempty"`
+	// 本地通道查询是否失败
+	LocalQueryFailed *bool `json:"local_query_failed,omitempty" xml:"local_query_failed,omitempty"`
+	// 上报版本并查询升级场景下，版本上报是否失败
+	VersionReportFailed *bool `json:"version_report_failed,omitempty" xml:"version_report_failed,omitempty"`
+}
+
+func (s QueryElectrocarOtaupgradecheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarOtaupgradecheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetReqMsgId(v string) *QueryElectrocarOtaupgradecheckResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetResultCode(v string) *QueryElectrocarOtaupgradecheckResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetResultMsg(v string) *QueryElectrocarOtaupgradecheckResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetTasks(v []*UnfinishedUpgradeTaskVO) *QueryElectrocarOtaupgradecheckResponse {
+	s.Tasks = v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetHubQueryFailed(v bool) *QueryElectrocarOtaupgradecheckResponse {
+	s.HubQueryFailed = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetLocalQueryFailed(v bool) *QueryElectrocarOtaupgradecheckResponse {
+	s.LocalQueryFailed = &v
+	return s
+}
+
+func (s *QueryElectrocarOtaupgradecheckResponse) SetVersionReportFailed(v bool) *QueryElectrocarOtaupgradecheckResponse {
+	s.VersionReportFailed = &v
+	return s
+}
+
+type ExecElectrocarOtataskcancelRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// OTA 执行通道：TUYA_4G / EKYT_BLE / IOT_AGENT_BLE。
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
+	// OTA 批次 ID；4G 通道为 Hub jobId，本地通道为本地批次主键字符串。
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty" require:"true"`
+	// 固件包 ID；4G 通道取消时用于透传 Hub，本地通道用于进一步限定目标任务。
+	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty" require:"true"`
+	// 取消原因，不传时本地通道默认记录为用户取消
+	CancelReason *string `json:"cancel_reason,omitempty" xml:"cancel_reason,omitempty"`
+}
+
+func (s ExecElectrocarOtataskcancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskcancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetAuthToken(v string) *ExecElectrocarOtataskcancelRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetProductInstanceId(v string) *ExecElectrocarOtataskcancelRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetDeviceLocator(v *DeviceLocator) *ExecElectrocarOtataskcancelRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetChannel(v string) *ExecElectrocarOtataskcancelRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetJobId(v string) *ExecElectrocarOtataskcancelRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetFirmwareId(v string) *ExecElectrocarOtataskcancelRequest {
+	s.FirmwareId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelRequest) SetCancelReason(v string) *ExecElectrocarOtataskcancelRequest {
+	s.CancelReason = &v
+	return s
+}
+
+type ExecElectrocarOtataskcancelResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 取消操作是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 取消后的任务状态，通常为 CANCELED
+	TaskStatus *string `json:"task_status,omitempty" xml:"task_status,omitempty"`
+}
+
+func (s ExecElectrocarOtataskcancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskcancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskcancelResponse) SetReqMsgId(v string) *ExecElectrocarOtataskcancelResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelResponse) SetResultCode(v string) *ExecElectrocarOtataskcancelResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelResponse) SetResultMsg(v string) *ExecElectrocarOtataskcancelResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelResponse) SetSuccess(v bool) *ExecElectrocarOtataskcancelResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskcancelResponse) SetTaskStatus(v string) *ExecElectrocarOtataskcancelResponse {
+	s.TaskStatus = &v
+	return s
+}
+
+type ExecElectrocarOtataskretryRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// OTA 执行通道：TUYA_4G / EKYT_BLE / IOT_AGENT_BLE
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
+	// OTA 批次 ID；4G 通道重试时需要透传 Hub
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty" require:"true"`
+	// OTA 任务 ID；4G 通道为 Hub taskId，本地通道为本地任务主键字符串
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty" require:"true"`
+	// BLE 分包大小，单位 B
+	TransSize *int64 `json:"trans_size,omitempty" xml:"trans_size,omitempty" require:"true"`
+}
+
+func (s ExecElectrocarOtataskretryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskretryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetAuthToken(v string) *ExecElectrocarOtataskretryRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetProductInstanceId(v string) *ExecElectrocarOtataskretryRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetDeviceLocator(v *DeviceLocator) *ExecElectrocarOtataskretryRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetChannel(v string) *ExecElectrocarOtataskretryRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetJobId(v string) *ExecElectrocarOtataskretryRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetTaskId(v string) *ExecElectrocarOtataskretryRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryRequest) SetTransSize(v int64) *ExecElectrocarOtataskretryRequest {
+	s.TransSize = &v
+	return s
+}
+
+type ExecElectrocarOtataskretryResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 重试操作是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// BLE 固件下载地址；4G 通道重试时为空
+	FirmwareUrl *string `json:"firmware_url,omitempty" xml:"firmware_url,omitempty"`
+	// BLE 固件文件大小，单位 B
+	FirmwareSize *int64 `json:"firmware_size,omitempty" xml:"firmware_size,omitempty"`
+	// BLE 固件 MD5
+	FirmwareMd5 *string `json:"firmware_md5,omitempty" xml:"firmware_md5,omitempty"`
+	// 本次任务目标版本号
+	DestVersion *string `json:"dest_version,omitempty" xml:"dest_version,omitempty"`
+	// BLE 固件分包数据，按端侧传输协议编码后的字符串列表
+	FirmwareData []*string `json:"firmware_data,omitempty" xml:"firmware_data,omitempty" type:"Repeated"`
+}
+
+func (s ExecElectrocarOtataskretryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskretryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetReqMsgId(v string) *ExecElectrocarOtataskretryResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetResultCode(v string) *ExecElectrocarOtataskretryResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetResultMsg(v string) *ExecElectrocarOtataskretryResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetSuccess(v bool) *ExecElectrocarOtataskretryResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetFirmwareUrl(v string) *ExecElectrocarOtataskretryResponse {
+	s.FirmwareUrl = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetFirmwareSize(v int64) *ExecElectrocarOtataskretryResponse {
+	s.FirmwareSize = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetFirmwareMd5(v string) *ExecElectrocarOtataskretryResponse {
+	s.FirmwareMd5 = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetDestVersion(v string) *ExecElectrocarOtataskretryResponse {
+	s.DestVersion = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskretryResponse) SetFirmwareData(v []*string) *ExecElectrocarOtataskretryResponse {
+	s.FirmwareData = v
+	return s
+}
+
+type ExecElectrocarOtataskconfirmRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// OTA 执行通道
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty" require:"true"`
+	// OTA 任务 ID
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty" require:"true"`
+	// BLE 分包大小
+	TransSize *int64 `json:"trans_size,omitempty" xml:"trans_size,omitempty"`
+}
+
+func (s ExecElectrocarOtataskconfirmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskconfirmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetAuthToken(v string) *ExecElectrocarOtataskconfirmRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetProductInstanceId(v string) *ExecElectrocarOtataskconfirmRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetDeviceLocator(v *DeviceLocator) *ExecElectrocarOtataskconfirmRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetChannel(v string) *ExecElectrocarOtataskconfirmRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetTaskId(v string) *ExecElectrocarOtataskconfirmRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmRequest) SetTransSize(v int64) *ExecElectrocarOtataskconfirmRequest {
+	s.TransSize = &v
+	return s
+}
+
+type ExecElectrocarOtataskconfirmResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 确认操作是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// BLE 固件下载地址；4G 通道确认时为空
+	FirmwareUrl *string `json:"firmware_url,omitempty" xml:"firmware_url,omitempty"`
+	// BLE 固件文件大小，单位 B
+	FirmwareSize *int64 `json:"firmware_size,omitempty" xml:"firmware_size,omitempty"`
+	// BLE 固件 MD5
+	FirmwareMd5 *string `json:"firmware_md5,omitempty" xml:"firmware_md5,omitempty"`
+	// 本次任务目标版本号
+	DestVersion *string `json:"dest_version,omitempty" xml:"dest_version,omitempty"`
+	// BLE 固件分包数据，按端侧传输协议编码后的字符串列表
+	FirmwareData []*string `json:"firmware_data,omitempty" xml:"firmware_data,omitempty" type:"Repeated"`
+}
+
+func (s ExecElectrocarOtataskconfirmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskconfirmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetReqMsgId(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetResultCode(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetResultMsg(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetSuccess(v bool) *ExecElectrocarOtataskconfirmResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetFirmwareUrl(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.FirmwareUrl = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetFirmwareSize(v int64) *ExecElectrocarOtataskconfirmResponse {
+	s.FirmwareSize = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetFirmwareMd5(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.FirmwareMd5 = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetDestVersion(v string) *ExecElectrocarOtataskconfirmResponse {
+	s.DestVersion = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskconfirmResponse) SetFirmwareData(v []*string) *ExecElectrocarOtataskconfirmResponse {
+	s.FirmwareData = v
+	return s
+}
+
+type ExecElectrocarOtataskpermanentcancelRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// 取消来源：APP_USER - 用户选择不再提示该版本 / VENDOR - 厂家后台取消 / ADMIN - 管理员取消
+	CancelSource *string `json:"cancel_source,omitempty" xml:"cancel_source,omitempty" require:"true"`
+	// 取消原因
+	CancelReason *string `json:"cancel_reason,omitempty" xml:"cancel_reason,omitempty"`
+	// 待永久取消的固件任务列表
+	Items []*IotxOtaTaskPermanentCancelItem `json:"items,omitempty" xml:"items,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ExecElectrocarOtataskpermanentcancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskpermanentcancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetAuthToken(v string) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetProductInstanceId(v string) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetDeviceLocator(v *DeviceLocator) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetCancelSource(v string) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.CancelSource = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetCancelReason(v string) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.CancelReason = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelRequest) SetItems(v []*IotxOtaTaskPermanentCancelItem) *ExecElectrocarOtataskpermanentcancelRequest {
+	s.Items = v
+	return s
+}
+
+type ExecElectrocarOtataskpermanentcancelResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 是否全部取消成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 每个取消项的处理结果
+	Results []*IotxOtaTaskPermanentCancelResult `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+}
+
+func (s ExecElectrocarOtataskpermanentcancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecElectrocarOtataskpermanentcancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelResponse) SetReqMsgId(v string) *ExecElectrocarOtataskpermanentcancelResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelResponse) SetResultCode(v string) *ExecElectrocarOtataskpermanentcancelResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelResponse) SetResultMsg(v string) *ExecElectrocarOtataskpermanentcancelResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelResponse) SetSuccess(v bool) *ExecElectrocarOtataskpermanentcancelResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecElectrocarOtataskpermanentcancelResponse) SetResults(v []*IotxOtaTaskPermanentCancelResult) *ExecElectrocarOtataskpermanentcancelResponse {
+	s.Results = v
+	return s
+}
+
+type PublishElectrocarModuleversionRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty"`
+	// 模块定位信息
+	ModuleLocator *ModuleLocator `json:"module_locator,omitempty" xml:"module_locator,omitempty" require:"true"`
+	// 当前模块版本号
+	Version *string `json:"version,omitempty" xml:"version,omitempty" require:"true"`
+}
+
+func (s PublishElectrocarModuleversionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishElectrocarModuleversionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishElectrocarModuleversionRequest) SetAuthToken(v string) *PublishElectrocarModuleversionRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionRequest) SetProductInstanceId(v string) *PublishElectrocarModuleversionRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionRequest) SetDeviceLocator(v *DeviceLocator) *PublishElectrocarModuleversionRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionRequest) SetModuleLocator(v *ModuleLocator) *PublishElectrocarModuleversionRequest {
+	s.ModuleLocator = v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionRequest) SetVersion(v string) *PublishElectrocarModuleversionRequest {
+	s.Version = &v
+	return s
+}
+
+type PublishElectrocarModuleversionResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 错误信息
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s PublishElectrocarModuleversionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishElectrocarModuleversionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishElectrocarModuleversionResponse) SetReqMsgId(v string) *PublishElectrocarModuleversionResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionResponse) SetResultCode(v string) *PublishElectrocarModuleversionResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionResponse) SetResultMsg(v string) *PublishElectrocarModuleversionResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionResponse) SetSuccess(v bool) *PublishElectrocarModuleversionResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *PublishElectrocarModuleversionResponse) SetMessage(v string) *PublishElectrocarModuleversionResponse {
+	s.Message = &v
+	return s
+}
+
+type QueryElectrocarTaskstatusRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备定位信息
+	DeviceLocator *DeviceLocator `json:"device_locator,omitempty" xml:"device_locator,omitempty" require:"true"`
+	// 可选模块定位信息
+	ModuleLocator *ModuleLocator `json:"module_locator,omitempty" xml:"module_locator,omitempty"`
+	// 是否返回已升级完成任务，默认 false
+	IncludeSuccess *bool `json:"include_success,omitempty" xml:"include_success,omitempty"`
+}
+
+func (s QueryElectrocarTaskstatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarTaskstatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarTaskstatusRequest) SetAuthToken(v string) *QueryElectrocarTaskstatusRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusRequest) SetProductInstanceId(v string) *QueryElectrocarTaskstatusRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusRequest) SetDeviceLocator(v *DeviceLocator) *QueryElectrocarTaskstatusRequest {
+	s.DeviceLocator = v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusRequest) SetModuleLocator(v *ModuleLocator) *QueryElectrocarTaskstatusRequest {
+	s.ModuleLocator = v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusRequest) SetIncludeSuccess(v bool) *QueryElectrocarTaskstatusRequest {
+	s.IncludeSuccess = &v
+	return s
+}
+
+type QueryElectrocarTaskstatusResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 聚合后的待处理 OTA 任务列表，已按状态优先级和创建时间排序
+	Tasks []*UnfinishedUpgradeTaskVO `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	// 是否存在 Hub 通道查询失败；true 表示返回结果可能缺少 4G 任务
+	HubQueryFailed *bool `json:"hub_query_failed,omitempty" xml:"hub_query_failed,omitempty"`
+	// 是否存在本地通道查询失败；true 表示返回结果可能缺少 BLE/本地任务
+	LocalQueryFailed *bool `json:"local_query_failed,omitempty" xml:"local_query_failed,omitempty"`
+	// 上报版本并查询升级场景下，版本上报是否失败
+	VersionReportFailed *bool `json:"version_report_failed,omitempty" xml:"version_report_failed,omitempty"`
+}
+
+func (s QueryElectrocarTaskstatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarTaskstatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetReqMsgId(v string) *QueryElectrocarTaskstatusResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetResultCode(v string) *QueryElectrocarTaskstatusResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetResultMsg(v string) *QueryElectrocarTaskstatusResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetTasks(v []*UnfinishedUpgradeTaskVO) *QueryElectrocarTaskstatusResponse {
+	s.Tasks = v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetHubQueryFailed(v bool) *QueryElectrocarTaskstatusResponse {
+	s.HubQueryFailed = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetLocalQueryFailed(v bool) *QueryElectrocarTaskstatusResponse {
+	s.LocalQueryFailed = &v
+	return s
+}
+
+func (s *QueryElectrocarTaskstatusResponse) SetVersionReportFailed(v bool) *QueryElectrocarTaskstatusResponse {
+	s.VersionReportFailed = &v
 	return s
 }
 
@@ -38568,6 +43504,223 @@ func (s *QueryDeviceEmpowerResponse) SetDevices(v []*EmpowerDeviceInfo) *QueryDe
 	return s
 }
 
+type GetIdsquaredOtpRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 设备侧鉴权码
+	DeviceAuthCode *string `json:"device_auth_code,omitempty" xml:"device_auth_code,omitempty" require:"true"`
+	// API接口版本号
+	ApiVersion *string `json:"api_version,omitempty" xml:"api_version,omitempty" require:"true"`
+}
+
+func (s GetIdsquaredOtpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdsquaredOtpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdsquaredOtpRequest) SetAuthToken(v string) *GetIdsquaredOtpRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpRequest) SetProductInstanceId(v string) *GetIdsquaredOtpRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpRequest) SetDeviceAuthCode(v string) *GetIdsquaredOtpRequest {
+	s.DeviceAuthCode = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpRequest) SetApiVersion(v string) *GetIdsquaredOtpRequest {
+	s.ApiVersion = &v
+	return s
+}
+
+type GetIdsquaredOtpResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 余量
+	Remaining *int64 `json:"remaining,omitempty" xml:"remaining,omitempty"`
+	// provisionData
+	ProvisionData *string `json:"provision_data,omitempty" xml:"provision_data,omitempty"`
+}
+
+func (s GetIdsquaredOtpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdsquaredOtpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdsquaredOtpResponse) SetReqMsgId(v string) *GetIdsquaredOtpResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpResponse) SetResultCode(v string) *GetIdsquaredOtpResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpResponse) SetResultMsg(v string) *GetIdsquaredOtpResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpResponse) SetRemaining(v int64) *GetIdsquaredOtpResponse {
+	s.Remaining = &v
+	return s
+}
+
+func (s *GetIdsquaredOtpResponse) SetProvisionData(v string) *GetIdsquaredOtpResponse {
+	s.ProvisionData = &v
+	return s
+}
+
+type EncryptIdsquaredAuthRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 待加密原文
+	Data *string `json:"data,omitempty" xml:"data,omitempty" require:"true"`
+	// productSource
+	ProductSource *int64 `json:"product_source,omitempty" xml:"product_source,omitempty"`
+	// 客户端鉴权码
+	DeviceAuthCode *string `json:"device_auth_code,omitempty" xml:"device_auth_code,omitempty" require:"true"`
+	// deviceExtra
+	DeviceExtra *string `json:"device_extra,omitempty" xml:"device_extra,omitempty"`
+	// apiVersion
+	ApiVersion *string `json:"api_version,omitempty" xml:"api_version,omitempty"`
+	// productKey
+	ProductKey *string `json:"product_key,omitempty" xml:"product_key,omitempty"`
+	// deviceChallenge客户端挑战码
+	DeviceChallenge *string `json:"device_challenge,omitempty" xml:"device_challenge,omitempty"`
+	// serverExtra
+	ServerExtra *string `json:"server_extra,omitempty" xml:"server_extra,omitempty"`
+	// id2
+	Id2 *string `json:"id2,omitempty" xml:"id2,omitempty" require:"true"`
+}
+
+func (s EncryptIdsquaredAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptIdsquaredAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetAuthToken(v string) *EncryptIdsquaredAuthRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetProductInstanceId(v string) *EncryptIdsquaredAuthRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetData(v string) *EncryptIdsquaredAuthRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetProductSource(v int64) *EncryptIdsquaredAuthRequest {
+	s.ProductSource = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetDeviceAuthCode(v string) *EncryptIdsquaredAuthRequest {
+	s.DeviceAuthCode = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetDeviceExtra(v string) *EncryptIdsquaredAuthRequest {
+	s.DeviceExtra = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetApiVersion(v string) *EncryptIdsquaredAuthRequest {
+	s.ApiVersion = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetProductKey(v string) *EncryptIdsquaredAuthRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetDeviceChallenge(v string) *EncryptIdsquaredAuthRequest {
+	s.DeviceChallenge = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetServerExtra(v string) *EncryptIdsquaredAuthRequest {
+	s.ServerExtra = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthRequest) SetId2(v string) *EncryptIdsquaredAuthRequest {
+	s.Id2 = &v
+	return s
+}
+
+type EncryptIdsquaredAuthResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// serverAuthCode
+	ServerAuthCode *string `json:"server_auth_code,omitempty" xml:"server_auth_code,omitempty"`
+	// encryptData
+	EncryptData *string `json:"encrypt_data,omitempty" xml:"encrypt_data,omitempty"`
+}
+
+func (s EncryptIdsquaredAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EncryptIdsquaredAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EncryptIdsquaredAuthResponse) SetReqMsgId(v string) *EncryptIdsquaredAuthResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthResponse) SetResultCode(v string) *EncryptIdsquaredAuthResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthResponse) SetResultMsg(v string) *EncryptIdsquaredAuthResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthResponse) SetServerAuthCode(v string) *EncryptIdsquaredAuthResponse {
+	s.ServerAuthCode = &v
+	return s
+}
+
+func (s *EncryptIdsquaredAuthResponse) SetEncryptData(v string) *EncryptIdsquaredAuthResponse {
+	s.EncryptData = &v
+	return s
+}
+
 type ExecThingsdidOneapiRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -40238,10 +45391,11 @@ type Client struct {
 	MaxRequestsPerHost      *int
 }
 
-/**
- * Init client with Config
- * @param config config contains the necessary information to create a client
- */
+// Description:
+//
+// # Init client with Config
+//
+// @param config - config contains the necessary information to create a client
 func NewClient(config *Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
@@ -40249,7 +45403,7 @@ func NewClient(config *Config) (*Client, error) {
 }
 
 func (client *Client) Init(config *Config) (_err error) {
-	if tea.BoolValue(util.IsUnset(tea.ToMap(config))) {
+	if tea.BoolValue(util.IsUnset(config)) {
 		_err = tea.NewSDKError(map[string]interface{}{
 			"code":    "ParameterMissing",
 			"message": "'config' can not be unset",
@@ -40278,16 +45432,23 @@ func (client *Client) Init(config *Config) (_err error) {
 	return nil
 }
 
-/**
- * Encapsulate the request and invoke the network
- * @param action api name
- * @param protocol http or https
- * @param method e.g. GET
- * @param pathname pathname of every api
- * @param request which contains request params
- * @param runtime which controls some details of call api, such as retry times
- * @return the response
- */
+// Description:
+//
+// # Encapsulate the request and invoke the network
+//
+// @param action - api name
+//
+// @param protocol - http or https
+//
+// @param method - e.g. GET
+//
+// @param pathname - pathname of every api
+//
+// @param request - which contains request params
+//
+// @param runtime - which controls some details of call api, such as retry times
+//
+// @return the response
 func (client *Client) DoRequest(version *string, action *string, protocol *string, method *string, pathname *string, request map[string]interface{}, headers map[string]*string, runtime *util.RuntimeOptions) (_result map[string]interface{}, _err error) {
 	_err = tea.Validate(runtime)
 	if _err != nil {
@@ -40338,7 +45499,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.16.2"),
+				"sdk_version":      tea.String("1.17.1"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -40396,10 +45557,11 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 	return _resp, _err
 }
 
-/**
- * Description: acec提供的SPI服务开通接口
- * Summary: acec提供的SPI服务开通接口
- */
+// Description:
+//
+// Description: acec提供的SPI服务开通接口
+//
+// Summary: acec提供的SPI服务开通接口
 func (client *Client) OpenAcecContract(request *OpenAcecContractRequest) (_result *OpenAcecContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40412,10 +45574,11 @@ func (client *Client) OpenAcecContract(request *OpenAcecContractRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: acec提供的SPI服务开通接口
- * Summary: acec提供的SPI服务开通接口
- */
+// Description:
+//
+// Description: acec提供的SPI服务开通接口
+//
+// Summary: acec提供的SPI服务开通接口
 func (client *Client) OpenAcecContractEx(request *OpenAcecContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenAcecContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40430,10 +45593,11 @@ func (client *Client) OpenAcecContractEx(request *OpenAcecContractRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: AI服务组提供的SPI服务停止接口
- * Summary: acec提供的SPI服务停止接口
- */
+// Description:
+//
+// Description: AI服务组提供的SPI服务停止接口
+//
+// Summary: acec提供的SPI服务停止接口
 func (client *Client) StopAcecContract(request *StopAcecContractRequest) (_result *StopAcecContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40446,10 +45610,11 @@ func (client *Client) StopAcecContract(request *StopAcecContractRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: AI服务组提供的SPI服务停止接口
- * Summary: acec提供的SPI服务停止接口
- */
+// Description:
+//
+// Description: AI服务组提供的SPI服务停止接口
+//
+// Summary: acec提供的SPI服务停止接口
 func (client *Client) StopAcecContractEx(request *StopAcecContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAcecContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40464,10 +45629,11 @@ func (client *Client) StopAcecContractEx(request *StopAcecContractRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: acec提供的SPI服务复入接口
- * Summary: acec提供的SPI服务复入接口
- */
+// Description:
+//
+// Description: acec提供的SPI服务复入接口
+//
+// Summary: acec提供的SPI服务复入接口
 func (client *Client) ResumeAcecContract(request *ResumeAcecContractRequest) (_result *ResumeAcecContractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40480,10 +45646,11 @@ func (client *Client) ResumeAcecContract(request *ResumeAcecContractRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: acec提供的SPI服务复入接口
- * Summary: acec提供的SPI服务复入接口
- */
+// Description:
+//
+// Description: acec提供的SPI服务复入接口
+//
+// Summary: acec提供的SPI服务复入接口
 func (client *Client) ResumeAcecContractEx(request *ResumeAcecContractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeAcecContractResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40498,10 +45665,11 @@ func (client *Client) ResumeAcecContractEx(request *ResumeAcecContractRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心实人认证创建服务
- * Summary: 租赁智能中心实人认证创建服务
- */
+// Description:
+//
+// Description: 租赁智能中心实人认证创建服务
+//
+// Summary: 租赁智能中心实人认证创建服务
 func (client *Client) CreateLeaseRealperson(request *CreateLeaseRealpersonRequest) (_result *CreateLeaseRealpersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40514,10 +45682,11 @@ func (client *Client) CreateLeaseRealperson(request *CreateLeaseRealpersonReques
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心实人认证创建服务
- * Summary: 租赁智能中心实人认证创建服务
- */
+// Description:
+//
+// Description: 租赁智能中心实人认证创建服务
+//
+// Summary: 租赁智能中心实人认证创建服务
 func (client *Client) CreateLeaseRealpersonEx(request *CreateLeaseRealpersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLeaseRealpersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40532,10 +45701,11 @@ func (client *Client) CreateLeaseRealpersonEx(request *CreateLeaseRealpersonRequ
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心实人认证查询服务
- * Summary: 租赁智能中心实人认证查询服务
- */
+// Description:
+//
+// Description: 租赁智能中心实人认证查询服务
+//
+// Summary: 租赁智能中心实人认证查询服务
 func (client *Client) QueryLeaseRealperson(request *QueryLeaseRealpersonRequest) (_result *QueryLeaseRealpersonResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40548,10 +45718,11 @@ func (client *Client) QueryLeaseRealperson(request *QueryLeaseRealpersonRequest)
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心实人认证查询服务
- * Summary: 租赁智能中心实人认证查询服务
- */
+// Description:
+//
+// Description: 租赁智能中心实人认证查询服务
+//
+// Summary: 租赁智能中心实人认证查询服务
 func (client *Client) QueryLeaseRealpersonEx(request *QueryLeaseRealpersonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRealpersonResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40566,10 +45737,11 @@ func (client *Client) QueryLeaseRealpersonEx(request *QueryLeaseRealpersonReques
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心风控查询服务
- * Summary: 租赁智能中心风控查询服务
- */
+// Description:
+//
+// Description: 租赁智能中心风控查询服务
+//
+// Summary: 租赁智能中心风控查询服务
 func (client *Client) QueryLeaseRisk(request *QueryLeaseRiskRequest) (_result *QueryLeaseRiskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40582,10 +45754,11 @@ func (client *Client) QueryLeaseRisk(request *QueryLeaseRiskRequest) (_result *Q
 	return _result, _err
 }
 
-/**
- * Description: 租赁智能中心风控查询服务
- * Summary: 租赁智能中心风控查询服务
- */
+// Description:
+//
+// Description: 租赁智能中心风控查询服务
+//
+// Summary: 租赁智能中心风控查询服务
 func (client *Client) QueryLeaseRiskEx(request *QueryLeaseRiskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLeaseRiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40600,10 +45773,11 @@ func (client *Client) QueryLeaseRiskEx(request *QueryLeaseRiskRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: aiot-创建用户通行证
- * Summary: aiot-创建用户通行证
- */
+// Description:
+//
+// Description: aiot-创建用户通行证
+//
+// Summary: aiot-创建用户通行证
 func (client *Client) CreateXrUserticket(request *CreateXrUserticketRequest) (_result *CreateXrUserticketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40616,10 +45790,11 @@ func (client *Client) CreateXrUserticket(request *CreateXrUserticketRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: aiot-创建用户通行证
- * Summary: aiot-创建用户通行证
- */
+// Description:
+//
+// Description: aiot-创建用户通行证
+//
+// Summary: aiot-创建用户通行证
 func (client *Client) CreateXrUserticketEx(request *CreateXrUserticketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateXrUserticketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40634,10 +45809,11 @@ func (client *Client) CreateXrUserticketEx(request *CreateXrUserticketRequest, h
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取通行证资源池列表
- * Summary: aiot-获取通行证资源池列表
- */
+// Description:
+//
+// Description: aiot-获取通行证资源池列表
+//
+// Summary: aiot-获取通行证资源池列表
 func (client *Client) ListXrXrticketpool(request *ListXrXrticketpoolRequest) (_result *ListXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40650,10 +45826,11 @@ func (client *Client) ListXrXrticketpool(request *ListXrXrticketpoolRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取通行证资源池列表
- * Summary: aiot-获取通行证资源池列表
- */
+// Description:
+//
+// Description: aiot-获取通行证资源池列表
+//
+// Summary: aiot-获取通行证资源池列表
 func (client *Client) ListXrXrticketpoolEx(request *ListXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40668,10 +45845,11 @@ func (client *Client) ListXrXrticketpoolEx(request *ListXrXrticketpoolRequest, h
 	return _result, _err
 }
 
-/**
- * Description: aiot-分页查询用户通行证
- * Summary: aiot-分页查询用户通行证
- */
+// Description:
+//
+// Description: aiot-分页查询用户通行证
+//
+// Summary: aiot-分页查询用户通行证
 func (client *Client) PagequeryXrUserticket(request *PagequeryXrUserticketRequest) (_result *PagequeryXrUserticketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40684,10 +45862,11 @@ func (client *Client) PagequeryXrUserticket(request *PagequeryXrUserticketReques
 	return _result, _err
 }
 
-/**
- * Description: aiot-分页查询用户通行证
- * Summary: aiot-分页查询用户通行证
- */
+// Description:
+//
+// Description: aiot-分页查询用户通行证
+//
+// Summary: aiot-分页查询用户通行证
 func (client *Client) PagequeryXrUserticketEx(request *PagequeryXrUserticketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryXrUserticketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40702,10 +45881,11 @@ func (client *Client) PagequeryXrUserticketEx(request *PagequeryXrUserticketRequ
 	return _result, _err
 }
 
-/**
- * Description: aiot-查询用户通行证
- * Summary: aiot-查询用户通行证
- */
+// Description:
+//
+// Description: aiot-查询用户通行证
+//
+// Summary: aiot-查询用户通行证
 func (client *Client) GetXrUserticket(request *GetXrUserticketRequest) (_result *GetXrUserticketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40718,10 +45898,11 @@ func (client *Client) GetXrUserticket(request *GetXrUserticketRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: aiot-查询用户通行证
- * Summary: aiot-查询用户通行证
- */
+// Description:
+//
+// Description: aiot-查询用户通行证
+//
+// Summary: aiot-查询用户通行证
 func (client *Client) GetXrUserticketEx(request *GetXrUserticketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetXrUserticketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40736,10 +45917,11 @@ func (client *Client) GetXrUserticketEx(request *GetXrUserticketRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: aiot-核销用户通行证
- * Summary: aiot-核销用户通行证
- */
+// Description:
+//
+// Description: aiot-核销用户通行证
+//
+// Summary: aiot-核销用户通行证
 func (client *Client) OperateXrUserticket(request *OperateXrUserticketRequest) (_result *OperateXrUserticketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40752,10 +45934,11 @@ func (client *Client) OperateXrUserticket(request *OperateXrUserticketRequest) (
 	return _result, _err
 }
 
-/**
- * Description: aiot-核销用户通行证
- * Summary: aiot-核销用户通行证
- */
+// Description:
+//
+// Description: aiot-核销用户通行证
+//
+// Summary: aiot-核销用户通行证
 func (client *Client) OperateXrUserticketEx(request *OperateXrUserticketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateXrUserticketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40770,10 +45953,11 @@ func (client *Client) OperateXrUserticketEx(request *OperateXrUserticketRequest,
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取资源列表
- * Summary: aiot-获取资源列表
- */
+// Description:
+//
+// Description: aiot-获取资源列表
+//
+// Summary: aiot-获取资源列表
 func (client *Client) ListXrResource(request *ListXrResourceRequest) (_result *ListXrResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40786,10 +45970,11 @@ func (client *Client) ListXrResource(request *ListXrResourceRequest) (_result *L
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取资源列表
- * Summary: aiot-获取资源列表
- */
+// Description:
+//
+// Description: aiot-获取资源列表
+//
+// Summary: aiot-获取资源列表
 func (client *Client) ListXrResourceEx(request *ListXrResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListXrResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40804,10 +45989,11 @@ func (client *Client) ListXrResourceEx(request *ListXrResourceRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: aiot-核销实例分页查询
- * Summary: aiot-核销实例分页查询
- */
+// Description:
+//
+// Description: aiot-核销实例分页查询
+//
+// Summary: aiot-核销实例分页查询
 func (client *Client) PagequeryXrXrverificationmodel(request *PagequeryXrXrverificationmodelRequest) (_result *PagequeryXrXrverificationmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40820,10 +46006,11 @@ func (client *Client) PagequeryXrXrverificationmodel(request *PagequeryXrXrverif
 	return _result, _err
 }
 
-/**
- * Description: aiot-核销实例分页查询
- * Summary: aiot-核销实例分页查询
- */
+// Description:
+//
+// Description: aiot-核销实例分页查询
+//
+// Summary: aiot-核销实例分页查询
 func (client *Client) PagequeryXrXrverificationmodelEx(request *PagequeryXrXrverificationmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryXrXrverificationmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40838,10 +46025,11 @@ func (client *Client) PagequeryXrXrverificationmodelEx(request *PagequeryXrXrver
 	return _result, _err
 }
 
-/**
- * Description: aiot-客户对应设备分页查询
- * Summary: aiot-客户对应设备分页查询
- */
+// Description:
+//
+// Description: aiot-客户对应设备分页查询
+//
+// Summary: aiot-客户对应设备分页查询
 func (client *Client) PagequeryXrCustomerdevice(request *PagequeryXrCustomerdeviceRequest) (_result *PagequeryXrCustomerdeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40854,10 +46042,11 @@ func (client *Client) PagequeryXrCustomerdevice(request *PagequeryXrCustomerdevi
 	return _result, _err
 }
 
-/**
- * Description: aiot-客户对应设备分页查询
- * Summary: aiot-客户对应设备分页查询
- */
+// Description:
+//
+// Description: aiot-客户对应设备分页查询
+//
+// Summary: aiot-客户对应设备分页查询
 func (client *Client) PagequeryXrCustomerdeviceEx(request *PagequeryXrCustomerdeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryXrCustomerdeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40872,10 +46061,11 @@ func (client *Client) PagequeryXrCustomerdeviceEx(request *PagequeryXrCustomerde
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证创建
- * Summary: aiot-xr通行证创建
- */
+// Description:
+//
+// Description: aiot-xr通行证创建
+//
+// Summary: aiot-xr通行证创建
 func (client *Client) CreateXrXrticketpool(request *CreateXrXrticketpoolRequest) (_result *CreateXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40888,10 +46078,11 @@ func (client *Client) CreateXrXrticketpool(request *CreateXrXrticketpoolRequest)
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证创建
- * Summary: aiot-xr通行证创建
- */
+// Description:
+//
+// Description: aiot-xr通行证创建
+//
+// Summary: aiot-xr通行证创建
 func (client *Client) CreateXrXrticketpoolEx(request *CreateXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40906,10 +46097,11 @@ func (client *Client) CreateXrXrticketpoolEx(request *CreateXrXrticketpoolReques
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证修改
- * Summary: aiot-xr通行证修改
- */
+// Description:
+//
+// Description: aiot-xr通行证修改
+//
+// Summary: aiot-xr通行证修改
 func (client *Client) UpdateXrXrticketpool(request *UpdateXrXrticketpoolRequest) (_result *UpdateXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40922,10 +46114,11 @@ func (client *Client) UpdateXrXrticketpool(request *UpdateXrXrticketpoolRequest)
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证修改
- * Summary: aiot-xr通行证修改
- */
+// Description:
+//
+// Description: aiot-xr通行证修改
+//
+// Summary: aiot-xr通行证修改
 func (client *Client) UpdateXrXrticketpoolEx(request *UpdateXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40940,10 +46133,11 @@ func (client *Client) UpdateXrXrticketpoolEx(request *UpdateXrXrticketpoolReques
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证分页查询
- * Summary: aiot-xr通行证分页查询
- */
+// Description:
+//
+// Description: aiot-xr通行证分页查询
+//
+// Summary: aiot-xr通行证分页查询
 func (client *Client) PagequeryXrXrticketpool(request *PagequeryXrXrticketpoolRequest) (_result *PagequeryXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40956,10 +46150,11 @@ func (client *Client) PagequeryXrXrticketpool(request *PagequeryXrXrticketpoolRe
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证分页查询
- * Summary: aiot-xr通行证分页查询
- */
+// Description:
+//
+// Description: aiot-xr通行证分页查询
+//
+// Summary: aiot-xr通行证分页查询
 func (client *Client) PagequeryXrXrticketpoolEx(request *PagequeryXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40974,10 +46169,11 @@ func (client *Client) PagequeryXrXrticketpoolEx(request *PagequeryXrXrticketpool
 	return _result, _err
 }
 
-/**
- * Description: aiot-同步设备屏幕状态
- * Summary: aiot-同步设备屏幕状态
- */
+// Description:
+//
+// Description: aiot-同步设备屏幕状态
+//
+// Summary: aiot-同步设备屏幕状态
 func (client *Client) SyncDeviceScreenstatus(request *SyncDeviceScreenstatusRequest) (_result *SyncDeviceScreenstatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -40990,10 +46186,11 @@ func (client *Client) SyncDeviceScreenstatus(request *SyncDeviceScreenstatusRequ
 	return _result, _err
 }
 
-/**
- * Description: aiot-同步设备屏幕状态
- * Summary: aiot-同步设备屏幕状态
- */
+// Description:
+//
+// Description: aiot-同步设备屏幕状态
+//
+// Summary: aiot-同步设备屏幕状态
 func (client *Client) SyncDeviceScreenstatusEx(request *SyncDeviceScreenstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncDeviceScreenstatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41008,10 +46205,11 @@ func (client *Client) SyncDeviceScreenstatusEx(request *SyncDeviceScreenstatusRe
 	return _result, _err
 }
 
-/**
- * Description: xr通行证批量创建
- * Summary: xr通行证批量创建
- */
+// Description:
+//
+// Description: xr通行证批量创建
+//
+// Summary: xr通行证批量创建
 func (client *Client) BatchcreateXrXrticketpool(request *BatchcreateXrXrticketpoolRequest) (_result *BatchcreateXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41024,10 +46222,11 @@ func (client *Client) BatchcreateXrXrticketpool(request *BatchcreateXrXrticketpo
 	return _result, _err
 }
 
-/**
- * Description: xr通行证批量创建
- * Summary: xr通行证批量创建
- */
+// Description:
+//
+// Description: xr通行证批量创建
+//
+// Summary: xr通行证批量创建
 func (client *Client) BatchcreateXrXrticketpoolEx(request *BatchcreateXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchcreateXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41042,10 +46241,11 @@ func (client *Client) BatchcreateXrXrticketpoolEx(request *BatchcreateXrXrticket
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取资源实例列表
- * Summary: aiot-获取资源实例列表
- */
+// Description:
+//
+// Description: aiot-获取资源实例列表
+//
+// Summary: aiot-获取资源实例列表
 func (client *Client) ListXrXrverificationmodelinstance(request *ListXrXrverificationmodelinstanceRequest) (_result *ListXrXrverificationmodelinstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41058,10 +46258,11 @@ func (client *Client) ListXrXrverificationmodelinstance(request *ListXrXrverific
 	return _result, _err
 }
 
-/**
- * Description: aiot-获取资源实例列表
- * Summary: aiot-获取资源实例列表
- */
+// Description:
+//
+// Description: aiot-获取资源实例列表
+//
+// Summary: aiot-获取资源实例列表
 func (client *Client) ListXrXrverificationmodelinstanceEx(request *ListXrXrverificationmodelinstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListXrXrverificationmodelinstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41076,10 +46277,11 @@ func (client *Client) ListXrXrverificationmodelinstanceEx(request *ListXrXrverif
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证详情查询
- * Summary: aiot-xr通行证详情查询
- */
+// Description:
+//
+// Description: aiot-xr通行证详情查询
+//
+// Summary: aiot-xr通行证详情查询
 func (client *Client) DetailXrXrticketpool(request *DetailXrXrticketpoolRequest) (_result *DetailXrXrticketpoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41092,10 +46294,11 @@ func (client *Client) DetailXrXrticketpool(request *DetailXrXrticketpoolRequest)
 	return _result, _err
 }
 
-/**
- * Description: aiot-xr通行证详情查询
- * Summary: aiot-xr通行证详情查询
- */
+// Description:
+//
+// Description: aiot-xr通行证详情查询
+//
+// Summary: aiot-xr通行证详情查询
 func (client *Client) DetailXrXrticketpoolEx(request *DetailXrXrticketpoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetailXrXrticketpoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41110,10 +46313,11 @@ func (client *Client) DetailXrXrticketpoolEx(request *DetailXrXrticketpoolReques
 	return _result, _err
 }
 
-/**
- * Description: aiotnextbs-openApi操作
- * Summary: aiotnextbs-openApi操作
- */
+// Description:
+//
+// Description: aiotnextbs-openApi操作
+//
+// Summary: aiotnextbs-openApi操作
 func (client *Client) OperateAiotnextbsOpenapi(request *OperateAiotnextbsOpenapiRequest) (_result *OperateAiotnextbsOpenapiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41126,10 +46330,11 @@ func (client *Client) OperateAiotnextbsOpenapi(request *OperateAiotnextbsOpenapi
 	return _result, _err
 }
 
-/**
- * Description: aiotnextbs-openApi操作
- * Summary: aiotnextbs-openApi操作
- */
+// Description:
+//
+// Description: aiotnextbs-openApi操作
+//
+// Summary: aiotnextbs-openApi操作
 func (client *Client) OperateAiotnextbsOpenapiEx(request *OperateAiotnextbsOpenapiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateAiotnextbsOpenapiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41144,10 +46349,11 @@ func (client *Client) OperateAiotnextbsOpenapiEx(request *OperateAiotnextbsOpena
 	return _result, _err
 }
 
-/**
- * Description: aiotnext-节能项目设置照明模式
- * Summary: aiotnext-节能项目设置照明模式
- */
+// Description:
+//
+// Description: aiotnext-节能项目设置照明模式
+//
+// Summary: aiotnext-节能项目设置照明模式
 func (client *Client) SetEnergyprojectLightmode(request *SetEnergyprojectLightmodeRequest) (_result *SetEnergyprojectLightmodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41160,10 +46366,11 @@ func (client *Client) SetEnergyprojectLightmode(request *SetEnergyprojectLightmo
 	return _result, _err
 }
 
-/**
- * Description: aiotnext-节能项目设置照明模式
- * Summary: aiotnext-节能项目设置照明模式
- */
+// Description:
+//
+// Description: aiotnext-节能项目设置照明模式
+//
+// Summary: aiotnext-节能项目设置照明模式
 func (client *Client) SetEnergyprojectLightmodeEx(request *SetEnergyprojectLightmodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetEnergyprojectLightmodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41178,10 +46385,11 @@ func (client *Client) SetEnergyprojectLightmodeEx(request *SetEnergyprojectLight
 	return _result, _err
 }
 
-/**
- * Description: 私有化配置推送回告API
- * Summary: 私有化配置推送回告API
- */
+// Description:
+//
+// Description: 私有化配置推送回告API
+//
+// Summary: 私有化配置推送回告API
 func (client *Client) FinishTraceConfig(request *FinishTraceConfigRequest) (_result *FinishTraceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41194,10 +46402,11 @@ func (client *Client) FinishTraceConfig(request *FinishTraceConfigRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 私有化配置推送回告API
- * Summary: 私有化配置推送回告API
- */
+// Description:
+//
+// Description: 私有化配置推送回告API
+//
+// Summary: 私有化配置推送回告API
 func (client *Client) FinishTraceConfigEx(request *FinishTraceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FinishTraceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41212,10 +46421,11 @@ func (client *Client) FinishTraceConfigEx(request *FinishTraceConfigRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: BAI提供的OCR服务接口
- * Summary: BAI提供的OCR服务
- */
+// Description:
+//
+// Description: BAI提供的OCR服务接口
+//
+// Summary: BAI提供的OCR服务
 func (client *Client) QueryBaiOcr(request *QueryBaiOcrRequest) (_result *QueryBaiOcrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41228,10 +46438,11 @@ func (client *Client) QueryBaiOcr(request *QueryBaiOcrRequest) (_result *QueryBa
 	return _result, _err
 }
 
-/**
- * Description: BAI提供的OCR服务接口
- * Summary: BAI提供的OCR服务
- */
+// Description:
+//
+// Description: BAI提供的OCR服务接口
+//
+// Summary: BAI提供的OCR服务
 func (client *Client) QueryBaiOcrEx(request *QueryBaiOcrRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryBaiOcrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41246,10 +46457,11 @@ func (client *Client) QueryBaiOcrEx(request *QueryBaiOcrRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: AI二维码验真
- * Summary: AI二维码验真
- */
+// Description:
+//
+// Description: AI二维码验真
+//
+// Summary: AI二维码验真
 func (client *Client) QueryAiidentificationQrcode(request *QueryAiidentificationQrcodeRequest) (_result *QueryAiidentificationQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41262,10 +46474,11 @@ func (client *Client) QueryAiidentificationQrcode(request *QueryAiidentification
 	return _result, _err
 }
 
-/**
- * Description: AI二维码验真
- * Summary: AI二维码验真
- */
+// Description:
+//
+// Description: AI二维码验真
+//
+// Summary: AI二维码验真
 func (client *Client) QueryAiidentificationQrcodeEx(request *QueryAiidentificationQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAiidentificationQrcodeResponse, _err error) {
 	if !tea.BoolValue(util.IsUnset(request.FileObject)) {
 		uploadReq := &CreateAntcloudGatewayxFileUploadRequest{
@@ -41310,10 +46523,11 @@ func (client *Client) QueryAiidentificationQrcodeEx(request *QueryAiidentificati
 	return _result, _err
 }
 
-/**
- * Description: AI商品鉴定
- * Summary: AI商品鉴定
- */
+// Description:
+//
+// Description: AI商品鉴定
+//
+// Summary: AI商品鉴定
 func (client *Client) QueryAiidentificationGoods(request *QueryAiidentificationGoodsRequest) (_result *QueryAiidentificationGoodsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41326,10 +46540,11 @@ func (client *Client) QueryAiidentificationGoods(request *QueryAiidentificationG
 	return _result, _err
 }
 
-/**
- * Description: AI商品鉴定
- * Summary: AI商品鉴定
- */
+// Description:
+//
+// Description: AI商品鉴定
+//
+// Summary: AI商品鉴定
 func (client *Client) QueryAiidentificationGoodsEx(request *QueryAiidentificationGoodsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAiidentificationGoodsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41344,10 +46559,11 @@ func (client *Client) QueryAiidentificationGoodsEx(request *QueryAiidentificatio
 	return _result, _err
 }
 
-/**
- * Description: 商品鉴定点图片检测
- * Summary: 商品鉴定点图片检测
- */
+// Description:
+//
+// Description: 商品鉴定点图片检测
+//
+// Summary: 商品鉴定点图片检测
 func (client *Client) CheckAiidentificationGoodspoint(request *CheckAiidentificationGoodspointRequest) (_result *CheckAiidentificationGoodspointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41360,10 +46576,11 @@ func (client *Client) CheckAiidentificationGoodspoint(request *CheckAiidentifica
 	return _result, _err
 }
 
-/**
- * Description: 商品鉴定点图片检测
- * Summary: 商品鉴定点图片检测
- */
+// Description:
+//
+// Description: 商品鉴定点图片检测
+//
+// Summary: 商品鉴定点图片检测
 func (client *Client) CheckAiidentificationGoodspointEx(request *CheckAiidentificationGoodspointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckAiidentificationGoodspointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41378,10 +46595,11 @@ func (client *Client) CheckAiidentificationGoodspointEx(request *CheckAiidentifi
 	return _result, _err
 }
 
-/**
- * Description: 溯源码比对服务
- * Summary: AI溯源码验真
- */
+// Description:
+//
+// Description: 溯源码比对服务
+//
+// Summary: AI溯源码验真
 func (client *Client) CheckAiidentificationQrcode(request *CheckAiidentificationQrcodeRequest) (_result *CheckAiidentificationQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41394,10 +46612,11 @@ func (client *Client) CheckAiidentificationQrcode(request *CheckAiidentification
 	return _result, _err
 }
 
-/**
- * Description: 溯源码比对服务
- * Summary: AI溯源码验真
- */
+// Description:
+//
+// Description: 溯源码比对服务
+//
+// Summary: AI溯源码验真
 func (client *Client) CheckAiidentificationQrcodeEx(request *CheckAiidentificationQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckAiidentificationQrcodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41412,10 +46631,11 @@ func (client *Client) CheckAiidentificationQrcodeEx(request *CheckAiidentificati
 	return _result, _err
 }
 
-/**
- * Description: 用于生成溯源防伪码
- * Summary: 溯源防伪码生成接口
- */
+// Description:
+//
+// Description: 用于生成溯源防伪码
+//
+// Summary: 溯源防伪码生成接口
 func (client *Client) CreateAiidentificationQrcode(request *CreateAiidentificationQrcodeRequest) (_result *CreateAiidentificationQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41428,10 +46648,11 @@ func (client *Client) CreateAiidentificationQrcode(request *CreateAiidentificati
 	return _result, _err
 }
 
-/**
- * Description: 用于生成溯源防伪码
- * Summary: 溯源防伪码生成接口
- */
+// Description:
+//
+// Description: 用于生成溯源防伪码
+//
+// Summary: 溯源防伪码生成接口
 func (client *Client) CreateAiidentificationQrcodeEx(request *CreateAiidentificationQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAiidentificationQrcodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41446,10 +46667,11 @@ func (client *Client) CreateAiidentificationQrcodeEx(request *CreateAiidentifica
 	return _result, _err
 }
 
-/**
- * Description: B端二维码质检
- * Summary: B端二维码质检
- */
+// Description:
+//
+// Description: B端二维码质检
+//
+// Summary: B端二维码质检
 func (client *Client) VerifyAiidentificationQrcode(request *VerifyAiidentificationQrcodeRequest) (_result *VerifyAiidentificationQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41462,10 +46684,11 @@ func (client *Client) VerifyAiidentificationQrcode(request *VerifyAiidentificati
 	return _result, _err
 }
 
-/**
- * Description: B端二维码质检
- * Summary: B端二维码质检
- */
+// Description:
+//
+// Description: B端二维码质检
+//
+// Summary: B端二维码质检
 func (client *Client) VerifyAiidentificationQrcodeEx(request *VerifyAiidentificationQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyAiidentificationQrcodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41480,10 +46703,11 @@ func (client *Client) VerifyAiidentificationQrcodeEx(request *VerifyAiidentifica
 	return _result, _err
 }
 
-/**
- * Description: 商品鉴定
- * Summary: 商品鉴定
- */
+// Description:
+//
+// Description: 商品鉴定
+//
+// Summary: 商品鉴定
 func (client *Client) QueryAiidentificationGoodspoint(request *QueryAiidentificationGoodspointRequest) (_result *QueryAiidentificationGoodspointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41496,10 +46720,11 @@ func (client *Client) QueryAiidentificationGoodspoint(request *QueryAiidentifica
 	return _result, _err
 }
 
-/**
- * Description: 商品鉴定
- * Summary: 商品鉴定
- */
+// Description:
+//
+// Description: 商品鉴定
+//
+// Summary: 商品鉴定
 func (client *Client) QueryAiidentificationGoodspointEx(request *QueryAiidentificationGoodspointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAiidentificationGoodspointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41514,10 +46739,11 @@ func (client *Client) QueryAiidentificationGoodspointEx(request *QueryAiidentifi
 	return _result, _err
 }
 
-/**
- * Description: AI商品数字指纹注册
- * Summary: AI数字指纹注册
- */
+// Description:
+//
+// Description: AI商品数字指纹注册
+//
+// Summary: AI数字指纹注册
 func (client *Client) RegisterAiidentificationGoodsdigitalfingerprint(request *RegisterAiidentificationGoodsdigitalfingerprintRequest) (_result *RegisterAiidentificationGoodsdigitalfingerprintResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41530,10 +46756,11 @@ func (client *Client) RegisterAiidentificationGoodsdigitalfingerprint(request *R
 	return _result, _err
 }
 
-/**
- * Description: AI商品数字指纹注册
- * Summary: AI数字指纹注册
- */
+// Description:
+//
+// Description: AI商品数字指纹注册
+//
+// Summary: AI数字指纹注册
 func (client *Client) RegisterAiidentificationGoodsdigitalfingerprintEx(request *RegisterAiidentificationGoodsdigitalfingerprintRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterAiidentificationGoodsdigitalfingerprintResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41548,10 +46775,11 @@ func (client *Client) RegisterAiidentificationGoodsdigitalfingerprintEx(request 
 	return _result, _err
 }
 
-/**
- * Description: AI商品数字指纹鉴定
- * Summary: AI商品数字指纹鉴定
- */
+// Description:
+//
+// Description: AI商品数字指纹鉴定
+//
+// Summary: AI商品数字指纹鉴定
 func (client *Client) CheckAiidentificationGoodsdigitalfingerprint(request *CheckAiidentificationGoodsdigitalfingerprintRequest) (_result *CheckAiidentificationGoodsdigitalfingerprintResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41564,10 +46792,11 @@ func (client *Client) CheckAiidentificationGoodsdigitalfingerprint(request *Chec
 	return _result, _err
 }
 
-/**
- * Description: AI商品数字指纹鉴定
- * Summary: AI商品数字指纹鉴定
- */
+// Description:
+//
+// Description: AI商品数字指纹鉴定
+//
+// Summary: AI商品数字指纹鉴定
 func (client *Client) CheckAiidentificationGoodsdigitalfingerprintEx(request *CheckAiidentificationGoodsdigitalfingerprintRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckAiidentificationGoodsdigitalfingerprintResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41582,10 +46811,11 @@ func (client *Client) CheckAiidentificationGoodsdigitalfingerprintEx(request *Ch
 	return _result, _err
 }
 
-/**
- * Description: 识别票据上的二维码
- * Summary: AI二维码识别
- */
+// Description:
+//
+// Description: 识别票据上的二维码
+//
+// Summary: AI二维码识别
 func (client *Client) GetAiidentificationQrcode(request *GetAiidentificationQrcodeRequest) (_result *GetAiidentificationQrcodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41598,10 +46828,11 @@ func (client *Client) GetAiidentificationQrcode(request *GetAiidentificationQrco
 	return _result, _err
 }
 
-/**
- * Description: 识别票据上的二维码
- * Summary: AI二维码识别
- */
+// Description:
+//
+// Description: 识别票据上的二维码
+//
+// Summary: AI二维码识别
 func (client *Client) GetAiidentificationQrcodeEx(request *GetAiidentificationQrcodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAiidentificationQrcodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41616,10 +46847,11 @@ func (client *Client) GetAiidentificationQrcodeEx(request *GetAiidentificationQr
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式对话接口
- * Summary: 智能体流式对话接口
- */
+// Description:
+//
+// Description: 智能体流式对话接口
+//
+// Summary: 智能体流式对话接口
 func (client *Client) StartAgentChat(request *StartAgentChatRequest) (_result *StartAgentChatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41632,10 +46864,11 @@ func (client *Client) StartAgentChat(request *StartAgentChatRequest) (_result *S
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式对话接口
- * Summary: 智能体流式对话接口
- */
+// Description:
+//
+// Description: 智能体流式对话接口
+//
+// Summary: 智能体流式对话接口
 func (client *Client) StartAgentChatEx(request *StartAgentChatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAgentChatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41650,10 +46883,11 @@ func (client *Client) StartAgentChatEx(request *StartAgentChatRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: mcp token生成
- * Summary: mcp token生成
- */
+// Description:
+//
+// Description: mcp token生成
+//
+// Summary: mcp token生成
 func (client *Client) GenerateMcpToken(request *GenerateMcpTokenRequest) (_result *GenerateMcpTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41666,10 +46900,11 @@ func (client *Client) GenerateMcpToken(request *GenerateMcpTokenRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: mcp token生成
- * Summary: mcp token生成
- */
+// Description:
+//
+// Description: mcp token生成
+//
+// Summary: mcp token生成
 func (client *Client) GenerateMcpTokenEx(request *GenerateMcpTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateMcpTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41684,10 +46919,191 @@ func (client *Client) GenerateMcpTokenEx(request *GenerateMcpTokenRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: biot 私有化 设备注册接口
- * Summary: biot 私有化 设备注册接口
- */
+// Description:
+//
+// Description: 获取智能体信息
+//
+// Summary: 获取智能体信息
+func (client *Client) QueryIoaAgent(request *QueryIoaAgentRequest) (_result *QueryIoaAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIoaAgentResponse{}
+	_body, _err := client.QueryIoaAgentEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 获取智能体信息
+//
+// Summary: 获取智能体信息
+func (client *Client) QueryIoaAgentEx(request *QueryIoaAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIoaAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIoaAgentResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.ioa.agent.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 更新智能体信息
+//
+// Summary: 更新智能体信息
+func (client *Client) SaveIoaAgent(request *SaveIoaAgentRequest) (_result *SaveIoaAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveIoaAgentResponse{}
+	_body, _err := client.SaveIoaAgentEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 更新智能体信息
+//
+// Summary: 更新智能体信息
+func (client *Client) SaveIoaAgentEx(request *SaveIoaAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveIoaAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &SaveIoaAgentResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.ioa.agent.save"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询用户可选的模板列表详情
+//
+// Summary: 查询用户可选的模板列表详情
+func (client *Client) QueryIoaTemplates(request *QueryIoaTemplatesRequest) (_result *QueryIoaTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIoaTemplatesResponse{}
+	_body, _err := client.QueryIoaTemplatesEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询用户可选的模板列表详情
+//
+// Summary: 查询用户可选的模板列表详情
+func (client *Client) QueryIoaTemplatesEx(request *QueryIoaTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIoaTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIoaTemplatesResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.ioa.templates.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询聊天记录
+//
+// Summary: 查询聊天记录
+func (client *Client) QueryAgentchatHistory(request *QueryAgentchatHistoryRequest) (_result *QueryAgentchatHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAgentchatHistoryResponse{}
+	_body, _err := client.QueryAgentchatHistoryEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询聊天记录
+//
+// Summary: 查询聊天记录
+func (client *Client) QueryAgentchatHistoryEx(request *QueryAgentchatHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAgentchatHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryAgentchatHistoryResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.agentchat.history.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询 Session 列表
+//
+// Summary: 查询 Session 列表
+func (client *Client) QueryAgentSessions(request *QueryAgentSessionsRequest) (_result *QueryAgentSessionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAgentSessionsResponse{}
+	_body, _err := client.QueryAgentSessionsEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询 Session 列表
+//
+// Summary: 查询 Session 列表
+func (client *Client) QueryAgentSessionsEx(request *QueryAgentSessionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAgentSessionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryAgentSessionsResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.agent.sessions.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: biot 私有化 设备注册接口
+//
+// Summary: biot 私有化 设备注册接口
 func (client *Client) CreateAcsDevice(request *CreateAcsDeviceRequest) (_result *CreateAcsDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41700,10 +47116,11 @@ func (client *Client) CreateAcsDevice(request *CreateAcsDeviceRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: biot 私有化 设备注册接口
- * Summary: biot 私有化 设备注册接口
- */
+// Description:
+//
+// Description: biot 私有化 设备注册接口
+//
+// Summary: biot 私有化 设备注册接口
 func (client *Client) CreateAcsDeviceEx(request *CreateAcsDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAcsDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41718,10 +47135,11 @@ func (client *Client) CreateAcsDeviceEx(request *CreateAcsDeviceRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: biot 私有化 业务数据上报
- * Summary: biot 私有化 业务数据上报
- */
+// Description:
+//
+// Description: biot 私有化 业务数据上报
+//
+// Summary: biot 私有化 业务数据上报
 func (client *Client) SendAcsCollector(request *SendAcsCollectorRequest) (_result *SendAcsCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41734,10 +47152,11 @@ func (client *Client) SendAcsCollector(request *SendAcsCollectorRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: biot 私有化 业务数据上报
- * Summary: biot 私有化 业务数据上报
- */
+// Description:
+//
+// Description: biot 私有化 业务数据上报
+//
+// Summary: biot 私有化 业务数据上报
 func (client *Client) SendAcsCollectorEx(request *SendAcsCollectorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendAcsCollectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41752,10 +47171,11 @@ func (client *Client) SendAcsCollectorEx(request *SendAcsCollectorRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 提供设备基础信息查询服务
- * Summary: IoT设备平台-设备查询
- */
+// Description:
+//
+// Description: 提供设备基础信息查询服务
+//
+// Summary: IoT设备平台-设备查询
 func (client *Client) QueryIotbasicDevice(request *QueryIotbasicDeviceRequest) (_result *QueryIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41768,10 +47188,11 @@ func (client *Client) QueryIotbasicDevice(request *QueryIotbasicDeviceRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 提供设备基础信息查询服务
- * Summary: IoT设备平台-设备查询
- */
+// Description:
+//
+// Description: 提供设备基础信息查询服务
+//
+// Summary: IoT设备平台-设备查询
 func (client *Client) QueryIotbasicDeviceEx(request *QueryIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41786,10 +47207,11 @@ func (client *Client) QueryIotbasicDeviceEx(request *QueryIotbasicDeviceRequest,
 	return _result, _err
 }
 
-/**
- * Description: IoT产品开通状态查询
- * Summary: IoT产品开通状态查询
- */
+// Description:
+//
+// Description: IoT产品开通状态查询
+//
+// Summary: IoT产品开通状态查询
 func (client *Client) RecognizeIotbasicCustomer(request *RecognizeIotbasicCustomerRequest) (_result *RecognizeIotbasicCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41802,10 +47224,11 @@ func (client *Client) RecognizeIotbasicCustomer(request *RecognizeIotbasicCustom
 	return _result, _err
 }
 
-/**
- * Description: IoT产品开通状态查询
- * Summary: IoT产品开通状态查询
- */
+// Description:
+//
+// Description: IoT产品开通状态查询
+//
+// Summary: IoT产品开通状态查询
 func (client *Client) RecognizeIotbasicCustomerEx(request *RecognizeIotbasicCustomerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecognizeIotbasicCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41820,10 +47243,11 @@ func (client *Client) RecognizeIotbasicCustomerEx(request *RecognizeIotbasicCust
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备认证
- * Summary: IoT设备平台-设备认证
- */
+// Description:
+//
+// Description: IoT设备平台-设备认证
+//
+// Summary: IoT设备平台-设备认证
 func (client *Client) CertifyIotbasicDevice(request *CertifyIotbasicDeviceRequest) (_result *CertifyIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41836,10 +47260,11 @@ func (client *Client) CertifyIotbasicDevice(request *CertifyIotbasicDeviceReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备认证
- * Summary: IoT设备平台-设备认证
- */
+// Description:
+//
+// Description: IoT设备平台-设备认证
+//
+// Summary: IoT设备平台-设备认证
 func (client *Client) CertifyIotbasicDeviceEx(request *CertifyIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CertifyIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41854,10 +47279,11 @@ func (client *Client) CertifyIotbasicDeviceEx(request *CertifyIotbasicDeviceRequ
 	return _result, _err
 }
 
-/**
- * Description: iot平台用户注册操作，新增用户，删除用户，绑定角色等操作
- * Summary: iot平台用户注册操作
- */
+// Description:
+//
+// Description: iot平台用户注册操作，新增用户，删除用户，绑定角色等操作
+//
+// Summary: iot平台用户注册操作
 func (client *Client) OperateIotbasicUser(request *OperateIotbasicUserRequest) (_result *OperateIotbasicUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41870,10 +47296,11 @@ func (client *Client) OperateIotbasicUser(request *OperateIotbasicUserRequest) (
 	return _result, _err
 }
 
-/**
- * Description: iot平台用户注册操作，新增用户，删除用户，绑定角色等操作
- * Summary: iot平台用户注册操作
- */
+// Description:
+//
+// Description: iot平台用户注册操作，新增用户，删除用户，绑定角色等操作
+//
+// Summary: iot平台用户注册操作
 func (client *Client) OperateIotbasicUserEx(request *OperateIotbasicUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41888,10 +47315,11 @@ func (client *Client) OperateIotbasicUserEx(request *OperateIotbasicUserRequest,
 	return _result, _err
 }
 
-/**
- * Description: iot 平台权限操作
- * Summary: iot 平台权限操作
- */
+// Description:
+//
+// Description: iot 平台权限操作
+//
+// Summary: iot 平台权限操作
 func (client *Client) OperateIotbasicPermission(request *OperateIotbasicPermissionRequest) (_result *OperateIotbasicPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41904,10 +47332,11 @@ func (client *Client) OperateIotbasicPermission(request *OperateIotbasicPermissi
 	return _result, _err
 }
 
-/**
- * Description: iot 平台权限操作
- * Summary: iot 平台权限操作
- */
+// Description:
+//
+// Description: iot 平台权限操作
+//
+// Summary: iot 平台权限操作
 func (client *Client) OperateIotbasicPermissionEx(request *OperateIotbasicPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41922,10 +47351,11 @@ func (client *Client) OperateIotbasicPermissionEx(request *OperateIotbasicPermis
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备sn列表查询
- * Summary: IoT设备平台-设备sn列表查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备sn列表查询
+//
+// Summary: IoT设备平台-设备sn列表查询
 func (client *Client) QueryIotbasicSn(request *QueryIotbasicSnRequest) (_result *QueryIotbasicSnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41938,10 +47368,11 @@ func (client *Client) QueryIotbasicSn(request *QueryIotbasicSnRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备sn列表查询
- * Summary: IoT设备平台-设备sn列表查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备sn列表查询
+//
+// Summary: IoT设备平台-设备sn列表查询
 func (client *Client) QueryIotbasicSnEx(request *QueryIotbasicSnRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicSnResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41956,10 +47387,11 @@ func (client *Client) QueryIotbasicSnEx(request *QueryIotbasicSnRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备规格查询
- * Summary: IoT设备平台-设备规格查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备规格查询
+//
+// Summary: IoT设备平台-设备规格查询
 func (client *Client) QueryDeviceSpecs(request *QueryDeviceSpecsRequest) (_result *QueryDeviceSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -41972,10 +47404,11 @@ func (client *Client) QueryDeviceSpecs(request *QueryDeviceSpecsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备规格查询
- * Summary: IoT设备平台-设备规格查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备规格查询
+//
+// Summary: IoT设备平台-设备规格查询
 func (client *Client) QueryDeviceSpecsEx(request *QueryDeviceSpecsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41990,10 +47423,11 @@ func (client *Client) QueryDeviceSpecsEx(request *QueryDeviceSpecsRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备规格关系维护
- * Summary: IoT设备平台-设备规格关系维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备规格关系维护
+//
+// Summary: IoT设备平台-设备规格关系维护
 func (client *Client) OperateIotbasicRelration(request *OperateIotbasicRelrationRequest) (_result *OperateIotbasicRelrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42006,10 +47440,11 @@ func (client *Client) OperateIotbasicRelration(request *OperateIotbasicRelration
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备规格关系维护
- * Summary: IoT设备平台-设备规格关系维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备规格关系维护
+//
+// Summary: IoT设备平台-设备规格关系维护
 func (client *Client) OperateIotbasicRelrationEx(request *OperateIotbasicRelrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicRelrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42024,10 +47459,11 @@ func (client *Client) OperateIotbasicRelrationEx(request *OperateIotbasicRelrati
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备字典数据维护
- * Summary: IoT设备平台-设备字典数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备字典数据维护
+//
+// Summary: IoT设备平台-设备字典数据维护
 func (client *Client) OperateIotbasicDictionary(request *OperateIotbasicDictionaryRequest) (_result *OperateIotbasicDictionaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42040,10 +47476,11 @@ func (client *Client) OperateIotbasicDictionary(request *OperateIotbasicDictiona
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备字典数据维护
- * Summary: IoT设备平台-设备字典数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备字典数据维护
+//
+// Summary: IoT设备平台-设备字典数据维护
 func (client *Client) OperateIotbasicDictionaryEx(request *OperateIotbasicDictionaryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicDictionaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42058,10 +47495,11 @@ func (client *Client) OperateIotbasicDictionaryEx(request *OperateIotbasicDictio
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备品类数据维护
- * Summary: IoT设备平台-设备品类数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备品类数据维护
+//
+// Summary: IoT设备平台-设备品类数据维护
 func (client *Client) OperateIotbasicCategory(request *OperateIotbasicCategoryRequest) (_result *OperateIotbasicCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42074,10 +47512,11 @@ func (client *Client) OperateIotbasicCategory(request *OperateIotbasicCategoryRe
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备品类数据维护
- * Summary: IoT设备平台-设备品类数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备品类数据维护
+//
+// Summary: IoT设备平台-设备品类数据维护
 func (client *Client) OperateIotbasicCategoryEx(request *OperateIotbasicCategoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42092,10 +47531,11 @@ func (client *Client) OperateIotbasicCategoryEx(request *OperateIotbasicCategory
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备管控配置维护
- * Summary: IoT设备平台-设备管控配置维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备管控配置维护
+//
+// Summary: IoT设备平台-设备管控配置维护
 func (client *Client) OperateIotbasicControlconfig(request *OperateIotbasicControlconfigRequest) (_result *OperateIotbasicControlconfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42108,10 +47548,11 @@ func (client *Client) OperateIotbasicControlconfig(request *OperateIotbasicContr
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备管控配置维护
- * Summary: IoT设备平台-设备管控配置维护
- */
+// Description:
+//
+// Description: IoT设备平台-设备管控配置维护
+//
+// Summary: IoT设备平台-设备管控配置维护
 func (client *Client) OperateIotbasicControlconfigEx(request *OperateIotbasicControlconfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicControlconfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42126,10 +47567,11 @@ func (client *Client) OperateIotbasicControlconfigEx(request *OperateIotbasicCon
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-上链业务模型配置维护
- * Summary: IoT设备平台-上链业务模型配置维护
- */
+// Description:
+//
+// Description: IoT设备平台-上链业务模型配置维护
+//
+// Summary: IoT设备平台-上链业务模型配置维护
 func (client *Client) OperateIotbasicChainmodel(request *OperateIotbasicChainmodelRequest) (_result *OperateIotbasicChainmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42142,10 +47584,11 @@ func (client *Client) OperateIotbasicChainmodel(request *OperateIotbasicChainmod
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-上链业务模型配置维护
- * Summary: IoT设备平台-上链业务模型配置维护
- */
+// Description:
+//
+// Description: IoT设备平台-上链业务模型配置维护
+//
+// Summary: IoT设备平台-上链业务模型配置维护
 func (client *Client) OperateIotbasicChainmodelEx(request *OperateIotbasicChainmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicChainmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42160,10 +47603,11 @@ func (client *Client) OperateIotbasicChainmodelEx(request *OperateIotbasicChainm
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备不可操作标记更新
- * Summary: IoT设备平台-设备不可操作标记更新
- */
+// Description:
+//
+// Description: IoT设备平台-设备不可操作标记更新
+//
+// Summary: IoT设备平台-设备不可操作标记更新
 func (client *Client) OperateIotbasicDevice(request *OperateIotbasicDeviceRequest) (_result *OperateIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42176,10 +47620,11 @@ func (client *Client) OperateIotbasicDevice(request *OperateIotbasicDeviceReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备不可操作标记更新
- * Summary: IoT设备平台-设备不可操作标记更新
- */
+// Description:
+//
+// Description: IoT设备平台-设备不可操作标记更新
+//
+// Summary: IoT设备平台-设备不可操作标记更新
 func (client *Client) OperateIotbasicDeviceEx(request *OperateIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42194,10 +47639,11 @@ func (client *Client) OperateIotbasicDeviceEx(request *OperateIotbasicDeviceRequ
 	return _result, _err
 }
 
-/**
- * Description: biot设备注册-创建设备
- * Summary: biot设备注册-创建设备
- */
+// Description:
+//
+// Description: biot设备注册-创建设备
+//
+// Summary: biot设备注册-创建设备
 func (client *Client) CreateIotbasicDevice(request *CreateIotbasicDeviceRequest) (_result *CreateIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42210,10 +47656,11 @@ func (client *Client) CreateIotbasicDevice(request *CreateIotbasicDeviceRequest)
 	return _result, _err
 }
 
-/**
- * Description: biot设备注册-创建设备
- * Summary: biot设备注册-创建设备
- */
+// Description:
+//
+// Description: biot设备注册-创建设备
+//
+// Summary: biot设备注册-创建设备
 func (client *Client) CreateIotbasicDeviceEx(request *CreateIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42228,10 +47675,11 @@ func (client *Client) CreateIotbasicDeviceEx(request *CreateIotbasicDeviceReques
 	return _result, _err
 }
 
-/**
- * Description: biot设备注册-批量创建设备
- * Summary: biot设备注册-批量创建设备
- */
+// Description:
+//
+// Description: biot设备注册-批量创建设备
+//
+// Summary: biot设备注册-批量创建设备
 func (client *Client) BatchcreateIotbasicDevice(request *BatchcreateIotbasicDeviceRequest) (_result *BatchcreateIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42244,10 +47692,11 @@ func (client *Client) BatchcreateIotbasicDevice(request *BatchcreateIotbasicDevi
 	return _result, _err
 }
 
-/**
- * Description: biot设备注册-批量创建设备
- * Summary: biot设备注册-批量创建设备
- */
+// Description:
+//
+// Description: biot设备注册-批量创建设备
+//
+// Summary: biot设备注册-批量创建设备
 func (client *Client) BatchcreateIotbasicDeviceEx(request *BatchcreateIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchcreateIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42262,10 +47711,11 @@ func (client *Client) BatchcreateIotbasicDeviceEx(request *BatchcreateIotbasicDe
 	return _result, _err
 }
 
-/**
- * Description: biot设备状态同步
- * Summary: iot平台-设备状态同步
- */
+// Description:
+//
+// Description: biot设备状态同步
+//
+// Summary: iot平台-设备状态同步
 func (client *Client) SyncIotbasicDevicestatus(request *SyncIotbasicDevicestatusRequest) (_result *SyncIotbasicDevicestatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42278,10 +47728,11 @@ func (client *Client) SyncIotbasicDevicestatus(request *SyncIotbasicDevicestatus
 	return _result, _err
 }
 
-/**
- * Description: biot设备状态同步
- * Summary: iot平台-设备状态同步
- */
+// Description:
+//
+// Description: biot设备状态同步
+//
+// Summary: iot平台-设备状态同步
 func (client *Client) SyncIotbasicDevicestatusEx(request *SyncIotbasicDevicestatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncIotbasicDevicestatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42296,10 +47747,11 @@ func (client *Client) SyncIotbasicDevicestatusEx(request *SyncIotbasicDevicestat
 	return _result, _err
 }
 
-/**
- * Description: biot设备-安全认证
- * Summary: biot设备-安全认证
- */
+// Description:
+//
+// Description: biot设备-安全认证
+//
+// Summary: biot设备-安全认证
 func (client *Client) VerifyIotbasicIdentify(request *VerifyIotbasicIdentifyRequest) (_result *VerifyIotbasicIdentifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42312,10 +47764,11 @@ func (client *Client) VerifyIotbasicIdentify(request *VerifyIotbasicIdentifyRequ
 	return _result, _err
 }
 
-/**
- * Description: biot设备-安全认证
- * Summary: biot设备-安全认证
- */
+// Description:
+//
+// Description: biot设备-安全认证
+//
+// Summary: biot设备-安全认证
 func (client *Client) VerifyIotbasicIdentifyEx(request *VerifyIotbasicIdentifyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VerifyIotbasicIdentifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42330,10 +47783,11 @@ func (client *Client) VerifyIotbasicIdentifyEx(request *VerifyIotbasicIdentifyRe
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-更新设备信息
- * Summary: IoT设备平台-更新设备信息
- */
+// Description:
+//
+// Description: IoT设备平台-更新设备信息
+//
+// Summary: IoT设备平台-更新设备信息
 func (client *Client) UpdateIotbasicDevice(request *UpdateIotbasicDeviceRequest) (_result *UpdateIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42346,10 +47800,11 @@ func (client *Client) UpdateIotbasicDevice(request *UpdateIotbasicDeviceRequest)
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-更新设备信息
- * Summary: IoT设备平台-更新设备信息
- */
+// Description:
+//
+// Description: IoT设备平台-更新设备信息
+//
+// Summary: IoT设备平台-更新设备信息
 func (client *Client) UpdateIotbasicDeviceEx(request *UpdateIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42364,10 +47819,11 @@ func (client *Client) UpdateIotbasicDeviceEx(request *UpdateIotbasicDeviceReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备上链
- * Summary: IoT设备平台-设备上链
- */
+// Description:
+//
+// Description: IoT设备平台-设备上链
+//
+// Summary: IoT设备平台-设备上链
 func (client *Client) OperateIotbasicDevicecollect(request *OperateIotbasicDevicecollectRequest) (_result *OperateIotbasicDevicecollectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42380,10 +47836,11 @@ func (client *Client) OperateIotbasicDevicecollect(request *OperateIotbasicDevic
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备上链
- * Summary: IoT设备平台-设备上链
- */
+// Description:
+//
+// Description: IoT设备平台-设备上链
+//
+// Summary: IoT设备平台-设备上链
 func (client *Client) OperateIotbasicDevicecollectEx(request *OperateIotbasicDevicecollectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicDevicecollectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42398,10 +47855,11 @@ func (client *Client) OperateIotbasicDevicecollectEx(request *OperateIotbasicDev
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-项目空间数据维护
- * Summary: IoT设备平台-项目空间数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-项目空间数据维护
+//
+// Summary: IoT设备平台-项目空间数据维护
 func (client *Client) OperateIotbasicProjectspace(request *OperateIotbasicProjectspaceRequest) (_result *OperateIotbasicProjectspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42414,10 +47872,11 @@ func (client *Client) OperateIotbasicProjectspace(request *OperateIotbasicProjec
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-项目空间数据维护
- * Summary: IoT设备平台-项目空间数据维护
- */
+// Description:
+//
+// Description: IoT设备平台-项目空间数据维护
+//
+// Summary: IoT设备平台-项目空间数据维护
 func (client *Client) OperateIotbasicProjectspaceEx(request *OperateIotbasicProjectspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicProjectspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42432,10 +47891,11 @@ func (client *Client) OperateIotbasicProjectspaceEx(request *OperateIotbasicProj
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-企业信息同步(个人房东)
- * Summary: 租房saas-企业信息同步(个人房东)
- */
+// Description:
+//
+// Description: 租房saas-企业信息同步(个人房东)
+//
+// Summary: 租房saas-企业信息同步(个人房东)
 func (client *Client) PushRentMerchant(request *PushRentMerchantRequest) (_result *PushRentMerchantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42448,10 +47908,11 @@ func (client *Client) PushRentMerchant(request *PushRentMerchantRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-企业信息同步(个人房东)
- * Summary: 租房saas-企业信息同步(个人房东)
- */
+// Description:
+//
+// Description: 租房saas-企业信息同步(个人房东)
+//
+// Summary: 租房saas-企业信息同步(个人房东)
 func (client *Client) PushRentMerchantEx(request *PushRentMerchantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushRentMerchantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42466,10 +47927,11 @@ func (client *Client) PushRentMerchantEx(request *PushRentMerchantRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-业主账单信息同步
- * Summary: 租房saas-业主账单信息同步
- */
+// Description:
+//
+// Description: 租房saas-业主账单信息同步
+//
+// Summary: 租房saas-业主账单信息同步
 func (client *Client) PushRentBill(request *PushRentBillRequest) (_result *PushRentBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42482,10 +47944,11 @@ func (client *Client) PushRentBill(request *PushRentBillRequest) (_result *PushR
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-业主账单信息同步
- * Summary: 租房saas-业主账单信息同步
- */
+// Description:
+//
+// Description: 租房saas-业主账单信息同步
+//
+// Summary: 租房saas-业主账单信息同步
 func (client *Client) PushRentBillEx(request *PushRentBillRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushRentBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42500,10 +47963,11 @@ func (client *Client) PushRentBillEx(request *PushRentBillRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-租客入住信息同步
- * Summary: 租房saas-租客入住信息同步
- */
+// Description:
+//
+// Description: 租房saas-租客入住信息同步
+//
+// Summary: 租房saas-租客入住信息同步
 func (client *Client) PushRentRenter(request *PushRentRenterRequest) (_result *PushRentRenterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42516,10 +47980,11 @@ func (client *Client) PushRentRenter(request *PushRentRenterRequest) (_result *P
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-租客入住信息同步
- * Summary: 租房saas-租客入住信息同步
- */
+// Description:
+//
+// Description: 租房saas-租客入住信息同步
+//
+// Summary: 租房saas-租客入住信息同步
 func (client *Client) PushRentRenterEx(request *PushRentRenterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushRentRenterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42534,10 +47999,11 @@ func (client *Client) PushRentRenterEx(request *PushRentRenterRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-租金缴纳支付状态通知
- * Summary: 租房saas-租金缴纳支付状态通知
- */
+// Description:
+//
+// Description: 租房saas-租金缴纳支付状态通知
+//
+// Summary: 租房saas-租金缴纳支付状态通知
 func (client *Client) SyncRentRentpayment(request *SyncRentRentpaymentRequest) (_result *SyncRentRentpaymentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42550,10 +48016,11 @@ func (client *Client) SyncRentRentpayment(request *SyncRentRentpaymentRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-租金缴纳支付状态通知
- * Summary: 租房saas-租金缴纳支付状态通知
- */
+// Description:
+//
+// Description: 租房saas-租金缴纳支付状态通知
+//
+// Summary: 租房saas-租金缴纳支付状态通知
 func (client *Client) SyncRentRentpaymentEx(request *SyncRentRentpaymentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncRentRentpaymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42568,10 +48035,11 @@ func (client *Client) SyncRentRentpaymentEx(request *SyncRentRentpaymentRequest,
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-房源信息同步
- * Summary: 租房saas-房源信息同步
- */
+// Description:
+//
+// Description: 租房saas-房源信息同步
+//
+// Summary: 租房saas-房源信息同步
 func (client *Client) PushRentHouse(request *PushRentHouseRequest) (_result *PushRentHouseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42584,10 +48052,11 @@ func (client *Client) PushRentHouse(request *PushRentHouseRequest) (_result *Pus
 	return _result, _err
 }
 
-/**
- * Description: 租房saas-房源信息同步
- * Summary: 租房saas-房源信息同步
- */
+// Description:
+//
+// Description: 租房saas-房源信息同步
+//
+// Summary: 租房saas-房源信息同步
 func (client *Client) PushRentHouseEx(request *PushRentHouseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushRentHouseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42602,10 +48071,11 @@ func (client *Client) PushRentHouseEx(request *PushRentHouseRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-生成设备认证密钥
- * Summary: IoT设备平台-生成设备认证密钥
- */
+// Description:
+//
+// Description: IoT设备平台-生成设备认证密钥
+//
+// Summary: IoT设备平台-生成设备认证密钥
 func (client *Client) SyncIotbasicDevicegenerate(request *SyncIotbasicDevicegenerateRequest) (_result *SyncIotbasicDevicegenerateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42618,10 +48088,11 @@ func (client *Client) SyncIotbasicDevicegenerate(request *SyncIotbasicDevicegene
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-生成设备认证密钥
- * Summary: IoT设备平台-生成设备认证密钥
- */
+// Description:
+//
+// Description: IoT设备平台-生成设备认证密钥
+//
+// Summary: IoT设备平台-生成设备认证密钥
 func (client *Client) SyncIotbasicDevicegenerateEx(request *SyncIotbasicDevicegenerateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncIotbasicDevicegenerateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42636,10 +48107,11 @@ func (client *Client) SyncIotbasicDevicegenerateEx(request *SyncIotbasicDevicege
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-批量数据上链
- * Summary: IoT设备平台-批量数据上链
- */
+// Description:
+//
+// Description: IoT设备平台-批量数据上链
+//
+// Summary: IoT设备平台-批量数据上链
 func (client *Client) OperateIotbasicBatchcollect(request *OperateIotbasicBatchcollectRequest) (_result *OperateIotbasicBatchcollectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42652,10 +48124,11 @@ func (client *Client) OperateIotbasicBatchcollect(request *OperateIotbasicBatchc
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-批量数据上链
- * Summary: IoT设备平台-批量数据上链
- */
+// Description:
+//
+// Description: IoT设备平台-批量数据上链
+//
+// Summary: IoT设备平台-批量数据上链
 func (client *Client) OperateIotbasicBatchcollectEx(request *OperateIotbasicBatchcollectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicBatchcollectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42670,10 +48143,11 @@ func (client *Client) OperateIotbasicBatchcollectEx(request *OperateIotbasicBatc
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备订单导入
- * Summary: IoT设备平台-设备订单导入
- */
+// Description:
+//
+// Description: IoT设备平台-设备订单导入
+//
+// Summary: IoT设备平台-设备订单导入
 func (client *Client) ImportIotbasicDeviceorder(request *ImportIotbasicDeviceorderRequest) (_result *ImportIotbasicDeviceorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42686,10 +48160,11 @@ func (client *Client) ImportIotbasicDeviceorder(request *ImportIotbasicDeviceord
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备订单导入
- * Summary: IoT设备平台-设备订单导入
- */
+// Description:
+//
+// Description: IoT设备平台-设备订单导入
+//
+// Summary: IoT设备平台-设备订单导入
 func (client *Client) ImportIotbasicDeviceorderEx(request *ImportIotbasicDeviceorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportIotbasicDeviceorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42704,10 +48179,11 @@ func (client *Client) ImportIotbasicDeviceorderEx(request *ImportIotbasicDeviceo
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-订单批量同步
- * Summary: IoT设备平台-订单批量同步
- */
+// Description:
+//
+// Description: IoT设备平台-订单批量同步
+//
+// Summary: IoT设备平台-订单批量同步
 func (client *Client) ImportIotbasicDeviceorderbatch(request *ImportIotbasicDeviceorderbatchRequest) (_result *ImportIotbasicDeviceorderbatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42720,10 +48196,11 @@ func (client *Client) ImportIotbasicDeviceorderbatch(request *ImportIotbasicDevi
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-订单批量同步
- * Summary: IoT设备平台-订单批量同步
- */
+// Description:
+//
+// Description: IoT设备平台-订单批量同步
+//
+// Summary: IoT设备平台-订单批量同步
 func (client *Client) ImportIotbasicDeviceorderbatchEx(request *ImportIotbasicDeviceorderbatchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportIotbasicDeviceorderbatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42738,10 +48215,11 @@ func (client *Client) ImportIotbasicDeviceorderbatchEx(request *ImportIotbasicDe
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-删除设备信息
- * Summary: IoT设备平台-删除设备信息
- */
+// Description:
+//
+// Description: IoT设备平台-删除设备信息
+//
+// Summary: IoT设备平台-删除设备信息
 func (client *Client) DeleteIotbasicDevice(request *DeleteIotbasicDeviceRequest) (_result *DeleteIotbasicDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42754,10 +48232,11 @@ func (client *Client) DeleteIotbasicDevice(request *DeleteIotbasicDeviceRequest)
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-删除设备信息
- * Summary: IoT设备平台-删除设备信息
- */
+// Description:
+//
+// Description: IoT设备平台-删除设备信息
+//
+// Summary: IoT设备平台-删除设备信息
 func (client *Client) DeleteIotbasicDeviceEx(request *DeleteIotbasicDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIotbasicDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42772,10 +48251,11 @@ func (client *Client) DeleteIotbasicDeviceEx(request *DeleteIotbasicDeviceReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备远程管控
- * Summary: IoT设备平台-设备远程管控
- */
+// Description:
+//
+// Description: IoT设备平台-设备远程管控
+//
+// Summary: IoT设备平台-设备远程管控
 func (client *Client) OperateIotbasicDevicecontrol(request *OperateIotbasicDevicecontrolRequest) (_result *OperateIotbasicDevicecontrolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42788,10 +48268,11 @@ func (client *Client) OperateIotbasicDevicecontrol(request *OperateIotbasicDevic
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备远程管控
- * Summary: IoT设备平台-设备远程管控
- */
+// Description:
+//
+// Description: IoT设备平台-设备远程管控
+//
+// Summary: IoT设备平台-设备远程管控
 func (client *Client) OperateIotbasicDevicecontrolEx(request *OperateIotbasicDevicecontrolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicDevicecontrolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42806,10 +48287,11 @@ func (client *Client) OperateIotbasicDevicecontrolEx(request *OperateIotbasicDev
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备注册结果查询
- * Summary: IoT设备平台-设备注册结果查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备注册结果查询
+//
+// Summary: IoT设备平台-设备注册结果查询
 func (client *Client) QueryDeviceRegisterresult(request *QueryDeviceRegisterresultRequest) (_result *QueryDeviceRegisterresultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42822,10 +48304,11 @@ func (client *Client) QueryDeviceRegisterresult(request *QueryDeviceRegisterresu
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备注册结果查询
- * Summary: IoT设备平台-设备注册结果查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备注册结果查询
+//
+// Summary: IoT设备平台-设备注册结果查询
 func (client *Client) QueryDeviceRegisterresultEx(request *QueryDeviceRegisterresultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceRegisterresultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42840,10 +48323,11 @@ func (client *Client) QueryDeviceRegisterresultEx(request *QueryDeviceRegisterre
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备状态查询
- * Summary: IoT设备平台-设备状态查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备状态查询
+//
+// Summary: IoT设备平台-设备状态查询
 func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_result *QueryDeviceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42856,10 +48340,11 @@ func (client *Client) QueryDeviceStatus(request *QueryDeviceStatusRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备状态查询
- * Summary: IoT设备平台-设备状态查询
- */
+// Description:
+//
+// Description: IoT设备平台-设备状态查询
+//
+// Summary: IoT设备平台-设备状态查询
 func (client *Client) QueryDeviceStatusEx(request *QueryDeviceStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42874,10 +48359,11 @@ func (client *Client) QueryDeviceStatusEx(request *QueryDeviceStatusRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-openApi操作
- * Summary: IoT设备平台-openApi操作
- */
+// Description:
+//
+// Description: IoT设备平台-openApi操作
+//
+// Summary: IoT设备平台-openApi操作
 func (client *Client) OperateIotbasicOpenapi(request *OperateIotbasicOpenapiRequest) (_result *OperateIotbasicOpenapiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42890,10 +48376,11 @@ func (client *Client) OperateIotbasicOpenapi(request *OperateIotbasicOpenapiRequ
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-openApi操作
- * Summary: IoT设备平台-openApi操作
- */
+// Description:
+//
+// Description: IoT设备平台-openApi操作
+//
+// Summary: IoT设备平台-openApi操作
 func (client *Client) OperateIotbasicOpenapiEx(request *OperateIotbasicOpenapiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateIotbasicOpenapiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42908,10 +48395,11 @@ func (client *Client) OperateIotbasicOpenapiEx(request *OperateIotbasicOpenapiRe
 	return _result, _err
 }
 
-/**
- * Description: 上链数据分页查询
- * Summary: 上链数据分页查询
- */
+// Description:
+//
+// Description: 上链数据分页查询
+//
+// Summary: 上链数据分页查询
 func (client *Client) QueryIotbasicDevicecollect(request *QueryIotbasicDevicecollectRequest) (_result *QueryIotbasicDevicecollectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42924,10 +48412,11 @@ func (client *Client) QueryIotbasicDevicecollect(request *QueryIotbasicDevicecol
 	return _result, _err
 }
 
-/**
- * Description: 上链数据分页查询
- * Summary: 上链数据分页查询
- */
+// Description:
+//
+// Description: 上链数据分页查询
+//
+// Summary: 上链数据分页查询
 func (client *Client) QueryIotbasicDevicecollectEx(request *QueryIotbasicDevicecollectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicDevicecollectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42942,10 +48431,11 @@ func (client *Client) QueryIotbasicDevicecollectEx(request *QueryIotbasicDevicec
 	return _result, _err
 }
 
-/**
- * Description: 订单上链数据分页查询
- * Summary: 订单上链数据分页查询
- */
+// Description:
+//
+// Description: 订单上链数据分页查询
+//
+// Summary: 订单上链数据分页查询
 func (client *Client) QueryIotbasicDeviceorder(request *QueryIotbasicDeviceorderRequest) (_result *QueryIotbasicDeviceorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42958,10 +48448,11 @@ func (client *Client) QueryIotbasicDeviceorder(request *QueryIotbasicDeviceorder
 	return _result, _err
 }
 
-/**
- * Description: 订单上链数据分页查询
- * Summary: 订单上链数据分页查询
- */
+// Description:
+//
+// Description: 订单上链数据分页查询
+//
+// Summary: 订单上链数据分页查询
 func (client *Client) QueryIotbasicDeviceorderEx(request *QueryIotbasicDeviceorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicDeviceorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42976,10 +48467,11 @@ func (client *Client) QueryIotbasicDeviceorderEx(request *QueryIotbasicDeviceord
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-订单数据推送中台
- * Summary: IoT设备平台-订单数据推送中台
- */
+// Description:
+//
+// Description: IoT设备平台-订单数据推送中台
+//
+// Summary: IoT设备平台-订单数据推送中台
 func (client *Client) PushIotbasicMeterdata(request *PushIotbasicMeterdataRequest) (_result *PushIotbasicMeterdataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -42992,10 +48484,11 @@ func (client *Client) PushIotbasicMeterdata(request *PushIotbasicMeterdataReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-订单数据推送中台
- * Summary: IoT设备平台-订单数据推送中台
- */
+// Description:
+//
+// Description: IoT设备平台-订单数据推送中台
+//
+// Summary: IoT设备平台-订单数据推送中台
 func (client *Client) PushIotbasicMeterdataEx(request *PushIotbasicMeterdataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushIotbasicMeterdataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43010,10 +48503,11 @@ func (client *Client) PushIotbasicMeterdataEx(request *PushIotbasicMeterdataRequ
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-客户新增
- * Summary: IoT设备平台-中台签约客户同步
- */
+// Description:
+//
+// Description: IoT设备平台-客户新增
+//
+// Summary: IoT设备平台-中台签约客户同步
 func (client *Client) SaveIotbasicCustomer(request *SaveIotbasicCustomerRequest) (_result *SaveIotbasicCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43026,10 +48520,11 @@ func (client *Client) SaveIotbasicCustomer(request *SaveIotbasicCustomerRequest)
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-客户新增
- * Summary: IoT设备平台-中台签约客户同步
- */
+// Description:
+//
+// Description: IoT设备平台-客户新增
+//
+// Summary: IoT设备平台-中台签约客户同步
 func (client *Client) SaveIotbasicCustomerEx(request *SaveIotbasicCustomerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SaveIotbasicCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43044,10 +48539,11 @@ func (client *Client) SaveIotbasicCustomerEx(request *SaveIotbasicCustomerReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备消息同步
- * Summary: IoT设备平台-设备消息同步
- */
+// Description:
+//
+// Description: IoT设备平台-设备消息同步
+//
+// Summary: IoT设备平台-设备消息同步
 func (client *Client) NotifyThirddeviceMessage(request *NotifyThirddeviceMessageRequest) (_result *NotifyThirddeviceMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43060,10 +48556,11 @@ func (client *Client) NotifyThirddeviceMessage(request *NotifyThirddeviceMessage
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设备消息同步
- * Summary: IoT设备平台-设备消息同步
- */
+// Description:
+//
+// Description: IoT设备平台-设备消息同步
+//
+// Summary: IoT设备平台-设备消息同步
 func (client *Client) NotifyThirddeviceMessageEx(request *NotifyThirddeviceMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyThirddeviceMessageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43078,10 +48575,11 @@ func (client *Client) NotifyThirddeviceMessageEx(request *NotifyThirddeviceMessa
 	return _result, _err
 }
 
-/**
- * Description: Iotbasic-厂商入驻
- * Summary: Iotbasic-厂商入驻
- */
+// Description:
+//
+// Description: Iotbasic-厂商入驻
+//
+// Summary: Iotbasic-厂商入驻
 func (client *Client) RegisterIotbasicCorpjoin(request *RegisterIotbasicCorpjoinRequest) (_result *RegisterIotbasicCorpjoinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43094,10 +48592,11 @@ func (client *Client) RegisterIotbasicCorpjoin(request *RegisterIotbasicCorpjoin
 	return _result, _err
 }
 
-/**
- * Description: Iotbasic-厂商入驻
- * Summary: Iotbasic-厂商入驻
- */
+// Description:
+//
+// Description: Iotbasic-厂商入驻
+//
+// Summary: Iotbasic-厂商入驻
 func (client *Client) RegisterIotbasicCorpjoinEx(request *RegisterIotbasicCorpjoinRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterIotbasicCorpjoinResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43112,10 +48611,11 @@ func (client *Client) RegisterIotbasicCorpjoinEx(request *RegisterIotbasicCorpjo
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-查询设备链上资产详情
- * Summary: IoT设备平台-查询设备链上资产详情
- */
+// Description:
+//
+// Description: IoT设备平台-查询设备链上资产详情
+//
+// Summary: IoT设备平台-查询设备链上资产详情
 func (client *Client) QueryTxtransactionDevice(request *QueryTxtransactionDeviceRequest) (_result *QueryTxtransactionDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43128,10 +48628,11 @@ func (client *Client) QueryTxtransactionDevice(request *QueryTxtransactionDevice
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-查询设备链上资产详情
- * Summary: IoT设备平台-查询设备链上资产详情
- */
+// Description:
+//
+// Description: IoT设备平台-查询设备链上资产详情
+//
+// Summary: IoT设备平台-查询设备链上资产详情
 func (client *Client) QueryTxtransactionDeviceEx(request *QueryTxtransactionDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTxtransactionDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43146,10 +48647,11 @@ func (client *Client) QueryTxtransactionDeviceEx(request *QueryTxtransactionDevi
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-查询业务数据链上资产详情
- * Summary: IoT设备平台-查询业务数据链上资产详情
- */
+// Description:
+//
+// Description: IoT设备平台-查询业务数据链上资产详情
+//
+// Summary: IoT设备平台-查询业务数据链上资产详情
 func (client *Client) QueryTxtransactionChaindata(request *QueryTxtransactionChaindataRequest) (_result *QueryTxtransactionChaindataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43162,10 +48664,11 @@ func (client *Client) QueryTxtransactionChaindata(request *QueryTxtransactionCha
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-查询业务数据链上资产详情
- * Summary: IoT设备平台-查询业务数据链上资产详情
- */
+// Description:
+//
+// Description: IoT设备平台-查询业务数据链上资产详情
+//
+// Summary: IoT设备平台-查询业务数据链上资产详情
 func (client *Client) QueryTxtransactionChaindataEx(request *QueryTxtransactionChaindataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTxtransactionChaindataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43180,10 +48683,11 @@ func (client *Client) QueryTxtransactionChaindataEx(request *QueryTxtransactionC
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-生成云上认证设备认证密钥
- * Summary: IoT设备平台-生成云上认证设备认证密钥
- */
+// Description:
+//
+// Description: IoT设备平台-生成云上认证设备认证密钥
+//
+// Summary: IoT设备平台-生成云上认证设备认证密钥
 func (client *Client) InitIotbasicDevicekey(request *InitIotbasicDevicekeyRequest) (_result *InitIotbasicDevicekeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43196,10 +48700,11 @@ func (client *Client) InitIotbasicDevicekey(request *InitIotbasicDevicekeyReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-生成云上认证设备认证密钥
- * Summary: IoT设备平台-生成云上认证设备认证密钥
- */
+// Description:
+//
+// Description: IoT设备平台-生成云上认证设备认证密钥
+//
+// Summary: IoT设备平台-生成云上认证设备认证密钥
 func (client *Client) InitIotbasicDevicekeyEx(request *InitIotbasicDevicekeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InitIotbasicDevicekeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43214,10 +48719,11 @@ func (client *Client) InitIotbasicDevicekeyEx(request *InitIotbasicDevicekeyRequ
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设置设备属性
- * Summary: IoT设备平台-设置设备属性
- */
+// Description:
+//
+// Description: IoT设备平台-设置设备属性
+//
+// Summary: IoT设备平台-设置设备属性
 func (client *Client) SetDeviceProperty(request *SetDevicePropertyRequest) (_result *SetDevicePropertyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43230,10 +48736,11 @@ func (client *Client) SetDeviceProperty(request *SetDevicePropertyRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-设置设备属性
- * Summary: IoT设备平台-设置设备属性
- */
+// Description:
+//
+// Description: IoT设备平台-设置设备属性
+//
+// Summary: IoT设备平台-设置设备属性
 func (client *Client) SetDevicePropertyEx(request *SetDevicePropertyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetDevicePropertyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43248,10 +48755,11 @@ func (client *Client) SetDevicePropertyEx(request *SetDevicePropertyRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-批量设置设备属性
- * Summary: IoT设备平台-批量设置设备属性
- */
+// Description:
+//
+// Description: IoT设备平台-批量设置设备属性
+//
+// Summary: IoT设备平台-批量设置设备属性
 func (client *Client) SetDevicelistProperty(request *SetDevicelistPropertyRequest) (_result *SetDevicelistPropertyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43264,10 +48772,11 @@ func (client *Client) SetDevicelistProperty(request *SetDevicelistPropertyReques
 	return _result, _err
 }
 
-/**
- * Description: IoT设备平台-批量设置设备属性
- * Summary: IoT设备平台-批量设置设备属性
- */
+// Description:
+//
+// Description: IoT设备平台-批量设置设备属性
+//
+// Summary: IoT设备平台-批量设置设备属性
 func (client *Client) SetDevicelistPropertyEx(request *SetDevicelistPropertyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetDevicelistPropertyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43282,10 +48791,11 @@ func (client *Client) SetDevicelistPropertyEx(request *SetDevicelistPropertyRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询品类列表
- * Summary: iotbasic-查询品类列表
- */
+// Description:
+//
+// Description: iotbasic-查询品类列表
+//
+// Summary: iotbasic-查询品类列表
 func (client *Client) QueryIotbasicCategorylist(request *QueryIotbasicCategorylistRequest) (_result *QueryIotbasicCategorylistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43298,10 +48808,11 @@ func (client *Client) QueryIotbasicCategorylist(request *QueryIotbasicCategoryli
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询品类列表
- * Summary: iotbasic-查询品类列表
- */
+// Description:
+//
+// Description: iotbasic-查询品类列表
+//
+// Summary: iotbasic-查询品类列表
 func (client *Client) QueryIotbasicCategorylistEx(request *QueryIotbasicCategorylistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicCategorylistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43316,10 +48827,11 @@ func (client *Client) QueryIotbasicCategorylistEx(request *QueryIotbasicCategory
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询项目空间列表
- * Summary: iotbasic-查询项目空间列表
- */
+// Description:
+//
+// Description: iotbasic-查询项目空间列表
+//
+// Summary: iotbasic-查询项目空间列表
 func (client *Client) QueryIotbasicProjectspacelist(request *QueryIotbasicProjectspacelistRequest) (_result *QueryIotbasicProjectspacelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43332,10 +48844,11 @@ func (client *Client) QueryIotbasicProjectspacelist(request *QueryIotbasicProjec
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询项目空间列表
- * Summary: iotbasic-查询项目空间列表
- */
+// Description:
+//
+// Description: iotbasic-查询项目空间列表
+//
+// Summary: iotbasic-查询项目空间列表
 func (client *Client) QueryIotbasicProjectspacelistEx(request *QueryIotbasicProjectspacelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotbasicProjectspacelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43350,10 +48863,11 @@ func (client *Client) QueryIotbasicProjectspacelistEx(request *QueryIotbasicProj
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商入驻
- * Summary: iotbasic-设备厂商入驻
- */
+// Description:
+//
+// Description: iotbasic-设备厂商入驻
+//
+// Summary: iotbasic-设备厂商入驻
 func (client *Client) RegisterDevicecorpCustomer(request *RegisterDevicecorpCustomerRequest) (_result *RegisterDevicecorpCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43366,10 +48880,11 @@ func (client *Client) RegisterDevicecorpCustomer(request *RegisterDevicecorpCust
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商入驻
- * Summary: iotbasic-设备厂商入驻
- */
+// Description:
+//
+// Description: iotbasic-设备厂商入驻
+//
+// Summary: iotbasic-设备厂商入驻
 func (client *Client) RegisterDevicecorpCustomerEx(request *RegisterDevicecorpCustomerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterDevicecorpCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43384,10 +48899,11 @@ func (client *Client) RegisterDevicecorpCustomerEx(request *RegisterDevicecorpCu
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商产品查询
- * Summary: iotbasic-设备厂商产品查询
- */
+// Description:
+//
+// Description: iotbasic-设备厂商产品查询
+//
+// Summary: iotbasic-设备厂商产品查询
 func (client *Client) GetDevicecorpProductinfo(request *GetDevicecorpProductinfoRequest) (_result *GetDevicecorpProductinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43400,10 +48916,11 @@ func (client *Client) GetDevicecorpProductinfo(request *GetDevicecorpProductinfo
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商产品查询
- * Summary: iotbasic-设备厂商产品查询
- */
+// Description:
+//
+// Description: iotbasic-设备厂商产品查询
+//
+// Summary: iotbasic-设备厂商产品查询
 func (client *Client) GetDevicecorpProductinfoEx(request *GetDevicecorpProductinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDevicecorpProductinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43418,10 +48935,11 @@ func (client *Client) GetDevicecorpProductinfoEx(request *GetDevicecorpProductin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-添加设备厂商设备属性
- * Summary: iotbasic-添加设备厂商设备属性
- */
+// Description:
+//
+// Description: iotbasic-添加设备厂商设备属性
+//
+// Summary: iotbasic-添加设备厂商设备属性
 func (client *Client) AddDevicecorpDeviceattributes(request *AddDevicecorpDeviceattributesRequest) (_result *AddDevicecorpDeviceattributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43434,10 +48952,11 @@ func (client *Client) AddDevicecorpDeviceattributes(request *AddDevicecorpDevice
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-添加设备厂商设备属性
- * Summary: iotbasic-添加设备厂商设备属性
- */
+// Description:
+//
+// Description: iotbasic-添加设备厂商设备属性
+//
+// Summary: iotbasic-添加设备厂商设备属性
 func (client *Client) AddDevicecorpDeviceattributesEx(request *AddDevicecorpDeviceattributesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddDevicecorpDeviceattributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43452,10 +48971,11 @@ func (client *Client) AddDevicecorpDeviceattributesEx(request *AddDevicecorpDevi
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-指定设备上调用指定服务
- * Summary: iotbasic-指定设备上调用指定服务
- */
+// Description:
+//
+// Description: iotbasic-指定设备上调用指定服务
+//
+// Summary: iotbasic-指定设备上调用指定服务
 func (client *Client) ExecDeviceThingservice(request *ExecDeviceThingserviceRequest) (_result *ExecDeviceThingserviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43468,10 +48988,11 @@ func (client *Client) ExecDeviceThingservice(request *ExecDeviceThingserviceRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-指定设备上调用指定服务
- * Summary: iotbasic-指定设备上调用指定服务
- */
+// Description:
+//
+// Description: iotbasic-指定设备上调用指定服务
+//
+// Summary: iotbasic-指定设备上调用指定服务
 func (client *Client) ExecDeviceThingserviceEx(request *ExecDeviceThingserviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecDeviceThingserviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43486,10 +49007,11 @@ func (client *Client) ExecDeviceThingserviceEx(request *ExecDeviceThingserviceRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查看产品物模型功能定义
- * Summary: iotbasic-查看产品物模型功能定义
- */
+// Description:
+//
+// Description: iotbasic-查看产品物模型功能定义
+//
+// Summary: iotbasic-查看产品物模型功能定义
 func (client *Client) QueryDeviceThingmodel(request *QueryDeviceThingmodelRequest) (_result *QueryDeviceThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43502,10 +49024,11 @@ func (client *Client) QueryDeviceThingmodel(request *QueryDeviceThingmodelReques
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查看产品物模型功能定义
- * Summary: iotbasic-查看产品物模型功能定义
- */
+// Description:
+//
+// Description: iotbasic-查看产品物模型功能定义
+//
+// Summary: iotbasic-查看产品物模型功能定义
 func (client *Client) QueryDeviceThingmodelEx(request *QueryDeviceThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43520,10 +49043,11 @@ func (client *Client) QueryDeviceThingmodelEx(request *QueryDeviceThingmodelRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询设备物模型数据
- * Summary: iotbasic-查询设备物模型数据
- */
+// Description:
+//
+// Description: iotbasic-查询设备物模型数据
+//
+// Summary: iotbasic-查询设备物模型数据
 func (client *Client) QueryDeviceModeldata(request *QueryDeviceModeldataRequest) (_result *QueryDeviceModeldataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43536,10 +49060,11 @@ func (client *Client) QueryDeviceModeldata(request *QueryDeviceModeldataRequest)
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询设备物模型数据
- * Summary: iotbasic-查询设备物模型数据
- */
+// Description:
+//
+// Description: iotbasic-查询设备物模型数据
+//
+// Summary: iotbasic-查询设备物模型数据
 func (client *Client) QueryDeviceModeldataEx(request *QueryDeviceModeldataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceModeldataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43554,10 +49079,11 @@ func (client *Client) QueryDeviceModeldataEx(request *QueryDeviceModeldataReques
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商注册设备
- * Summary: iotbasic-设备厂商注册设备
- */
+// Description:
+//
+// Description: iotbasic-设备厂商注册设备
+//
+// Summary: iotbasic-设备厂商注册设备
 func (client *Client) CreateDevicecorpDevice(request *CreateDevicecorpDeviceRequest) (_result *CreateDevicecorpDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43570,10 +49096,11 @@ func (client *Client) CreateDevicecorpDevice(request *CreateDevicecorpDeviceRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商注册设备
- * Summary: iotbasic-设备厂商注册设备
- */
+// Description:
+//
+// Description: iotbasic-设备厂商注册设备
+//
+// Summary: iotbasic-设备厂商注册设备
 func (client *Client) CreateDevicecorpDeviceEx(request *CreateDevicecorpDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDevicecorpDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43588,10 +49115,11 @@ func (client *Client) CreateDevicecorpDeviceEx(request *CreateDevicecorpDeviceRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商批量注册设备
- * Summary: iotbasic-设备厂商批量注册设备
- */
+// Description:
+//
+// Description: iotbasic-设备厂商批量注册设备
+//
+// Summary: iotbasic-设备厂商批量注册设备
 func (client *Client) BatchcreateDevicecorpDevice(request *BatchcreateDevicecorpDeviceRequest) (_result *BatchcreateDevicecorpDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43604,10 +49132,11 @@ func (client *Client) BatchcreateDevicecorpDevice(request *BatchcreateDevicecorp
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商批量注册设备
- * Summary: iotbasic-设备厂商批量注册设备
- */
+// Description:
+//
+// Description: iotbasic-设备厂商批量注册设备
+//
+// Summary: iotbasic-设备厂商批量注册设备
 func (client *Client) BatchcreateDevicecorpDeviceEx(request *BatchcreateDevicecorpDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchcreateDevicecorpDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43622,10 +49151,11 @@ func (client *Client) BatchcreateDevicecorpDeviceEx(request *BatchcreateDeviceco
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询设备厂商企业注册结果
- * Summary: 查询设备厂商企业注册结果
- */
+// Description:
+//
+// Description: iotbasic-查询设备厂商企业注册结果
+//
+// Summary: 查询设备厂商企业注册结果
 func (client *Client) QueryDevicecorpCustomerregisterresult(request *QueryDevicecorpCustomerregisterresultRequest) (_result *QueryDevicecorpCustomerregisterresultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43638,10 +49168,11 @@ func (client *Client) QueryDevicecorpCustomerregisterresult(request *QueryDevice
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询设备厂商企业注册结果
- * Summary: 查询设备厂商企业注册结果
- */
+// Description:
+//
+// Description: iotbasic-查询设备厂商企业注册结果
+//
+// Summary: 查询设备厂商企业注册结果
 func (client *Client) QueryDevicecorpCustomerregisterresultEx(request *QueryDevicecorpCustomerregisterresultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDevicecorpCustomerregisterresultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43656,10 +49187,11 @@ func (client *Client) QueryDevicecorpCustomerregisterresultEx(request *QueryDevi
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-管控设备厂商设备
- * Summary: iotbasic-管控设备厂商设备
- */
+// Description:
+//
+// Description: iotbasic-管控设备厂商设备
+//
+// Summary: iotbasic-管控设备厂商设备
 func (client *Client) OperateDevicecorpDevicecontrol(request *OperateDevicecorpDevicecontrolRequest) (_result *OperateDevicecorpDevicecontrolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43672,10 +49204,11 @@ func (client *Client) OperateDevicecorpDevicecontrol(request *OperateDevicecorpD
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-管控设备厂商设备
- * Summary: iotbasic-管控设备厂商设备
- */
+// Description:
+//
+// Description: iotbasic-管控设备厂商设备
+//
+// Summary: iotbasic-管控设备厂商设备
 func (client *Client) OperateDevicecorpDevicecontrolEx(request *OperateDevicecorpDevicecontrolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OperateDevicecorpDevicecontrolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43690,10 +49223,11 @@ func (client *Client) OperateDevicecorpDevicecontrolEx(request *OperateDevicecor
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商创建物模型
- * Summary: iotbasic-设备厂商创建物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商创建物模型
+//
+// Summary: iotbasic-设备厂商创建物模型
 func (client *Client) CreateDevicecorpThingmodel(request *CreateDevicecorpThingmodelRequest) (_result *CreateDevicecorpThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43706,10 +49240,11 @@ func (client *Client) CreateDevicecorpThingmodel(request *CreateDevicecorpThingm
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商创建物模型
- * Summary: iotbasic-设备厂商创建物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商创建物模型
+//
+// Summary: iotbasic-设备厂商创建物模型
 func (client *Client) CreateDevicecorpThingmodelEx(request *CreateDevicecorpThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDevicecorpThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43724,10 +49259,11 @@ func (client *Client) CreateDevicecorpThingmodelEx(request *CreateDevicecorpThin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商修改物模型
- * Summary: iotbasic-设备厂商修改物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商修改物模型
+//
+// Summary: iotbasic-设备厂商修改物模型
 func (client *Client) UpdateDevicecorpThingmodel(request *UpdateDevicecorpThingmodelRequest) (_result *UpdateDevicecorpThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43740,10 +49276,11 @@ func (client *Client) UpdateDevicecorpThingmodel(request *UpdateDevicecorpThingm
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商修改物模型
- * Summary: iotbasic-设备厂商修改物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商修改物模型
+//
+// Summary: iotbasic-设备厂商修改物模型
 func (client *Client) UpdateDevicecorpThingmodelEx(request *UpdateDevicecorpThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDevicecorpThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43758,10 +49295,11 @@ func (client *Client) UpdateDevicecorpThingmodelEx(request *UpdateDevicecorpThin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商删除物模型
- * Summary: iotbasic-设备厂商删除物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商删除物模型
+//
+// Summary: iotbasic-设备厂商删除物模型
 func (client *Client) DeleteDevicecorpThingmodel(request *DeleteDevicecorpThingmodelRequest) (_result *DeleteDevicecorpThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43774,10 +49312,11 @@ func (client *Client) DeleteDevicecorpThingmodel(request *DeleteDevicecorpThingm
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商删除物模型
- * Summary: iotbasic-设备厂商删除物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商删除物模型
+//
+// Summary: iotbasic-设备厂商删除物模型
 func (client *Client) DeleteDevicecorpThingmodelEx(request *DeleteDevicecorpThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDevicecorpThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43792,10 +49331,11 @@ func (client *Client) DeleteDevicecorpThingmodelEx(request *DeleteDevicecorpThin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商发布物模型
- * Summary: iotbasic-设备厂商发布物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商发布物模型
+//
+// Summary: iotbasic-设备厂商发布物模型
 func (client *Client) PublishDevicecorpThingmodel(request *PublishDevicecorpThingmodelRequest) (_result *PublishDevicecorpThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43808,10 +49348,11 @@ func (client *Client) PublishDevicecorpThingmodel(request *PublishDevicecorpThin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商发布物模型
- * Summary: iotbasic-设备厂商发布物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商发布物模型
+//
+// Summary: iotbasic-设备厂商发布物模型
 func (client *Client) PublishDevicecorpThingmodelEx(request *PublishDevicecorpThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishDevicecorpThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43826,10 +49367,11 @@ func (client *Client) PublishDevicecorpThingmodelEx(request *PublishDevicecorpTh
 	return _result, _err
 }
 
-/**
- * Description: 代扣签约链接获取
- * Summary: 代扣签约链接获取
- */
+// Description:
+//
+// Description: 代扣签约链接获取
+//
+// Summary: 代扣签约链接获取
 func (client *Client) CreateDigitalkeyWithholdsign(request *CreateDigitalkeyWithholdsignRequest) (_result *CreateDigitalkeyWithholdsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43842,10 +49384,11 @@ func (client *Client) CreateDigitalkeyWithholdsign(request *CreateDigitalkeyWith
 	return _result, _err
 }
 
-/**
- * Description: 代扣签约链接获取
- * Summary: 代扣签约链接获取
- */
+// Description:
+//
+// Description: 代扣签约链接获取
+//
+// Summary: 代扣签约链接获取
 func (client *Client) CreateDigitalkeyWithholdsignEx(request *CreateDigitalkeyWithholdsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDigitalkeyWithholdsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43860,10 +49403,11 @@ func (client *Client) CreateDigitalkeyWithholdsignEx(request *CreateDigitalkeyWi
 	return _result, _err
 }
 
-/**
- * Description: 代扣签约解除
- * Summary: 代扣签约解除
- */
+// Description:
+//
+// Description: 代扣签约解除
+//
+// Summary: 代扣签约解除
 func (client *Client) UnbindDigitalkeyWithholdsign(request *UnbindDigitalkeyWithholdsignRequest) (_result *UnbindDigitalkeyWithholdsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43876,10 +49420,11 @@ func (client *Client) UnbindDigitalkeyWithholdsign(request *UnbindDigitalkeyWith
 	return _result, _err
 }
 
-/**
- * Description: 代扣签约解除
- * Summary: 代扣签约解除
- */
+// Description:
+//
+// Description: 代扣签约解除
+//
+// Summary: 代扣签约解除
 func (client *Client) UnbindDigitalkeyWithholdsignEx(request *UnbindDigitalkeyWithholdsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindDigitalkeyWithholdsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43894,10 +49439,11 @@ func (client *Client) UnbindDigitalkeyWithholdsignEx(request *UnbindDigitalkeyWi
 	return _result, _err
 }
 
-/**
- * Description: 网约车代扣支付
- * Summary: 网约车代扣支付
- */
+// Description:
+//
+// Description: 网约车代扣支付
+//
+// Summary: 网约车代扣支付
 func (client *Client) PayDigitalkeyWithhold(request *PayDigitalkeyWithholdRequest) (_result *PayDigitalkeyWithholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43910,10 +49456,11 @@ func (client *Client) PayDigitalkeyWithhold(request *PayDigitalkeyWithholdReques
 	return _result, _err
 }
 
-/**
- * Description: 网约车代扣支付
- * Summary: 网约车代扣支付
- */
+// Description:
+//
+// Description: 网约车代扣支付
+//
+// Summary: 网约车代扣支付
 func (client *Client) PayDigitalkeyWithholdEx(request *PayDigitalkeyWithholdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PayDigitalkeyWithholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43928,10 +49475,11 @@ func (client *Client) PayDigitalkeyWithholdEx(request *PayDigitalkeyWithholdRequ
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付交易退款
- * Summary: 代扣支付交易退款
- */
+// Description:
+//
+// Description: 代扣支付交易退款
+//
+// Summary: 代扣支付交易退款
 func (client *Client) RefuseDigitalkeyWithholdpay(request *RefuseDigitalkeyWithholdpayRequest) (_result *RefuseDigitalkeyWithholdpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43944,10 +49492,11 @@ func (client *Client) RefuseDigitalkeyWithholdpay(request *RefuseDigitalkeyWithh
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付交易退款
- * Summary: 代扣支付交易退款
- */
+// Description:
+//
+// Description: 代扣支付交易退款
+//
+// Summary: 代扣支付交易退款
 func (client *Client) RefuseDigitalkeyWithholdpayEx(request *RefuseDigitalkeyWithholdpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefuseDigitalkeyWithholdpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43962,10 +49511,11 @@ func (client *Client) RefuseDigitalkeyWithholdpayEx(request *RefuseDigitalkeyWit
 	return _result, _err
 }
 
-/**
- * Description: 代扣协议查询
- * Summary: 代扣协议查询
- */
+// Description:
+//
+// Description: 代扣协议查询
+//
+// Summary: 代扣协议查询
 func (client *Client) QueryDigitalkeyWithholdsign(request *QueryDigitalkeyWithholdsignRequest) (_result *QueryDigitalkeyWithholdsignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -43978,10 +49528,11 @@ func (client *Client) QueryDigitalkeyWithholdsign(request *QueryDigitalkeyWithho
 	return _result, _err
 }
 
-/**
- * Description: 代扣协议查询
- * Summary: 代扣协议查询
- */
+// Description:
+//
+// Description: 代扣协议查询
+//
+// Summary: 代扣协议查询
 func (client *Client) QueryDigitalkeyWithholdsignEx(request *QueryDigitalkeyWithholdsignRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDigitalkeyWithholdsignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43996,10 +49547,11 @@ func (client *Client) QueryDigitalkeyWithholdsignEx(request *QueryDigitalkeyWith
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付撤销
- * Summary: 代扣支付撤销
- */
+// Description:
+//
+// Description: 代扣支付撤销
+//
+// Summary: 代扣支付撤销
 func (client *Client) CancelDigitalkeyWithholdpay(request *CancelDigitalkeyWithholdpayRequest) (_result *CancelDigitalkeyWithholdpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44012,10 +49564,11 @@ func (client *Client) CancelDigitalkeyWithholdpay(request *CancelDigitalkeyWithh
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付撤销
- * Summary: 代扣支付撤销
- */
+// Description:
+//
+// Description: 代扣支付撤销
+//
+// Summary: 代扣支付撤销
 func (client *Client) CancelDigitalkeyWithholdpayEx(request *CancelDigitalkeyWithholdpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelDigitalkeyWithholdpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44030,10 +49583,11 @@ func (client *Client) CancelDigitalkeyWithholdpayEx(request *CancelDigitalkeyWit
 	return _result, _err
 }
 
-/**
- * Description: 代扣扣款前预通知
- * Summary: 代扣扣款前预通知
- */
+// Description:
+//
+// Description: 代扣扣款前预通知
+//
+// Summary: 代扣扣款前预通知
 func (client *Client) NotifyDigitalkeyWithholdpre(request *NotifyDigitalkeyWithholdpreRequest) (_result *NotifyDigitalkeyWithholdpreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44046,10 +49600,11 @@ func (client *Client) NotifyDigitalkeyWithholdpre(request *NotifyDigitalkeyWithh
 	return _result, _err
 }
 
-/**
- * Description: 代扣扣款前预通知
- * Summary: 代扣扣款前预通知
- */
+// Description:
+//
+// Description: 代扣扣款前预通知
+//
+// Summary: 代扣扣款前预通知
 func (client *Client) NotifyDigitalkeyWithholdpreEx(request *NotifyDigitalkeyWithholdpreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyDigitalkeyWithholdpreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44064,10 +49619,11 @@ func (client *Client) NotifyDigitalkeyWithholdpreEx(request *NotifyDigitalkeyWit
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询品类行业，场景列表
- * Summary: iotbasic-查询品类行业，场景列表
- */
+// Description:
+//
+// Description: iotbasic-查询品类行业，场景列表
+//
+// Summary: iotbasic-查询品类行业，场景列表
 func (client *Client) QueryCategoryIndustryscenelist(request *QueryCategoryIndustryscenelistRequest) (_result *QueryCategoryIndustryscenelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44080,10 +49636,11 @@ func (client *Client) QueryCategoryIndustryscenelist(request *QueryCategoryIndus
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询品类行业，场景列表
- * Summary: iotbasic-查询品类行业，场景列表
- */
+// Description:
+//
+// Description: iotbasic-查询品类行业，场景列表
+//
+// Summary: iotbasic-查询品类行业，场景列表
 func (client *Client) QueryCategoryIndustryscenelistEx(request *QueryCategoryIndustryscenelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCategoryIndustryscenelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44098,10 +49655,11 @@ func (client *Client) QueryCategoryIndustryscenelistEx(request *QueryCategoryInd
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建自定义品类
- * Summary: iotbasic-创建自定义品类
- */
+// Description:
+//
+// Description: iotbasic-创建自定义品类
+//
+// Summary: iotbasic-创建自定义品类
 func (client *Client) CreateCategoryCustom(request *CreateCategoryCustomRequest) (_result *CreateCategoryCustomResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44114,10 +49672,11 @@ func (client *Client) CreateCategoryCustom(request *CreateCategoryCustomRequest)
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建自定义品类
- * Summary: iotbasic-创建自定义品类
- */
+// Description:
+//
+// Description: iotbasic-创建自定义品类
+//
+// Summary: iotbasic-创建自定义品类
 func (client *Client) CreateCategoryCustomEx(request *CreateCategoryCustomRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCategoryCustomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44132,10 +49691,11 @@ func (client *Client) CreateCategoryCustomEx(request *CreateCategoryCustomReques
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备模型创建
- * Summary: iotbasic-设备模型创建
- */
+// Description:
+//
+// Description: iotbasic-设备模型创建
+//
+// Summary: iotbasic-设备模型创建
 func (client *Client) CreateDeviceModel(request *CreateDeviceModelRequest) (_result *CreateDeviceModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44148,10 +49708,11 @@ func (client *Client) CreateDeviceModel(request *CreateDeviceModelRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备模型创建
- * Summary: iotbasic-设备模型创建
- */
+// Description:
+//
+// Description: iotbasic-设备模型创建
+//
+// Summary: iotbasic-设备模型创建
 func (client *Client) CreateDeviceModelEx(request *CreateDeviceModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeviceModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44166,10 +49727,11 @@ func (client *Client) CreateDeviceModelEx(request *CreateDeviceModelRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建iot产品
- * Summary: iotbasic-创建iot产品
- */
+// Description:
+//
+// Description: iotbasic-创建iot产品
+//
+// Summary: iotbasic-创建iot产品
 func (client *Client) CreateIotbasicProduct(request *CreateIotbasicProductRequest) (_result *CreateIotbasicProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44182,10 +49744,11 @@ func (client *Client) CreateIotbasicProduct(request *CreateIotbasicProductReques
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建iot产品
- * Summary: iotbasic-创建iot产品
- */
+// Description:
+//
+// Description: iotbasic-创建iot产品
+//
+// Summary: iotbasic-创建iot产品
 func (client *Client) CreateIotbasicProductEx(request *CreateIotbasicProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIotbasicProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44200,10 +49763,11 @@ func (client *Client) CreateIotbasicProductEx(request *CreateIotbasicProductRequ
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付订单查询
- * Summary: 代扣支付订单查询
- */
+// Description:
+//
+// Description: 代扣支付订单查询
+//
+// Summary: 代扣支付订单查询
 func (client *Client) QueryDigitalkeyWithholdpay(request *QueryDigitalkeyWithholdpayRequest) (_result *QueryDigitalkeyWithholdpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44216,10 +49780,11 @@ func (client *Client) QueryDigitalkeyWithholdpay(request *QueryDigitalkeyWithhol
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付订单查询
- * Summary: 代扣支付订单查询
- */
+// Description:
+//
+// Description: 代扣支付订单查询
+//
+// Summary: 代扣支付订单查询
 func (client *Client) QueryDigitalkeyWithholdpayEx(request *QueryDigitalkeyWithholdpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDigitalkeyWithholdpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44234,10 +49799,11 @@ func (client *Client) QueryDigitalkeyWithholdpayEx(request *QueryDigitalkeyWithh
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付查询
- * Summary: 代扣支付查询
- */
+// Description:
+//
+// Description: 代扣支付查询
+//
+// Summary: 代扣支付查询
 func (client *Client) QueryDigitalkeyTradepay(request *QueryDigitalkeyTradepayRequest) (_result *QueryDigitalkeyTradepayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44250,10 +49816,11 @@ func (client *Client) QueryDigitalkeyTradepay(request *QueryDigitalkeyTradepayRe
 	return _result, _err
 }
 
-/**
- * Description: 代扣支付查询
- * Summary: 代扣支付查询
- */
+// Description:
+//
+// Description: 代扣支付查询
+//
+// Summary: 代扣支付查询
 func (client *Client) QueryDigitalkeyTradepayEx(request *QueryDigitalkeyTradepayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDigitalkeyTradepayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44268,10 +49835,11 @@ func (client *Client) QueryDigitalkeyTradepayEx(request *QueryDigitalkeyTradepay
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询数控设备信息
- * Summary: iotbasic-查询数控设备信息
- */
+// Description:
+//
+// Description: iotbasic-查询数控设备信息
+//
+// Summary: iotbasic-查询数控设备信息
 func (client *Client) GetDigitalkeyDeviceinfo(request *GetDigitalkeyDeviceinfoRequest) (_result *GetDigitalkeyDeviceinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44284,10 +49852,11 @@ func (client *Client) GetDigitalkeyDeviceinfo(request *GetDigitalkeyDeviceinfoRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-查询数控设备信息
- * Summary: iotbasic-查询数控设备信息
- */
+// Description:
+//
+// Description: iotbasic-查询数控设备信息
+//
+// Summary: iotbasic-查询数控设备信息
 func (client *Client) GetDigitalkeyDeviceinfoEx(request *GetDigitalkeyDeviceinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDigitalkeyDeviceinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44302,10 +49871,11 @@ func (client *Client) GetDigitalkeyDeviceinfoEx(request *GetDigitalkeyDeviceinfo
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-新增应用
- * Summary: iotbasic-新增应用
- */
+// Description:
+//
+// Description: iotbasic-新增应用
+//
+// Summary: iotbasic-新增应用
 func (client *Client) CreateIotlinkAppmanager(request *CreateIotlinkAppmanagerRequest) (_result *CreateIotlinkAppmanagerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44318,10 +49888,11 @@ func (client *Client) CreateIotlinkAppmanager(request *CreateIotlinkAppmanagerRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-新增应用
- * Summary: iotbasic-新增应用
- */
+// Description:
+//
+// Description: iotbasic-新增应用
+//
+// Summary: iotbasic-新增应用
 func (client *Client) CreateIotlinkAppmanagerEx(request *CreateIotlinkAppmanagerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIotlinkAppmanagerResponse, _err error) {
 	if !tea.BoolValue(util.IsUnset(request.FileObject)) {
 		uploadReq := &CreateAntcloudGatewayxFileUploadRequest{
@@ -44366,10 +49937,11 @@ func (client *Client) CreateIotlinkAppmanagerEx(request *CreateIotlinkAppmanager
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-获取应用模块列表
- * Summary: iotbasic-获取应用模块列表
- */
+// Description:
+//
+// Description: iotbasic-获取应用模块列表
+//
+// Summary: iotbasic-获取应用模块列表
 func (client *Client) ListIotlinkOtamodule(request *ListIotlinkOtamoduleRequest) (_result *ListIotlinkOtamoduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44382,10 +49954,11 @@ func (client *Client) ListIotlinkOtamodule(request *ListIotlinkOtamoduleRequest)
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-获取应用模块列表
- * Summary: iotbasic-获取应用模块列表
- */
+// Description:
+//
+// Description: iotbasic-获取应用模块列表
+//
+// Summary: iotbasic-获取应用模块列表
 func (client *Client) ListIotlinkOtamoduleEx(request *ListIotlinkOtamoduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIotlinkOtamoduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44400,10 +49973,11 @@ func (client *Client) ListIotlinkOtamoduleEx(request *ListIotlinkOtamoduleReques
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询应用列表
- * Summary: iotbasic-分页查询应用列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询应用列表
+//
+// Summary: iotbasic-分页查询应用列表
 func (client *Client) PagequeryIotlinkAppmanager(request *PagequeryIotlinkAppmanagerRequest) (_result *PagequeryIotlinkAppmanagerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44416,10 +49990,11 @@ func (client *Client) PagequeryIotlinkAppmanager(request *PagequeryIotlinkAppman
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询应用列表
- * Summary: iotbasic-分页查询应用列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询应用列表
+//
+// Summary: iotbasic-分页查询应用列表
 func (client *Client) PagequeryIotlinkAppmanagerEx(request *PagequeryIotlinkAppmanagerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryIotlinkAppmanagerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44434,10 +50009,11 @@ func (client *Client) PagequeryIotlinkAppmanagerEx(request *PagequeryIotlinkAppm
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-获取应用下载地址
- * Summary: iotbasic-获取应用下载地址
- */
+// Description:
+//
+// Description: iotbasic-获取应用下载地址
+//
+// Summary: iotbasic-获取应用下载地址
 func (client *Client) GetIotlinkAppmanagerfileurl(request *GetIotlinkAppmanagerfileurlRequest) (_result *GetIotlinkAppmanagerfileurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44450,10 +50026,11 @@ func (client *Client) GetIotlinkAppmanagerfileurl(request *GetIotlinkAppmanagerf
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-获取应用下载地址
- * Summary: iotbasic-获取应用下载地址
- */
+// Description:
+//
+// Description: iotbasic-获取应用下载地址
+//
+// Summary: iotbasic-获取应用下载地址
 func (client *Client) GetIotlinkAppmanagerfileurlEx(request *GetIotlinkAppmanagerfileurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIotlinkAppmanagerfileurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44468,10 +50045,11 @@ func (client *Client) GetIotlinkAppmanagerfileurlEx(request *GetIotlinkAppmanage
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询发布批次列表
- * Summary: iotbasic-分页查询发布批次列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询发布批次列表
+//
+// Summary: iotbasic-分页查询发布批次列表
 func (client *Client) PagequeryIotlinkAppreleaseorder(request *PagequeryIotlinkAppreleaseorderRequest) (_result *PagequeryIotlinkAppreleaseorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44484,10 +50062,11 @@ func (client *Client) PagequeryIotlinkAppreleaseorder(request *PagequeryIotlinkA
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询发布批次列表
- * Summary: iotbasic-分页查询发布批次列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询发布批次列表
+//
+// Summary: iotbasic-分页查询发布批次列表
 func (client *Client) PagequeryIotlinkAppreleaseorderEx(request *PagequeryIotlinkAppreleaseorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryIotlinkAppreleaseorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44502,10 +50081,11 @@ func (client *Client) PagequeryIotlinkAppreleaseorderEx(request *PagequeryIotlin
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询设备升级列表
- * Summary: iotbasic-分页查询设备升级列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询设备升级列表
+//
+// Summary: iotbasic-分页查询设备升级列表
 func (client *Client) PagequeryIotlinkAppreleasedevice(request *PagequeryIotlinkAppreleasedeviceRequest) (_result *PagequeryIotlinkAppreleasedeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44518,10 +50098,11 @@ func (client *Client) PagequeryIotlinkAppreleasedevice(request *PagequeryIotlink
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-分页查询设备升级列表
- * Summary: iotbasic-分页查询设备升级列表
- */
+// Description:
+//
+// Description: iotbasic-分页查询设备升级列表
+//
+// Summary: iotbasic-分页查询设备升级列表
 func (client *Client) PagequeryIotlinkAppreleasedeviceEx(request *PagequeryIotlinkAppreleasedeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryIotlinkAppreleasedeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44536,10 +50117,11 @@ func (client *Client) PagequeryIotlinkAppreleasedeviceEx(request *PagequeryIotli
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-发布工单
- * Summary: iotbasic-发布工单
- */
+// Description:
+//
+// Description: iotbasic-发布工单
+//
+// Summary: iotbasic-发布工单
 func (client *Client) PublishIotlinkAppreleaseorder(request *PublishIotlinkAppreleaseorderRequest) (_result *PublishIotlinkAppreleaseorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44552,10 +50134,11 @@ func (client *Client) PublishIotlinkAppreleaseorder(request *PublishIotlinkAppre
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-发布工单
- * Summary: iotbasic-发布工单
- */
+// Description:
+//
+// Description: iotbasic-发布工单
+//
+// Summary: iotbasic-发布工单
 func (client *Client) PublishIotlinkAppreleaseorderEx(request *PublishIotlinkAppreleaseorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishIotlinkAppreleaseorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44570,10 +50153,11 @@ func (client *Client) PublishIotlinkAppreleaseorderEx(request *PublishIotlinkApp
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-取消工单发布
- * Summary: iotbasic-取消工单发布
- */
+// Description:
+//
+// Description: iotbasic-取消工单发布
+//
+// Summary: iotbasic-取消工单发布
 func (client *Client) CancelIotlinkAppreleaseorder(request *CancelIotlinkAppreleaseorderRequest) (_result *CancelIotlinkAppreleaseorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44586,10 +50170,11 @@ func (client *Client) CancelIotlinkAppreleaseorder(request *CancelIotlinkApprele
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-取消工单发布
- * Summary: iotbasic-取消工单发布
- */
+// Description:
+//
+// Description: iotbasic-取消工单发布
+//
+// Summary: iotbasic-取消工单发布
 func (client *Client) CancelIotlinkAppreleaseorderEx(request *CancelIotlinkAppreleaseorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelIotlinkAppreleaseorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44604,10 +50189,11 @@ func (client *Client) CancelIotlinkAppreleaseorderEx(request *CancelIotlinkAppre
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-取消设备升级
- * Summary: iotbasic-取消设备升级
- */
+// Description:
+//
+// Description: iotbasic-取消设备升级
+//
+// Summary: iotbasic-取消设备升级
 func (client *Client) CancelIotlinkAppreleasedevice(request *CancelIotlinkAppreleasedeviceRequest) (_result *CancelIotlinkAppreleasedeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44620,10 +50206,11 @@ func (client *Client) CancelIotlinkAppreleasedevice(request *CancelIotlinkApprel
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-取消设备升级
- * Summary: iotbasic-取消设备升级
- */
+// Description:
+//
+// Description: iotbasic-取消设备升级
+//
+// Summary: iotbasic-取消设备升级
 func (client *Client) CancelIotlinkAppreleasedeviceEx(request *CancelIotlinkAppreleasedeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelIotlinkAppreleasedeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44638,10 +50225,11 @@ func (client *Client) CancelIotlinkAppreleasedeviceEx(request *CancelIotlinkAppr
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-重试设备升级
- * Summary: iotbasic-重试设备升级
- */
+// Description:
+//
+// Description: iotbasic-重试设备升级
+//
+// Summary: iotbasic-重试设备升级
 func (client *Client) RetryIotlinkAppreleasedevice(request *RetryIotlinkAppreleasedeviceRequest) (_result *RetryIotlinkAppreleasedeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44654,10 +50242,11 @@ func (client *Client) RetryIotlinkAppreleasedevice(request *RetryIotlinkApprelea
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-重试设备升级
- * Summary: iotbasic-重试设备升级
- */
+// Description:
+//
+// Description: iotbasic-重试设备升级
+//
+// Summary: iotbasic-重试设备升级
 func (client *Client) RetryIotlinkAppreleasedeviceEx(request *RetryIotlinkAppreleasedeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RetryIotlinkAppreleasedeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44672,10 +50261,11 @@ func (client *Client) RetryIotlinkAppreleasedeviceEx(request *RetryIotlinkApprel
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建应用类型
- * Summary: iotbasic-创建应用类型
- */
+// Description:
+//
+// Description: iotbasic-创建应用类型
+//
+// Summary: iotbasic-创建应用类型
 func (client *Client) CreateIotlinkOtamodule(request *CreateIotlinkOtamoduleRequest) (_result *CreateIotlinkOtamoduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44688,10 +50278,11 @@ func (client *Client) CreateIotlinkOtamodule(request *CreateIotlinkOtamoduleRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-创建应用类型
- * Summary: iotbasic-创建应用类型
- */
+// Description:
+//
+// Description: iotbasic-创建应用类型
+//
+// Summary: iotbasic-创建应用类型
 func (client *Client) CreateIotlinkOtamoduleEx(request *CreateIotlinkOtamoduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIotlinkOtamoduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44706,10 +50297,11 @@ func (client *Client) CreateIotlinkOtamoduleEx(request *CreateIotlinkOtamoduleRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-修改应用类型
- * Summary: iotbasic-修改应用类型
- */
+// Description:
+//
+// Description: iotbasic-修改应用类型
+//
+// Summary: iotbasic-修改应用类型
 func (client *Client) UpdateIotlinkOtamodule(request *UpdateIotlinkOtamoduleRequest) (_result *UpdateIotlinkOtamoduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44722,10 +50314,11 @@ func (client *Client) UpdateIotlinkOtamodule(request *UpdateIotlinkOtamoduleRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-修改应用类型
- * Summary: iotbasic-修改应用类型
- */
+// Description:
+//
+// Description: iotbasic-修改应用类型
+//
+// Summary: iotbasic-修改应用类型
 func (client *Client) UpdateIotlinkOtamoduleEx(request *UpdateIotlinkOtamoduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIotlinkOtamoduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44740,10 +50333,11 @@ func (client *Client) UpdateIotlinkOtamoduleEx(request *UpdateIotlinkOtamoduleRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-删除应用类型
- * Summary: iotbasic-删除应用类型
- */
+// Description:
+//
+// Description: iotbasic-删除应用类型
+//
+// Summary: iotbasic-删除应用类型
 func (client *Client) DeleteIotlinkOtamodule(request *DeleteIotlinkOtamoduleRequest) (_result *DeleteIotlinkOtamoduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44756,10 +50350,11 @@ func (client *Client) DeleteIotlinkOtamodule(request *DeleteIotlinkOtamoduleRequ
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-删除应用类型
- * Summary: iotbasic-删除应用类型
- */
+// Description:
+//
+// Description: iotbasic-删除应用类型
+//
+// Summary: iotbasic-删除应用类型
 func (client *Client) DeleteIotlinkOtamoduleEx(request *DeleteIotlinkOtamoduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIotlinkOtamoduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44774,10 +50369,11 @@ func (client *Client) DeleteIotlinkOtamoduleEx(request *DeleteIotlinkOtamoduleRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商导入物模型
- * Summary: iotbasic-设备厂商导入物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商导入物模型
+//
+// Summary: iotbasic-设备厂商导入物模型
 func (client *Client) ImportIotlinkThingmodeltsl(request *ImportIotlinkThingmodeltslRequest) (_result *ImportIotlinkThingmodeltslResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44790,10 +50386,11 @@ func (client *Client) ImportIotlinkThingmodeltsl(request *ImportIotlinkThingmode
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-设备厂商导入物模型
- * Summary: iotbasic-设备厂商导入物模型
- */
+// Description:
+//
+// Description: iotbasic-设备厂商导入物模型
+//
+// Summary: iotbasic-设备厂商导入物模型
 func (client *Client) ImportIotlinkThingmodeltslEx(request *ImportIotlinkThingmodeltslRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportIotlinkThingmodeltslResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44808,10 +50405,11 @@ func (client *Client) ImportIotlinkThingmodeltslEx(request *ImportIotlinkThingmo
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-重置设备认证秘钥
- * Summary: iotbasic-重置设备认证秘钥
- */
+// Description:
+//
+// Description: iotbasic-重置设备认证秘钥
+//
+// Summary: iotbasic-重置设备认证秘钥
 func (client *Client) ResetIotbasicDeviceseckey(request *ResetIotbasicDeviceseckeyRequest) (_result *ResetIotbasicDeviceseckeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44824,10 +50422,11 @@ func (client *Client) ResetIotbasicDeviceseckey(request *ResetIotbasicDeviceseck
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-重置设备认证秘钥
- * Summary: iotbasic-重置设备认证秘钥
- */
+// Description:
+//
+// Description: iotbasic-重置设备认证秘钥
+//
+// Summary: iotbasic-重置设备认证秘钥
 func (client *Client) ResetIotbasicDeviceseckeyEx(request *ResetIotbasicDeviceseckeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResetIotbasicDeviceseckeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44842,10 +50441,11 @@ func (client *Client) ResetIotbasicDeviceseckeyEx(request *ResetIotbasicDevicese
 	return _result, _err
 }
 
-/**
- * Description: 预授权支付订单创建
- * Summary: 预授权支付订单创建
- */
+// Description:
+//
+// Description: 预授权支付订单创建
+//
+// Summary: 预授权支付订单创建
 func (client *Client) CreateDigitalkeyPreauthpay(request *CreateDigitalkeyPreauthpayRequest) (_result *CreateDigitalkeyPreauthpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44858,10 +50458,11 @@ func (client *Client) CreateDigitalkeyPreauthpay(request *CreateDigitalkeyPreaut
 	return _result, _err
 }
 
-/**
- * Description: 预授权支付订单创建
- * Summary: 预授权支付订单创建
- */
+// Description:
+//
+// Description: 预授权支付订单创建
+//
+// Summary: 预授权支付订单创建
 func (client *Client) CreateDigitalkeyPreauthpayEx(request *CreateDigitalkeyPreauthpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDigitalkeyPreauthpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44876,10 +50477,11 @@ func (client *Client) CreateDigitalkeyPreauthpayEx(request *CreateDigitalkeyPrea
 	return _result, _err
 }
 
-/**
- * Description: 预授权资金撤销
- * Summary: 预授权资金撤销
- */
+// Description:
+//
+// Description: 预授权资金撤销
+//
+// Summary: 预授权资金撤销
 func (client *Client) CancelDigitalkeyPreauthpay(request *CancelDigitalkeyPreauthpayRequest) (_result *CancelDigitalkeyPreauthpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44892,10 +50494,11 @@ func (client *Client) CancelDigitalkeyPreauthpay(request *CancelDigitalkeyPreaut
 	return _result, _err
 }
 
-/**
- * Description: 预授权资金撤销
- * Summary: 预授权资金撤销
- */
+// Description:
+//
+// Description: 预授权资金撤销
+//
+// Summary: 预授权资金撤销
 func (client *Client) CancelDigitalkeyPreauthpayEx(request *CancelDigitalkeyPreauthpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelDigitalkeyPreauthpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44910,10 +50513,11 @@ func (client *Client) CancelDigitalkeyPreauthpayEx(request *CancelDigitalkeyPrea
 	return _result, _err
 }
 
-/**
- * Description: 预授权资金解冻
- * Summary: 预授权资金解冻
- */
+// Description:
+//
+// Description: 预授权资金解冻
+//
+// Summary: 预授权资金解冻
 func (client *Client) UnfreezeDigitalkeyPreauthpay(request *UnfreezeDigitalkeyPreauthpayRequest) (_result *UnfreezeDigitalkeyPreauthpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44926,10 +50530,11 @@ func (client *Client) UnfreezeDigitalkeyPreauthpay(request *UnfreezeDigitalkeyPr
 	return _result, _err
 }
 
-/**
- * Description: 预授权资金解冻
- * Summary: 预授权资金解冻
- */
+// Description:
+//
+// Description: 预授权资金解冻
+//
+// Summary: 预授权资金解冻
 func (client *Client) UnfreezeDigitalkeyPreauthpayEx(request *UnfreezeDigitalkeyPreauthpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnfreezeDigitalkeyPreauthpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44944,10 +50549,11 @@ func (client *Client) UnfreezeDigitalkeyPreauthpayEx(request *UnfreezeDigitalkey
 	return _result, _err
 }
 
-/**
- * Description: 预授权支付订单查询
- * Summary: 预授权支付订单查询
- */
+// Description:
+//
+// Description: 预授权支付订单查询
+//
+// Summary: 预授权支付订单查询
 func (client *Client) QueryDigitalkeyPreauthpay(request *QueryDigitalkeyPreauthpayRequest) (_result *QueryDigitalkeyPreauthpayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44960,10 +50566,11 @@ func (client *Client) QueryDigitalkeyPreauthpay(request *QueryDigitalkeyPreauthp
 	return _result, _err
 }
 
-/**
- * Description: 预授权支付订单查询
- * Summary: 预授权支付订单查询
- */
+// Description:
+//
+// Description: 预授权支付订单查询
+//
+// Summary: 预授权支付订单查询
 func (client *Client) QueryDigitalkeyPreauthpayEx(request *QueryDigitalkeyPreauthpayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDigitalkeyPreauthpayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44978,10 +50585,11 @@ func (client *Client) QueryDigitalkeyPreauthpayEx(request *QueryDigitalkeyPreaut
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-客户指定设备调用服务
- * Summary: iotbasic-客户指定设备调用服务
- */
+// Description:
+//
+// Description: iotbasic-客户指定设备调用服务
+//
+// Summary: iotbasic-客户指定设备调用服务
 func (client *Client) ExecDeviceCustomerthingservice(request *ExecDeviceCustomerthingserviceRequest) (_result *ExecDeviceCustomerthingserviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -44994,10 +50602,11 @@ func (client *Client) ExecDeviceCustomerthingservice(request *ExecDeviceCustomer
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-客户指定设备调用服务
- * Summary: iotbasic-客户指定设备调用服务
- */
+// Description:
+//
+// Description: iotbasic-客户指定设备调用服务
+//
+// Summary: iotbasic-客户指定设备调用服务
 func (client *Client) ExecDeviceCustomerthingserviceEx(request *ExecDeviceCustomerthingserviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecDeviceCustomerthingserviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45012,10 +50621,11 @@ func (client *Client) ExecDeviceCustomerthingserviceEx(request *ExecDeviceCustom
 	return _result, _err
 }
 
-/**
- * Description: 在指定设备上对自定义topic 远程下发消息
- * Summary: 自定义topic远程调用
- */
+// Description:
+//
+// Description: 在指定设备上对自定义topic 远程下发消息
+//
+// Summary: 自定义topic远程调用
 func (client *Client) ExecDeviceUsertopic(request *ExecDeviceUsertopicRequest) (_result *ExecDeviceUsertopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45028,10 +50638,11 @@ func (client *Client) ExecDeviceUsertopic(request *ExecDeviceUsertopicRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 在指定设备上对自定义topic 远程下发消息
- * Summary: 自定义topic远程调用
- */
+// Description:
+//
+// Description: 在指定设备上对自定义topic 远程下发消息
+//
+// Summary: 自定义topic远程调用
 func (client *Client) ExecDeviceUsertopicEx(request *ExecDeviceUsertopicRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecDeviceUsertopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45046,10 +50657,11 @@ func (client *Client) ExecDeviceUsertopicEx(request *ExecDeviceUsertopicRequest,
 	return _result, _err
 }
 
-/**
- * Description: 主动往设备下发消息，提供给数科上游业务系统使用
- * Summary: 主动往设备下发消息
- */
+// Description:
+//
+// Description: 主动往设备下发消息，提供给数科上游业务系统使用
+//
+// Summary: 主动往设备下发消息
 func (client *Client) PushDeviceMessage(request *PushDeviceMessageRequest) (_result *PushDeviceMessageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45062,10 +50674,11 @@ func (client *Client) PushDeviceMessage(request *PushDeviceMessageRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 主动往设备下发消息，提供给数科上游业务系统使用
- * Summary: 主动往设备下发消息
- */
+// Description:
+//
+// Description: 主动往设备下发消息，提供给数科上游业务系统使用
+//
+// Summary: 主动往设备下发消息
 func (client *Client) PushDeviceMessageEx(request *PushDeviceMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushDeviceMessageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45080,10 +50693,11 @@ func (client *Client) PushDeviceMessageEx(request *PushDeviceMessageRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-四轮车安全驾驶事件同步
- * Summary: iotbasic-四轮车安全驾驶事件同步
- */
+// Description:
+//
+// Description: iotbasic-四轮车安全驾驶事件同步
+//
+// Summary: iotbasic-四轮车安全驾驶事件同步
 func (client *Client) SyncFourwheelerCarevent(request *SyncFourwheelerCareventRequest) (_result *SyncFourwheelerCareventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45096,10 +50710,11 @@ func (client *Client) SyncFourwheelerCarevent(request *SyncFourwheelerCareventRe
 	return _result, _err
 }
 
-/**
- * Description: iotbasic-四轮车安全驾驶事件同步
- * Summary: iotbasic-四轮车安全驾驶事件同步
- */
+// Description:
+//
+// Description: iotbasic-四轮车安全驾驶事件同步
+//
+// Summary: iotbasic-四轮车安全驾驶事件同步
 func (client *Client) SyncFourwheelerCareventEx(request *SyncFourwheelerCareventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncFourwheelerCareventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45114,10 +50729,11 @@ func (client *Client) SyncFourwheelerCareventEx(request *SyncFourwheelerCarevent
 	return _result, _err
 }
 
-/**
- * Description: 通过指定字段查询车辆最新的信息
- * Summary: 二轮车车辆状态实时查询
- */
+// Description:
+//
+// Description: 通过指定字段查询车辆最新的信息
+//
+// Summary: 二轮车车辆状态实时查询
 func (client *Client) QueryElectrocarRealtimedata(request *QueryElectrocarRealtimedataRequest) (_result *QueryElectrocarRealtimedataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45130,10 +50746,11 @@ func (client *Client) QueryElectrocarRealtimedata(request *QueryElectrocarRealti
 	return _result, _err
 }
 
-/**
- * Description: 通过指定字段查询车辆最新的信息
- * Summary: 二轮车车辆状态实时查询
- */
+// Description:
+//
+// Description: 通过指定字段查询车辆最新的信息
+//
+// Summary: 二轮车车辆状态实时查询
 func (client *Client) QueryElectrocarRealtimedataEx(request *QueryElectrocarRealtimedataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarRealtimedataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45148,10 +50765,11 @@ func (client *Client) QueryElectrocarRealtimedataEx(request *QueryElectrocarReal
 	return _result, _err
 }
 
-/**
- * Description: 查询一段时间范围的所有行程记录及明细
- * Summary: 二轮车行程记录查询
- */
+// Description:
+//
+// Description: 查询一段时间范围的所有行程记录及明细
+//
+// Summary: 二轮车行程记录查询
 func (client *Client) QueryElectrocarTravel(request *QueryElectrocarTravelRequest) (_result *QueryElectrocarTravelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45164,10 +50782,11 @@ func (client *Client) QueryElectrocarTravel(request *QueryElectrocarTravelReques
 	return _result, _err
 }
 
-/**
- * Description: 查询一段时间范围的所有行程记录及明细
- * Summary: 二轮车行程记录查询
- */
+// Description:
+//
+// Description: 查询一段时间范围的所有行程记录及明细
+//
+// Summary: 二轮车行程记录查询
 func (client *Client) QueryElectrocarTravelEx(request *QueryElectrocarTravelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTravelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45182,10 +50801,11 @@ func (client *Client) QueryElectrocarTravelEx(request *QueryElectrocarTravelRequ
 	return _result, _err
 }
 
-/**
- * Description: 厂商注册接口
- * Summary: 车钥匙厂商注册
- */
+// Description:
+//
+// Description: 厂商注册接口
+//
+// Summary: 车钥匙厂商注册
 func (client *Client) RegisterCarkeyscorpCustomer(request *RegisterCarkeyscorpCustomerRequest) (_result *RegisterCarkeyscorpCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45198,10 +50818,11 @@ func (client *Client) RegisterCarkeyscorpCustomer(request *RegisterCarkeyscorpCu
 	return _result, _err
 }
 
-/**
- * Description: 厂商注册接口
- * Summary: 车钥匙厂商注册
- */
+// Description:
+//
+// Description: 厂商注册接口
+//
+// Summary: 车钥匙厂商注册
 func (client *Client) RegisterCarkeyscorpCustomerEx(request *RegisterCarkeyscorpCustomerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterCarkeyscorpCustomerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45216,10 +50837,11 @@ func (client *Client) RegisterCarkeyscorpCustomerEx(request *RegisterCarkeyscorp
 	return _result, _err
 }
 
-/**
- * Description: 申请凭证
- * Summary: 申请凭证
- */
+// Description:
+//
+// Description: 申请凭证
+//
+// Summary: 申请凭证
 func (client *Client) CreateElectrocarApplycarkeycertificate(request *CreateElectrocarApplycarkeycertificateRequest) (_result *CreateElectrocarApplycarkeycertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45232,10 +50854,11 @@ func (client *Client) CreateElectrocarApplycarkeycertificate(request *CreateElec
 	return _result, _err
 }
 
-/**
- * Description: 申请凭证
- * Summary: 申请凭证
- */
+// Description:
+//
+// Description: 申请凭证
+//
+// Summary: 申请凭证
 func (client *Client) CreateElectrocarApplycarkeycertificateEx(request *CreateElectrocarApplycarkeycertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateElectrocarApplycarkeycertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45250,10 +50873,11 @@ func (client *Client) CreateElectrocarApplycarkeycertificateEx(request *CreateEl
 	return _result, _err
 }
 
-/**
- * Description: 二轮车设备下发音频
- * Summary: 二轮车设备下发音频
- */
+// Description:
+//
+// Description: 二轮车设备下发音频
+//
+// Summary: 二轮车设备下发音频
 func (client *Client) PushDeviceAudio(request *PushDeviceAudioRequest) (_result *PushDeviceAudioResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45266,10 +50890,11 @@ func (client *Client) PushDeviceAudio(request *PushDeviceAudioRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 二轮车设备下发音频
- * Summary: 二轮车设备下发音频
- */
+// Description:
+//
+// Description: 二轮车设备下发音频
+//
+// Summary: 二轮车设备下发音频
 func (client *Client) PushDeviceAudioEx(request *PushDeviceAudioRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushDeviceAudioResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45284,10 +50909,11 @@ func (client *Client) PushDeviceAudioEx(request *PushDeviceAudioRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程统计接口
- * Summary: iotx二轮车行程统计接口
- */
+// Description:
+//
+// Description: iotx二轮车行程统计接口
+//
+// Summary: iotx二轮车行程统计接口
 func (client *Client) QueryElectrocarTripstatistics(request *QueryElectrocarTripstatisticsRequest) (_result *QueryElectrocarTripstatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45300,10 +50926,11 @@ func (client *Client) QueryElectrocarTripstatistics(request *QueryElectrocarTrip
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程统计接口
- * Summary: iotx二轮车行程统计接口
- */
+// Description:
+//
+// Description: iotx二轮车行程统计接口
+//
+// Summary: iotx二轮车行程统计接口
 func (client *Client) QueryElectrocarTripstatisticsEx(request *QueryElectrocarTripstatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTripstatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45318,10 +50945,11 @@ func (client *Client) QueryElectrocarTripstatisticsEx(request *QueryElectrocarTr
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程列表接口
- * Summary: iotx二轮车行程列表接口
- */
+// Description:
+//
+// Description: iotx二轮车行程列表接口
+//
+// Summary: iotx二轮车行程列表接口
 func (client *Client) QueryElectrocarTriplist(request *QueryElectrocarTriplistRequest) (_result *QueryElectrocarTriplistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45334,10 +50962,11 @@ func (client *Client) QueryElectrocarTriplist(request *QueryElectrocarTriplistRe
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程列表接口
- * Summary: iotx二轮车行程列表接口
- */
+// Description:
+//
+// Description: iotx二轮车行程列表接口
+//
+// Summary: iotx二轮车行程列表接口
 func (client *Client) QueryElectrocarTriplistEx(request *QueryElectrocarTriplistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTriplistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45352,10 +50981,11 @@ func (client *Client) QueryElectrocarTriplistEx(request *QueryElectrocarTriplist
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程定位
- * Summary: iotx二轮车行程定位
- */
+// Description:
+//
+// Description: iotx二轮车行程定位
+//
+// Summary: iotx二轮车行程定位
 func (client *Client) QueryElectrocarTrippoints(request *QueryElectrocarTrippointsRequest) (_result *QueryElectrocarTrippointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45368,10 +50998,11 @@ func (client *Client) QueryElectrocarTrippoints(request *QueryElectrocarTrippoin
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车行程定位
- * Summary: iotx二轮车行程定位
- */
+// Description:
+//
+// Description: iotx二轮车行程定位
+//
+// Summary: iotx二轮车行程定位
 func (client *Client) QueryElectrocarTrippointsEx(request *QueryElectrocarTrippointsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTrippointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45386,10 +51017,11 @@ func (client *Client) QueryElectrocarTrippointsEx(request *QueryElectrocarTrippo
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车最近一段行程查询接口
- * Summary: iotx二轮车最近一段行程查询接口
- */
+// Description:
+//
+// Description: iotx二轮车最近一段行程查询接口
+//
+// Summary: iotx二轮车最近一段行程查询接口
 func (client *Client) QueryElectrocarTriplast(request *QueryElectrocarTriplastRequest) (_result *QueryElectrocarTriplastResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45402,10 +51034,11 @@ func (client *Client) QueryElectrocarTriplast(request *QueryElectrocarTriplastRe
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车最近一段行程查询接口
- * Summary: iotx二轮车最近一段行程查询接口
- */
+// Description:
+//
+// Description: iotx二轮车最近一段行程查询接口
+//
+// Summary: iotx二轮车最近一段行程查询接口
 func (client *Client) QueryElectrocarTriplastEx(request *QueryElectrocarTriplastRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTriplastResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45420,10 +51053,11 @@ func (client *Client) QueryElectrocarTriplastEx(request *QueryElectrocarTriplast
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备注册
- * Summary: iotx二轮车设备注册
- */
+// Description:
+//
+// Description: iotx二轮车设备注册
+//
+// Summary: iotx二轮车设备注册
 func (client *Client) RegisterElectrocarDevice(request *RegisterElectrocarDeviceRequest) (_result *RegisterElectrocarDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45436,10 +51070,11 @@ func (client *Client) RegisterElectrocarDevice(request *RegisterElectrocarDevice
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备注册
- * Summary: iotx二轮车设备注册
- */
+// Description:
+//
+// Description: iotx二轮车设备注册
+//
+// Summary: iotx二轮车设备注册
 func (client *Client) RegisterElectrocarDeviceEx(request *RegisterElectrocarDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterElectrocarDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45454,10 +51089,11 @@ func (client *Client) RegisterElectrocarDeviceEx(request *RegisterElectrocarDevi
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备属性
- * Summary: iotx二轮车设备属性
- */
+// Description:
+//
+// Description: iotx二轮车设备属性
+//
+// Summary: iotx二轮车设备属性
 func (client *Client) QueryElectrocarDevicehistoryproperties(request *QueryElectrocarDevicehistorypropertiesRequest) (_result *QueryElectrocarDevicehistorypropertiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45470,10 +51106,11 @@ func (client *Client) QueryElectrocarDevicehistoryproperties(request *QueryElect
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备属性
- * Summary: iotx二轮车设备属性
- */
+// Description:
+//
+// Description: iotx二轮车设备属性
+//
+// Summary: iotx二轮车设备属性
 func (client *Client) QueryElectrocarDevicehistorypropertiesEx(request *QueryElectrocarDevicehistorypropertiesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarDevicehistorypropertiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45488,10 +51125,11 @@ func (client *Client) QueryElectrocarDevicehistorypropertiesEx(request *QueryEle
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备信息
- * Summary: iotx二轮车设备信息
- */
+// Description:
+//
+// Description: iotx二轮车设备信息
+//
+// Summary: iotx二轮车设备信息
 func (client *Client) QueryElectrocarDeviceinfos(request *QueryElectrocarDeviceinfosRequest) (_result *QueryElectrocarDeviceinfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45504,10 +51142,11 @@ func (client *Client) QueryElectrocarDeviceinfos(request *QueryElectrocarDevicei
 	return _result, _err
 }
 
-/**
- * Description: iotx二轮车设备信息
- * Summary: iotx二轮车设备信息
- */
+// Description:
+//
+// Description: iotx二轮车设备信息
+//
+// Summary: iotx二轮车设备信息
 func (client *Client) QueryElectrocarDeviceinfosEx(request *QueryElectrocarDeviceinfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarDeviceinfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45522,10 +51161,11 @@ func (client *Client) QueryElectrocarDeviceinfosEx(request *QueryElectrocarDevic
 	return _result, _err
 }
 
-/**
- * Description: 二轮车批量控车接口
- * Summary: 二轮车批量控车接口
- */
+// Description:
+//
+// Description: 二轮车批量控车接口
+//
+// Summary: 二轮车批量控车接口
 func (client *Client) ExecElectrocarBatchpub(request *ExecElectrocarBatchpubRequest) (_result *ExecElectrocarBatchpubResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45538,10 +51178,11 @@ func (client *Client) ExecElectrocarBatchpub(request *ExecElectrocarBatchpubRequ
 	return _result, _err
 }
 
-/**
- * Description: 二轮车批量控车接口
- * Summary: 二轮车批量控车接口
- */
+// Description:
+//
+// Description: 二轮车批量控车接口
+//
+// Summary: 二轮车批量控车接口
 func (client *Client) ExecElectrocarBatchpubEx(request *ExecElectrocarBatchpubRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecElectrocarBatchpubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45556,10 +51197,11 @@ func (client *Client) ExecElectrocarBatchpubEx(request *ExecElectrocarBatchpubRe
 	return _result, _err
 }
 
-/**
- * Description: 批量定时控车-批次查询
- * Summary: 批量定时控车-批次查询
- */
+// Description:
+//
+// Description: 批量定时控车-批次查询
+//
+// Summary: 批量定时控车-批次查询
 func (client *Client) QueryElectrocarBatchpubjobs(request *QueryElectrocarBatchpubjobsRequest) (_result *QueryElectrocarBatchpubjobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45572,10 +51214,11 @@ func (client *Client) QueryElectrocarBatchpubjobs(request *QueryElectrocarBatchp
 	return _result, _err
 }
 
-/**
- * Description: 批量定时控车-批次查询
- * Summary: 批量定时控车-批次查询
- */
+// Description:
+//
+// Description: 批量定时控车-批次查询
+//
+// Summary: 批量定时控车-批次查询
 func (client *Client) QueryElectrocarBatchpubjobsEx(request *QueryElectrocarBatchpubjobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarBatchpubjobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45590,10 +51233,11 @@ func (client *Client) QueryElectrocarBatchpubjobsEx(request *QueryElectrocarBatc
 	return _result, _err
 }
 
-/**
- * Description: 批量定时控车任务查询
- * Summary: 批量定时控车任务查询
- */
+// Description:
+//
+// Description: 批量定时控车任务查询
+//
+// Summary: 批量定时控车任务查询
 func (client *Client) QueryElectrocarBatchpubtasks(request *QueryElectrocarBatchpubtasksRequest) (_result *QueryElectrocarBatchpubtasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45606,10 +51250,11 @@ func (client *Client) QueryElectrocarBatchpubtasks(request *QueryElectrocarBatch
 	return _result, _err
 }
 
-/**
- * Description: 批量定时控车任务查询
- * Summary: 批量定时控车任务查询
- */
+// Description:
+//
+// Description: 批量定时控车任务查询
+//
+// Summary: 批量定时控车任务查询
 func (client *Client) QueryElectrocarBatchpubtasksEx(request *QueryElectrocarBatchpubtasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarBatchpubtasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45624,10 +51269,11 @@ func (client *Client) QueryElectrocarBatchpubtasksEx(request *QueryElectrocarBat
 	return _result, _err
 }
 
-/**
- * Description: 设备信息分页
- * Summary: 设备信息分页
- */
+// Description:
+//
+// Description: 设备信息分页
+//
+// Summary: 设备信息分页
 func (client *Client) QueryElectrocarDeviceinfospage(request *QueryElectrocarDeviceinfospageRequest) (_result *QueryElectrocarDeviceinfospageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45640,10 +51286,11 @@ func (client *Client) QueryElectrocarDeviceinfospage(request *QueryElectrocarDev
 	return _result, _err
 }
 
-/**
- * Description: 设备信息分页
- * Summary: 设备信息分页
- */
+// Description:
+//
+// Description: 设备信息分页
+//
+// Summary: 设备信息分页
 func (client *Client) QueryElectrocarDeviceinfospageEx(request *QueryElectrocarDeviceinfospageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarDeviceinfospageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45658,10 +51305,263 @@ func (client *Client) QueryElectrocarDeviceinfospageEx(request *QueryElectrocarD
 	return _result, _err
 }
 
-/**
- * Description: 根据设备串号查询采购设备
- * Summary: 根据设备串号查询采购设备
- */
+// Description:
+//
+// Description: OTA上报版本并查询升级状态
+//
+// Summary: OTA上报版本并查询升级状态
+func (client *Client) QueryElectrocarOtaupgradecheck(request *QueryElectrocarOtaupgradecheckRequest) (_result *QueryElectrocarOtaupgradecheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryElectrocarOtaupgradecheckResponse{}
+	_body, _err := client.QueryElectrocarOtaupgradecheckEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: OTA上报版本并查询升级状态
+//
+// Summary: OTA上报版本并查询升级状态
+func (client *Client) QueryElectrocarOtaupgradecheckEx(request *QueryElectrocarOtaupgradecheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarOtaupgradecheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryElectrocarOtaupgradecheckResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otaupgradecheck.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 取消OTA任务
+//
+// Summary: 取消OTA任务
+func (client *Client) ExecElectrocarOtataskcancel(request *ExecElectrocarOtataskcancelRequest) (_result *ExecElectrocarOtataskcancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecElectrocarOtataskcancelResponse{}
+	_body, _err := client.ExecElectrocarOtataskcancelEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 取消OTA任务
+//
+// Summary: 取消OTA任务
+func (client *Client) ExecElectrocarOtataskcancelEx(request *ExecElectrocarOtataskcancelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecElectrocarOtataskcancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExecElectrocarOtataskcancelResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otataskcancel.exec"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 重试OTA任务
+//
+// Summary: 重试OTA任务
+func (client *Client) ExecElectrocarOtataskretry(request *ExecElectrocarOtataskretryRequest) (_result *ExecElectrocarOtataskretryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecElectrocarOtataskretryResponse{}
+	_body, _err := client.ExecElectrocarOtataskretryEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 重试OTA任务
+//
+// Summary: 重试OTA任务
+func (client *Client) ExecElectrocarOtataskretryEx(request *ExecElectrocarOtataskretryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecElectrocarOtataskretryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExecElectrocarOtataskretryResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otataskretry.exec"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 确认OTA升级任务
+//
+// Summary: 确认OTA升级任务
+func (client *Client) ExecElectrocarOtataskconfirm(request *ExecElectrocarOtataskconfirmRequest) (_result *ExecElectrocarOtataskconfirmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecElectrocarOtataskconfirmResponse{}
+	_body, _err := client.ExecElectrocarOtataskconfirmEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 确认OTA升级任务
+//
+// Summary: 确认OTA升级任务
+func (client *Client) ExecElectrocarOtataskconfirmEx(request *ExecElectrocarOtataskconfirmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecElectrocarOtataskconfirmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExecElectrocarOtataskconfirmResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otataskconfirm.exec"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 永久取消OTA任务
+//
+// Summary: 永久取消OTA任务
+func (client *Client) ExecElectrocarOtataskpermanentcancel(request *ExecElectrocarOtataskpermanentcancelRequest) (_result *ExecElectrocarOtataskpermanentcancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecElectrocarOtataskpermanentcancelResponse{}
+	_body, _err := client.ExecElectrocarOtataskpermanentcancelEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 永久取消OTA任务
+//
+// Summary: 永久取消OTA任务
+func (client *Client) ExecElectrocarOtataskpermanentcancelEx(request *ExecElectrocarOtataskpermanentcancelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecElectrocarOtataskpermanentcancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExecElectrocarOtataskpermanentcancelResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otataskpermanentcancel.exec"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: OTA模块版本上报
+//
+// Summary: OTA模块版本上报
+func (client *Client) PublishElectrocarModuleversion(request *PublishElectrocarModuleversionRequest) (_result *PublishElectrocarModuleversionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PublishElectrocarModuleversionResponse{}
+	_body, _err := client.PublishElectrocarModuleversionEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: OTA模块版本上报
+//
+// Summary: OTA模块版本上报
+func (client *Client) PublishElectrocarModuleversionEx(request *PublishElectrocarModuleversionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishElectrocarModuleversionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &PublishElectrocarModuleversionResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.moduleversion.publish"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询OTA任务状态
+//
+// Summary: 查询OTA任务状态
+func (client *Client) QueryElectrocarTaskstatus(request *QueryElectrocarTaskstatusRequest) (_result *QueryElectrocarTaskstatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryElectrocarTaskstatusResponse{}
+	_body, _err := client.QueryElectrocarTaskstatusEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询OTA任务状态
+//
+// Summary: 查询OTA任务状态
+func (client *Client) QueryElectrocarTaskstatusEx(request *QueryElectrocarTaskstatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarTaskstatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryElectrocarTaskstatusResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.taskstatus.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 根据设备串号查询采购设备
+//
+// Summary: 根据设备串号查询采购设备
 func (client *Client) QueryIotplatformPurchaseorder(request *QueryIotplatformPurchaseorderRequest) (_result *QueryIotplatformPurchaseorderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45674,10 +51574,11 @@ func (client *Client) QueryIotplatformPurchaseorder(request *QueryIotplatformPur
 	return _result, _err
 }
 
-/**
- * Description: 根据设备串号查询采购设备
- * Summary: 根据设备串号查询采购设备
- */
+// Description:
+//
+// Description: 根据设备串号查询采购设备
+//
+// Summary: 根据设备串号查询采购设备
 func (client *Client) QueryIotplatformPurchaseorderEx(request *QueryIotplatformPurchaseorderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotplatformPurchaseorderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45692,10 +51593,11 @@ func (client *Client) QueryIotplatformPurchaseorderEx(request *QueryIotplatformP
 	return _result, _err
 }
 
-/**
- * Description: 设备租赁业务中在PC设备出厂时进行MeshId及SN号的关联绑定
- * Summary: 绑定MeshId及设备SN
- */
+// Description:
+//
+// Description: 设备租赁业务中在PC设备出厂时进行MeshId及SN号的关联绑定
+//
+// Summary: 绑定MeshId及设备SN
 func (client *Client) ImportIotplatformMeshid(request *ImportIotplatformMeshidRequest) (_result *ImportIotplatformMeshidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45708,10 +51610,11 @@ func (client *Client) ImportIotplatformMeshid(request *ImportIotplatformMeshidRe
 	return _result, _err
 }
 
-/**
- * Description: 设备租赁业务中在PC设备出厂时进行MeshId及SN号的关联绑定
- * Summary: 绑定MeshId及设备SN
- */
+// Description:
+//
+// Description: 设备租赁业务中在PC设备出厂时进行MeshId及SN号的关联绑定
+//
+// Summary: 绑定MeshId及设备SN
 func (client *Client) ImportIotplatformMeshidEx(request *ImportIotplatformMeshidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportIotplatformMeshidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45726,10 +51629,11 @@ func (client *Client) ImportIotplatformMeshidEx(request *ImportIotplatformMeshid
 	return _result, _err
 }
 
-/**
- * Description: 与租赁宝对接采购订单导入的接口
- * Summary: 与租赁宝对接采购订单导入的接口
- */
+// Description:
+//
+// Description: 与租赁宝对接采购订单导入的接口
+//
+// Summary: 与租赁宝对接采购订单导入的接口
 func (client *Client) ImportPurchaseorderThirdparty(request *ImportPurchaseorderThirdpartyRequest) (_result *ImportPurchaseorderThirdpartyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45742,10 +51646,11 @@ func (client *Client) ImportPurchaseorderThirdparty(request *ImportPurchaseorder
 	return _result, _err
 }
 
-/**
- * Description: 与租赁宝对接采购订单导入的接口
- * Summary: 与租赁宝对接采购订单导入的接口
- */
+// Description:
+//
+// Description: 与租赁宝对接采购订单导入的接口
+//
+// Summary: 与租赁宝对接采购订单导入的接口
 func (client *Client) ImportPurchaseorderThirdpartyEx(request *ImportPurchaseorderThirdpartyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportPurchaseorderThirdpartyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45760,10 +51665,11 @@ func (client *Client) ImportPurchaseorderThirdpartyEx(request *ImportPurchaseord
 	return _result, _err
 }
 
-/**
- * Description: 采购平台新增供应商角色
- * Summary: 采购平台新增供应商角色
- */
+// Description:
+//
+// Description: 采购平台新增供应商角色
+//
+// Summary: 采购平台新增供应商角色
 func (client *Client) AddUserRole(request *AddUserRoleRequest) (_result *AddUserRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45776,10 +51682,11 @@ func (client *Client) AddUserRole(request *AddUserRoleRequest) (_result *AddUser
 	return _result, _err
 }
 
-/**
- * Description: 采购平台新增供应商角色
- * Summary: 采购平台新增供应商角色
- */
+// Description:
+//
+// Description: 采购平台新增供应商角色
+//
+// Summary: 采购平台新增供应商角色
 func (client *Client) AddUserRoleEx(request *AddUserRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddUserRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45794,10 +51701,11 @@ func (client *Client) AddUserRoleEx(request *AddUserRoleRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 采购平台新增SKU
- * Summary: 采购平台新增SKU
- */
+// Description:
+//
+// Description: 采购平台新增SKU
+//
+// Summary: 采购平台新增SKU
 func (client *Client) AddGoodsSku(request *AddGoodsSkuRequest) (_result *AddGoodsSkuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45810,10 +51718,11 @@ func (client *Client) AddGoodsSku(request *AddGoodsSkuRequest) (_result *AddGood
 	return _result, _err
 }
 
-/**
- * Description: 采购平台新增SKU
- * Summary: 采购平台新增SKU
- */
+// Description:
+//
+// Description: 采购平台新增SKU
+//
+// Summary: 采购平台新增SKU
 func (client *Client) AddGoodsSkuEx(request *AddGoodsSkuRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGoodsSkuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45828,10 +51737,11 @@ func (client *Client) AddGoodsSkuEx(request *AddGoodsSkuRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: Iotplatform-设备订单计费上传
- * Summary: Iotplatform-设备订单计费上传
- */
+// Description:
+//
+// Description: Iotplatform-设备订单计费上传
+//
+// Summary: Iotplatform-设备订单计费上传
 func (client *Client) PushMeterdataOrder(request *PushMeterdataOrderRequest) (_result *PushMeterdataOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45844,10 +51754,11 @@ func (client *Client) PushMeterdataOrder(request *PushMeterdataOrderRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: Iotplatform-设备订单计费上传
- * Summary: Iotplatform-设备订单计费上传
- */
+// Description:
+//
+// Description: Iotplatform-设备订单计费上传
+//
+// Summary: Iotplatform-设备订单计费上传
 func (client *Client) PushMeterdataOrderEx(request *PushMeterdataOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushMeterdataOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45862,10 +51773,11 @@ func (client *Client) PushMeterdataOrderEx(request *PushMeterdataOrderRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 3c商品开通消息转发
- * Summary: 3c商品开通消息转发
- */
+// Description:
+//
+// Description: 3c商品开通消息转发
+//
+// Summary: 3c商品开通消息转发
 func (client *Client) OpenIotplantformProduct(request *OpenIotplantformProductRequest) (_result *OpenIotplantformProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45878,10 +51790,11 @@ func (client *Client) OpenIotplantformProduct(request *OpenIotplantformProductRe
 	return _result, _err
 }
 
-/**
- * Description: 3c商品开通消息转发
- * Summary: 3c商品开通消息转发
- */
+// Description:
+//
+// Description: 3c商品开通消息转发
+//
+// Summary: 3c商品开通消息转发
 func (client *Client) OpenIotplantformProductEx(request *OpenIotplantformProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OpenIotplantformProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45896,10 +51809,11 @@ func (client *Client) OpenIotplantformProductEx(request *OpenIotplantformProduct
 	return _result, _err
 }
 
-/**
- * Description: 3c商品停止消息转发
- * Summary: 3c商品停止消息转发
- */
+// Description:
+//
+// Description: 3c商品停止消息转发
+//
+// Summary: 3c商品停止消息转发
 func (client *Client) StopIotplantformProduct(request *StopIotplantformProductRequest) (_result *StopIotplantformProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45912,10 +51826,11 @@ func (client *Client) StopIotplantformProduct(request *StopIotplantformProductRe
 	return _result, _err
 }
 
-/**
- * Description: 3c商品停止消息转发
- * Summary: 3c商品停止消息转发
- */
+// Description:
+//
+// Description: 3c商品停止消息转发
+//
+// Summary: 3c商品停止消息转发
 func (client *Client) StopIotplantformProductEx(request *StopIotplantformProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopIotplantformProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45930,10 +51845,11 @@ func (client *Client) StopIotplantformProductEx(request *StopIotplantformProduct
 	return _result, _err
 }
 
-/**
- * Description: 3c商品恢复消息转发
- * Summary: 3c商品恢复消息转发
- */
+// Description:
+//
+// Description: 3c商品恢复消息转发
+//
+// Summary: 3c商品恢复消息转发
 func (client *Client) ResumeIotplantformProduct(request *ResumeIotplantformProductRequest) (_result *ResumeIotplantformProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45946,10 +51862,11 @@ func (client *Client) ResumeIotplantformProduct(request *ResumeIotplantformProdu
 	return _result, _err
 }
 
-/**
- * Description: 3c商品恢复消息转发
- * Summary: 3c商品恢复消息转发
- */
+// Description:
+//
+// Description: 3c商品恢复消息转发
+//
+// Summary: 3c商品恢复消息转发
 func (client *Client) ResumeIotplantformProductEx(request *ResumeIotplantformProductRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeIotplantformProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45964,10 +51881,11 @@ func (client *Client) ResumeIotplantformProductEx(request *ResumeIotplantformPro
 	return _result, _err
 }
 
-/**
- * Description: 创建数据模型
- * Summary: 创建数据模型
- */
+// Description:
+//
+// Description: 创建数据模型
+//
+// Summary: 创建数据模型
 func (client *Client) CreateDeviceDatamodel(request *CreateDeviceDatamodelRequest) (_result *CreateDeviceDatamodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -45980,10 +51898,11 @@ func (client *Client) CreateDeviceDatamodel(request *CreateDeviceDatamodelReques
 	return _result, _err
 }
 
-/**
- * Description: 创建数据模型
- * Summary: 创建数据模型
- */
+// Description:
+//
+// Description: 创建数据模型
+//
+// Summary: 创建数据模型
 func (client *Client) CreateDeviceDatamodelEx(request *CreateDeviceDatamodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeviceDatamodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45998,10 +51917,11 @@ func (client *Client) CreateDeviceDatamodelEx(request *CreateDeviceDatamodelRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取数据模型
- * Summary: 获取数据模型
- */
+// Description:
+//
+// Description: 获取数据模型
+//
+// Summary: 获取数据模型
 func (client *Client) GetDeviceDatamodel(request *GetDeviceDatamodelRequest) (_result *GetDeviceDatamodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46014,10 +51934,11 @@ func (client *Client) GetDeviceDatamodel(request *GetDeviceDatamodelRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 获取数据模型
- * Summary: 获取数据模型
- */
+// Description:
+//
+// Description: 获取数据模型
+//
+// Summary: 获取数据模型
 func (client *Client) GetDeviceDatamodelEx(request *GetDeviceDatamodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeviceDatamodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46032,10 +51953,11 @@ func (client *Client) GetDeviceDatamodelEx(request *GetDeviceDatamodelRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 注册设备
- * Summary: 注册设备
- */
+// Description:
+//
+// Description: 注册设备
+//
+// Summary: 注册设备
 func (client *Client) ImportDevice(request *ImportDeviceRequest) (_result *ImportDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46048,10 +51970,11 @@ func (client *Client) ImportDevice(request *ImportDeviceRequest) (_result *Impor
 	return _result, _err
 }
 
-/**
- * Description: 注册设备
- * Summary: 注册设备
- */
+// Description:
+//
+// Description: 注册设备
+//
+// Summary: 注册设备
 func (client *Client) ImportDeviceEx(request *ImportDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46066,10 +51989,11 @@ func (client *Client) ImportDeviceEx(request *ImportDeviceRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 通过chainId获取设备详情
- * Summary: 通过chainId获取设备详情
- */
+// Description:
+//
+// Description: 通过chainId获取设备详情
+//
+// Summary: 通过chainId获取设备详情
 func (client *Client) GetDeviceBychainid(request *GetDeviceBychainidRequest) (_result *GetDeviceBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46082,10 +52006,11 @@ func (client *Client) GetDeviceBychainid(request *GetDeviceBychainidRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 通过chainId获取设备详情
- * Summary: 通过chainId获取设备详情
- */
+// Description:
+//
+// Description: 通过chainId获取设备详情
+//
+// Summary: 通过chainId获取设备详情
 func (client *Client) GetDeviceBychainidEx(request *GetDeviceBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeviceBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46100,10 +52025,11 @@ func (client *Client) GetDeviceBychainidEx(request *GetDeviceBychainidRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 通过deviceId获取设备详情
- * Summary: 通过deviceId获取设备详情
- */
+// Description:
+//
+// Description: 通过deviceId获取设备详情
+//
+// Summary: 通过deviceId获取设备详情
 func (client *Client) GetDeviceBydeviceid(request *GetDeviceBydeviceidRequest) (_result *GetDeviceBydeviceidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46116,10 +52042,11 @@ func (client *Client) GetDeviceBydeviceid(request *GetDeviceBydeviceidRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 通过deviceId获取设备详情
- * Summary: 通过deviceId获取设备详情
- */
+// Description:
+//
+// Description: 通过deviceId获取设备详情
+//
+// Summary: 通过deviceId获取设备详情
 func (client *Client) GetDeviceBydeviceidEx(request *GetDeviceBydeviceidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDeviceBydeviceidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46134,10 +52061,11 @@ func (client *Client) GetDeviceBydeviceidEx(request *GetDeviceBydeviceidRequest,
 	return _result, _err
 }
 
-/**
- * Description: 通过场景码列举设备
- * Summary: 通过场景码列举设备
- */
+// Description:
+//
+// Description: 通过场景码列举设备
+//
+// Summary: 通过场景码列举设备
 func (client *Client) ListDeviceByscene(request *ListDeviceBysceneRequest) (_result *ListDeviceBysceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46150,10 +52078,11 @@ func (client *Client) ListDeviceByscene(request *ListDeviceBysceneRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 通过场景码列举设备
- * Summary: 通过场景码列举设备
- */
+// Description:
+//
+// Description: 通过场景码列举设备
+//
+// Summary: 通过场景码列举设备
 func (client *Client) ListDeviceBysceneEx(request *ListDeviceBysceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDeviceBysceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46168,10 +52097,11 @@ func (client *Client) ListDeviceBysceneEx(request *ListDeviceBysceneRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 更新设备信息
- * Summary: 更新设备信息
- */
+// Description:
+//
+// Description: 更新设备信息
+//
+// Summary: 更新设备信息
 func (client *Client) UpdateDeviceInfo(request *UpdateDeviceInfoRequest) (_result *UpdateDeviceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46184,10 +52114,11 @@ func (client *Client) UpdateDeviceInfo(request *UpdateDeviceInfoRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 更新设备信息
- * Summary: 更新设备信息
- */
+// Description:
+//
+// Description: 更新设备信息
+//
+// Summary: 更新设备信息
 func (client *Client) UpdateDeviceInfoEx(request *UpdateDeviceInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46202,10 +52133,11 @@ func (client *Client) UpdateDeviceInfoEx(request *UpdateDeviceInfoRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 免签名注册设备
- * Summary: 免签名注册设备
- */
+// Description:
+//
+// Description: 免签名注册设备
+//
+// Summary: 免签名注册设备
 func (client *Client) CreateDistributedeviceBydeviceid(request *CreateDistributedeviceBydeviceidRequest) (_result *CreateDistributedeviceBydeviceidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46218,10 +52150,11 @@ func (client *Client) CreateDistributedeviceBydeviceid(request *CreateDistribute
 	return _result, _err
 }
 
-/**
- * Description: 免签名注册设备
- * Summary: 免签名注册设备
- */
+// Description:
+//
+// Description: 免签名注册设备
+//
+// Summary: 免签名注册设备
 func (client *Client) CreateDistributedeviceBydeviceidEx(request *CreateDistributedeviceBydeviceidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBydeviceidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46236,10 +52169,11 @@ func (client *Client) CreateDistributedeviceBydeviceidEx(request *CreateDistribu
 	return _result, _err
 }
 
-/**
- * Description: 通过链上设备Id发行
- * Summary: 通过链上设备Id发行
- */
+// Description:
+//
+// Description: 通过链上设备Id发行
+//
+// Summary: 通过链上设备Id发行
 func (client *Client) CreateDistributedeviceBychainid(request *CreateDistributedeviceBychainidRequest) (_result *CreateDistributedeviceBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46252,10 +52186,11 @@ func (client *Client) CreateDistributedeviceBychainid(request *CreateDistributed
 	return _result, _err
 }
 
-/**
- * Description: 通过链上设备Id发行
- * Summary: 通过链上设备Id发行
- */
+// Description:
+//
+// Description: 通过链上设备Id发行
+//
+// Summary: 通过链上设备Id发行
 func (client *Client) CreateDistributedeviceBychainidEx(request *CreateDistributedeviceBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46270,10 +52205,11 @@ func (client *Client) CreateDistributedeviceBychainidEx(request *CreateDistribut
 	return _result, _err
 }
 
-/**
- * Description: 替换发行设备
- * Summary: 替换发行设备
- */
+// Description:
+//
+// Description: 替换发行设备
+//
+// Summary: 替换发行设备
 func (client *Client) ReplaceDistributedeviceBychainid(request *ReplaceDistributedeviceBychainidRequest) (_result *ReplaceDistributedeviceBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46286,10 +52222,11 @@ func (client *Client) ReplaceDistributedeviceBychainid(request *ReplaceDistribut
 	return _result, _err
 }
 
-/**
- * Description: 替换发行设备
- * Summary: 替换发行设备
- */
+// Description:
+//
+// Description: 替换发行设备
+//
+// Summary: 替换发行设备
 func (client *Client) ReplaceDistributedeviceBychainidEx(request *ReplaceDistributedeviceBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReplaceDistributedeviceBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46304,10 +52241,11 @@ func (client *Client) ReplaceDistributedeviceBychainidEx(request *ReplaceDistrib
 	return _result, _err
 }
 
-/**
- * Description: 上传单个设备所产生的设备数据
- * Summary: 上传设备数据
- */
+// Description:
+//
+// Description: 上传单个设备所产生的设备数据
+//
+// Summary: 上传设备数据
 func (client *Client) SendCollectorBychainid(request *SendCollectorBychainidRequest) (_result *SendCollectorBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46320,10 +52258,11 @@ func (client *Client) SendCollectorBychainid(request *SendCollectorBychainidRequ
 	return _result, _err
 }
 
-/**
- * Description: 上传单个设备所产生的设备数据
- * Summary: 上传设备数据
- */
+// Description:
+//
+// Description: 上传单个设备所产生的设备数据
+//
+// Summary: 上传设备数据
 func (client *Client) SendCollectorBychainidEx(request *SendCollectorBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendCollectorBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46338,10 +52277,11 @@ func (client *Client) SendCollectorBychainidEx(request *SendCollectorBychainidRe
 	return _result, _err
 }
 
-/**
- * Description: 通过Id获取发行设备
- * Summary: 通过Id获取发行设备
- */
+// Description:
+//
+// Description: 通过Id获取发行设备
+//
+// Summary: 通过Id获取发行设备
 func (client *Client) GetDistributedeviceBychainid(request *GetDistributedeviceBychainidRequest) (_result *GetDistributedeviceBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46354,10 +52294,11 @@ func (client *Client) GetDistributedeviceBychainid(request *GetDistributedeviceB
 	return _result, _err
 }
 
-/**
- * Description: 通过Id获取发行设备
- * Summary: 通过Id获取发行设备
- */
+// Description:
+//
+// Description: 通过Id获取发行设备
+//
+// Summary: 通过Id获取发行设备
 func (client *Client) GetDistributedeviceBychainidEx(request *GetDistributedeviceBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDistributedeviceBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46372,10 +52313,11 @@ func (client *Client) GetDistributedeviceBychainidEx(request *GetDistributedevic
 	return _result, _err
 }
 
-/**
- * Description: 通过场景码列举发行设备
- * Summary: 通过场景码列举发行设备
- */
+// Description:
+//
+// Description: 通过场景码列举发行设备
+//
+// Summary: 通过场景码列举发行设备
 func (client *Client) ListDistributedeviceByscene(request *ListDistributedeviceBysceneRequest) (_result *ListDistributedeviceBysceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46388,10 +52330,11 @@ func (client *Client) ListDistributedeviceByscene(request *ListDistributedeviceB
 	return _result, _err
 }
 
-/**
- * Description: 通过场景码列举发行设备
- * Summary: 通过场景码列举发行设备
- */
+// Description:
+//
+// Description: 通过场景码列举发行设备
+//
+// Summary: 通过场景码列举发行设备
 func (client *Client) ListDistributedeviceBysceneEx(request *ListDistributedeviceBysceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDistributedeviceBysceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46406,10 +52349,11 @@ func (client *Client) ListDistributedeviceBysceneEx(request *ListDistributedevic
 	return _result, _err
 }
 
-/**
- * Description: 创建消费者
- * Summary: 创建消费者
- */
+// Description:
+//
+// Description: 创建消费者
+//
+// Summary: 创建消费者
 func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *CreateConsumerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46422,10 +52366,11 @@ func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * Description: 创建消费者
- * Summary: 创建消费者
- */
+// Description:
+//
+// Description: 创建消费者
+//
+// Summary: 创建消费者
 func (client *Client) CreateConsumerEx(request *CreateConsumerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46440,10 +52385,11 @@ func (client *Client) CreateConsumerEx(request *CreateConsumerRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 消费者订阅
- * Summary: 消费者订阅
- */
+// Description:
+//
+// Description: 消费者订阅
+//
+// Summary: 消费者订阅
 func (client *Client) SetConsumerSubscribe(request *SetConsumerSubscribeRequest) (_result *SetConsumerSubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46456,10 +52402,11 @@ func (client *Client) SetConsumerSubscribe(request *SetConsumerSubscribeRequest)
 	return _result, _err
 }
 
-/**
- * Description: 消费者订阅
- * Summary: 消费者订阅
- */
+// Description:
+//
+// Description: 消费者订阅
+//
+// Summary: 消费者订阅
 func (client *Client) SetConsumerSubscribeEx(request *SetConsumerSubscribeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetConsumerSubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46474,10 +52421,11 @@ func (client *Client) SetConsumerSubscribeEx(request *SetConsumerSubscribeReques
 	return _result, _err
 }
 
-/**
- * Description: 消费者取消订阅设备
- * Summary: 消费者取消订阅设备
- */
+// Description:
+//
+// Description: 消费者取消订阅设备
+//
+// Summary: 消费者取消订阅设备
 func (client *Client) SetConsumerUnsubscribe(request *SetConsumerUnsubscribeRequest) (_result *SetConsumerUnsubscribeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46490,10 +52438,11 @@ func (client *Client) SetConsumerUnsubscribe(request *SetConsumerUnsubscribeRequ
 	return _result, _err
 }
 
-/**
- * Description: 消费者取消订阅设备
- * Summary: 消费者取消订阅设备
- */
+// Description:
+//
+// Description: 消费者取消订阅设备
+//
+// Summary: 消费者取消订阅设备
 func (client *Client) SetConsumerUnsubscribeEx(request *SetConsumerUnsubscribeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetConsumerUnsubscribeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46508,10 +52457,11 @@ func (client *Client) SetConsumerUnsubscribeEx(request *SetConsumerUnsubscribeRe
 	return _result, _err
 }
 
-/**
- * Description: 消费者获取数据
- * Summary: 消费者获取数据
- */
+// Description:
+//
+// Description: 消费者获取数据
+//
+// Summary: 消费者获取数据
 func (client *Client) PullConsumerDatasource(request *PullConsumerDatasourceRequest) (_result *PullConsumerDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46524,10 +52474,11 @@ func (client *Client) PullConsumerDatasource(request *PullConsumerDatasourceRequ
 	return _result, _err
 }
 
-/**
- * Description: 消费者获取数据
- * Summary: 消费者获取数据
- */
+// Description:
+//
+// Description: 消费者获取数据
+//
+// Summary: 消费者获取数据
 func (client *Client) PullConsumerDatasourceEx(request *PullConsumerDatasourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PullConsumerDatasourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46542,10 +52493,11 @@ func (client *Client) PullConsumerDatasourceEx(request *PullConsumerDatasourceRe
 	return _result, _err
 }
 
-/**
- * Description: 通过设备id获取发行设备详情
- * Summary: 通过设备id获取发行设备详情
- */
+// Description:
+//
+// Description: 通过设备id获取发行设备详情
+//
+// Summary: 通过设备id获取发行设备详情
 func (client *Client) GetDistributedeviceBydeviceid(request *GetDistributedeviceBydeviceidRequest) (_result *GetDistributedeviceBydeviceidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46558,10 +52510,11 @@ func (client *Client) GetDistributedeviceBydeviceid(request *GetDistributedevice
 	return _result, _err
 }
 
-/**
- * Description: 通过设备id获取发行设备详情
- * Summary: 通过设备id获取发行设备详情
- */
+// Description:
+//
+// Description: 通过设备id获取发行设备详情
+//
+// Summary: 通过设备id获取发行设备详情
 func (client *Client) GetDistributedeviceBydeviceidEx(request *GetDistributedeviceBydeviceidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDistributedeviceBydeviceidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46576,10 +52529,11 @@ func (client *Client) GetDistributedeviceBydeviceidEx(request *GetDistributedevi
 	return _result, _err
 }
 
-/**
- * Description: 通过发行id获取设备
- * Summary: 通过发行id获取设备
- */
+// Description:
+//
+// Description: 通过发行id获取设备
+//
+// Summary: 通过发行id获取设备
 func (client *Client) GetDistributedeviceBydisid(request *GetDistributedeviceBydisidRequest) (_result *GetDistributedeviceBydisidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46592,10 +52546,11 @@ func (client *Client) GetDistributedeviceBydisid(request *GetDistributedeviceByd
 	return _result, _err
 }
 
-/**
- * Description: 通过发行id获取设备
- * Summary: 通过发行id获取设备
- */
+// Description:
+//
+// Description: 通过发行id获取设备
+//
+// Summary: 通过发行id获取设备
 func (client *Client) GetDistributedeviceBydisidEx(request *GetDistributedeviceBydisidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDistributedeviceBydisidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46610,10 +52565,11 @@ func (client *Client) GetDistributedeviceBydisidEx(request *GetDistributedeviceB
 	return _result, _err
 }
 
-/**
- * Description: 注册外围设备
- * Summary: 注册外围设备
- */
+// Description:
+//
+// Description: 注册外围设备
+//
+// Summary: 注册外围设备
 func (client *Client) ImportPeripheral(request *ImportPeripheralRequest) (_result *ImportPeripheralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46626,10 +52582,11 @@ func (client *Client) ImportPeripheral(request *ImportPeripheralRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 注册外围设备
- * Summary: 注册外围设备
- */
+// Description:
+//
+// Description: 注册外围设备
+//
+// Summary: 注册外围设备
 func (client *Client) ImportPeripheralEx(request *ImportPeripheralRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportPeripheralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46644,10 +52601,11 @@ func (client *Client) ImportPeripheralEx(request *ImportPeripheralRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 通过链上外围设备ID获取详情
- * Summary: 通过链上外围设备ID获取详情
- */
+// Description:
+//
+// Description: 通过链上外围设备ID获取详情
+//
+// Summary: 通过链上外围设备ID获取详情
 func (client *Client) GetPeripheralBychainperipheralid(request *GetPeripheralBychainperipheralidRequest) (_result *GetPeripheralBychainperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46660,10 +52618,11 @@ func (client *Client) GetPeripheralBychainperipheralid(request *GetPeripheralByc
 	return _result, _err
 }
 
-/**
- * Description: 通过链上外围设备ID获取详情
- * Summary: 通过链上外围设备ID获取详情
- */
+// Description:
+//
+// Description: 通过链上外围设备ID获取详情
+//
+// Summary: 通过链上外围设备ID获取详情
 func (client *Client) GetPeripheralBychainperipheralidEx(request *GetPeripheralBychainperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPeripheralBychainperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46678,10 +52637,11 @@ func (client *Client) GetPeripheralBychainperipheralidEx(request *GetPeripheralB
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备ID获取详情
- * Summary: 通过外围设备ID获取详情
- */
+// Description:
+//
+// Description: 通过外围设备ID获取详情
+//
+// Summary: 通过外围设备ID获取详情
 func (client *Client) GetPeripheralByperipheralid(request *GetPeripheralByperipheralidRequest) (_result *GetPeripheralByperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46694,10 +52654,11 @@ func (client *Client) GetPeripheralByperipheralid(request *GetPeripheralByperiph
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备ID获取详情
- * Summary: 通过外围设备ID获取详情
- */
+// Description:
+//
+// Description: 通过外围设备ID获取详情
+//
+// Summary: 通过外围设备ID获取详情
 func (client *Client) GetPeripheralByperipheralidEx(request *GetPeripheralByperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPeripheralByperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46712,10 +52673,11 @@ func (client *Client) GetPeripheralByperipheralidEx(request *GetPeripheralByperi
 	return _result, _err
 }
 
-/**
- * Description: 根据场景列举外围设备
- * Summary: 根据场景列举外围设备
- */
+// Description:
+//
+// Description: 根据场景列举外围设备
+//
+// Summary: 根据场景列举外围设备
 func (client *Client) ListPeripheralByscene(request *ListPeripheralBysceneRequest) (_result *ListPeripheralBysceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46728,10 +52690,11 @@ func (client *Client) ListPeripheralByscene(request *ListPeripheralBysceneReques
 	return _result, _err
 }
 
-/**
- * Description: 根据场景列举外围设备
- * Summary: 根据场景列举外围设备
- */
+// Description:
+//
+// Description: 根据场景列举外围设备
+//
+// Summary: 根据场景列举外围设备
 func (client *Client) ListPeripheralBysceneEx(request *ListPeripheralBysceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPeripheralBysceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46746,10 +52709,11 @@ func (client *Client) ListPeripheralBysceneEx(request *ListPeripheralBysceneRequ
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备Id发行
- * Summary: 通过外围设备Id发行
- */
+// Description:
+//
+// Description: 通过外围设备Id发行
+//
+// Summary: 通过外围设备Id发行
 func (client *Client) CreateDistributedeviceByperipheralid(request *CreateDistributedeviceByperipheralidRequest) (_result *CreateDistributedeviceByperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46762,10 +52726,11 @@ func (client *Client) CreateDistributedeviceByperipheralid(request *CreateDistri
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备Id发行
- * Summary: 通过外围设备Id发行
- */
+// Description:
+//
+// Description: 通过外围设备Id发行
+//
+// Summary: 通过外围设备Id发行
 func (client *Client) CreateDistributedeviceByperipheralidEx(request *CreateDistributedeviceByperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceByperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46780,10 +52745,11 @@ func (client *Client) CreateDistributedeviceByperipheralidEx(request *CreateDist
 	return _result, _err
 }
 
-/**
- * Description: 通过链上外围设备Id发行
- * Summary: 通过链上外围设备Id发行
- */
+// Description:
+//
+// Description: 通过链上外围设备Id发行
+//
+// Summary: 通过链上外围设备Id发行
 func (client *Client) CreateDistributedeviceBychainperipheralid(request *CreateDistributedeviceBychainperipheralidRequest) (_result *CreateDistributedeviceBychainperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46796,10 +52762,11 @@ func (client *Client) CreateDistributedeviceBychainperipheralid(request *CreateD
 	return _result, _err
 }
 
-/**
- * Description: 通过链上外围设备Id发行
- * Summary: 通过链上外围设备Id发行
- */
+// Description:
+//
+// Description: 通过链上外围设备Id发行
+//
+// Summary: 通过链上外围设备Id发行
 func (client *Client) CreateDistributedeviceBychainperipheralidEx(request *CreateDistributedeviceBychainperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBychainperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46814,10 +52781,11 @@ func (client *Client) CreateDistributedeviceBychainperipheralidEx(request *Creat
 	return _result, _err
 }
 
-/**
- * Description: 替换发行外围设备 by 链上外围设备ID
- * Summary: 替换发行外围设备 by 链上外围设备ID
- */
+// Description:
+//
+// Description: 替换发行外围设备 by 链上外围设备ID
+//
+// Summary: 替换发行外围设备 by 链上外围设备ID
 func (client *Client) ReplaceDistributedeviceBychainperipheralid(request *ReplaceDistributedeviceBychainperipheralidRequest) (_result *ReplaceDistributedeviceBychainperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46830,10 +52798,11 @@ func (client *Client) ReplaceDistributedeviceBychainperipheralid(request *Replac
 	return _result, _err
 }
 
-/**
- * Description: 替换发行外围设备 by 链上外围设备ID
- * Summary: 替换发行外围设备 by 链上外围设备ID
- */
+// Description:
+//
+// Description: 替换发行外围设备 by 链上外围设备ID
+//
+// Summary: 替换发行外围设备 by 链上外围设备ID
 func (client *Client) ReplaceDistributedeviceBychainperipheralidEx(request *ReplaceDistributedeviceBychainperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReplaceDistributedeviceBychainperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46848,10 +52817,11 @@ func (client *Client) ReplaceDistributedeviceBychainperipheralidEx(request *Repl
 	return _result, _err
 }
 
-/**
- * Description: 根据场景列举发行外围设备
- * Summary: 根据场景列举发行外围设备
- */
+// Description:
+//
+// Description: 根据场景列举发行外围设备
+//
+// Summary: 根据场景列举发行外围设备
 func (client *Client) ListDistributedeviceByperipheralscene(request *ListDistributedeviceByperipheralsceneRequest) (_result *ListDistributedeviceByperipheralsceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46864,10 +52834,11 @@ func (client *Client) ListDistributedeviceByperipheralscene(request *ListDistrib
 	return _result, _err
 }
 
-/**
- * Description: 根据场景列举发行外围设备
- * Summary: 根据场景列举发行外围设备
- */
+// Description:
+//
+// Description: 根据场景列举发行外围设备
+//
+// Summary: 根据场景列举发行外围设备
 func (client *Client) ListDistributedeviceByperipheralsceneEx(request *ListDistributedeviceByperipheralsceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDistributedeviceByperipheralsceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46882,10 +52853,11 @@ func (client *Client) ListDistributedeviceByperipheralsceneEx(request *ListDistr
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备ID获取发行外围设备信息
- * Summary: 通过外围设备ID获取发行外围设备信息
- */
+// Description:
+//
+// Description: 通过外围设备ID获取发行外围设备信息
+//
+// Summary: 通过外围设备ID获取发行外围设备信息
 func (client *Client) GetDistributedeviceByperipheralid(request *GetDistributedeviceByperipheralidRequest) (_result *GetDistributedeviceByperipheralidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46898,10 +52870,11 @@ func (client *Client) GetDistributedeviceByperipheralid(request *GetDistributede
 	return _result, _err
 }
 
-/**
- * Description: 通过外围设备ID获取发行外围设备信息
- * Summary: 通过外围设备ID获取发行外围设备信息
- */
+// Description:
+//
+// Description: 通过外围设备ID获取发行外围设备信息
+//
+// Summary: 通过外围设备ID获取发行外围设备信息
 func (client *Client) GetDistributedeviceByperipheralidEx(request *GetDistributedeviceByperipheralidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDistributedeviceByperipheralidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46916,10 +52889,11 @@ func (client *Client) GetDistributedeviceByperipheralidEx(request *GetDistribute
 	return _result, _err
 }
 
-/**
- * Description: 发行设备by_devcie
- * Summary: 发行设备by_devcie
- */
+// Description:
+//
+// Description: 发行设备by_devcie
+//
+// Summary: 发行设备by_devcie
 func (client *Client) CreateDistributedeviceBydevice(request *CreateDistributedeviceBydeviceRequest) (_result *CreateDistributedeviceBydeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46932,10 +52906,11 @@ func (client *Client) CreateDistributedeviceBydevice(request *CreateDistributede
 	return _result, _err
 }
 
-/**
- * Description: 发行设备by_devcie
- * Summary: 发行设备by_devcie
- */
+// Description:
+//
+// Description: 发行设备by_devcie
+//
+// Summary: 发行设备by_devcie
 func (client *Client) CreateDistributedeviceBydeviceEx(request *CreateDistributedeviceBydeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBydeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46950,10 +52925,11 @@ func (client *Client) CreateDistributedeviceBydeviceEx(request *CreateDistribute
 	return _result, _err
 }
 
-/**
- * Description: 远程任务创建
- * Summary: 远程任务创建
- */
+// Description:
+//
+// Description: 远程任务创建
+//
+// Summary: 远程任务创建
 func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -46966,10 +52942,11 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 	return _result, _err
 }
 
-/**
- * Description: 远程任务创建
- * Summary: 远程任务创建
- */
+// Description:
+//
+// Description: 远程任务创建
+//
+// Summary: 远程任务创建
 func (client *Client) CreateTaskEx(request *CreateTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46984,10 +52961,11 @@ func (client *Client) CreateTaskEx(request *CreateTaskRequest, headers map[strin
 	return _result, _err
 }
 
-/**
- * Description: 远程任务查询
- * Summary: 远程任务查询
- */
+// Description:
+//
+// Description: 远程任务查询
+//
+// Summary: 远程任务查询
 func (client *Client) QueryTask(request *QueryTaskRequest) (_result *QueryTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47000,10 +52978,11 @@ func (client *Client) QueryTask(request *QueryTaskRequest) (_result *QueryTaskRe
 	return _result, _err
 }
 
-/**
- * Description: 远程任务查询
- * Summary: 远程任务查询
- */
+// Description:
+//
+// Description: 远程任务查询
+//
+// Summary: 远程任务查询
 func (client *Client) QueryTaskEx(request *QueryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47018,10 +52997,11 @@ func (client *Client) QueryTaskEx(request *QueryTaskRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 分析数据查询
- * Summary: 分析数据查询
- */
+// Description:
+//
+// Description: 分析数据查询
+//
+// Summary: 分析数据查询
 func (client *Client) QueryAnalysis(request *QueryAnalysisRequest) (_result *QueryAnalysisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47034,10 +53014,11 @@ func (client *Client) QueryAnalysis(request *QueryAnalysisRequest) (_result *Que
 	return _result, _err
 }
 
-/**
- * Description: 分析数据查询
- * Summary: 分析数据查询
- */
+// Description:
+//
+// Description: 分析数据查询
+//
+// Summary: 分析数据查询
 func (client *Client) QueryAnalysisEx(request *QueryAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAnalysisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47052,10 +53033,11 @@ func (client *Client) QueryAnalysisEx(request *QueryAnalysisRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 上传数据mul（可能是多个不同的设备分别产生的多条数据）
- * Summary: 上传设备数据mul
- */
+// Description:
+//
+// Description: 上传数据mul（可能是多个不同的设备分别产生的多条数据）
+//
+// Summary: 上传设备数据mul
 func (client *Client) SendCollectorBychainidmul(request *SendCollectorBychainidmulRequest) (_result *SendCollectorBychainidmulResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47068,10 +53050,11 @@ func (client *Client) SendCollectorBychainidmul(request *SendCollectorBychainidm
 	return _result, _err
 }
 
-/**
- * Description: 上传数据mul（可能是多个不同的设备分别产生的多条数据）
- * Summary: 上传设备数据mul
- */
+// Description:
+//
+// Description: 上传数据mul（可能是多个不同的设备分别产生的多条数据）
+//
+// Summary: 上传设备数据mul
 func (client *Client) SendCollectorBychainidmulEx(request *SendCollectorBychainidmulRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendCollectorBychainidmulResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47086,10 +53069,11 @@ func (client *Client) SendCollectorBychainidmulEx(request *SendCollectorBychaini
 	return _result, _err
 }
 
-/**
- * Description: 上传设备业务数据
- * Summary: 上传设备业务数据
- */
+// Description:
+//
+// Description: 上传设备业务数据
+//
+// Summary: 上传设备业务数据
 func (client *Client) SendCollectorDevicebizdata(request *SendCollectorDevicebizdataRequest) (_result *SendCollectorDevicebizdataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47102,10 +53086,11 @@ func (client *Client) SendCollectorDevicebizdata(request *SendCollectorDevicebiz
 	return _result, _err
 }
 
-/**
- * Description: 上传设备业务数据
- * Summary: 上传设备业务数据
- */
+// Description:
+//
+// Description: 上传设备业务数据
+//
+// Summary: 上传设备业务数据
 func (client *Client) SendCollectorDevicebizdataEx(request *SendCollectorDevicebizdataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendCollectorDevicebizdataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47120,10 +53105,11 @@ func (client *Client) SendCollectorDevicebizdataEx(request *SendCollectorDeviceb
 	return _result, _err
 }
 
-/**
- * Description: 更新设备信息by_devcie
- * Summary: 更新设备信息by_devcie
- */
+// Description:
+//
+// Description: 更新设备信息by_devcie
+//
+// Summary: 更新设备信息by_devcie
 func (client *Client) UpdateDeviceInfobydevice(request *UpdateDeviceInfobydeviceRequest) (_result *UpdateDeviceInfobydeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47136,10 +53122,11 @@ func (client *Client) UpdateDeviceInfobydevice(request *UpdateDeviceInfobydevice
 	return _result, _err
 }
 
-/**
- * Description: 更新设备信息by_devcie
- * Summary: 更新设备信息by_devcie
- */
+// Description:
+//
+// Description: 更新设备信息by_devcie
+//
+// Summary: 更新设备信息by_devcie
 func (client *Client) UpdateDeviceInfobydeviceEx(request *UpdateDeviceInfobydeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDeviceInfobydeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47154,10 +53141,11 @@ func (client *Client) UpdateDeviceInfobydeviceEx(request *UpdateDeviceInfobydevi
 	return _result, _err
 }
 
-/**
- * Description: 下线设备
- * Summary: 下线设备
- */
+// Description:
+//
+// Description: 下线设备
+//
+// Summary: 下线设备
 func (client *Client) OfflineDevice(request *OfflineDeviceRequest) (_result *OfflineDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47170,10 +53158,11 @@ func (client *Client) OfflineDevice(request *OfflineDeviceRequest) (_result *Off
 	return _result, _err
 }
 
-/**
- * Description: 下线设备
- * Summary: 下线设备
- */
+// Description:
+//
+// Description: 下线设备
+//
+// Summary: 下线设备
 func (client *Client) OfflineDeviceEx(request *OfflineDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47188,10 +53177,11 @@ func (client *Client) OfflineDeviceEx(request *OfflineDeviceRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 申请MQTT token
- * Summary: 申请MQTT token
- */
+// Description:
+//
+// Description: 申请MQTT token
+//
+// Summary: 申请MQTT token
 func (client *Client) ApplyMqtoken(request *ApplyMqtokenRequest) (_result *ApplyMqtokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47204,10 +53194,11 @@ func (client *Client) ApplyMqtoken(request *ApplyMqtokenRequest) (_result *Apply
 	return _result, _err
 }
 
-/**
- * Description: 申请MQTT token
- * Summary: 申请MQTT token
- */
+// Description:
+//
+// Description: 申请MQTT token
+//
+// Summary: 申请MQTT token
 func (client *Client) ApplyMqtokenEx(request *ApplyMqtokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyMqtokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47222,10 +53213,11 @@ func (client *Client) ApplyMqtokenEx(request *ApplyMqtokenRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 查询设备所注册的公钥是否正确
- * Summary: 查询注册信息
- */
+// Description:
+//
+// Description: 查询设备所注册的公钥是否正确
+//
+// Summary: 查询注册信息
 func (client *Client) QueryDeviceRegistration(request *QueryDeviceRegistrationRequest) (_result *QueryDeviceRegistrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47238,10 +53230,11 @@ func (client *Client) QueryDeviceRegistration(request *QueryDeviceRegistrationRe
 	return _result, _err
 }
 
-/**
- * Description: 查询设备所注册的公钥是否正确
- * Summary: 查询注册信息
- */
+// Description:
+//
+// Description: 查询设备所注册的公钥是否正确
+//
+// Summary: 查询注册信息
 func (client *Client) QueryDeviceRegistrationEx(request *QueryDeviceRegistrationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceRegistrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47256,10 +53249,11 @@ func (client *Client) QueryDeviceRegistrationEx(request *QueryDeviceRegistration
 	return _result, _err
 }
 
-/**
- * Description: 设备异常上报
- * Summary: 设备异常上报
- */
+// Description:
+//
+// Description: 设备异常上报
+//
+// Summary: 设备异常上报
 func (client *Client) AddAbnormal(request *AddAbnormalRequest) (_result *AddAbnormalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47272,10 +53266,11 @@ func (client *Client) AddAbnormal(request *AddAbnormalRequest) (_result *AddAbno
 	return _result, _err
 }
 
-/**
- * Description: 设备异常上报
- * Summary: 设备异常上报
- */
+// Description:
+//
+// Description: 设备异常上报
+//
+// Summary: 设备异常上报
 func (client *Client) AddAbnormalEx(request *AddAbnormalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddAbnormalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47290,10 +53285,11 @@ func (client *Client) AddAbnormalEx(request *AddAbnormalRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 设备下线后，可通过此接口重新上线
- * Summary: 设置设备状态为上线
- */
+// Description:
+//
+// Description: 设备下线后，可通过此接口重新上线
+//
+// Summary: 设置设备状态为上线
 func (client *Client) OnlineDevice(request *OnlineDeviceRequest) (_result *OnlineDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47306,10 +53302,11 @@ func (client *Client) OnlineDevice(request *OnlineDeviceRequest) (_result *Onlin
 	return _result, _err
 }
 
-/**
- * Description: 设备下线后，可通过此接口重新上线
- * Summary: 设置设备状态为上线
- */
+// Description:
+//
+// Description: 设备下线后，可通过此接口重新上线
+//
+// Summary: 设置设备状态为上线
 func (client *Client) OnlineDeviceEx(request *OnlineDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OnlineDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47324,10 +53321,11 @@ func (client *Client) OnlineDeviceEx(request *OnlineDeviceRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 注销设备
- * Summary: 注销设备
- */
+// Description:
+//
+// Description: 注销设备
+//
+// Summary: 注销设备
 func (client *Client) OfflineDeviceByunregister(request *OfflineDeviceByunregisterRequest) (_result *OfflineDeviceByunregisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47340,10 +53338,11 @@ func (client *Client) OfflineDeviceByunregister(request *OfflineDeviceByunregist
 	return _result, _err
 }
 
-/**
- * Description: 注销设备
- * Summary: 注销设备
- */
+// Description:
+//
+// Description: 注销设备
+//
+// Summary: 注销设备
 func (client *Client) OfflineDeviceByunregisterEx(request *OfflineDeviceByunregisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineDeviceByunregisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47358,10 +53357,11 @@ func (client *Client) OfflineDeviceByunregisterEx(request *OfflineDeviceByunregi
 	return _result, _err
 }
 
-/**
- * Description: 标签状态查询
- * Summary: 标签状态查询
- */
+// Description:
+//
+// Description: 标签状态查询
+//
+// Summary: 标签状态查询
 func (client *Client) QueryLabelTrace(request *QueryLabelTraceRequest) (_result *QueryLabelTraceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47374,10 +53374,11 @@ func (client *Client) QueryLabelTrace(request *QueryLabelTraceRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 标签状态查询
- * Summary: 标签状态查询
- */
+// Description:
+//
+// Description: 标签状态查询
+//
+// Summary: 标签状态查询
 func (client *Client) QueryLabelTraceEx(request *QueryLabelTraceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryLabelTraceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47392,10 +53393,11 @@ func (client *Client) QueryLabelTraceEx(request *QueryLabelTraceRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 标签流转状态同步
- * Summary: 标签流转状态同步
- */
+// Description:
+//
+// Description: 标签流转状态同步
+//
+// Summary: 标签流转状态同步
 func (client *Client) SyncLabelTransfer(request *SyncLabelTransferRequest) (_result *SyncLabelTransferResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47408,10 +53410,11 @@ func (client *Client) SyncLabelTransfer(request *SyncLabelTransferRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 标签流转状态同步
- * Summary: 标签流转状态同步
- */
+// Description:
+//
+// Description: 标签流转状态同步
+//
+// Summary: 标签流转状态同步
 func (client *Client) SyncLabelTransferEx(request *SyncLabelTransferRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncLabelTransferResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47426,10 +53429,11 @@ func (client *Client) SyncLabelTransferEx(request *SyncLabelTransferRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 标签资产绑定
- * Summary: 标签资产绑定
- */
+// Description:
+//
+// Description: 标签资产绑定
+//
+// Summary: 标签资产绑定
 func (client *Client) AddLabelAsset(request *AddLabelAssetRequest) (_result *AddLabelAssetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47442,10 +53446,11 @@ func (client *Client) AddLabelAsset(request *AddLabelAssetRequest) (_result *Add
 	return _result, _err
 }
 
-/**
- * Description: 标签资产绑定
- * Summary: 标签资产绑定
- */
+// Description:
+//
+// Description: 标签资产绑定
+//
+// Summary: 标签资产绑定
 func (client *Client) AddLabelAssetEx(request *AddLabelAssetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddLabelAssetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47460,10 +53465,11 @@ func (client *Client) AddLabelAssetEx(request *AddLabelAssetRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 通过tx_hash查询上链信息
- * Summary: 链上信息查询
- */
+// Description:
+//
+// Description: 通过tx_hash查询上链信息
+//
+// Summary: 链上信息查询
 func (client *Client) QueryDataBytxhash(request *QueryDataBytxhashRequest) (_result *QueryDataBytxhashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47476,10 +53482,11 @@ func (client *Client) QueryDataBytxhash(request *QueryDataBytxhashRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 通过tx_hash查询上链信息
- * Summary: 链上信息查询
- */
+// Description:
+//
+// Description: 通过tx_hash查询上链信息
+//
+// Summary: 链上信息查询
 func (client *Client) QueryDataBytxhashEx(request *QueryDataBytxhashRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDataBytxhashResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47494,10 +53501,11 @@ func (client *Client) QueryDataBytxhashEx(request *QueryDataBytxhashRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 根据taskId 执行未处理的任务
- * Summary: 执行未处理的任务
- */
+// Description:
+//
+// Description: 根据taskId 执行未处理的任务
+//
+// Summary: 执行未处理的任务
 func (client *Client) ExecUnprocessedTask(request *ExecUnprocessedTaskRequest) (_result *ExecUnprocessedTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47510,10 +53518,11 @@ func (client *Client) ExecUnprocessedTask(request *ExecUnprocessedTaskRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 根据taskId 执行未处理的任务
- * Summary: 执行未处理的任务
- */
+// Description:
+//
+// Description: 根据taskId 执行未处理的任务
+//
+// Summary: 执行未处理的任务
 func (client *Client) ExecUnprocessedTaskEx(request *ExecUnprocessedTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecUnprocessedTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47528,10 +53537,11 @@ func (client *Client) ExecUnprocessedTaskEx(request *ExecUnprocessedTaskRequest,
 	return _result, _err
 }
 
-/**
- * Description: 上传汇总数据
- * Summary: 上传汇总数据
- */
+// Description:
+//
+// Description: 上传汇总数据
+//
+// Summary: 上传汇总数据
 func (client *Client) SendCollectorSummarydata(request *SendCollectorSummarydataRequest) (_result *SendCollectorSummarydataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47544,10 +53554,11 @@ func (client *Client) SendCollectorSummarydata(request *SendCollectorSummarydata
 	return _result, _err
 }
 
-/**
- * Description: 上传汇总数据
- * Summary: 上传汇总数据
- */
+// Description:
+//
+// Description: 上传汇总数据
+//
+// Summary: 上传汇总数据
 func (client *Client) SendCollectorSummarydataEx(request *SendCollectorSummarydataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendCollectorSummarydataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47562,10 +53573,11 @@ func (client *Client) SendCollectorSummarydataEx(request *SendCollectorSummaryda
 	return _result, _err
 }
 
-/**
- * Description: 根据请求体内容保存密钥
- * Summary: 保存公钥
- */
+// Description:
+//
+// Description: 根据请求体内容保存密钥
+//
+// Summary: 保存公钥
 func (client *Client) AddCertificate(request *AddCertificateRequest) (_result *AddCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47578,10 +53590,11 @@ func (client *Client) AddCertificate(request *AddCertificateRequest) (_result *A
 	return _result, _err
 }
 
-/**
- * Description: 根据请求体内容保存密钥
- * Summary: 保存公钥
- */
+// Description:
+//
+// Description: 根据请求体内容保存密钥
+//
+// Summary: 保存公钥
 func (client *Client) AddCertificateEx(request *AddCertificateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47596,10 +53609,11 @@ func (client *Client) AddCertificateEx(request *AddCertificateRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 新增租户
- * Summary: 新增租户
- */
+// Description:
+//
+// Description: 新增租户
+//
+// Summary: 新增租户
 func (client *Client) AddTenant(request *AddTenantRequest) (_result *AddTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47612,10 +53626,11 @@ func (client *Client) AddTenant(request *AddTenantRequest) (_result *AddTenantRe
 	return _result, _err
 }
 
-/**
- * Description: 新增租户
- * Summary: 新增租户
- */
+// Description:
+//
+// Description: 新增租户
+//
+// Summary: 新增租户
 func (client *Client) AddTenantEx(request *AddTenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47630,10 +53645,11 @@ func (client *Client) AddTenantEx(request *AddTenantRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 新增场景码
- * Summary: 新增场景码
- */
+// Description:
+//
+// Description: 新增场景码
+//
+// Summary: 新增场景码
 func (client *Client) AddScene(request *AddSceneRequest) (_result *AddSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47646,10 +53662,11 @@ func (client *Client) AddScene(request *AddSceneRequest) (_result *AddSceneRespo
 	return _result, _err
 }
 
-/**
- * Description: 新增场景码
- * Summary: 新增场景码
- */
+// Description:
+//
+// Description: 新增场景码
+//
+// Summary: 新增场景码
 func (client *Client) AddSceneEx(request *AddSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47664,10 +53681,11 @@ func (client *Client) AddSceneEx(request *AddSceneRequest, headers map[string]*s
 	return _result, _err
 }
 
-/**
- * Description: 部署场景合同
- * Summary: 部署场景合同
- */
+// Description:
+//
+// Description: 部署场景合同
+//
+// Summary: 部署场景合同
 func (client *Client) DeployScene(request *DeploySceneRequest) (_result *DeploySceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47680,10 +53698,11 @@ func (client *Client) DeployScene(request *DeploySceneRequest) (_result *DeployS
 	return _result, _err
 }
 
-/**
- * Description: 部署场景合同
- * Summary: 部署场景合同
- */
+// Description:
+//
+// Description: 部署场景合同
+//
+// Summary: 部署场景合同
 func (client *Client) DeploySceneEx(request *DeploySceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeploySceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47698,10 +53717,11 @@ func (client *Client) DeploySceneEx(request *DeploySceneRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 新增sdk
- * Summary: 新增sdk
- */
+// Description:
+//
+// Description: 新增sdk
+//
+// Summary: 新增sdk
 func (client *Client) AddSdk(request *AddSdkRequest) (_result *AddSdkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47714,10 +53734,11 @@ func (client *Client) AddSdk(request *AddSdkRequest) (_result *AddSdkResponse, _
 	return _result, _err
 }
 
-/**
- * Description: 新增sdk
- * Summary: 新增sdk
- */
+// Description:
+//
+// Description: 新增sdk
+//
+// Summary: 新增sdk
 func (client *Client) AddSdkEx(request *AddSdkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddSdkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47732,10 +53753,11 @@ func (client *Client) AddSdkEx(request *AddSdkRequest, headers map[string]*strin
 	return _result, _err
 }
 
-/**
- * Description: 更新sdk
- * Summary: 更新sdk
- */
+// Description:
+//
+// Description: 更新sdk
+//
+// Summary: 更新sdk
 func (client *Client) UpdateSdk(request *UpdateSdkRequest) (_result *UpdateSdkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47748,10 +53770,11 @@ func (client *Client) UpdateSdk(request *UpdateSdkRequest) (_result *UpdateSdkRe
 	return _result, _err
 }
 
-/**
- * Description: 更新sdk
- * Summary: 更新sdk
- */
+// Description:
+//
+// Description: 更新sdk
+//
+// Summary: 更新sdk
 func (client *Client) UpdateSdkEx(request *UpdateSdkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSdkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47766,10 +53789,11 @@ func (client *Client) UpdateSdkEx(request *UpdateSdkRequest, headers map[string]
 	return _result, _err
 }
 
-/**
- * Description: 新增productKey
- * Summary: 新增productKey
- */
+// Description:
+//
+// Description: 新增productKey
+//
+// Summary: 新增productKey
 func (client *Client) AddProductkey(request *AddProductkeyRequest) (_result *AddProductkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47782,10 +53806,11 @@ func (client *Client) AddProductkey(request *AddProductkeyRequest) (_result *Add
 	return _result, _err
 }
 
-/**
- * Description: 新增productKey
- * Summary: 新增productKey
- */
+// Description:
+//
+// Description: 新增productKey
+//
+// Summary: 新增productKey
 func (client *Client) AddProductkeyEx(request *AddProductkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddProductkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47800,10 +53825,11 @@ func (client *Client) AddProductkeyEx(request *AddProductkeyRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 更新productKey
- * Summary: 更新productKey
- */
+// Description:
+//
+// Description: 更新productKey
+//
+// Summary: 更新productKey
 func (client *Client) UpdateProductkey(request *UpdateProductkeyRequest) (_result *UpdateProductkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47816,10 +53842,11 @@ func (client *Client) UpdateProductkey(request *UpdateProductkeyRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 更新productKey
- * Summary: 更新productKey
- */
+// Description:
+//
+// Description: 更新productKey
+//
+// Summary: 更新productKey
 func (client *Client) UpdateProductkeyEx(request *UpdateProductkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProductkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47834,10 +53861,11 @@ func (client *Client) UpdateProductkeyEx(request *UpdateProductkeyRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 更新租户
- * Summary: 更新租户
- */
+// Description:
+//
+// Description: 更新租户
+//
+// Summary: 更新租户
 func (client *Client) UpdateTenant(request *UpdateTenantRequest) (_result *UpdateTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47850,10 +53878,11 @@ func (client *Client) UpdateTenant(request *UpdateTenantRequest) (_result *Updat
 	return _result, _err
 }
 
-/**
- * Description: 更新租户
- * Summary: 更新租户
- */
+// Description:
+//
+// Description: 更新租户
+//
+// Summary: 更新租户
 func (client *Client) UpdateTenantEx(request *UpdateTenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47868,10 +53897,11 @@ func (client *Client) UpdateTenantEx(request *UpdateTenantRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 更新场景码
- * Summary: 更新场景码
- */
+// Description:
+//
+// Description: 更新场景码
+//
+// Summary: 更新场景码
 func (client *Client) UpdateScene(request *UpdateSceneRequest) (_result *UpdateSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47884,10 +53914,11 @@ func (client *Client) UpdateScene(request *UpdateSceneRequest) (_result *UpdateS
 	return _result, _err
 }
 
-/**
- * Description: 更新场景码
- * Summary: 更新场景码
- */
+// Description:
+//
+// Description: 更新场景码
+//
+// Summary: 更新场景码
 func (client *Client) UpdateSceneEx(request *UpdateSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47902,10 +53933,11 @@ func (client *Client) UpdateSceneEx(request *UpdateSceneRequest, headers map[str
 	return _result, _err
 }
 
-/**
- * Description: 上报标签流转的异步接口，是 blockchain.bot.label.transfer.sync的异步接口版本
- * Summary: 上报标签流转的异步接口
- */
+// Description:
+//
+// Description: 上报标签流转的异步接口，是 blockchain.bot.label.transfer.sync的异步接口版本
+//
+// Summary: 上报标签流转的异步接口
 func (client *Client) SendLabelTransferonasync(request *SendLabelTransferonasyncRequest) (_result *SendLabelTransferonasyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47918,10 +53950,11 @@ func (client *Client) SendLabelTransferonasync(request *SendLabelTransferonasync
 	return _result, _err
 }
 
-/**
- * Description: 上报标签流转的异步接口，是 blockchain.bot.label.transfer.sync的异步接口版本
- * Summary: 上报标签流转的异步接口
- */
+// Description:
+//
+// Description: 上报标签流转的异步接口，是 blockchain.bot.label.transfer.sync的异步接口版本
+//
+// Summary: 上报标签流转的异步接口
 func (client *Client) SendLabelTransferonasyncEx(request *SendLabelTransferonasyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendLabelTransferonasyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47936,10 +53969,11 @@ func (client *Client) SendLabelTransferonasyncEx(request *SendLabelTransferonasy
 	return _result, _err
 }
 
-/**
- * Description: 调用异步接口后，在reponsePeriod 天内，可调用此接口查询异步接口的执行结果
- * Summary: 异步接口结果查询
- */
+// Description:
+//
+// Description: 调用异步接口后，在reponsePeriod 天内，可调用此接口查询异步接口的执行结果
+//
+// Summary: 异步接口结果查询
 func (client *Client) QueryAsyncRequest(request *QueryAsyncRequestRequest) (_result *QueryAsyncRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47952,10 +53986,11 @@ func (client *Client) QueryAsyncRequest(request *QueryAsyncRequestRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 调用异步接口后，在reponsePeriod 天内，可调用此接口查询异步接口的执行结果
- * Summary: 异步接口结果查询
- */
+// Description:
+//
+// Description: 调用异步接口后，在reponsePeriod 天内，可调用此接口查询异步接口的执行结果
+//
+// Summary: 异步接口结果查询
 func (client *Client) QueryAsyncRequestEx(request *QueryAsyncRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAsyncRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47970,10 +54005,11 @@ func (client *Client) QueryAsyncRequestEx(request *QueryAsyncRequestRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 分页查询租户
- * Summary: 分页查询租户
- */
+// Description:
+//
+// Description: 分页查询租户
+//
+// Summary: 分页查询租户
 func (client *Client) PagequeryTenant(request *PagequeryTenantRequest) (_result *PagequeryTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -47986,10 +54022,11 @@ func (client *Client) PagequeryTenant(request *PagequeryTenantRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 分页查询租户
- * Summary: 分页查询租户
- */
+// Description:
+//
+// Description: 分页查询租户
+//
+// Summary: 分页查询租户
 func (client *Client) PagequeryTenantEx(request *PagequeryTenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48004,10 +54041,11 @@ func (client *Client) PagequeryTenantEx(request *PagequeryTenantRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 分页查询场景码
- * Summary: 分页查询场景码
- */
+// Description:
+//
+// Description: 分页查询场景码
+//
+// Summary: 分页查询场景码
 func (client *Client) PagequeryScene(request *PagequerySceneRequest) (_result *PagequerySceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48020,10 +54058,11 @@ func (client *Client) PagequeryScene(request *PagequerySceneRequest) (_result *P
 	return _result, _err
 }
 
-/**
- * Description: 分页查询场景码
- * Summary: 分页查询场景码
- */
+// Description:
+//
+// Description: 分页查询场景码
+//
+// Summary: 分页查询场景码
 func (client *Client) PagequerySceneEx(request *PagequerySceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequerySceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48038,10 +54077,11 @@ func (client *Client) PagequerySceneEx(request *PagequerySceneRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 分页查询sdk
- * Summary: 分页查询sdk
- */
+// Description:
+//
+// Description: 分页查询sdk
+//
+// Summary: 分页查询sdk
 func (client *Client) PagequerySdk(request *PagequerySdkRequest) (_result *PagequerySdkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48054,10 +54094,11 @@ func (client *Client) PagequerySdk(request *PagequerySdkRequest) (_result *Pageq
 	return _result, _err
 }
 
-/**
- * Description: 分页查询sdk
- * Summary: 分页查询sdk
- */
+// Description:
+//
+// Description: 分页查询sdk
+//
+// Summary: 分页查询sdk
 func (client *Client) PagequerySdkEx(request *PagequerySdkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequerySdkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48072,10 +54113,11 @@ func (client *Client) PagequerySdkEx(request *PagequerySdkRequest, headers map[s
 	return _result, _err
 }
 
-/**
- * Description: 分页查询productKey
- * Summary: 分页查询productKey
- */
+// Description:
+//
+// Description: 分页查询productKey
+//
+// Summary: 分页查询productKey
 func (client *Client) PagequeryProductkey(request *PagequeryProductkeyRequest) (_result *PagequeryProductkeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48088,10 +54130,11 @@ func (client *Client) PagequeryProductkey(request *PagequeryProductkeyRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 分页查询productKey
- * Summary: 分页查询productKey
- */
+// Description:
+//
+// Description: 分页查询productKey
+//
+// Summary: 分页查询productKey
 func (client *Client) PagequeryProductkeyEx(request *PagequeryProductkeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryProductkeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48106,10 +54149,11 @@ func (client *Client) PagequeryProductkeyEx(request *PagequeryProductkeyRequest,
 	return _result, _err
 }
 
-/**
- * Description: 分页查询校验失败的数据
- * Summary: 分页查询校验失败的数据
- */
+// Description:
+//
+// Description: 分页查询校验失败的数据
+//
+// Summary: 分页查询校验失败的数据
 func (client *Client) PagequeryDataverifyFailure(request *PagequeryDataverifyFailureRequest) (_result *PagequeryDataverifyFailureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48122,10 +54166,11 @@ func (client *Client) PagequeryDataverifyFailure(request *PagequeryDataverifyFai
 	return _result, _err
 }
 
-/**
- * Description: 分页查询校验失败的数据
- * Summary: 分页查询校验失败的数据
- */
+// Description:
+//
+// Description: 分页查询校验失败的数据
+//
+// Summary: 分页查询校验失败的数据
 func (client *Client) PagequeryDataverifyFailureEx(request *PagequeryDataverifyFailureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryDataverifyFailureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48140,10 +54185,11 @@ func (client *Client) PagequeryDataverifyFailureEx(request *PagequeryDataverifyF
 	return _result, _err
 }
 
-/**
- * Description:  新增告警策略
- * Summary:  新增告警策略
- */
+// Description:
+//
+// Description:  新增告警策略
+//
+// Summary:  新增告警策略
 func (client *Client) AddAlertStrategy(request *AddAlertStrategyRequest) (_result *AddAlertStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48156,10 +54202,11 @@ func (client *Client) AddAlertStrategy(request *AddAlertStrategyRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description:  新增告警策略
- * Summary:  新增告警策略
- */
+// Description:
+//
+// Description:  新增告警策略
+//
+// Summary:  新增告警策略
 func (client *Client) AddAlertStrategyEx(request *AddAlertStrategyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddAlertStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48174,10 +54221,11 @@ func (client *Client) AddAlertStrategyEx(request *AddAlertStrategyRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 更新告警策略接口
- * Summary: 更新告警策略接口
- */
+// Description:
+//
+// Description: 更新告警策略接口
+//
+// Summary: 更新告警策略接口
 func (client *Client) UpdateAlertStrategy(request *UpdateAlertStrategyRequest) (_result *UpdateAlertStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48190,10 +54238,11 @@ func (client *Client) UpdateAlertStrategy(request *UpdateAlertStrategyRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 更新告警策略接口
- * Summary: 更新告警策略接口
- */
+// Description:
+//
+// Description: 更新告警策略接口
+//
+// Summary: 更新告警策略接口
 func (client *Client) UpdateAlertStrategyEx(request *UpdateAlertStrategyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlertStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48208,10 +54257,11 @@ func (client *Client) UpdateAlertStrategyEx(request *UpdateAlertStrategyRequest,
 	return _result, _err
 }
 
-/**
- * Description: 分页查询告警策略接口
- * Summary: 分页查询告警策略接口
- */
+// Description:
+//
+// Description: 分页查询告警策略接口
+//
+// Summary: 分页查询告警策略接口
 func (client *Client) PagequeryAlertStrategy(request *PagequeryAlertStrategyRequest) (_result *PagequeryAlertStrategyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48224,10 +54274,11 @@ func (client *Client) PagequeryAlertStrategy(request *PagequeryAlertStrategyRequ
 	return _result, _err
 }
 
-/**
- * Description: 分页查询告警策略接口
- * Summary: 分页查询告警策略接口
- */
+// Description:
+//
+// Description: 分页查询告警策略接口
+//
+// Summary: 分页查询告警策略接口
 func (client *Client) PagequeryAlertStrategyEx(request *PagequeryAlertStrategyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryAlertStrategyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48242,10 +54293,11 @@ func (client *Client) PagequeryAlertStrategyEx(request *PagequeryAlertStrategyRe
 	return _result, _err
 }
 
-/**
- * Description: 标签流转状态同步（元数据，无签名）
- * Summary: 标签流转状态同步（元数据，无签名）
- */
+// Description:
+//
+// Description: 标签流转状态同步（元数据，无签名）
+//
+// Summary: 标签流转状态同步（元数据，无签名）
 func (client *Client) SyncLabelTransferraw(request *SyncLabelTransferrawRequest) (_result *SyncLabelTransferrawResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48258,10 +54310,11 @@ func (client *Client) SyncLabelTransferraw(request *SyncLabelTransferrawRequest)
 	return _result, _err
 }
 
-/**
- * Description: 标签流转状态同步（元数据，无签名）
- * Summary: 标签流转状态同步（元数据，无签名）
- */
+// Description:
+//
+// Description: 标签流转状态同步（元数据，无签名）
+//
+// Summary: 标签流转状态同步（元数据，无签名）
 func (client *Client) SyncLabelTransferrawEx(request *SyncLabelTransferrawRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncLabelTransferrawResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48276,10 +54329,11 @@ func (client *Client) SyncLabelTransferrawEx(request *SyncLabelTransferrawReques
 	return _result, _err
 }
 
-/**
- * Description: 上报标签流转的异步接口（元数据，无签名），是 blockchain.bot.label.transferraw.sync的异步接口版本
- * Summary: 上报标签流转的异步接口（元数据，无签名）
- */
+// Description:
+//
+// Description: 上报标签流转的异步接口（元数据，无签名），是 blockchain.bot.label.transferraw.sync的异步接口版本
+//
+// Summary: 上报标签流转的异步接口（元数据，无签名）
 func (client *Client) SendLabelTransferrawonasync(request *SendLabelTransferrawonasyncRequest) (_result *SendLabelTransferrawonasyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48292,10 +54346,11 @@ func (client *Client) SendLabelTransferrawonasync(request *SendLabelTransferrawo
 	return _result, _err
 }
 
-/**
- * Description: 上报标签流转的异步接口（元数据，无签名），是 blockchain.bot.label.transferraw.sync的异步接口版本
- * Summary: 上报标签流转的异步接口（元数据，无签名）
- */
+// Description:
+//
+// Description: 上报标签流转的异步接口（元数据，无签名），是 blockchain.bot.label.transferraw.sync的异步接口版本
+//
+// Summary: 上报标签流转的异步接口（元数据，无签名）
 func (client *Client) SendLabelTransferrawonasyncEx(request *SendLabelTransferrawonasyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendLabelTransferrawonasyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48310,10 +54365,11 @@ func (client *Client) SendLabelTransferrawonasyncEx(request *SendLabelTransferra
 	return _result, _err
 }
 
-/**
- * Description: 根据接口名和关键key（deviceId等）, 查询验收已对接的数据
- * Summary: 查询验收已对接的数据
- */
+// Description:
+//
+// Description: 根据接口名和关键key（deviceId等）, 查询验收已对接的数据
+//
+// Summary: 查询验收已对接的数据
 func (client *Client) QueryDockedData(request *QueryDockedDataRequest) (_result *QueryDockedDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48326,10 +54382,11 @@ func (client *Client) QueryDockedData(request *QueryDockedDataRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 根据接口名和关键key（deviceId等）, 查询验收已对接的数据
- * Summary: 查询验收已对接的数据
- */
+// Description:
+//
+// Description: 根据接口名和关键key（deviceId等）, 查询验收已对接的数据
+//
+// Summary: 查询验收已对接的数据
 func (client *Client) QueryDockedDataEx(request *QueryDockedDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDockedDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48344,10 +54401,11 @@ func (client *Client) QueryDockedDataEx(request *QueryDockedDataRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 创建实体关联关系
- * Summary: 创建实体关联关系
- */
+// Description:
+//
+// Description: 创建实体关联关系
+//
+// Summary: 创建实体关联关系
 func (client *Client) CreateDeviceRelation(request *CreateDeviceRelationRequest) (_result *CreateDeviceRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48360,10 +54418,11 @@ func (client *Client) CreateDeviceRelation(request *CreateDeviceRelationRequest)
 	return _result, _err
 }
 
-/**
- * Description: 创建实体关联关系
- * Summary: 创建实体关联关系
- */
+// Description:
+//
+// Description: 创建实体关联关系
+//
+// Summary: 创建实体关联关系
 func (client *Client) CreateDeviceRelationEx(request *CreateDeviceRelationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeviceRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48378,10 +54437,11 @@ func (client *Client) CreateDeviceRelationEx(request *CreateDeviceRelationReques
 	return _result, _err
 }
 
-/**
- * Description: 删除实体关联关系
- * Summary: 删除实体关联关系
- */
+// Description:
+//
+// Description: 删除实体关联关系
+//
+// Summary: 删除实体关联关系
 func (client *Client) DeleteDeviceRelation(request *DeleteDeviceRelationRequest) (_result *DeleteDeviceRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48394,10 +54454,11 @@ func (client *Client) DeleteDeviceRelation(request *DeleteDeviceRelationRequest)
 	return _result, _err
 }
 
-/**
- * Description: 删除实体关联关系
- * Summary: 删除实体关联关系
- */
+// Description:
+//
+// Description: 删除实体关联关系
+//
+// Summary: 删除实体关联关系
 func (client *Client) DeleteDeviceRelationEx(request *DeleteDeviceRelationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDeviceRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48412,10 +54473,11 @@ func (client *Client) DeleteDeviceRelationEx(request *DeleteDeviceRelationReques
 	return _result, _err
 }
 
-/**
- * Description: 推送单个设备所产生的设备数据
- * Summary: 推送设备数据
- */
+// Description:
+//
+// Description: 推送单个设备所产生的设备数据
+//
+// Summary: 推送设备数据
 func (client *Client) PushCollectotBychainid(request *PushCollectotBychainidRequest) (_result *PushCollectotBychainidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48428,10 +54490,11 @@ func (client *Client) PushCollectotBychainid(request *PushCollectotBychainidRequ
 	return _result, _err
 }
 
-/**
- * Description: 推送单个设备所产生的设备数据
- * Summary: 推送设备数据
- */
+// Description:
+//
+// Description: 推送单个设备所产生的设备数据
+//
+// Summary: 推送设备数据
 func (client *Client) PushCollectotBychainidEx(request *PushCollectotBychainidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushCollectotBychainidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48446,10 +54509,11 @@ func (client *Client) PushCollectotBychainidEx(request *PushCollectotBychainidRe
 	return _result, _err
 }
 
-/**
- * Description: 推送设备状态变更信息
- * Summary: 推送设备状态变更信息
- */
+// Description:
+//
+// Description: 推送设备状态变更信息
+//
+// Summary: 推送设备状态变更信息
 func (client *Client) NotifyPullstrategyChangestatus(request *NotifyPullstrategyChangestatusRequest) (_result *NotifyPullstrategyChangestatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48462,10 +54526,11 @@ func (client *Client) NotifyPullstrategyChangestatus(request *NotifyPullstrategy
 	return _result, _err
 }
 
-/**
- * Description: 推送设备状态变更信息
- * Summary: 推送设备状态变更信息
- */
+// Description:
+//
+// Description: 推送设备状态变更信息
+//
+// Summary: 推送设备状态变更信息
 func (client *Client) NotifyPullstrategyChangestatusEx(request *NotifyPullstrategyChangestatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyPullstrategyChangestatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48480,10 +54545,11 @@ func (client *Client) NotifyPullstrategyChangestatusEx(request *NotifyPullstrate
 	return _result, _err
 }
 
-/**
- * Description: 推送订单信息
- * Summary: 推送订单信息
- */
+// Description:
+//
+// Description: 推送订单信息
+//
+// Summary: 推送订单信息
 func (client *Client) NotifyPullstrategyChargeorderinfo(request *NotifyPullstrategyChargeorderinfoRequest) (_result *NotifyPullstrategyChargeorderinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48496,10 +54562,11 @@ func (client *Client) NotifyPullstrategyChargeorderinfo(request *NotifyPullstrat
 	return _result, _err
 }
 
-/**
- * Description: 推送订单信息
- * Summary: 推送订单信息
- */
+// Description:
+//
+// Description: 推送订单信息
+//
+// Summary: 推送订单信息
 func (client *Client) NotifyPullstrategyChargeorderinfoEx(request *NotifyPullstrategyChargeorderinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *NotifyPullstrategyChargeorderinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48514,10 +54581,11 @@ func (client *Client) NotifyPullstrategyChargeorderinfoEx(request *NotifyPullstr
 	return _result, _err
 }
 
-/**
- * Description: 菜鸟设备监控信息获取
- * Summary: 菜鸟设备监控信息获取
- */
+// Description:
+//
+// Description: 菜鸟设备监控信息获取
+//
+// Summary: 菜鸟设备监控信息获取
 func (client *Client) QueryScfleaseEqpinfo(request *QueryScfleaseEqpinfoRequest) (_result *QueryScfleaseEqpinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48530,10 +54598,11 @@ func (client *Client) QueryScfleaseEqpinfo(request *QueryScfleaseEqpinfoRequest)
 	return _result, _err
 }
 
-/**
- * Description: 菜鸟设备监控信息获取
- * Summary: 菜鸟设备监控信息获取
- */
+// Description:
+//
+// Description: 菜鸟设备监控信息获取
+//
+// Summary: 菜鸟设备监控信息获取
 func (client *Client) QueryScfleaseEqpinfoEx(request *QueryScfleaseEqpinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryScfleaseEqpinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48548,10 +54617,11 @@ func (client *Client) QueryScfleaseEqpinfoEx(request *QueryScfleaseEqpinfoReques
 	return _result, _err
 }
 
-/**
- * Description: 创建自定义的实体数据
- * Summary: 创建自定义实体
- */
+// Description:
+//
+// Description: 创建自定义的实体数据
+//
+// Summary: 创建自定义实体
 func (client *Client) CreateCustomerEntity(request *CreateCustomerEntityRequest) (_result *CreateCustomerEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48564,10 +54634,11 @@ func (client *Client) CreateCustomerEntity(request *CreateCustomerEntityRequest)
 	return _result, _err
 }
 
-/**
- * Description: 创建自定义的实体数据
- * Summary: 创建自定义实体
- */
+// Description:
+//
+// Description: 创建自定义的实体数据
+//
+// Summary: 创建自定义实体
 func (client *Client) CreateCustomerEntityEx(request *CreateCustomerEntityRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomerEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48582,10 +54653,11 @@ func (client *Client) CreateCustomerEntityEx(request *CreateCustomerEntityReques
 	return _result, _err
 }
 
-/**
- * Description: 更新自定义实体，通过场景码+实体ID来更新 实体内容或实体名称
- * Summary: 更新自定义实体
- */
+// Description:
+//
+// Description: 更新自定义实体，通过场景码+实体ID来更新 实体内容或实体名称
+//
+// Summary: 更新自定义实体
 func (client *Client) UpdateCustomerEntity(request *UpdateCustomerEntityRequest) (_result *UpdateCustomerEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48598,10 +54670,11 @@ func (client *Client) UpdateCustomerEntity(request *UpdateCustomerEntityRequest)
 	return _result, _err
 }
 
-/**
- * Description: 更新自定义实体，通过场景码+实体ID来更新 实体内容或实体名称
- * Summary: 更新自定义实体
- */
+// Description:
+//
+// Description: 更新自定义实体，通过场景码+实体ID来更新 实体内容或实体名称
+//
+// Summary: 更新自定义实体
 func (client *Client) UpdateCustomerEntityEx(request *UpdateCustomerEntityRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCustomerEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48616,10 +54689,11 @@ func (client *Client) UpdateCustomerEntityEx(request *UpdateCustomerEntityReques
 	return _result, _err
 }
 
-/**
- * Description: 为租户创建物模型
- * Summary: 为租户创建物模型
- */
+// Description:
+//
+// Description: 为租户创建物模型
+//
+// Summary: 为租户创建物模型
 func (client *Client) CreateThingmodel(request *CreateThingmodelRequest) (_result *CreateThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48632,10 +54706,11 @@ func (client *Client) CreateThingmodel(request *CreateThingmodelRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 为租户创建物模型
- * Summary: 为租户创建物模型
- */
+// Description:
+//
+// Description: 为租户创建物模型
+//
+// Summary: 为租户创建物模型
 func (client *Client) CreateThingmodelEx(request *CreateThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48650,10 +54725,11 @@ func (client *Client) CreateThingmodelEx(request *CreateThingmodelRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 查询租户的物模型
- * Summary: 查询租户的物模型
- */
+// Description:
+//
+// Description: 查询租户的物模型
+//
+// Summary: 查询租户的物模型
 func (client *Client) QueryThingmodel(request *QueryThingmodelRequest) (_result *QueryThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48666,10 +54742,11 @@ func (client *Client) QueryThingmodel(request *QueryThingmodelRequest) (_result 
 	return _result, _err
 }
 
-/**
- * Description: 查询租户的物模型
- * Summary: 查询租户的物模型
- */
+// Description:
+//
+// Description: 查询租户的物模型
+//
+// Summary: 查询租户的物模型
 func (client *Client) QueryThingmodelEx(request *QueryThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48684,10 +54761,11 @@ func (client *Client) QueryThingmodelEx(request *QueryThingmodelRequest, headers
 	return _result, _err
 }
 
-/**
- * Description: 通过设备异步批量发行设备
- * Summary: 通过设备异步批量发行设备
- */
+// Description:
+//
+// Description: 通过设备异步批量发行设备
+//
+// Summary: 通过设备异步批量发行设备
 func (client *Client) CreateDistributedeviceBydevicemul(request *CreateDistributedeviceBydevicemulRequest) (_result *CreateDistributedeviceBydevicemulResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48700,10 +54778,11 @@ func (client *Client) CreateDistributedeviceBydevicemul(request *CreateDistribut
 	return _result, _err
 }
 
-/**
- * Description: 通过设备异步批量发行设备
- * Summary: 通过设备异步批量发行设备
- */
+// Description:
+//
+// Description: 通过设备异步批量发行设备
+//
+// Summary: 通过设备异步批量发行设备
 func (client *Client) CreateDistributedeviceBydevicemulEx(request *CreateDistributedeviceBydevicemulRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBydevicemulResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48718,10 +54797,11 @@ func (client *Client) CreateDistributedeviceBydevicemulEx(request *CreateDistrib
 	return _result, _err
 }
 
-/**
- * Description: 通过设备ID异步批量发行设备
- * Summary: 通过设备ID异步批量发行设备
- */
+// Description:
+//
+// Description: 通过设备ID异步批量发行设备
+//
+// Summary: 通过设备ID异步批量发行设备
 func (client *Client) CreateDistributedeviceBydeviceidmul(request *CreateDistributedeviceBydeviceidmulRequest) (_result *CreateDistributedeviceBydeviceidmulResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48734,10 +54814,11 @@ func (client *Client) CreateDistributedeviceBydeviceidmul(request *CreateDistrib
 	return _result, _err
 }
 
-/**
- * Description: 通过设备ID异步批量发行设备
- * Summary: 通过设备ID异步批量发行设备
- */
+// Description:
+//
+// Description: 通过设备ID异步批量发行设备
+//
+// Summary: 通过设备ID异步批量发行设备
 func (client *Client) CreateDistributedeviceBydeviceidmulEx(request *CreateDistributedeviceBydeviceidmulRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDistributedeviceBydeviceidmulResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48752,10 +54833,11 @@ func (client *Client) CreateDistributedeviceBydeviceidmulEx(request *CreateDistr
 	return _result, _err
 }
 
-/**
- * Description: 绑定实体关系
- * Summary: 绑定实体关系
- */
+// Description:
+//
+// Description: 绑定实体关系
+//
+// Summary: 绑定实体关系
 func (client *Client) BindEntityrelation(request *BindEntityrelationRequest) (_result *BindEntityrelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48768,10 +54850,11 @@ func (client *Client) BindEntityrelation(request *BindEntityrelationRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 绑定实体关系
- * Summary: 绑定实体关系
- */
+// Description:
+//
+// Description: 绑定实体关系
+//
+// Summary: 绑定实体关系
 func (client *Client) BindEntityrelationEx(request *BindEntityrelationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindEntityrelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48786,10 +54869,11 @@ func (client *Client) BindEntityrelationEx(request *BindEntityrelationRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 批量解绑实体关系
- * Summary: 批量解绑实体关系
- */
+// Description:
+//
+// Description: 批量解绑实体关系
+//
+// Summary: 批量解绑实体关系
 func (client *Client) UnbindEntityrelation(request *UnbindEntityrelationRequest) (_result *UnbindEntityrelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48802,10 +54886,11 @@ func (client *Client) UnbindEntityrelation(request *UnbindEntityrelationRequest)
 	return _result, _err
 }
 
-/**
- * Description: 批量解绑实体关系
- * Summary: 批量解绑实体关系
- */
+// Description:
+//
+// Description: 批量解绑实体关系
+//
+// Summary: 批量解绑实体关系
 func (client *Client) UnbindEntityrelationEx(request *UnbindEntityrelationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindEntityrelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48820,10 +54905,11 @@ func (client *Client) UnbindEntityrelationEx(request *UnbindEntityrelationReques
 	return _result, _err
 }
 
-/**
- * Description: 查询物模型设备详情
- * Summary: 查询物模型设备详情
- */
+// Description:
+//
+// Description: 查询物模型设备详情
+//
+// Summary: 查询物模型设备详情
 func (client *Client) DetailThingmodelDevice(request *DetailThingmodelDeviceRequest) (_result *DetailThingmodelDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48836,10 +54922,11 @@ func (client *Client) DetailThingmodelDevice(request *DetailThingmodelDeviceRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询物模型设备详情
- * Summary: 查询物模型设备详情
- */
+// Description:
+//
+// Description: 查询物模型设备详情
+//
+// Summary: 查询物模型设备详情
 func (client *Client) DetailThingmodelDeviceEx(request *DetailThingmodelDeviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DetailThingmodelDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48854,10 +54941,11 @@ func (client *Client) DetailThingmodelDeviceEx(request *DetailThingmodelDeviceRe
 	return _result, _err
 }
 
-/**
- * Description: 通过CSV文件上报数据时，需要先通过这个接口获取上报地址URL
- * Summary: 创建上传文件URL
- */
+// Description:
+//
+// Description: 通过CSV文件上报数据时，需要先通过这个接口获取上报地址URL
+//
+// Summary: 创建上传文件URL
 func (client *Client) CreateCollectorUploadfileurl(request *CreateCollectorUploadfileurlRequest) (_result *CreateCollectorUploadfileurlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48870,10 +54958,11 @@ func (client *Client) CreateCollectorUploadfileurl(request *CreateCollectorUploa
 	return _result, _err
 }
 
-/**
- * Description: 通过CSV文件上报数据时，需要先通过这个接口获取上报地址URL
- * Summary: 创建上传文件URL
- */
+// Description:
+//
+// Description: 通过CSV文件上报数据时，需要先通过这个接口获取上报地址URL
+//
+// Summary: 创建上传文件URL
 func (client *Client) CreateCollectorUploadfileurlEx(request *CreateCollectorUploadfileurlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCollectorUploadfileurlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48888,10 +54977,11 @@ func (client *Client) CreateCollectorUploadfileurlEx(request *CreateCollectorUpl
 	return _result, _err
 }
 
-/**
- * Description: 通过文件上报数据流程，先获取上报文件URL，然后向目标URL中上传文件，最后调用此接口进行确认
- * Summary: 通过文件上报数据，上传完毕后确认
- */
+// Description:
+//
+// Description: 通过文件上报数据流程，先获取上报文件URL，然后向目标URL中上传文件，最后调用此接口进行确认
+//
+// Summary: 通过文件上报数据，上传完毕后确认
 func (client *Client) ConfirmCollectorUploadfile(request *ConfirmCollectorUploadfileRequest) (_result *ConfirmCollectorUploadfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48904,10 +54994,11 @@ func (client *Client) ConfirmCollectorUploadfile(request *ConfirmCollectorUpload
 	return _result, _err
 }
 
-/**
- * Description: 通过文件上报数据流程，先获取上报文件URL，然后向目标URL中上传文件，最后调用此接口进行确认
- * Summary: 通过文件上报数据，上传完毕后确认
- */
+// Description:
+//
+// Description: 通过文件上报数据流程，先获取上报文件URL，然后向目标URL中上传文件，最后调用此接口进行确认
+//
+// Summary: 通过文件上报数据，上传完毕后确认
 func (client *Client) ConfirmCollectorUploadfileEx(request *ConfirmCollectorUploadfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmCollectorUploadfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48922,10 +55013,11 @@ func (client *Client) ConfirmCollectorUploadfileEx(request *ConfirmCollectorUplo
 	return _result, _err
 }
 
-/**
- * Description: 创建物模型事件
- * Summary: 创建物模型事件
- */
+// Description:
+//
+// Description: 创建物模型事件
+//
+// Summary: 创建物模型事件
 func (client *Client) CreateThingmodelEvent(request *CreateThingmodelEventRequest) (_result *CreateThingmodelEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48938,10 +55030,11 @@ func (client *Client) CreateThingmodelEvent(request *CreateThingmodelEventReques
 	return _result, _err
 }
 
-/**
- * Description: 创建物模型事件
- * Summary: 创建物模型事件
- */
+// Description:
+//
+// Description: 创建物模型事件
+//
+// Summary: 创建物模型事件
 func (client *Client) CreateThingmodelEventEx(request *CreateThingmodelEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateThingmodelEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48956,10 +55049,11 @@ func (client *Client) CreateThingmodelEventEx(request *CreateThingmodelEventRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询物模型事件
- * Summary: 查询物模型事件
- */
+// Description:
+//
+// Description: 查询物模型事件
+//
+// Summary: 查询物模型事件
 func (client *Client) QueryThingmodelEvent(request *QueryThingmodelEventRequest) (_result *QueryThingmodelEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -48972,10 +55066,11 @@ func (client *Client) QueryThingmodelEvent(request *QueryThingmodelEventRequest)
 	return _result, _err
 }
 
-/**
- * Description: 查询物模型事件
- * Summary: 查询物模型事件
- */
+// Description:
+//
+// Description: 查询物模型事件
+//
+// Summary: 查询物模型事件
 func (client *Client) QueryThingmodelEventEx(request *QueryThingmodelEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryThingmodelEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48990,10 +55085,11 @@ func (client *Client) QueryThingmodelEventEx(request *QueryThingmodelEventReques
 	return _result, _err
 }
 
-/**
- * Description: 通过车辆车牌的颜色+号码+场景码，查询关联的部标设备对应的IoT可信平台唯一ID
- * Summary: 车辆关联的部标设备列表查询
- */
+// Description:
+//
+// Description: 通过车辆车牌的颜色+号码+场景码，查询关联的部标设备对应的IoT可信平台唯一ID
+//
+// Summary: 车辆关联的部标设备列表查询
 func (client *Client) QueryEntityrelationJtdevicebycar(request *QueryEntityrelationJtdevicebycarRequest) (_result *QueryEntityrelationJtdevicebycarResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49006,10 +55102,11 @@ func (client *Client) QueryEntityrelationJtdevicebycar(request *QueryEntityrelat
 	return _result, _err
 }
 
-/**
- * Description: 通过车辆车牌的颜色+号码+场景码，查询关联的部标设备对应的IoT可信平台唯一ID
- * Summary: 车辆关联的部标设备列表查询
- */
+// Description:
+//
+// Description: 通过车辆车牌的颜色+号码+场景码，查询关联的部标设备对应的IoT可信平台唯一ID
+//
+// Summary: 车辆关联的部标设备列表查询
 func (client *Client) QueryEntityrelationJtdevicebycarEx(request *QueryEntityrelationJtdevicebycarRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryEntityrelationJtdevicebycarResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49024,10 +55121,11 @@ func (client *Client) QueryEntityrelationJtdevicebycarEx(request *QueryEntityrel
 	return _result, _err
 }
 
-/**
- * Description: 部标设备位置/轨迹/异常数据查询
- * Summary: 部标设备位置/轨迹/异常数据查询
- */
+// Description:
+//
+// Description: 部标设备位置/轨迹/异常数据查询
+//
+// Summary: 部标设备位置/轨迹/异常数据查询
 func (client *Client) QueryCollectorJtflux(request *QueryCollectorJtfluxRequest) (_result *QueryCollectorJtfluxResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49040,10 +55138,11 @@ func (client *Client) QueryCollectorJtflux(request *QueryCollectorJtfluxRequest)
 	return _result, _err
 }
 
-/**
- * Description: 部标设备位置/轨迹/异常数据查询
- * Summary: 部标设备位置/轨迹/异常数据查询
- */
+// Description:
+//
+// Description: 部标设备位置/轨迹/异常数据查询
+//
+// Summary: 部标设备位置/轨迹/异常数据查询
 func (client *Client) QueryCollectorJtfluxEx(request *QueryCollectorJtfluxRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCollectorJtfluxResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49058,10 +55157,11 @@ func (client *Client) QueryCollectorJtfluxEx(request *QueryCollectorJtfluxReques
 	return _result, _err
 }
 
-/**
- * Description: 通过异常事件ID查询部标多媒体文件地址
- * Summary: 通过异常事件ID查询部标多媒体文件地址
- */
+// Description:
+//
+// Description: 通过异常事件ID查询部标多媒体文件地址
+//
+// Summary: 通过异常事件ID查询部标多媒体文件地址
 func (client *Client) QueryCollectorJtmedia(request *QueryCollectorJtmediaRequest) (_result *QueryCollectorJtmediaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49074,10 +55174,11 @@ func (client *Client) QueryCollectorJtmedia(request *QueryCollectorJtmediaReques
 	return _result, _err
 }
 
-/**
- * Description: 通过异常事件ID查询部标多媒体文件地址
- * Summary: 通过异常事件ID查询部标多媒体文件地址
- */
+// Description:
+//
+// Description: 通过异常事件ID查询部标多媒体文件地址
+//
+// Summary: 通过异常事件ID查询部标多媒体文件地址
 func (client *Client) QueryCollectorJtmediaEx(request *QueryCollectorJtmediaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCollectorJtmediaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49092,10 +55193,11 @@ func (client *Client) QueryCollectorJtmediaEx(request *QueryCollectorJtmediaRequ
 	return _result, _err
 }
 
-/**
- * Description: 查询产线压测任务
- * Summary: 查询项目关联的产线压测任务
- */
+// Description:
+//
+// Description: 查询产线压测任务
+//
+// Summary: 查询项目关联的产线压测任务
 func (client *Client) QueryOnlinepressuretest(request *QueryOnlinepressuretestRequest) (_result *QueryOnlinepressuretestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49108,10 +55210,11 @@ func (client *Client) QueryOnlinepressuretest(request *QueryOnlinepressuretestRe
 	return _result, _err
 }
 
-/**
- * Description: 查询产线压测任务
- * Summary: 查询项目关联的产线压测任务
- */
+// Description:
+//
+// Description: 查询产线压测任务
+//
+// Summary: 查询项目关联的产线压测任务
 func (client *Client) QueryOnlinepressuretestEx(request *QueryOnlinepressuretestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOnlinepressuretestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49126,10 +55229,11 @@ func (client *Client) QueryOnlinepressuretestEx(request *QueryOnlinepressuretest
 	return _result, _err
 }
 
-/**
- * Description:  【自主联调平台】创建产线压测任务
- * Summary:  【自主联调平台】创建产线压测任务
- */
+// Description:
+//
+// Description:  【自主联调平台】创建产线压测任务
+//
+// Summary:  【自主联调平台】创建产线压测任务
 func (client *Client) CreateOnlinepressuretest(request *CreateOnlinepressuretestRequest) (_result *CreateOnlinepressuretestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49142,10 +55246,11 @@ func (client *Client) CreateOnlinepressuretest(request *CreateOnlinepressuretest
 	return _result, _err
 }
 
-/**
- * Description:  【自主联调平台】创建产线压测任务
- * Summary:  【自主联调平台】创建产线压测任务
- */
+// Description:
+//
+// Description:  【自主联调平台】创建产线压测任务
+//
+// Summary:  【自主联调平台】创建产线压测任务
 func (client *Client) CreateOnlinepressuretestEx(request *CreateOnlinepressuretestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOnlinepressuretestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49160,10 +55265,11 @@ func (client *Client) CreateOnlinepressuretestEx(request *CreateOnlinepressurete
 	return _result, _err
 }
 
-/**
- * Description: 更新客户侧的压测报告
- * Summary: 更新客户侧的压测报告
- */
+// Description:
+//
+// Description: 更新客户侧的压测报告
+//
+// Summary: 更新客户侧的压测报告
 func (client *Client) UpdateOnlinepressuretestCustomerreport(request *UpdateOnlinepressuretestCustomerreportRequest) (_result *UpdateOnlinepressuretestCustomerreportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49176,10 +55282,11 @@ func (client *Client) UpdateOnlinepressuretestCustomerreport(request *UpdateOnli
 	return _result, _err
 }
 
-/**
- * Description: 更新客户侧的压测报告
- * Summary: 更新客户侧的压测报告
- */
+// Description:
+//
+// Description: 更新客户侧的压测报告
+//
+// Summary: 更新客户侧的压测报告
 func (client *Client) UpdateOnlinepressuretestCustomerreportEx(request *UpdateOnlinepressuretestCustomerreportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOnlinepressuretestCustomerreportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49194,10 +55301,11 @@ func (client *Client) UpdateOnlinepressuretestCustomerreportEx(request *UpdateOn
 	return _result, _err
 }
 
-/**
- * Description: 查询客户的物模型事件
- * Summary: 查询客户的物模型事件列表
- */
+// Description:
+//
+// Description: 查询客户的物模型事件
+//
+// Summary: 查询客户的物模型事件列表
 func (client *Client) QueryThingmodeleventBycustomertenant(request *QueryThingmodeleventBycustomertenantRequest) (_result *QueryThingmodeleventBycustomertenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49210,10 +55318,11 @@ func (client *Client) QueryThingmodeleventBycustomertenant(request *QueryThingmo
 	return _result, _err
 }
 
-/**
- * Description: 查询客户的物模型事件
- * Summary: 查询客户的物模型事件列表
- */
+// Description:
+//
+// Description: 查询客户的物模型事件
+//
+// Summary: 查询客户的物模型事件列表
 func (client *Client) QueryThingmodeleventBycustomertenantEx(request *QueryThingmodeleventBycustomertenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryThingmodeleventBycustomertenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49228,10 +55337,11 @@ func (client *Client) QueryThingmodeleventBycustomertenantEx(request *QueryThing
 	return _result, _err
 }
 
-/**
- * Description: 从联调环境部署物模型UDF到生产环境
- * Summary: 从联调环境部署物模型UDF到生产环境
- */
+// Description:
+//
+// Description: 从联调环境部署物模型UDF到生产环境
+//
+// Summary: 从联调环境部署物模型UDF到生产环境
 func (client *Client) DeployThingudf(request *DeployThingudfRequest) (_result *DeployThingudfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49244,10 +55354,11 @@ func (client *Client) DeployThingudf(request *DeployThingudfRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * Description: 从联调环境部署物模型UDF到生产环境
- * Summary: 从联调环境部署物模型UDF到生产环境
- */
+// Description:
+//
+// Description: 从联调环境部署物模型UDF到生产环境
+//
+// Summary: 从联调环境部署物模型UDF到生产环境
 func (client *Client) DeployThingudfEx(request *DeployThingudfRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployThingudfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49262,10 +55373,11 @@ func (client *Client) DeployThingudfEx(request *DeployThingudfRequest, headers m
 	return _result, _err
 }
 
-/**
- * Description: 分页查询二轮车操作日志
- * Summary: 分页查询二轮车操作日志
- */
+// Description:
+//
+// Description: 分页查询二轮车操作日志
+//
+// Summary: 分页查询二轮车操作日志
 func (client *Client) PagequeryEbikeOperationlog(request *PagequeryEbikeOperationlogRequest) (_result *PagequeryEbikeOperationlogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49278,10 +55390,11 @@ func (client *Client) PagequeryEbikeOperationlog(request *PagequeryEbikeOperatio
 	return _result, _err
 }
 
-/**
- * Description: 分页查询二轮车操作日志
- * Summary: 分页查询二轮车操作日志
- */
+// Description:
+//
+// Description: 分页查询二轮车操作日志
+//
+// Summary: 分页查询二轮车操作日志
 func (client *Client) PagequeryEbikeOperationlogEx(request *PagequeryEbikeOperationlogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PagequeryEbikeOperationlogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49296,10 +55409,11 @@ func (client *Client) PagequeryEbikeOperationlogEx(request *PagequeryEbikeOperat
 	return _result, _err
 }
 
-/**
- * Description: 客户实体拓展功能查询
- * Summary: 客户实体拓展功能查询
- */
+// Description:
+//
+// Description: 客户实体拓展功能查询
+//
+// Summary: 客户实体拓展功能查询
 func (client *Client) QueryCustomerentityService(request *QueryCustomerentityServiceRequest) (_result *QueryCustomerentityServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49312,10 +55426,11 @@ func (client *Client) QueryCustomerentityService(request *QueryCustomerentitySer
 	return _result, _err
 }
 
-/**
- * Description: 客户实体拓展功能查询
- * Summary: 客户实体拓展功能查询
- */
+// Description:
+//
+// Description: 客户实体拓展功能查询
+//
+// Summary: 客户实体拓展功能查询
 func (client *Client) QueryCustomerentityServiceEx(request *QueryCustomerentityServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCustomerentityServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49330,10 +55445,11 @@ func (client *Client) QueryCustomerentityServiceEx(request *QueryCustomerentityS
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书申请
- * Summary: 支付芯证书申请
- */
+// Description:
+//
+// Description: 支付芯证书申请
+//
+// Summary: 支付芯证书申请
 func (client *Client) ApplyTechintegrationSkuship(request *ApplyTechintegrationSkushipRequest) (_result *ApplyTechintegrationSkushipResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49346,10 +55462,11 @@ func (client *Client) ApplyTechintegrationSkuship(request *ApplyTechintegrationS
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书申请
- * Summary: 支付芯证书申请
- */
+// Description:
+//
+// Description: 支付芯证书申请
+//
+// Summary: 支付芯证书申请
 func (client *Client) ApplyTechintegrationSkushipEx(request *ApplyTechintegrationSkushipRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyTechintegrationSkushipResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49364,10 +55481,11 @@ func (client *Client) ApplyTechintegrationSkushipEx(request *ApplyTechintegratio
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书申请接口，适用于唯一编码软件接入形式
- * Summary: 支付芯证书申请接口，唯一编码软件接入形式
- */
+// Description:
+//
+// Description: 支付芯证书申请接口，适用于唯一编码软件接入形式
+//
+// Summary: 支付芯证书申请接口，唯一编码软件接入形式
 func (client *Client) ApplyTechintegrationSkushipbyuid(request *ApplyTechintegrationSkushipbyuidRequest) (_result *ApplyTechintegrationSkushipbyuidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49380,10 +55498,11 @@ func (client *Client) ApplyTechintegrationSkushipbyuid(request *ApplyTechintegra
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书申请接口，适用于唯一编码软件接入形式
- * Summary: 支付芯证书申请接口，唯一编码软件接入形式
- */
+// Description:
+//
+// Description: 支付芯证书申请接口，适用于唯一编码软件接入形式
+//
+// Summary: 支付芯证书申请接口，唯一编码软件接入形式
 func (client *Client) ApplyTechintegrationSkushipbyuidEx(request *ApplyTechintegrationSkushipbyuidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyTechintegrationSkushipbyuidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49398,10 +55517,11 @@ func (client *Client) ApplyTechintegrationSkushipbyuidEx(request *ApplyTechinteg
 	return _result, _err
 }
 
-/**
- * Description: 查询压测任务所关联的实体的最新上链数据列表
- * Summary: 查询压测任务的上链数据列表
- */
+// Description:
+//
+// Description: 查询压测任务所关联的实体的最新上链数据列表
+//
+// Summary: 查询压测任务的上链数据列表
 func (client *Client) QueryOnlinepressuretestData(request *QueryOnlinepressuretestDataRequest) (_result *QueryOnlinepressuretestDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49414,10 +55534,11 @@ func (client *Client) QueryOnlinepressuretestData(request *QueryOnlinepressurete
 	return _result, _err
 }
 
-/**
- * Description: 查询压测任务所关联的实体的最新上链数据列表
- * Summary: 查询压测任务的上链数据列表
- */
+// Description:
+//
+// Description: 查询压测任务所关联的实体的最新上链数据列表
+//
+// Summary: 查询压测任务的上链数据列表
 func (client *Client) QueryOnlinepressuretestDataEx(request *QueryOnlinepressuretestDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOnlinepressuretestDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49432,10 +55553,11 @@ func (client *Client) QueryOnlinepressuretestDataEx(request *QueryOnlinepressure
 	return _result, _err
 }
 
-/**
- * Description: 物模型服务调用
- * Summary: 物模型服务调用
- */
+// Description:
+//
+// Description: 物模型服务调用
+//
+// Summary: 物模型服务调用
 func (client *Client) ExecThingService(request *ExecThingServiceRequest) (_result *ExecThingServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49448,10 +55570,11 @@ func (client *Client) ExecThingService(request *ExecThingServiceRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 物模型服务调用
- * Summary: 物模型服务调用
- */
+// Description:
+//
+// Description: 物模型服务调用
+//
+// Summary: 物模型服务调用
 func (client *Client) ExecThingServiceEx(request *ExecThingServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecThingServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49466,10 +55589,11 @@ func (client *Client) ExecThingServiceEx(request *ExecThingServiceRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 物模型服务回复接口，通过场景码、数据模型ID等作为回复标识
- * Summary: 物模型服务回复接口
- */
+// Description:
+//
+// Description: 物模型服务回复接口，通过场景码、数据模型ID等作为回复标识
+//
+// Summary: 物模型服务回复接口
 func (client *Client) CallbackThingServicebyevent(request *CallbackThingServicebyeventRequest) (_result *CallbackThingServicebyeventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49482,10 +55606,11 @@ func (client *Client) CallbackThingServicebyevent(request *CallbackThingServiceb
 	return _result, _err
 }
 
-/**
- * Description: 物模型服务回复接口，通过场景码、数据模型ID等作为回复标识
- * Summary: 物模型服务回复接口
- */
+// Description:
+//
+// Description: 物模型服务回复接口，通过场景码、数据模型ID等作为回复标识
+//
+// Summary: 物模型服务回复接口
 func (client *Client) CallbackThingServicebyeventEx(request *CallbackThingServicebyeventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CallbackThingServicebyeventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49500,10 +55625,11 @@ func (client *Client) CallbackThingServicebyeventEx(request *CallbackThingServic
 	return _result, _err
 }
 
-/**
- * Description: 添加SKU授权白名单
- * Summary: 添加SKU授权白名单
- */
+// Description:
+//
+// Description: 添加SKU授权白名单
+//
+// Summary: 添加SKU授权白名单
 func (client *Client) ImportTechintegrationSkugrantwhitelist(request *ImportTechintegrationSkugrantwhitelistRequest) (_result *ImportTechintegrationSkugrantwhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49516,10 +55642,11 @@ func (client *Client) ImportTechintegrationSkugrantwhitelist(request *ImportTech
 	return _result, _err
 }
 
-/**
- * Description: 添加SKU授权白名单
- * Summary: 添加SKU授权白名单
- */
+// Description:
+//
+// Description: 添加SKU授权白名单
+//
+// Summary: 添加SKU授权白名单
 func (client *Client) ImportTechintegrationSkugrantwhitelistEx(request *ImportTechintegrationSkugrantwhitelistRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportTechintegrationSkugrantwhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49534,10 +55661,11 @@ func (client *Client) ImportTechintegrationSkugrantwhitelistEx(request *ImportTe
 	return _result, _err
 }
 
-/**
- * Description: 物模型数据上报
- * Summary: 物模型数据上报
- */
+// Description:
+//
+// Description: 物模型数据上报
+//
+// Summary: 物模型数据上报
 func (client *Client) SendThingData(request *SendThingDataRequest) (_result *SendThingDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49550,10 +55678,11 @@ func (client *Client) SendThingData(request *SendThingDataRequest) (_result *Sen
 	return _result, _err
 }
 
-/**
- * Description: 物模型数据上报
- * Summary: 物模型数据上报
- */
+// Description:
+//
+// Description: 物模型数据上报
+//
+// Summary: 物模型数据上报
 func (client *Client) SendThingDataEx(request *SendThingDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendThingDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49568,10 +55697,11 @@ func (client *Client) SendThingDataEx(request *SendThingDataRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书授权信息查询
- * Summary: 支付芯证书授权信息查询
- */
+// Description:
+//
+// Description: 支付芯证书授权信息查询
+//
+// Summary: 支付芯证书授权信息查询
 func (client *Client) QueryTechintegrationSkugrantstockinfo(request *QueryTechintegrationSkugrantstockinfoRequest) (_result *QueryTechintegrationSkugrantstockinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49584,10 +55714,11 @@ func (client *Client) QueryTechintegrationSkugrantstockinfo(request *QueryTechin
 	return _result, _err
 }
 
-/**
- * Description: 支付芯证书授权信息查询
- * Summary: 支付芯证书授权信息查询
- */
+// Description:
+//
+// Description: 支付芯证书授权信息查询
+//
+// Summary: 支付芯证书授权信息查询
 func (client *Client) QueryTechintegrationSkugrantstockinfoEx(request *QueryTechintegrationSkugrantstockinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTechintegrationSkugrantstockinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49602,10 +55733,11 @@ func (client *Client) QueryTechintegrationSkugrantstockinfoEx(request *QueryTech
 	return _result, _err
 }
 
-/**
- * Description: 整合目前的设备数据、汇总数据、业务数据、无主体数据、标签数据上报接口
- * Summary: 事件数据上报整合接口
- */
+// Description:
+//
+// Description: 整合目前的设备数据、汇总数据、业务数据、无主体数据、标签数据上报接口
+//
+// Summary: 事件数据上报整合接口
 func (client *Client) SendEventData(request *SendEventDataRequest) (_result *SendEventDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49618,10 +55750,11 @@ func (client *Client) SendEventData(request *SendEventDataRequest) (_result *Sen
 	return _result, _err
 }
 
-/**
- * Description: 整合目前的设备数据、汇总数据、业务数据、无主体数据、标签数据上报接口
- * Summary: 事件数据上报整合接口
- */
+// Description:
+//
+// Description: 整合目前的设备数据、汇总数据、业务数据、无主体数据、标签数据上报接口
+//
+// Summary: 事件数据上报整合接口
 func (client *Client) SendEventDataEx(request *SendEventDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendEventDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49636,10 +55769,11 @@ func (client *Client) SendEventDataEx(request *SendEventDataRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 获取定时任务保存至oss的文件链接
- * Summary: 获取定时任务保存至oss的文件链接
- */
+// Description:
+//
+// Description: 获取定时任务保存至oss的文件链接
+//
+// Summary: 获取定时任务保存至oss的文件链接
 func (client *Client) QueryOssDownloadjoburl(request *QueryOssDownloadjoburlRequest) (_result *QueryOssDownloadjoburlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49652,10 +55786,11 @@ func (client *Client) QueryOssDownloadjoburl(request *QueryOssDownloadjoburlRequ
 	return _result, _err
 }
 
-/**
- * Description: 获取定时任务保存至oss的文件链接
- * Summary: 获取定时任务保存至oss的文件链接
- */
+// Description:
+//
+// Description: 获取定时任务保存至oss的文件链接
+//
+// Summary: 获取定时任务保存至oss的文件链接
 func (client *Client) QueryOssDownloadjoburlEx(request *QueryOssDownloadjoburlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOssDownloadjoburlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49670,10 +55805,11 @@ func (client *Client) QueryOssDownloadjoburlEx(request *QueryOssDownloadjoburlRe
 	return _result, _err
 }
 
-/**
- * Description: 要素项目同步
- * Summary: 要素项目同步
- */
+// Description:
+//
+// Description: 要素项目同步
+//
+// Summary: 要素项目同步
 func (client *Client) SyncAssetelementProject(request *SyncAssetelementProjectRequest) (_result *SyncAssetelementProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49686,10 +55822,11 @@ func (client *Client) SyncAssetelementProject(request *SyncAssetelementProjectRe
 	return _result, _err
 }
 
-/**
- * Description: 要素项目同步
- * Summary: 要素项目同步
- */
+// Description:
+//
+// Description: 要素项目同步
+//
+// Summary: 要素项目同步
 func (client *Client) SyncAssetelementProjectEx(request *SyncAssetelementProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncAssetelementProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49704,10 +55841,11 @@ func (client *Client) SyncAssetelementProjectEx(request *SyncAssetelementProject
 	return _result, _err
 }
 
-/**
- * Description: 根据deviceId更新设备
- * Summary: 根据deviceId更新设备
- */
+// Description:
+//
+// Description: 根据deviceId更新设备
+//
+// Summary: 根据deviceId更新设备
 func (client *Client) UpdateDeviceBydeviceid(request *UpdateDeviceBydeviceidRequest) (_result *UpdateDeviceBydeviceidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49720,10 +55858,11 @@ func (client *Client) UpdateDeviceBydeviceid(request *UpdateDeviceBydeviceidRequ
 	return _result, _err
 }
 
-/**
- * Description: 根据deviceId更新设备
- * Summary: 根据deviceId更新设备
- */
+// Description:
+//
+// Description: 根据deviceId更新设备
+//
+// Summary: 根据deviceId更新设备
 func (client *Client) UpdateDeviceBydeviceidEx(request *UpdateDeviceBydeviceidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDeviceBydeviceidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49738,10 +55877,11 @@ func (client *Client) UpdateDeviceBydeviceidEx(request *UpdateDeviceBydeviceidRe
 	return _result, _err
 }
 
-/**
- * Description: 时序异常检测任务扫描
- * Summary: 任务扫描
- */
+// Description:
+//
+// Description: 时序异常检测任务扫描
+//
+// Summary: 任务扫描
 func (client *Client) QueryTaskscan(request *QueryTaskscanRequest) (_result *QueryTaskscanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49754,10 +55894,11 @@ func (client *Client) QueryTaskscan(request *QueryTaskscanRequest) (_result *Que
 	return _result, _err
 }
 
-/**
- * Description: 时序异常检测任务扫描
- * Summary: 任务扫描
- */
+// Description:
+//
+// Description: 时序异常检测任务扫描
+//
+// Summary: 任务扫描
 func (client *Client) QueryTaskscanEx(request *QueryTaskscanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTaskscanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49772,10 +55913,11 @@ func (client *Client) QueryTaskscanEx(request *QueryTaskscanRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 时序异常检测检测到任务后，发出告警通知
- * Summary: 异常检测任务告警
- */
+// Description:
+//
+// Description: 时序异常检测检测到任务后，发出告警通知
+//
+// Summary: 异常检测任务告警
 func (client *Client) SendTaskalarm(request *SendTaskalarmRequest) (_result *SendTaskalarmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49788,10 +55930,11 @@ func (client *Client) SendTaskalarm(request *SendTaskalarmRequest) (_result *Sen
 	return _result, _err
 }
 
-/**
- * Description: 时序异常检测检测到任务后，发出告警通知
- * Summary: 异常检测任务告警
- */
+// Description:
+//
+// Description: 时序异常检测检测到任务后，发出告警通知
+//
+// Summary: 异常检测任务告警
 func (client *Client) SendTaskalarmEx(request *SendTaskalarmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendTaskalarmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49806,10 +55949,11 @@ func (client *Client) SendTaskalarmEx(request *SendTaskalarmRequest, headers map
 	return _result, _err
 }
 
-/**
- * Description: 支付芯非SE方案空发接口
- * Summary: 支付芯非SE方案空发接口
- */
+// Description:
+//
+// Description: 支付芯非SE方案空发接口
+//
+// Summary: 支付芯非SE方案空发接口
 func (client *Client) ApplyTechintegrationSkushipemptymodelbyuid(request *ApplyTechintegrationSkushipemptymodelbyuidRequest) (_result *ApplyTechintegrationSkushipemptymodelbyuidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49822,10 +55966,11 @@ func (client *Client) ApplyTechintegrationSkushipemptymodelbyuid(request *ApplyT
 	return _result, _err
 }
 
-/**
- * Description: 支付芯非SE方案空发接口
- * Summary: 支付芯非SE方案空发接口
- */
+// Description:
+//
+// Description: 支付芯非SE方案空发接口
+//
+// Summary: 支付芯非SE方案空发接口
 func (client *Client) ApplyTechintegrationSkushipemptymodelbyuidEx(request *ApplyTechintegrationSkushipemptymodelbyuidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyTechintegrationSkushipemptymodelbyuidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49840,10 +55985,11 @@ func (client *Client) ApplyTechintegrationSkushipemptymodelbyuidEx(request *Appl
 	return _result, _err
 }
 
-/**
- * Description: 流式链路测试
- * Summary: 流式链路测试
- */
+// Description:
+//
+// Description: 流式链路测试
+//
+// Summary: 流式链路测试
 func (client *Client) QueryAiStreamtest(request *QueryAiStreamtestRequest) (_result *QueryAiStreamtestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49856,10 +56002,11 @@ func (client *Client) QueryAiStreamtest(request *QueryAiStreamtestRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 流式链路测试
- * Summary: 流式链路测试
- */
+// Description:
+//
+// Description: 流式链路测试
+//
+// Summary: 流式链路测试
 func (client *Client) QueryAiStreamtestEx(request *QueryAiStreamtestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAiStreamtestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49874,10 +56021,11 @@ func (client *Client) QueryAiStreamtestEx(request *QueryAiStreamtestRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式对话接口
- * Summary: 智能体流式对话接口
- */
+// Description:
+//
+// Description: 智能体流式对话接口
+//
+// Summary: 智能体流式对话接口
 func (client *Client) StartIotagentChat(request *StartIotagentChatRequest) (_result *StartIotagentChatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49890,10 +56038,11 @@ func (client *Client) StartIotagentChat(request *StartIotagentChatRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式对话接口
- * Summary: 智能体流式对话接口
- */
+// Description:
+//
+// Description: 智能体流式对话接口
+//
+// Summary: 智能体流式对话接口
 func (client *Client) StartIotagentChatEx(request *StartIotagentChatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartIotagentChatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49908,10 +56057,11 @@ func (client *Client) StartIotagentChatEx(request *StartIotagentChatRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式物模型上报接口
- * Summary: 智能体流式物模型上报接口
- */
+// Description:
+//
+// Description: 智能体流式物模型上报接口
+//
+// Summary: 智能体流式物模型上报接口
 func (client *Client) StartIotagentThingmodel(request *StartIotagentThingmodelRequest) (_result *StartIotagentThingmodelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49924,10 +56074,11 @@ func (client *Client) StartIotagentThingmodel(request *StartIotagentThingmodelRe
 	return _result, _err
 }
 
-/**
- * Description: 智能体流式物模型上报接口
- * Summary: 智能体流式物模型上报接口
- */
+// Description:
+//
+// Description: 智能体流式物模型上报接口
+//
+// Summary: 智能体流式物模型上报接口
 func (client *Client) StartIotagentThingmodelEx(request *StartIotagentThingmodelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartIotagentThingmodelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49942,10 +56093,11 @@ func (client *Client) StartIotagentThingmodelEx(request *StartIotagentThingmodel
 	return _result, _err
 }
 
-/**
- * Description: 智能体设备标识导入接口
- * Summary: 智能体设备标识导入接口
- */
+// Description:
+//
+// Description: 智能体设备标识导入接口
+//
+// Summary: 智能体设备标识导入接口
 func (client *Client) ImportIotagentClient(request *ImportIotagentClientRequest) (_result *ImportIotagentClientResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49958,10 +56110,11 @@ func (client *Client) ImportIotagentClient(request *ImportIotagentClientRequest)
 	return _result, _err
 }
 
-/**
- * Description: 智能体设备标识导入接口
- * Summary: 智能体设备标识导入接口
- */
+// Description:
+//
+// Description: 智能体设备标识导入接口
+//
+// Summary: 智能体设备标识导入接口
 func (client *Client) ImportIotagentClientEx(request *ImportIotagentClientRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportIotagentClientResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49976,10 +56129,11 @@ func (client *Client) ImportIotagentClientEx(request *ImportIotagentClientReques
 	return _result, _err
 }
 
-/**
- * Description: 订单数据核对
- * Summary: 订单数据核对
- */
+// Description:
+//
+// Description: 订单数据核对
+//
+// Summary: 订单数据核对
 func (client *Client) ExecPullstrategyOrdercheck(request *ExecPullstrategyOrdercheckRequest) (_result *ExecPullstrategyOrdercheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -49992,10 +56146,11 @@ func (client *Client) ExecPullstrategyOrdercheck(request *ExecPullstrategyOrderc
 	return _result, _err
 }
 
-/**
- * Description: 订单数据核对
- * Summary: 订单数据核对
- */
+// Description:
+//
+// Description: 订单数据核对
+//
+// Summary: 订单数据核对
 func (client *Client) ExecPullstrategyOrdercheckEx(request *ExecPullstrategyOrdercheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecPullstrategyOrdercheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50010,10 +56165,11 @@ func (client *Client) ExecPullstrategyOrdercheckEx(request *ExecPullstrategyOrde
 	return _result, _err
 }
 
-/**
- * Description: 资产信息核对
- * Summary: 资产信息核对
- */
+// Description:
+//
+// Description: 资产信息核对
+//
+// Summary: 资产信息核对
 func (client *Client) ExecPullstrategyStationcheck(request *ExecPullstrategyStationcheckRequest) (_result *ExecPullstrategyStationcheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50026,10 +56182,11 @@ func (client *Client) ExecPullstrategyStationcheck(request *ExecPullstrategyStat
 	return _result, _err
 }
 
-/**
- * Description: 资产信息核对
- * Summary: 资产信息核对
- */
+// Description:
+//
+// Description: 资产信息核对
+//
+// Summary: 资产信息核对
 func (client *Client) ExecPullstrategyStationcheckEx(request *ExecPullstrategyStationcheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecPullstrategyStationcheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50044,10 +56201,11 @@ func (client *Client) ExecPullstrategyStationcheckEx(request *ExecPullstrategySt
 	return _result, _err
 }
 
-/**
- * Description: 查询mcp服务连接点
- * Summary: 查询mcp服务连接点
- */
+// Description:
+//
+// Description: 查询mcp服务连接点
+//
+// Summary: 查询mcp服务连接点
 func (client *Client) QueryMcpEndpoint(request *QueryMcpEndpointRequest) (_result *QueryMcpEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50060,10 +56218,11 @@ func (client *Client) QueryMcpEndpoint(request *QueryMcpEndpointRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Description: 查询mcp服务连接点
- * Summary: 查询mcp服务连接点
- */
+// Description:
+//
+// Description: 查询mcp服务连接点
+//
+// Summary: 查询mcp服务连接点
 func (client *Client) QueryMcpEndpointEx(request *QueryMcpEndpointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMcpEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50078,10 +56237,11 @@ func (client *Client) QueryMcpEndpointEx(request *QueryMcpEndpointRequest, heade
 	return _result, _err
 }
 
-/**
- * Description: 自主联调平台数据授权接口
- * Summary: 自主联调平台数据授权接口
- */
+// Description:
+//
+// Description: 自主联调平台数据授权接口
+//
+// Summary: 自主联调平台数据授权接口
 func (client *Client) GrantDeviceEmpower(request *GrantDeviceEmpowerRequest) (_result *GrantDeviceEmpowerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50094,10 +56254,11 @@ func (client *Client) GrantDeviceEmpower(request *GrantDeviceEmpowerRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 自主联调平台数据授权接口
- * Summary: 自主联调平台数据授权接口
- */
+// Description:
+//
+// Description: 自主联调平台数据授权接口
+//
+// Summary: 自主联调平台数据授权接口
 func (client *Client) GrantDeviceEmpowerEx(request *GrantDeviceEmpowerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantDeviceEmpowerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50112,10 +56273,11 @@ func (client *Client) GrantDeviceEmpowerEx(request *GrantDeviceEmpowerRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 查询授权列表
- * Summary: 查询授权列表
- */
+// Description:
+//
+// Description: 查询授权列表
+//
+// Summary: 查询授权列表
 func (client *Client) QueryDeivceEmpower(request *QueryDeivceEmpowerRequest) (_result *QueryDeivceEmpowerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50128,10 +56290,11 @@ func (client *Client) QueryDeivceEmpower(request *QueryDeivceEmpowerRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 查询授权列表
- * Summary: 查询授权列表
- */
+// Description:
+//
+// Description: 查询授权列表
+//
+// Summary: 查询授权列表
 func (client *Client) QueryDeivceEmpowerEx(request *QueryDeivceEmpowerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeivceEmpowerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50146,10 +56309,11 @@ func (client *Client) QueryDeivceEmpowerEx(request *QueryDeivceEmpowerRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 查询授权记录
- * Summary: 查询授权记录
- */
+// Description:
+//
+// Description: 查询授权记录
+//
+// Summary: 查询授权记录
 func (client *Client) QueryDeviceEmpower(request *QueryDeviceEmpowerRequest) (_result *QueryDeviceEmpowerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50162,10 +56326,11 @@ func (client *Client) QueryDeviceEmpower(request *QueryDeviceEmpowerRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 查询授权记录
- * Summary: 查询授权记录
- */
+// Description:
+//
+// Description: 查询授权记录
+//
+// Summary: 查询授权记录
 func (client *Client) QueryDeviceEmpowerEx(request *QueryDeviceEmpowerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeviceEmpowerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50180,10 +56345,83 @@ func (client *Client) QueryDeviceEmpowerEx(request *QueryDeviceEmpowerRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 信物链oneapi
- * Summary: 信物链oneapi
- */
+// Description:
+//
+// Description: 获取id2 provision信息
+//
+// Summary: 获取id2 provision信息
+func (client *Client) GetIdsquaredOtp(request *GetIdsquaredOtpRequest) (_result *GetIdsquaredOtpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIdsquaredOtpResponse{}
+	_body, _err := client.GetIdsquaredOtpEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 获取id2 provision信息
+//
+// Summary: 获取id2 provision信息
+func (client *Client) GetIdsquaredOtpEx(request *GetIdsquaredOtpRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIdsquaredOtpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetIdsquaredOtpResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.idsquared.otp.get"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: id2鉴权加密服务
+//
+// Summary: id2鉴权加密服务
+func (client *Client) EncryptIdsquaredAuth(request *EncryptIdsquaredAuthRequest) (_result *EncryptIdsquaredAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EncryptIdsquaredAuthResponse{}
+	_body, _err := client.EncryptIdsquaredAuthEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: id2鉴权加密服务
+//
+// Summary: id2鉴权加密服务
+func (client *Client) EncryptIdsquaredAuthEx(request *EncryptIdsquaredAuthRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EncryptIdsquaredAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &EncryptIdsquaredAuthResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.idsquared.auth.encrypt"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 信物链oneapi
+//
+// Summary: 信物链oneapi
 func (client *Client) ExecThingsdidOneapi(request *ExecThingsdidOneapiRequest) (_result *ExecThingsdidOneapiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50196,10 +56434,11 @@ func (client *Client) ExecThingsdidOneapi(request *ExecThingsdidOneapiRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 信物链oneapi
- * Summary: 信物链oneapi
- */
+// Description:
+//
+// Description: 信物链oneapi
+//
+// Summary: 信物链oneapi
 func (client *Client) ExecThingsdidOneapiEx(request *ExecThingsdidOneapiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecThingsdidOneapiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50214,10 +56453,11 @@ func (client *Client) ExecThingsdidOneapiEx(request *ExecThingsdidOneapiRequest,
 	return _result, _err
 }
 
-/**
- * Description: 信物链存证
- * Summary: 信物链存证
- */
+// Description:
+//
+// Description: 信物链存证
+//
+// Summary: 信物链存证
 func (client *Client) StartEvidenceStore(request *StartEvidenceStoreRequest) (_result *StartEvidenceStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50230,10 +56470,11 @@ func (client *Client) StartEvidenceStore(request *StartEvidenceStoreRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 信物链存证
- * Summary: 信物链存证
- */
+// Description:
+//
+// Description: 信物链存证
+//
+// Summary: 信物链存证
 func (client *Client) StartEvidenceStoreEx(request *StartEvidenceStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartEvidenceStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50248,10 +56489,11 @@ func (client *Client) StartEvidenceStoreEx(request *StartEvidenceStoreRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 信物链存证查询
- * Summary: 信物链存证查询
- */
+// Description:
+//
+// Description: 信物链存证查询
+//
+// Summary: 信物链存证查询
 func (client *Client) StartEvidenceQuery(request *StartEvidenceQueryRequest) (_result *StartEvidenceQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50264,10 +56506,11 @@ func (client *Client) StartEvidenceQuery(request *StartEvidenceQueryRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 信物链存证查询
- * Summary: 信物链存证查询
- */
+// Description:
+//
+// Description: 信物链存证查询
+//
+// Summary: 信物链存证查询
 func (client *Client) StartEvidenceQueryEx(request *StartEvidenceQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartEvidenceQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50282,10 +56525,11 @@ func (client *Client) StartEvidenceQueryEx(request *StartEvidenceQueryRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体身份注册
- * Summary: 信物链实体身份注册
- */
+// Description:
+//
+// Description: 信物链实体身份注册
+//
+// Summary: 信物链实体身份注册
 func (client *Client) StartThingsdidRegister(request *StartThingsdidRegisterRequest) (_result *StartThingsdidRegisterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50298,10 +56542,11 @@ func (client *Client) StartThingsdidRegister(request *StartThingsdidRegisterRequ
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体身份注册
- * Summary: 信物链实体身份注册
- */
+// Description:
+//
+// Description: 信物链实体身份注册
+//
+// Summary: 信物链实体身份注册
 func (client *Client) StartThingsdidRegisterEx(request *StartThingsdidRegisterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartThingsdidRegisterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50316,11 +56561,13 @@ func (client *Client) StartThingsdidRegisterEx(request *StartThingsdidRegisterRe
 	return _result, _err
 }
 
-/**
- * Description: 信物链异步操作查询
-智能合约操作由于比较耗时，因此内部实现通过异步实现，调用完exectuted返回是false的API后，需要调用此api来轮询原先操作是否完成。
- * Summary: 信物链异步操作查询
-*/
+// Description:
+//
+// Description: 信物链异步操作查询
+//
+// 智能合约操作由于比较耗时，因此内部实现通过异步实现，调用完exectuted返回是false的API后，需要调用此api来轮询原先操作是否完成。
+//
+// Summary: 信物链异步操作查询
 func (client *Client) QueryThingsdidAsyncprocess(request *QueryThingsdidAsyncprocessRequest) (_result *QueryThingsdidAsyncprocessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50333,11 +56580,13 @@ func (client *Client) QueryThingsdidAsyncprocess(request *QueryThingsdidAsyncpro
 	return _result, _err
 }
 
-/**
- * Description: 信物链异步操作查询
-智能合约操作由于比较耗时，因此内部实现通过异步实现，调用完exectuted返回是false的API后，需要调用此api来轮询原先操作是否完成。
- * Summary: 信物链异步操作查询
-*/
+// Description:
+//
+// Description: 信物链异步操作查询
+//
+// 智能合约操作由于比较耗时，因此内部实现通过异步实现，调用完exectuted返回是false的API后，需要调用此api来轮询原先操作是否完成。
+//
+// Summary: 信物链异步操作查询
 func (client *Client) QueryThingsdidAsyncprocessEx(request *QueryThingsdidAsyncprocessRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryThingsdidAsyncprocessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50352,10 +56601,11 @@ func (client *Client) QueryThingsdidAsyncprocessEx(request *QueryThingsdidAsyncp
 	return _result, _err
 }
 
-/**
- * Description: 信物链身份状态更新，此API目前仅支持设备状态更新
- * Summary: 信物链身份状态更新
- */
+// Description:
+//
+// Description: 信物链身份状态更新，此API目前仅支持设备状态更新
+//
+// Summary: 信物链身份状态更新
 func (client *Client) UpdateThingsdidStatus(request *UpdateThingsdidStatusRequest) (_result *UpdateThingsdidStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50368,10 +56618,11 @@ func (client *Client) UpdateThingsdidStatus(request *UpdateThingsdidStatusReques
 	return _result, _err
 }
 
-/**
- * Description: 信物链身份状态更新，此API目前仅支持设备状态更新
- * Summary: 信物链身份状态更新
- */
+// Description:
+//
+// Description: 信物链身份状态更新，此API目前仅支持设备状态更新
+//
+// Summary: 信物链身份状态更新
 func (client *Client) UpdateThingsdidStatusEx(request *UpdateThingsdidStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateThingsdidStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50386,10 +56637,11 @@ func (client *Client) UpdateThingsdidStatusEx(request *UpdateThingsdidStatusRequ
 	return _result, _err
 }
 
-/**
- * Description: 信物链设备空间关联更新，完成设备和空间关联绑定
- * Summary: 信物链设备空间关联更新
- */
+// Description:
+//
+// Description: 信物链设备空间关联更新，完成设备和空间关联绑定
+//
+// Summary: 信物链设备空间关联更新
 func (client *Client) UpdateThingsdidDevicespace(request *UpdateThingsdidDevicespaceRequest) (_result *UpdateThingsdidDevicespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50402,10 +56654,11 @@ func (client *Client) UpdateThingsdidDevicespace(request *UpdateThingsdidDevices
 	return _result, _err
 }
 
-/**
- * Description: 信物链设备空间关联更新，完成设备和空间关联绑定
- * Summary: 信物链设备空间关联更新
- */
+// Description:
+//
+// Description: 信物链设备空间关联更新，完成设备和空间关联绑定
+//
+// Summary: 信物链设备空间关联更新
 func (client *Client) UpdateThingsdidDevicespaceEx(request *UpdateThingsdidDevicespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateThingsdidDevicespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50420,10 +56673,11 @@ func (client *Client) UpdateThingsdidDevicespaceEx(request *UpdateThingsdidDevic
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体did查询，根据dataFilter过滤输出
- * Summary: 信物链实体did查询
- */
+// Description:
+//
+// Description: 信物链实体did查询，根据dataFilter过滤输出
+//
+// Summary: 信物链实体did查询
 func (client *Client) QueryThingsdidDid(request *QueryThingsdidDidRequest) (_result *QueryThingsdidDidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50436,10 +56690,11 @@ func (client *Client) QueryThingsdidDid(request *QueryThingsdidDidRequest) (_res
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体did查询，根据dataFilter过滤输出
- * Summary: 信物链实体did查询
- */
+// Description:
+//
+// Description: 信物链实体did查询，根据dataFilter过滤输出
+//
+// Summary: 信物链实体did查询
 func (client *Client) QueryThingsdidDidEx(request *QueryThingsdidDidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryThingsdidDidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50454,10 +56709,11 @@ func (client *Client) QueryThingsdidDidEx(request *QueryThingsdidDidRequest, hea
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体身份更新，字段空则不更新。
- * Summary: 信物链实体身份更新
- */
+// Description:
+//
+// Description: 信物链实体身份更新，字段空则不更新。
+//
+// Summary: 信物链实体身份更新
 func (client *Client) UpdateThingsdidDid(request *UpdateThingsdidDidRequest) (_result *UpdateThingsdidDidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50470,10 +56726,11 @@ func (client *Client) UpdateThingsdidDid(request *UpdateThingsdidDidRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体身份更新，字段空则不更新。
- * Summary: 信物链实体身份更新
- */
+// Description:
+//
+// Description: 信物链实体身份更新，字段空则不更新。
+//
+// Summary: 信物链实体身份更新
 func (client *Client) UpdateThingsdidDidEx(request *UpdateThingsdidDidRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateThingsdidDidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50488,10 +56745,11 @@ func (client *Client) UpdateThingsdidDidEx(request *UpdateThingsdidDidRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 信物链租户信息关联
- * Summary: 信物链租户信息关联
- */
+// Description:
+//
+// Description: 信物链租户信息关联
+//
+// Summary: 信物链租户信息关联
 func (client *Client) StartTenantBindinfo(request *StartTenantBindinfoRequest) (_result *StartTenantBindinfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50504,10 +56762,11 @@ func (client *Client) StartTenantBindinfo(request *StartTenantBindinfoRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 信物链租户信息关联
- * Summary: 信物链租户信息关联
- */
+// Description:
+//
+// Description: 信物链租户信息关联
+//
+// Summary: 信物链租户信息关联
 func (client *Client) StartTenantBindinfoEx(request *StartTenantBindinfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTenantBindinfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50522,10 +56781,11 @@ func (client *Client) StartTenantBindinfoEx(request *StartTenantBindinfoRequest,
 	return _result, _err
 }
 
-/**
- * Description: 信物链租户项目创建，项目可以用来管理同一租户不同业务的存证
- * Summary: 信物链租户项目创建
- */
+// Description:
+//
+// Description: 信物链租户项目创建，项目可以用来管理同一租户不同业务的存证
+//
+// Summary: 信物链租户项目创建
 func (client *Client) CreateTenantProject(request *CreateTenantProjectRequest) (_result *CreateTenantProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50538,10 +56798,11 @@ func (client *Client) CreateTenantProject(request *CreateTenantProjectRequest) (
 	return _result, _err
 }
 
-/**
- * Description: 信物链租户项目创建，项目可以用来管理同一租户不同业务的存证
- * Summary: 信物链租户项目创建
- */
+// Description:
+//
+// Description: 信物链租户项目创建，项目可以用来管理同一租户不同业务的存证
+//
+// Summary: 信物链租户项目创建
 func (client *Client) CreateTenantProjectEx(request *CreateTenantProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTenantProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50556,11 +56817,13 @@ func (client *Client) CreateTenantProjectEx(request *CreateTenantProjectRequest,
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体访问权限更新
-所有者/使用者/观察者权限更新
- * Summary: 信物链实体访问权限更新
-*/
+// Description:
+//
+// Description: 信物链实体访问权限更新
+//
+// 所有者/使用者/观察者权限更新
+//
+// Summary: 信物链实体访问权限更新
 func (client *Client) UpdateThingsdidTenant(request *UpdateThingsdidTenantRequest) (_result *UpdateThingsdidTenantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50573,11 +56836,13 @@ func (client *Client) UpdateThingsdidTenant(request *UpdateThingsdidTenantReques
 	return _result, _err
 }
 
-/**
- * Description: 信物链实体访问权限更新
-所有者/使用者/观察者权限更新
- * Summary: 信物链实体访问权限更新
-*/
+// Description:
+//
+// Description: 信物链实体访问权限更新
+//
+// 所有者/使用者/观察者权限更新
+//
+// Summary: 信物链实体访问权限更新
 func (client *Client) UpdateThingsdidTenantEx(request *UpdateThingsdidTenantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateThingsdidTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50592,10 +56857,11 @@ func (client *Client) UpdateThingsdidTenantEx(request *UpdateThingsdidTenantRequ
 	return _result, _err
 }
 
-/**
- * Description: LoadCertificateTSMCmd，仅限内部使用api
- * Summary: TSM迁移内部使用
- */
+// Description:
+//
+// Description: LoadCertificateTSMCmd，仅限内部使用api
+//
+// Summary: TSM迁移内部使用
 func (client *Client) LoadTsmCertificatetsm(request *LoadTsmCertificatetsmRequest) (_result *LoadTsmCertificatetsmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50608,10 +56874,11 @@ func (client *Client) LoadTsmCertificatetsm(request *LoadTsmCertificatetsmReques
 	return _result, _err
 }
 
-/**
- * Description: LoadCertificateTSMCmd，仅限内部使用api
- * Summary: TSM迁移内部使用
- */
+// Description:
+//
+// Description: LoadCertificateTSMCmd，仅限内部使用api
+//
+// Summary: TSM迁移内部使用
 func (client *Client) LoadTsmCertificatetsmEx(request *LoadTsmCertificatetsmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LoadTsmCertificatetsmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50626,10 +56893,11 @@ func (client *Client) LoadTsmCertificatetsmEx(request *LoadTsmCertificatetsmRequ
 	return _result, _err
 }
 
-/**
- * Description: TSM迁移内部使用
- * Summary: loadResourceFile
- */
+// Description:
+//
+// Description: TSM迁移内部使用
+//
+// Summary: loadResourceFile
 func (client *Client) LoadTsmResourcefile(request *LoadTsmResourcefileRequest) (_result *LoadTsmResourcefileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50642,10 +56910,11 @@ func (client *Client) LoadTsmResourcefile(request *LoadTsmResourcefileRequest) (
 	return _result, _err
 }
 
-/**
- * Description: TSM迁移内部使用
- * Summary: loadResourceFile
- */
+// Description:
+//
+// Description: TSM迁移内部使用
+//
+// Summary: loadResourceFile
 func (client *Client) LoadTsmResourcefileEx(request *LoadTsmResourcefileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LoadTsmResourcefileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50660,10 +56929,11 @@ func (client *Client) LoadTsmResourcefileEx(request *LoadTsmResourcefileRequest,
 	return _result, _err
 }
 
-/**
- * Description: 触发tlsnotary文件认证任务
- * Summary: 触发tlsnotary文件认证任务
- */
+// Description:
+//
+// Description: 触发tlsnotary文件认证任务
+//
+// Summary: 触发tlsnotary文件认证任务
 func (client *Client) StartTlsnotaryTask(request *StartTlsnotaryTaskRequest) (_result *StartTlsnotaryTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50676,10 +56946,11 @@ func (client *Client) StartTlsnotaryTask(request *StartTlsnotaryTaskRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 触发tlsnotary文件认证任务
- * Summary: 触发tlsnotary文件认证任务
- */
+// Description:
+//
+// Description: 触发tlsnotary文件认证任务
+//
+// Summary: 触发tlsnotary文件认证任务
 func (client *Client) StartTlsnotaryTaskEx(request *StartTlsnotaryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTlsnotaryTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50694,10 +56965,11 @@ func (client *Client) StartTlsnotaryTaskEx(request *StartTlsnotaryTaskRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 查询tlsnotary文件认证任务结果
- * Summary: 查询tlsnotary文件认证任务结果
- */
+// Description:
+//
+// Description: 查询tlsnotary文件认证任务结果
+//
+// Summary: 查询tlsnotary文件认证任务结果
 func (client *Client) QueryTlsnotaryTask(request *QueryTlsnotaryTaskRequest) (_result *QueryTlsnotaryTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50710,10 +56982,11 @@ func (client *Client) QueryTlsnotaryTask(request *QueryTlsnotaryTaskRequest) (_r
 	return _result, _err
 }
 
-/**
- * Description: 查询tlsnotary文件认证任务结果
- * Summary: 查询tlsnotary文件认证任务结果
- */
+// Description:
+//
+// Description: 查询tlsnotary文件认证任务结果
+//
+// Summary: 查询tlsnotary文件认证任务结果
 func (client *Client) QueryTlsnotaryTaskEx(request *QueryTlsnotaryTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTlsnotaryTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50728,10 +57001,11 @@ func (client *Client) QueryTlsnotaryTaskEx(request *QueryTlsnotaryTaskRequest, h
 	return _result, _err
 }
 
-/**
- * Description: 创建HTTP PUT提交的文件上传
- * Summary: 文件上传创建
- */
+// Description:
+//
+// Description: 创建HTTP PUT提交的文件上传
+//
+// Summary: 文件上传创建
 func (client *Client) CreateAntcloudGatewayxFileUpload(request *CreateAntcloudGatewayxFileUploadRequest) (_result *CreateAntcloudGatewayxFileUploadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -50744,10 +57018,11 @@ func (client *Client) CreateAntcloudGatewayxFileUpload(request *CreateAntcloudGa
 	return _result, _err
 }
 
-/**
- * Description: 创建HTTP PUT提交的文件上传
- * Summary: 文件上传创建
- */
+// Description:
+//
+// Description: 创建HTTP PUT提交的文件上传
+//
+// Summary: 文件上传创建
 func (client *Client) CreateAntcloudGatewayxFileUploadEx(request *CreateAntcloudGatewayxFileUploadRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAntcloudGatewayxFileUploadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
