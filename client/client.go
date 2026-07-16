@@ -2378,6 +2378,38 @@ func (s *IotbasicAppManagerPageInfo) SetDeviceModel(v string) *IotbasicAppManage
 	return s
 }
 
+// 模块版本树形节点
+type ModuleVersionTreeNode struct {
+	// 模块名称
+	// example:
+	//
+	// BLE
+	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty"`
+	// 版本号列表
+	// example:
+	//
+	// undefined
+	Versions []*string `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+}
+
+func (s ModuleVersionTreeNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleVersionTreeNode) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleVersionTreeNode) SetModuleName(v string) *ModuleVersionTreeNode {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *ModuleVersionTreeNode) SetVersions(v []*string) *ModuleVersionTreeNode {
+	s.Versions = v
+	return s
+}
+
 // 四轮车驾驶事件
 type FourWheelerCarEvent struct {
 	// 驾驶事件的类型，如正常驾驶、碰撞、急转弯、启动熄火等。
@@ -32211,7 +32243,7 @@ type QueryElectrocarOtafirmwarepageRequest struct {
 	// OTA升级包版本号
 	DestVersion *string `json:"dest_version,omitempty" xml:"dest_version,omitempty"`
 	// 模块名称
-	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty" require:"true"`
+	ModuleName *string `json:"module_name,omitempty" xml:"module_name,omitempty"`
 }
 
 func (s QueryElectrocarOtafirmwarepageRequest) String() string {
@@ -32352,7 +32384,7 @@ type QueryElectrocarOtafirmwaredetailRequest struct {
 	// 固件包id
 	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty" require:"true"`
 	// 可信物联唯一产品标识
-	TrustProductKey *string `json:"trust_product_key,omitempty" xml:"trust_product_key,omitempty"`
+	TrustProductKey *string `json:"trust_product_key,omitempty" xml:"trust_product_key,omitempty" require:"true"`
 }
 
 func (s QueryElectrocarOtafirmwaredetailRequest) String() string {
@@ -32687,7 +32719,7 @@ type QueryElectrocarOtataskpageRequest struct {
 	// OTA任务id
 	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty" require:"true"`
 	// OTA固件id
-	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty"`
+	FirmwareId *string `json:"firmware_id,omitempty" xml:"firmware_id,omitempty" require:"true"`
 	// 任务状态：CONFIRM, QUEUED, NOTIFIED, IN_PROGRESS, SUCCEEDED, FAILED, CANCELED
 	TaskStatus *string `json:"task_status,omitempty" xml:"task_status,omitempty"`
 	// 设备名称列表
@@ -33203,6 +33235,97 @@ func (s *PushElectrocarOtajobbymoduleResponse) SetBatchCount(v int64) *PushElect
 
 func (s *PushElectrocarOtajobbymoduleResponse) SetJobIds(v []*string) *PushElectrocarOtajobbymoduleResponse {
 	s.JobIds = v
+	return s
+}
+
+type QueryElectrocarModuleversiontreeRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 可信物联唯一产品标识
+	TrustProductKey *string `json:"trust_product_key,omitempty" xml:"trust_product_key,omitempty" require:"true"`
+}
+
+func (s QueryElectrocarModuleversiontreeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarModuleversiontreeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarModuleversiontreeRequest) SetAuthToken(v string) *QueryElectrocarModuleversiontreeRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeRequest) SetProductInstanceId(v string) *QueryElectrocarModuleversiontreeRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeRequest) SetTrustProductKey(v string) *QueryElectrocarModuleversiontreeRequest {
+	s.TrustProductKey = &v
+	return s
+}
+
+type QueryElectrocarModuleversiontreeResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 是否请求成功
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+	// 响应编码
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 响应内容
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// 列表数据
+	Data []*ModuleVersionTreeNode `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+}
+
+func (s QueryElectrocarModuleversiontreeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryElectrocarModuleversiontreeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetReqMsgId(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetResultCode(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetResultMsg(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetSuccess(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetCode(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetMessage(v string) *QueryElectrocarModuleversiontreeResponse {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryElectrocarModuleversiontreeResponse) SetData(v []*ModuleVersionTreeNode) *QueryElectrocarModuleversiontreeResponse {
+	s.Data = v
 	return s
 }
 
@@ -48260,7 +48383,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.17.7"),
+				"sdk_version":      tea.String("1.17.9"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -54671,6 +54794,42 @@ func (client *Client) PushElectrocarOtajobbymoduleEx(request *PushElectrocarOtaj
 	}
 	_result = &PushElectrocarOtajobbymoduleResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.otajobbymodule.push"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询产品下所有模块及版本号
+//
+// Summary: 查询产品下所有模块及版本号
+func (client *Client) QueryElectrocarModuleversiontree(request *QueryElectrocarModuleversiontreeRequest) (_result *QueryElectrocarModuleversiontreeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryElectrocarModuleversiontreeResponse{}
+	_body, _err := client.QueryElectrocarModuleversiontreeEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询产品下所有模块及版本号
+//
+// Summary: 查询产品下所有模块及版本号
+func (client *Client) QueryElectrocarModuleversiontreeEx(request *QueryElectrocarModuleversiontreeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryElectrocarModuleversiontreeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryElectrocarModuleversiontreeResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.moduleversiontree.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
