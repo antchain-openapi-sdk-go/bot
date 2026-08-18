@@ -3740,6 +3740,54 @@ func (s *AgentInfoVO) SetParentTemplateAgentName(v string) *AgentInfoVO {
 	return s
 }
 
+// AiAgentThingModelData
+type AiAgentThingModelData struct {
+	DataId     *string `json:"data_id,omitempty" xml:"data_id,omitempty" require:"true"`
+	UserId     *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	DeviceId   *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
+	FeatureId  *string `json:"feature_id,omitempty" xml:"feature_id,omitempty" require:"true"`
+	ReportTime *string `json:"report_time,omitempty" xml:"report_time,omitempty" require:"true" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	Content    *string `json:"content,omitempty" xml:"content,omitempty" require:"true"`
+}
+
+func (s AiAgentThingModelData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiAgentThingModelData) GoString() string {
+	return s.String()
+}
+
+func (s *AiAgentThingModelData) SetDataId(v string) *AiAgentThingModelData {
+	s.DataId = &v
+	return s
+}
+
+func (s *AiAgentThingModelData) SetUserId(v string) *AiAgentThingModelData {
+	s.UserId = &v
+	return s
+}
+
+func (s *AiAgentThingModelData) SetDeviceId(v string) *AiAgentThingModelData {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *AiAgentThingModelData) SetFeatureId(v string) *AiAgentThingModelData {
+	s.FeatureId = &v
+	return s
+}
+
+func (s *AiAgentThingModelData) SetReportTime(v string) *AiAgentThingModelData {
+	s.ReportTime = &v
+	return s
+}
+
+func (s *AiAgentThingModelData) SetContent(v string) *AiAgentThingModelData {
+	s.Content = &v
+	return s
+}
+
 // 要素关系信息
 type AssetElementRelationInfo struct {
 	// 来源要素ID
@@ -19538,6 +19586,602 @@ func (s *QueryAgentSessionsResponse) SetList(v []*AgentSessionVO) *QueryAgentSes
 	return s
 }
 
+type QueryIotagentAideviceRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 保留字段，暂时不使用
+	DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	// 客户租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+}
+
+func (s QueryIotagentAideviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentAideviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentAideviceRequest) SetAuthToken(v string) *QueryIotagentAideviceRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceRequest) SetProductInstanceId(v string) *QueryIotagentAideviceRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceRequest) SetDeviceId(v string) *QueryIotagentAideviceRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceRequest) SetUserId(v string) *QueryIotagentAideviceRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceRequest) SetTenantId(v string) *QueryIotagentAideviceRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryIotagentAideviceResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Status *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	// 客户租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty"`
+}
+
+func (s QueryIotagentAideviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentAideviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentAideviceResponse) SetReqMsgId(v string) *QueryIotagentAideviceResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceResponse) SetResultCode(v string) *QueryIotagentAideviceResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceResponse) SetResultMsg(v string) *QueryIotagentAideviceResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceResponse) SetUserId(v string) *QueryIotagentAideviceResponse {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceResponse) SetStatus(v int64) *QueryIotagentAideviceResponse {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryIotagentAideviceResponse) SetTenantId(v string) *QueryIotagentAideviceResponse {
+	s.TenantId = &v
+	return s
+}
+
+type QueryIotagentThingmodelrangeRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	// 设备ID，保留字段，暂不使用
+	DeviceId  *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
+	FeatureId *string `json:"feature_id,omitempty" xml:"feature_id,omitempty" require:"true"`
+	// 客户租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+}
+
+func (s QueryIotagentThingmodelrangeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentThingmodelrangeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetAuthToken(v string) *QueryIotagentThingmodelrangeRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetProductInstanceId(v string) *QueryIotagentThingmodelrangeRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetUserId(v string) *QueryIotagentThingmodelrangeRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetDeviceId(v string) *QueryIotagentThingmodelrangeRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetFeatureId(v string) *QueryIotagentThingmodelrangeRequest {
+	s.FeatureId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeRequest) SetTenantId(v string) *QueryIotagentThingmodelrangeRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryIotagentThingmodelrangeResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg        *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	HasData          *bool   `json:"has_data,omitempty" xml:"has_data,omitempty"`
+	FirstReportTime  *string `json:"first_report_time,omitempty" xml:"first_report_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	LatestReportTime *string `json:"latest_report_time,omitempty" xml:"latest_report_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s QueryIotagentThingmodelrangeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentThingmodelrangeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetReqMsgId(v string) *QueryIotagentThingmodelrangeResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetResultCode(v string) *QueryIotagentThingmodelrangeResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetResultMsg(v string) *QueryIotagentThingmodelrangeResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetHasData(v bool) *QueryIotagentThingmodelrangeResponse {
+	s.HasData = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetFirstReportTime(v string) *QueryIotagentThingmodelrangeResponse {
+	s.FirstReportTime = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodelrangeResponse) SetLatestReportTime(v string) *QueryIotagentThingmodelrangeResponse {
+	s.LatestReportTime = &v
+	return s
+}
+
+type QueryIotagentThingmodeldataRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	UserId            *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+	FeatureId         *string `json:"feature_id,omitempty" xml:"feature_id,omitempty" require:"true"`
+	DeviceId          *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
+	StartTime         *string `json:"start_time,omitempty" xml:"start_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	EndTime           *string `json:"end_time,omitempty" xml:"end_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+	PageIndex         *int64  `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	PageSize          *int64  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+}
+
+func (s QueryIotagentThingmodeldataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentThingmodeldataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetAuthToken(v string) *QueryIotagentThingmodeldataRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetProductInstanceId(v string) *QueryIotagentThingmodeldataRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetUserId(v string) *QueryIotagentThingmodeldataRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetFeatureId(v string) *QueryIotagentThingmodeldataRequest {
+	s.FeatureId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetDeviceId(v string) *QueryIotagentThingmodeldataRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetStartTime(v string) *QueryIotagentThingmodeldataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetEndTime(v string) *QueryIotagentThingmodeldataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetPageIndex(v int64) *QueryIotagentThingmodeldataRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetPageSize(v int64) *QueryIotagentThingmodeldataRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataRequest) SetTenantId(v string) *QueryIotagentThingmodeldataRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryIotagentThingmodeldataResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Total     *int64  `json:"total,omitempty" xml:"total,omitempty"`
+	PageNum   *int64  `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	PageSize  *int64  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// 总页数
+	Pages *int64                   `json:"pages,omitempty" xml:"pages,omitempty"`
+	List  []*AiAgentThingModelData `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+}
+
+func (s QueryIotagentThingmodeldataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentThingmodeldataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetReqMsgId(v string) *QueryIotagentThingmodeldataResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetResultCode(v string) *QueryIotagentThingmodeldataResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetResultMsg(v string) *QueryIotagentThingmodeldataResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetTotal(v int64) *QueryIotagentThingmodeldataResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetPageNum(v int64) *QueryIotagentThingmodeldataResponse {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetPageSize(v int64) *QueryIotagentThingmodeldataResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetPages(v int64) *QueryIotagentThingmodeldataResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *QueryIotagentThingmodeldataResponse) SetList(v []*AiAgentThingModelData) *QueryIotagentThingmodeldataResponse {
+	s.List = v
+	return s
+}
+
+type GetsignurlIotagentPlugincontractRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 插件ID，由蚂蚁侧提供
+	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty" require:"true"`
+	// 客户端ID，一般是设备 MAC 地址
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty" require:"true"`
+}
+
+func (s GetsignurlIotagentPlugincontractRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetsignurlIotagentPlugincontractRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetsignurlIotagentPlugincontractRequest) SetAuthToken(v string) *GetsignurlIotagentPlugincontractRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractRequest) SetProductInstanceId(v string) *GetsignurlIotagentPlugincontractRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractRequest) SetPluginId(v string) *GetsignurlIotagentPlugincontractRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractRequest) SetClientId(v string) *GetsignurlIotagentPlugincontractRequest {
+	s.ClientId = &v
+	return s
+}
+
+type GetsignurlIotagentPlugincontractResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 签约 URL
+	SignUrl *string `json:"sign_url,omitempty" xml:"sign_url,omitempty"`
+	// 签约URL过期时间
+	ExpireTime *string `json:"expire_time,omitempty" xml:"expire_time,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s GetsignurlIotagentPlugincontractResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetsignurlIotagentPlugincontractResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetsignurlIotagentPlugincontractResponse) SetReqMsgId(v string) *GetsignurlIotagentPlugincontractResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractResponse) SetResultCode(v string) *GetsignurlIotagentPlugincontractResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractResponse) SetResultMsg(v string) *GetsignurlIotagentPlugincontractResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractResponse) SetSignUrl(v string) *GetsignurlIotagentPlugincontractResponse {
+	s.SignUrl = &v
+	return s
+}
+
+func (s *GetsignurlIotagentPlugincontractResponse) SetExpireTime(v string) *GetsignurlIotagentPlugincontractResponse {
+	s.ExpireTime = &v
+	return s
+}
+
+type QueryIotagentPlugincontractRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 插件ID，由蚂蚁侧提供
+	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty" require:"true"`
+	// 客户端ID，一般是设备 MAC 地址
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty" require:"true"`
+}
+
+func (s QueryIotagentPlugincontractRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentPlugincontractRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentPlugincontractRequest) SetAuthToken(v string) *QueryIotagentPlugincontractRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractRequest) SetProductInstanceId(v string) *QueryIotagentPlugincontractRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractRequest) SetPluginId(v string) *QueryIotagentPlugincontractRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractRequest) SetClientId(v string) *QueryIotagentPlugincontractRequest {
+	s.ClientId = &v
+	return s
+}
+
+type QueryIotagentPlugincontractResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 签约状态：SIGNED（已签约）/ UNSIGNED（未签约）/ SIGNING（签约中）
+	ContractStatus *string `json:"contract_status,omitempty" xml:"contract_status,omitempty"`
+}
+
+func (s QueryIotagentPlugincontractResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentPlugincontractResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentPlugincontractResponse) SetReqMsgId(v string) *QueryIotagentPlugincontractResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractResponse) SetResultCode(v string) *QueryIotagentPlugincontractResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractResponse) SetResultMsg(v string) *QueryIotagentPlugincontractResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentPlugincontractResponse) SetContractStatus(v string) *QueryIotagentPlugincontractResponse {
+	s.ContractStatus = &v
+	return s
+}
+
+type QueryIotagentUseridRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 租户名
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 页码
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	PageSize  *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s QueryIotagentUseridRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentUseridRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentUseridRequest) SetAuthToken(v string) *QueryIotagentUseridRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentUseridRequest) SetProductInstanceId(v string) *QueryIotagentUseridRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridRequest) SetTenantId(v string) *QueryIotagentUseridRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridRequest) SetPageIndex(v int64) *QueryIotagentUseridRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QueryIotagentUseridRequest) SetPageSize(v int64) *QueryIotagentUseridRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryIotagentUseridResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 对应租户名下的user_id
+	UserIdList []*string `json:"user_id_list,omitempty" xml:"user_id_list,omitempty" type:"Repeated"`
+	Total      *int64    `json:"total,omitempty" xml:"total,omitempty"`
+	PageNum    *int64    `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	PageSize   *int64    `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s QueryIotagentUseridResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentUseridResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentUseridResponse) SetReqMsgId(v string) *QueryIotagentUseridResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetResultCode(v string) *QueryIotagentUseridResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetResultMsg(v string) *QueryIotagentUseridResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetUserIdList(v []*string) *QueryIotagentUseridResponse {
+	s.UserIdList = v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetTotal(v int64) *QueryIotagentUseridResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetPageNum(v int64) *QueryIotagentUseridResponse {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryIotagentUseridResponse) SetPageSize(v int64) *QueryIotagentUseridResponse {
+	s.PageSize = &v
+	return s
+}
+
 type CreateAcsDeviceRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -35088,6 +35732,160 @@ func (s *QueryElectrocarOtafirmwarelastestResponse) SetData(v *IotxLatestPublish
 	return s
 }
 
+type PushElectrocarAipanelskinRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// ekyt设备唯一标识
+	Tuid *string `json:"tuid,omitempty" xml:"tuid,omitempty" require:"true"`
+	// 皮肤id
+	SkinId *int64 `json:"skin_id,omitempty" xml:"skin_id,omitempty" require:"true"`
+	// 皮肤名称
+	SkinName *string `json:"skin_name,omitempty" xml:"skin_name,omitempty" require:"true"`
+	// 0 全量、1 背景图、2 开关机动画、3 电子宠物动画
+	SkinType *int64 `json:"skin_type,omitempty" xml:"skin_type,omitempty" require:"true"`
+	// 皮肤版本号
+	SkinVer *int64 `json:"skin_ver,omitempty" xml:"skin_ver,omitempty" require:"true"`
+	// 文件大小，单位字节
+	SkinSize *int64 `json:"skin_size,omitempty" xml:"skin_size,omitempty" require:"true"`
+	// 是	目标屏幕宽高
+	ScreenW *int64 `json:"screen_w,omitempty" xml:"screen_w,omitempty" require:"true"`
+	// 目标屏幕高
+	ScreenH *int64 `json:"screen_h,omitempty" xml:"screen_h,omitempty" require:"true"`
+	// 格式版本
+	FormatVer *int64 `json:"format_ver,omitempty" xml:"format_ver,omitempty"`
+	// 打包皮肤url地址
+	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+	// 可选扩展字段
+	Ext *string `json:"ext,omitempty" xml:"ext,omitempty"`
+}
+
+func (s PushElectrocarAipanelskinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushElectrocarAipanelskinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetAuthToken(v string) *PushElectrocarAipanelskinRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetProductInstanceId(v string) *PushElectrocarAipanelskinRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetTuid(v string) *PushElectrocarAipanelskinRequest {
+	s.Tuid = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetSkinId(v int64) *PushElectrocarAipanelskinRequest {
+	s.SkinId = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetSkinName(v string) *PushElectrocarAipanelskinRequest {
+	s.SkinName = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetSkinType(v int64) *PushElectrocarAipanelskinRequest {
+	s.SkinType = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetSkinVer(v int64) *PushElectrocarAipanelskinRequest {
+	s.SkinVer = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetSkinSize(v int64) *PushElectrocarAipanelskinRequest {
+	s.SkinSize = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetScreenW(v int64) *PushElectrocarAipanelskinRequest {
+	s.ScreenW = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetScreenH(v int64) *PushElectrocarAipanelskinRequest {
+	s.ScreenH = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetFormatVer(v int64) *PushElectrocarAipanelskinRequest {
+	s.FormatVer = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetUrl(v string) *PushElectrocarAipanelskinRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinRequest) SetExt(v string) *PushElectrocarAipanelskinRequest {
+	s.Ext = &v
+	return s
+}
+
+type PushElectrocarAipanelskinResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 响应编码
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 响应消息
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s PushElectrocarAipanelskinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushElectrocarAipanelskinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetReqMsgId(v string) *PushElectrocarAipanelskinResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetResultCode(v string) *PushElectrocarAipanelskinResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetResultMsg(v string) *PushElectrocarAipanelskinResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetSuccess(v bool) *PushElectrocarAipanelskinResponse {
+	s.Success = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetCode(v string) *PushElectrocarAipanelskinResponse {
+	s.Code = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetMessage(v string) *PushElectrocarAipanelskinResponse {
+	s.Message = &v
+	return s
+}
+
 type QueryIotplatformPurchaseorderRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -48469,6 +49267,106 @@ func (s *QueryTrustiotMiniappResponse) SetValidDeviceCount(v int64) *QueryTrusti
 	return s
 }
 
+type QueryIotagentUseridsRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 客户租户名
+	TenantId  *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	PageIndex *int64  `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	PageSize  *int64  `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
+}
+
+func (s QueryIotagentUseridsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentUseridsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentUseridsRequest) SetAuthToken(v string) *QueryIotagentUseridsRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsRequest) SetProductInstanceId(v string) *QueryIotagentUseridsRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsRequest) SetTenantId(v string) *QueryIotagentUseridsRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsRequest) SetPageIndex(v int64) *QueryIotagentUseridsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsRequest) SetPageSize(v int64) *QueryIotagentUseridsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryIotagentUseridsResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Total     *int64  `json:"total,omitempty" xml:"total,omitempty"`
+	PageSize  *int64  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PageNum   *int64  `json:"page_num,omitempty" xml:"page_num,omitempty"`
+	// user_id 列表
+	Pages []*string `json:"pages,omitempty" xml:"pages,omitempty" type:"Repeated"`
+}
+
+func (s QueryIotagentUseridsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIotagentUseridsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIotagentUseridsResponse) SetReqMsgId(v string) *QueryIotagentUseridsResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetResultCode(v string) *QueryIotagentUseridsResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetResultMsg(v string) *QueryIotagentUseridsResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetTotal(v int64) *QueryIotagentUseridsResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetPageSize(v int64) *QueryIotagentUseridsResponse {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetPageNum(v int64) *QueryIotagentUseridsResponse {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryIotagentUseridsResponse) SetPages(v []*string) *QueryIotagentUseridsResponse {
+	s.Pages = v
+	return s
+}
+
 type ExecThingsdidOneapiRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -50247,7 +51145,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.18.8"),
+				"sdk_version":      tea.String("1.20.2"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -51840,6 +52738,222 @@ func (client *Client) QueryAgentSessionsEx(request *QueryAgentSessionsRequest, h
 	}
 	_result = &QueryAgentSessionsResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.agent.sessions.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询ai设备可用状态
+//
+// Summary: 查询ai设备可用状态
+func (client *Client) QueryIotagentAidevice(request *QueryIotagentAideviceRequest) (_result *QueryIotagentAideviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentAideviceResponse{}
+	_body, _err := client.QueryIotagentAideviceEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询ai设备可用状态
+//
+// Summary: 查询ai设备可用状态
+func (client *Client) QueryIotagentAideviceEx(request *QueryIotagentAideviceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentAideviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentAideviceResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.aidevice.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询物模型上报数据时间范围
+//
+// Summary: 查询物模型上报数据时间范围
+func (client *Client) QueryIotagentThingmodelrange(request *QueryIotagentThingmodelrangeRequest) (_result *QueryIotagentThingmodelrangeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentThingmodelrangeResponse{}
+	_body, _err := client.QueryIotagentThingmodelrangeEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询物模型上报数据时间范围
+//
+// Summary: 查询物模型上报数据时间范围
+func (client *Client) QueryIotagentThingmodelrangeEx(request *QueryIotagentThingmodelrangeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentThingmodelrangeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentThingmodelrangeResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.thingmodelrange.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询物模型上报数据
+//
+// Summary: 查询物模型上报数据
+func (client *Client) QueryIotagentThingmodeldata(request *QueryIotagentThingmodeldataRequest) (_result *QueryIotagentThingmodeldataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentThingmodeldataResponse{}
+	_body, _err := client.QueryIotagentThingmodeldataEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询物模型上报数据
+//
+// Summary: 查询物模型上报数据
+func (client *Client) QueryIotagentThingmodeldataEx(request *QueryIotagentThingmodeldataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentThingmodeldataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentThingmodeldataResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.thingmodeldata.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: IoT智能体插件签约URL获取接口
+//
+// Summary: IoT智能体插件签约URL获取接口
+func (client *Client) GetsignurlIotagentPlugincontract(request *GetsignurlIotagentPlugincontractRequest) (_result *GetsignurlIotagentPlugincontractResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetsignurlIotagentPlugincontractResponse{}
+	_body, _err := client.GetsignurlIotagentPlugincontractEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: IoT智能体插件签约URL获取接口
+//
+// Summary: IoT智能体插件签约URL获取接口
+func (client *Client) GetsignurlIotagentPlugincontractEx(request *GetsignurlIotagentPlugincontractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetsignurlIotagentPlugincontractResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &GetsignurlIotagentPlugincontractResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.plugincontract.getsignurl"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: IoT智能体插件签约查询接口
+//
+// Summary: IoT智能体插件签约查询接口
+func (client *Client) QueryIotagentPlugincontract(request *QueryIotagentPlugincontractRequest) (_result *QueryIotagentPlugincontractResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentPlugincontractResponse{}
+	_body, _err := client.QueryIotagentPlugincontractEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: IoT智能体插件签约查询接口
+//
+// Summary: IoT智能体插件签约查询接口
+func (client *Client) QueryIotagentPlugincontractEx(request *QueryIotagentPlugincontractRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentPlugincontractResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentPlugincontractResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.plugincontract.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 根据tenant获取tenant下的userId
+//
+// Summary: 根据tenant获取tenant下的userId
+func (client *Client) QueryIotagentUserid(request *QueryIotagentUseridRequest) (_result *QueryIotagentUseridResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentUseridResponse{}
+	_body, _err := client.QueryIotagentUseridEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 根据tenant获取tenant下的userId
+//
+// Summary: 根据tenant获取tenant下的userId
+func (client *Client) QueryIotagentUseridEx(request *QueryIotagentUseridRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentUseridResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentUseridResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.userid.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56883,6 +57997,42 @@ func (client *Client) QueryElectrocarOtafirmwarelastestEx(request *QueryElectroc
 
 // Description:
 //
+// Description: AI仪表皮肤包下发
+//
+// Summary: AI仪表皮肤包下发
+func (client *Client) PushElectrocarAipanelskin(request *PushElectrocarAipanelskinRequest) (_result *PushElectrocarAipanelskinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushElectrocarAipanelskinResponse{}
+	_body, _err := client.PushElectrocarAipanelskinEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: AI仪表皮肤包下发
+//
+// Summary: AI仪表皮肤包下发
+func (client *Client) PushElectrocarAipanelskinEx(request *PushElectrocarAipanelskinRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushElectrocarAipanelskinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &PushElectrocarAipanelskinResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.electrocar.aipanelskin.push"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
 // Description: 根据设备串号查询采购设备
 //
 // Summary: 根据设备串号查询采购设备
@@ -61770,6 +62920,42 @@ func (client *Client) QueryTrustiotMiniappEx(request *QueryTrustiotMiniappReques
 	}
 	_result = &QueryTrustiotMiniappResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.trustiot.miniapp.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询租户下的userid
+//
+// Summary: 查询租户下的userid
+func (client *Client) QueryIotagentUserids(request *QueryIotagentUseridsRequest) (_result *QueryIotagentUseridsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIotagentUseridsResponse{}
+	_body, _err := client.QueryIotagentUseridsEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 查询租户下的userid
+//
+// Summary: 查询租户下的userid
+func (client *Client) QueryIotagentUseridsEx(request *QueryIotagentUseridsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIotagentUseridsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryIotagentUseridsResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.userids.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
