@@ -3141,6 +3141,38 @@ func (s *IotbasicReleaseOrderInfo) SetStatusChangeTime(v string) *IotbasicReleas
 	return s
 }
 
+// AI仪表下发请求响应
+type AiPanelPushResponse struct {
+	// 是否已成功进入设备下发链路
+	// example:
+	//
+	// true
+	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
+	// 任务标识，与请求消息标识一致
+	// example:
+	//
+	// ac1002c017876357242061390225
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s AiPanelPushResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiPanelPushResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AiPanelPushResponse) SetAccepted(v bool) *AiPanelPushResponse {
+	s.Accepted = &v
+	return s
+}
+
+func (s *AiPanelPushResponse) SetTaskId(v string) *AiPanelPushResponse {
+	s.TaskId = &v
+	return s
+}
+
 // iotbasic项目空间信息
 type ProjectSpaceInfo struct {
 	// 项目名称
@@ -4755,6 +4787,11 @@ type FileInfo struct {
 	//
 	// oss地址
 	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+	// id
+	// example:
+	//
+	// 11223344556778899
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 }
 
 func (s FileInfo) String() string {
@@ -4777,6 +4814,11 @@ func (s *FileInfo) SetType(v string) *FileInfo {
 
 func (s *FileInfo) SetUrl(v string) *FileInfo {
 	s.Url = &v
+	return s
+}
+
+func (s *FileInfo) SetId(v string) *FileInfo {
+	s.Id = &v
 	return s
 }
 
@@ -21040,6 +21082,8 @@ type QueryIotagentFeatureRequest struct {
 	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
 	// 租户名
 	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 要素项目ID
+	AssetElementProjectId *string `json:"asset_element_project_id,omitempty" xml:"asset_element_project_id,omitempty" require:"true"`
 }
 
 func (s QueryIotagentFeatureRequest) String() string {
@@ -21062,6 +21106,11 @@ func (s *QueryIotagentFeatureRequest) SetProductInstanceId(v string) *QueryIotag
 
 func (s *QueryIotagentFeatureRequest) SetTenantId(v string) *QueryIotagentFeatureRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *QueryIotagentFeatureRequest) SetAssetElementProjectId(v string) *QueryIotagentFeatureRequest {
+	s.AssetElementProjectId = &v
 	return s
 }
 
@@ -21122,8 +21171,6 @@ type CreateIotagentAgentRequest struct {
 	Skills []*SkillInfo `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 	// mcp配置
 	Mcps []*McpInfo `json:"mcps,omitempty" xml:"mcps,omitempty" type:"Repeated"`
-	// tools
-	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
 func (s CreateIotagentAgentRequest) String() string {
@@ -21176,11 +21223,6 @@ func (s *CreateIotagentAgentRequest) SetSkills(v []*SkillInfo) *CreateIotagentAg
 
 func (s *CreateIotagentAgentRequest) SetMcps(v []*McpInfo) *CreateIotagentAgentRequest {
 	s.Mcps = v
-	return s
-}
-
-func (s *CreateIotagentAgentRequest) SetTools(v []*string) *CreateIotagentAgentRequest {
-	s.Tools = v
 	return s
 }
 
@@ -21241,8 +21283,6 @@ type UpdateIotagentAgentRequest struct {
 	Skills []*SkillInfo `json:"skills,omitempty" xml:"skills,omitempty" require:"true" type:"Repeated"`
 	// mcp配置
 	Mcps []*McpInfo `json:"mcps,omitempty" xml:"mcps,omitempty" type:"Repeated"`
-	// 工具集合
-	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 	// 实例id，不允许编辑
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
 }
@@ -21297,11 +21337,6 @@ func (s *UpdateIotagentAgentRequest) SetSkills(v []*SkillInfo) *UpdateIotagentAg
 
 func (s *UpdateIotagentAgentRequest) SetMcps(v []*McpInfo) *UpdateIotagentAgentRequest {
 	s.Mcps = v
-	return s
-}
-
-func (s *UpdateIotagentAgentRequest) SetTools(v []*string) *UpdateIotagentAgentRequest {
-	s.Tools = v
 	return s
 }
 
@@ -22098,6 +22133,12 @@ type HistoryIotagentSessionResponse struct {
 	SessionList *string `json:"session_list,omitempty" xml:"session_list,omitempty"`
 	// 总条数
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 总页数
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 当前页
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 }
 
 func (s HistoryIotagentSessionResponse) String() string {
@@ -22133,6 +22174,21 @@ func (s *HistoryIotagentSessionResponse) SetTotal(v int64) *HistoryIotagentSessi
 	return s
 }
 
+func (s *HistoryIotagentSessionResponse) SetPages(v int64) *HistoryIotagentSessionResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *HistoryIotagentSessionResponse) SetPageIndex(v int64) *HistoryIotagentSessionResponse {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *HistoryIotagentSessionResponse) SetPageSize(v int64) *HistoryIotagentSessionResponse {
+	s.PageSize = &v
+	return s
+}
+
 type ListIotagentSessionRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -22143,6 +22199,10 @@ type ListIotagentSessionRequest struct {
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// 实例id
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
+	// 当前页
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 }
 
 func (s ListIotagentSessionRequest) String() string {
@@ -22178,6 +22238,16 @@ func (s *ListIotagentSessionRequest) SetInstanceId(v string) *ListIotagentSessio
 	return s
 }
 
+func (s *ListIotagentSessionRequest) SetPageIndex(v int64) *ListIotagentSessionRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIotagentSessionRequest) SetPageSize(v int64) *ListIotagentSessionRequest {
+	s.PageSize = &v
+	return s
+}
+
 type ListIotagentSessionResponse struct {
 	// 请求唯一ID，用于链路跟踪和问题排查
 	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
@@ -22187,6 +22257,14 @@ type ListIotagentSessionResponse struct {
 	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	// session 信息
 	SessionList []*SessionInfo `json:"session_list,omitempty" xml:"session_list,omitempty" type:"Repeated"`
+	// 总数
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 总页数
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 当前页面
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 }
 
 func (s ListIotagentSessionResponse) String() string {
@@ -22214,6 +22292,26 @@ func (s *ListIotagentSessionResponse) SetResultMsg(v string) *ListIotagentSessio
 
 func (s *ListIotagentSessionResponse) SetSessionList(v []*SessionInfo) *ListIotagentSessionResponse {
 	s.SessionList = v
+	return s
+}
+
+func (s *ListIotagentSessionResponse) SetTotal(v int64) *ListIotagentSessionResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *ListIotagentSessionResponse) SetPages(v int64) *ListIotagentSessionResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *ListIotagentSessionResponse) SetPageIndex(v int64) *ListIotagentSessionResponse {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIotagentSessionResponse) SetPageSize(v int64) *ListIotagentSessionResponse {
+	s.PageSize = &v
 	return s
 }
 
@@ -22643,6 +22741,265 @@ func (s *QuerypushstatusIotagentMessageResponse) SetFailedReason(v string) *Quer
 
 func (s *QuerypushstatusIotagentMessageResponse) SetStatus(v string) *QuerypushstatusIotagentMessageResponse {
 	s.Status = &v
+	return s
+}
+
+type ListfilesIotagentSessionRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 智能体id
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+	// 实例id
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 会话id
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	// 当前页
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
+}
+
+func (s ListfilesIotagentSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListfilesIotagentSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListfilesIotagentSessionRequest) SetAuthToken(v string) *ListfilesIotagentSessionRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetProductInstanceId(v string) *ListfilesIotagentSessionRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetAgentId(v string) *ListfilesIotagentSessionRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetInstanceId(v string) *ListfilesIotagentSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetUserId(v string) *ListfilesIotagentSessionRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetSessionId(v string) *ListfilesIotagentSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetPageIndex(v int64) *ListfilesIotagentSessionRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionRequest) SetPageSize(v int64) *ListfilesIotagentSessionRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListfilesIotagentSessionResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 空间id
+	WorkspaceId *string `json:"workspace_id,omitempty" xml:"workspace_id,omitempty"`
+	// 文件列表
+	Data []*FileInfo `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 总记录
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 10
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 当前页面
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s ListfilesIotagentSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListfilesIotagentSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListfilesIotagentSessionResponse) SetReqMsgId(v string) *ListfilesIotagentSessionResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetResultCode(v string) *ListfilesIotagentSessionResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetResultMsg(v string) *ListfilesIotagentSessionResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetWorkspaceId(v string) *ListfilesIotagentSessionResponse {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetData(v []*FileInfo) *ListfilesIotagentSessionResponse {
+	s.Data = v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetTotal(v int64) *ListfilesIotagentSessionResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetPages(v int64) *ListfilesIotagentSessionResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetPageIndex(v int64) *ListfilesIotagentSessionResponse {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListfilesIotagentSessionResponse) SetPageSize(v int64) *ListfilesIotagentSessionResponse {
+	s.PageSize = &v
+	return s
+}
+
+type FliedownloadIotagentSessionRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 空间id
+	WorkspaceId *string `json:"workspace_id,omitempty" xml:"workspace_id,omitempty" require:"true"`
+	// 文件id
+	// 待上传文件
+	FileObject io.Reader `json:"fileObject,omitempty" xml:"fileObject,omitempty"`
+	// 待上传文件名
+	FileObjectName *string `json:"fileObjectName,omitempty" xml:"fileObjectName,omitempty"`
+	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+	// 实例ID
+	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
+	// 会话id
+	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	// 用户id
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 智能体id
+	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+}
+
+func (s FliedownloadIotagentSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FliedownloadIotagentSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetAuthToken(v string) *FliedownloadIotagentSessionRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetProductInstanceId(v string) *FliedownloadIotagentSessionRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetWorkspaceId(v string) *FliedownloadIotagentSessionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetFileObject(v io.Reader) *FliedownloadIotagentSessionRequest {
+	s.FileObject = v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetFileObjectName(v string) *FliedownloadIotagentSessionRequest {
+	s.FileObjectName = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetFileId(v string) *FliedownloadIotagentSessionRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetInstanceId(v string) *FliedownloadIotagentSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetSessionId(v string) *FliedownloadIotagentSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetUserId(v string) *FliedownloadIotagentSessionRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionRequest) SetAgentId(v string) *FliedownloadIotagentSessionRequest {
+	s.AgentId = &v
+	return s
+}
+
+type FliedownloadIotagentSessionResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 文件信息
+	File *FileInfo `json:"file,omitempty" xml:"file,omitempty"`
+}
+
+func (s FliedownloadIotagentSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FliedownloadIotagentSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FliedownloadIotagentSessionResponse) SetReqMsgId(v string) *FliedownloadIotagentSessionResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionResponse) SetResultCode(v string) *FliedownloadIotagentSessionResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionResponse) SetResultMsg(v string) *FliedownloadIotagentSessionResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *FliedownloadIotagentSessionResponse) SetFile(v *FileInfo) *FliedownloadIotagentSessionResponse {
+	s.File = v
 	return s
 }
 
@@ -38303,6 +38660,8 @@ type PushElectrocarAipanelskinResponse struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// 响应消息
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// 是否已成功进入设备下发链路
+	Data *AiPanelPushResponse `json:"data,omitempty" xml:"data,omitempty"`
 }
 
 func (s PushElectrocarAipanelskinResponse) String() string {
@@ -38340,6 +38699,11 @@ func (s *PushElectrocarAipanelskinResponse) SetCode(v string) *PushElectrocarAip
 
 func (s *PushElectrocarAipanelskinResponse) SetMessage(v string) *PushElectrocarAipanelskinResponse {
 	s.Message = &v
+	return s
+}
+
+func (s *PushElectrocarAipanelskinResponse) SetData(v *AiPanelPushResponse) *PushElectrocarAipanelskinResponse {
+	s.Data = v
 	return s
 }
 
@@ -53602,7 +53966,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.21.8"),
+				"sdk_version":      tea.String("1.21.11"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -56167,6 +56531,78 @@ func (client *Client) QuerypushstatusIotagentMessageEx(request *QuerypushstatusI
 	}
 	_result = &QuerypushstatusIotagentMessageResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.message.querypushstatus"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: session下的文件列表
+//
+// Summary: session下的文件列表
+func (client *Client) ListfilesIotagentSession(request *ListfilesIotagentSessionRequest) (_result *ListfilesIotagentSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListfilesIotagentSessionResponse{}
+	_body, _err := client.ListfilesIotagentSessionEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: session下的文件列表
+//
+// Summary: session下的文件列表
+func (client *Client) ListfilesIotagentSessionEx(request *ListfilesIotagentSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListfilesIotagentSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ListfilesIotagentSessionResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.session.listfiles"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件下载
+//
+// Summary: 文件下载
+func (client *Client) FliedownloadIotagentSession(request *FliedownloadIotagentSessionRequest) (_result *FliedownloadIotagentSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FliedownloadIotagentSessionResponse{}
+	_body, _err := client.FliedownloadIotagentSessionEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件下载
+//
+// Summary: 文件下载
+func (client *Client) FliedownloadIotagentSessionEx(request *FliedownloadIotagentSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FliedownloadIotagentSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &FliedownloadIotagentSessionResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.session.fliedownload"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
