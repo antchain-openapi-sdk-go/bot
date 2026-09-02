@@ -587,6 +587,78 @@ func (s *ContinuousOtaOpenApiRuleResponse) SetCreateRequestId(v string) *Continu
 	return s
 }
 
+// mcp协议字段信息
+type McpInfo struct {
+	// mcp名字
+	// example:
+	//
+	// mcp名字
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+	// 协议类型
+	// example:
+	//
+	// streamable_http / sse /stadio
+	Transport *string `json:"transport,omitempty" xml:"transport,omitempty" require:"true"`
+	// 协议地址
+	// example:
+	//
+	// 协议地址
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// json
+	// example:
+	//
+	// {}
+	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// mcp_id
+	// example:
+	//
+	// mcp_id
+	McpId *string `json:"mcp_id,omitempty" xml:"mcp_id,omitempty" require:"true"`
+	// 工具名字
+	// example:
+	//
+	// undefined
+	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+}
+
+func (s McpInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s McpInfo) GoString() string {
+	return s.String()
+}
+
+func (s *McpInfo) SetName(v string) *McpInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *McpInfo) SetTransport(v string) *McpInfo {
+	s.Transport = &v
+	return s
+}
+
+func (s *McpInfo) SetEndpoint(v string) *McpInfo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *McpInfo) SetHeaders(v string) *McpInfo {
+	s.Headers = &v
+	return s
+}
+
+func (s *McpInfo) SetMcpId(v string) *McpInfo {
+	s.McpId = &v
+	return s
+}
+
+func (s *McpInfo) SetTools(v []*string) *McpInfo {
+	s.Tools = v
+	return s
+}
+
 // 资源定位信息
 type BaiResourceLocation struct {
 	// 资源定位类型
@@ -618,6 +690,58 @@ func (s *BaiResourceLocation) SetLocationType(v string) *BaiResourceLocation {
 
 func (s *BaiResourceLocation) SetLocationValue(v string) *BaiResourceLocation {
 	s.LocationValue = &v
+	return s
+}
+
+// skill信息
+type SkillInfo struct {
+	// skill名称
+	// example:
+	//
+	// xxx
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+	// 版本
+	// example:
+	//
+	// 1.2
+	Version *string `json:"version,omitempty" xml:"version,omitempty" require:"true"`
+	// oss地址
+	// example:
+	//
+	// url
+	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+	// skillId
+	// example:
+	//
+	// 11223344556778899
+	SkillId *string `json:"skill_id,omitempty" xml:"skill_id,omitempty" require:"true"`
+}
+
+func (s SkillInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkillInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SkillInfo) SetName(v string) *SkillInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *SkillInfo) SetVersion(v string) *SkillInfo {
+	s.Version = &v
+	return s
+}
+
+func (s *SkillInfo) SetUrl(v string) *SkillInfo {
+	s.Url = &v
+	return s
+}
+
+func (s *SkillInfo) SetSkillId(v string) *SkillInfo {
+	s.SkillId = &v
 	return s
 }
 
@@ -2181,12 +2305,12 @@ type SubAgentInfo struct {
 	// example:
 	//
 	// undefined
-	Skills []*string `json:"skills,omitempty" xml:"skills,omitempty" require:"true" type:"Repeated"`
+	Skills []*SkillInfo `json:"skills,omitempty" xml:"skills,omitempty" require:"true" type:"Repeated"`
 	// mcp功能
 	// example:
 	//
 	// undefined
-	Mcps []*string `json:"mcps,omitempty" xml:"mcps,omitempty" require:"true" type:"Repeated"`
+	Mcps []*McpInfo `json:"mcps,omitempty" xml:"mcps,omitempty" require:"true" type:"Repeated"`
 	// 实例id
 	// example:
 	//
@@ -2222,12 +2346,12 @@ func (s *SubAgentInfo) SetModelId(v string) *SubAgentInfo {
 	return s
 }
 
-func (s *SubAgentInfo) SetSkills(v []*string) *SubAgentInfo {
+func (s *SubAgentInfo) SetSkills(v []*SkillInfo) *SubAgentInfo {
 	s.Skills = v
 	return s
 }
 
-func (s *SubAgentInfo) SetMcps(v []*string) *SubAgentInfo {
+func (s *SubAgentInfo) SetMcps(v []*McpInfo) *SubAgentInfo {
 	s.Mcps = v
 	return s
 }
@@ -7338,12 +7462,12 @@ type AgentInfo struct {
 	// example:
 	//
 	// undefined
-	Skills []*string `json:"skills,omitempty" xml:"skills,omitempty" require:"true" type:"Repeated"`
+	Skills []*SkillInfo `json:"skills,omitempty" xml:"skills,omitempty" require:"true" type:"Repeated"`
 	// mcp信息
 	// example:
 	//
 	// undefined
-	Mcps []*string `json:"mcps,omitempty" xml:"mcps,omitempty" require:"true" type:"Repeated"`
+	Mcps []*McpInfo `json:"mcps,omitempty" xml:"mcps,omitempty" require:"true" type:"Repeated"`
 	// 子智能体id
 	// example:
 	//
@@ -7353,7 +7477,7 @@ type AgentInfo struct {
 	// example:
 	//
 	// undefined
-	SubAgentInfoList *SubAgentInfo `json:"sub_agent_info_list,omitempty" xml:"sub_agent_info_list,omitempty"`
+	SubAgentInfoList []*SubAgentInfo `json:"sub_agent_info_list,omitempty" xml:"sub_agent_info_list,omitempty" type:"Repeated"`
 	// 实例id
 	// example:
 	//
@@ -7394,12 +7518,12 @@ func (s *AgentInfo) SetModelId(v string) *AgentInfo {
 	return s
 }
 
-func (s *AgentInfo) SetSkills(v []*string) *AgentInfo {
+func (s *AgentInfo) SetSkills(v []*SkillInfo) *AgentInfo {
 	s.Skills = v
 	return s
 }
 
-func (s *AgentInfo) SetMcps(v []*string) *AgentInfo {
+func (s *AgentInfo) SetMcps(v []*McpInfo) *AgentInfo {
 	s.Mcps = v
 	return s
 }
@@ -7409,7 +7533,7 @@ func (s *AgentInfo) SetSubAgents(v []*string) *AgentInfo {
 	return s
 }
 
-func (s *AgentInfo) SetSubAgentInfoList(v *SubAgentInfo) *AgentInfo {
+func (s *AgentInfo) SetSubAgentInfoList(v []*SubAgentInfo) *AgentInfo {
 	s.SubAgentInfoList = v
 	return s
 }
@@ -7989,78 +8113,6 @@ func (s *LabelTrace) SetIsSuccess(v bool) *LabelTrace {
 
 func (s *LabelTrace) SetVersion(v int64) *LabelTrace {
 	s.Version = &v
-	return s
-}
-
-// mcp协议字段信息
-type McpInfo struct {
-	// mcp名字
-	// example:
-	//
-	// mcp名字
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
-	// 协议类型
-	// example:
-	//
-	// streamable_http / sse /stadio
-	Transport *string `json:"transport,omitempty" xml:"transport,omitempty" require:"true"`
-	// 协议地址
-	// example:
-	//
-	// 协议地址
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// json
-	// example:
-	//
-	// {}
-	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// mcp_id
-	// example:
-	//
-	// mcp_id
-	McpId *string `json:"mcp_id,omitempty" xml:"mcp_id,omitempty" require:"true"`
-	// 工具名字
-	// example:
-	//
-	// undefined
-	Tools []*string `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
-}
-
-func (s McpInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s McpInfo) GoString() string {
-	return s.String()
-}
-
-func (s *McpInfo) SetName(v string) *McpInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *McpInfo) SetTransport(v string) *McpInfo {
-	s.Transport = &v
-	return s
-}
-
-func (s *McpInfo) SetEndpoint(v string) *McpInfo {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *McpInfo) SetHeaders(v string) *McpInfo {
-	s.Headers = &v
-	return s
-}
-
-func (s *McpInfo) SetMcpId(v string) *McpInfo {
-	s.McpId = &v
-	return s
-}
-
-func (s *McpInfo) SetTools(v []*string) *McpInfo {
-	s.Tools = v
 	return s
 }
 
@@ -13584,58 +13636,6 @@ func (s *EvidenceBaseModel) SetMetaJson(v string) *EvidenceBaseModel {
 	return s
 }
 
-// skill信息
-type SkillInfo struct {
-	// skill名称
-	// example:
-	//
-	// xxx
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
-	// 版本
-	// example:
-	//
-	// 1.2
-	Version *string `json:"version,omitempty" xml:"version,omitempty" require:"true"`
-	// oss地址
-	// example:
-	//
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
-	// skillId
-	// example:
-	//
-	// 11223344556778899
-	SkillId *string `json:"skill_id,omitempty" xml:"skill_id,omitempty" require:"true"`
-}
-
-func (s SkillInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SkillInfo) GoString() string {
-	return s.String()
-}
-
-func (s *SkillInfo) SetName(v string) *SkillInfo {
-	s.Name = &v
-	return s
-}
-
-func (s *SkillInfo) SetVersion(v string) *SkillInfo {
-	s.Version = &v
-	return s
-}
-
-func (s *SkillInfo) SetUrl(v string) *SkillInfo {
-	s.Url = &v
-	return s
-}
-
-func (s *SkillInfo) SetSkillId(v string) *SkillInfo {
-	s.SkillId = &v
-	return s
-}
-
 // 行程统计详情
 type TripTraceView struct {
 	// 开始时间
@@ -16962,6 +16962,76 @@ func (s *ChatAiotdatalinkAntfinanceassistantResponse) SetResponseTitle(v string)
 
 func (s *ChatAiotdatalinkAntfinanceassistantResponse) SetResponseCondition(v string) *ChatAiotdatalinkAntfinanceassistantResponse {
 	s.ResponseCondition = &v
+	return s
+}
+
+type StreamchatAiotdatalinkAntfinanceassistantRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 请求内容，内容为json字符串
+	ChatRequest *string `json:"chat_request,omitempty" xml:"chat_request,omitempty" require:"true"`
+}
+
+func (s StreamchatAiotdatalinkAntfinanceassistantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StreamchatAiotdatalinkAntfinanceassistantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantRequest) SetAuthToken(v string) *StreamchatAiotdatalinkAntfinanceassistantRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantRequest) SetProductInstanceId(v string) *StreamchatAiotdatalinkAntfinanceassistantRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantRequest) SetChatRequest(v string) *StreamchatAiotdatalinkAntfinanceassistantRequest {
+	s.ChatRequest = &v
+	return s
+}
+
+type StreamchatAiotdatalinkAntfinanceassistantResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 会话结果
+	ChatCompletionObject *string `json:"chat_completion_object,omitempty" xml:"chat_completion_object,omitempty"`
+}
+
+func (s StreamchatAiotdatalinkAntfinanceassistantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StreamchatAiotdatalinkAntfinanceassistantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetReqMsgId(v string) *StreamchatAiotdatalinkAntfinanceassistantResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetResultCode(v string) *StreamchatAiotdatalinkAntfinanceassistantResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetResultMsg(v string) *StreamchatAiotdatalinkAntfinanceassistantResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetChatCompletionObject(v string) *StreamchatAiotdatalinkAntfinanceassistantResponse {
+	s.ChatCompletionObject = &v
 	return s
 }
 
@@ -21453,6 +21523,10 @@ type ListIotagentAgentRequest struct {
 	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
 	// 实例id
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
+	// 当前页
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty" require:"true"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty" require:"true"`
 }
 
 func (s ListIotagentAgentRequest) String() string {
@@ -21478,6 +21552,16 @@ func (s *ListIotagentAgentRequest) SetInstanceId(v string) *ListIotagentAgentReq
 	return s
 }
 
+func (s *ListIotagentAgentRequest) SetPageIndex(v int64) *ListIotagentAgentRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIotagentAgentRequest) SetPageSize(v int64) *ListIotagentAgentRequest {
+	s.PageSize = &v
+	return s
+}
+
 type ListIotagentAgentResponse struct {
 	// 请求唯一ID，用于链路跟踪和问题排查
 	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
@@ -21487,6 +21571,14 @@ type ListIotagentAgentResponse struct {
 	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
 	// 智能体列表
 	AgentInfoList []*AgentInfo `json:"agent_info_list,omitempty" xml:"agent_info_list,omitempty" type:"Repeated"`
+	// 总页数
+	Pages *int64 `json:"pages,omitempty" xml:"pages,omitempty"`
+	// 总数
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// 当前页
+	PageIndex *int64 `json:"page_index,omitempty" xml:"page_index,omitempty"`
+	// 页面大小
+	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 }
 
 func (s ListIotagentAgentResponse) String() string {
@@ -21514,6 +21606,26 @@ func (s *ListIotagentAgentResponse) SetResultMsg(v string) *ListIotagentAgentRes
 
 func (s *ListIotagentAgentResponse) SetAgentInfoList(v []*AgentInfo) *ListIotagentAgentResponse {
 	s.AgentInfoList = v
+	return s
+}
+
+func (s *ListIotagentAgentResponse) SetPages(v int64) *ListIotagentAgentResponse {
+	s.Pages = &v
+	return s
+}
+
+func (s *ListIotagentAgentResponse) SetTotal(v int64) *ListIotagentAgentResponse {
+	s.Total = &v
+	return s
+}
+
+func (s *ListIotagentAgentResponse) SetPageIndex(v int64) *ListIotagentAgentResponse {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIotagentAgentResponse) SetPageSize(v int64) *ListIotagentAgentResponse {
+	s.PageSize = &v
 	return s
 }
 
@@ -53966,7 +54078,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.21.11"),
+				"sdk_version":      tea.String("1.21.12"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -54377,6 +54489,42 @@ func (client *Client) ChatAiotdatalinkAntfinanceassistantEx(request *ChatAiotdat
 	}
 	_result = &ChatAiotdatalinkAntfinanceassistantResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.antfinanceassistant.chat"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 蚂小财对话流式接口，参考RPC接口文档：https://yuque.antfin.com/pw3zzd/cplb7g/ghfep7wirmlxlg3u#nzb6S
+//
+// Summary: 蚂小财对话流式接口，参考RPC接口文档：https://yuque.antfin.com/pw3zzd/cplb7g/ghfep7wirmlxlg3u#nzb6S
+func (client *Client) StreamchatAiotdatalinkAntfinanceassistant(request *StreamchatAiotdatalinkAntfinanceassistantRequest) (_result *StreamchatAiotdatalinkAntfinanceassistantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StreamchatAiotdatalinkAntfinanceassistantResponse{}
+	_body, _err := client.StreamchatAiotdatalinkAntfinanceassistantEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 蚂小财对话流式接口，参考RPC接口文档：https://yuque.antfin.com/pw3zzd/cplb7g/ghfep7wirmlxlg3u#nzb6S
+//
+// Summary: 蚂小财对话流式接口，参考RPC接口文档：https://yuque.antfin.com/pw3zzd/cplb7g/ghfep7wirmlxlg3u#nzb6S
+func (client *Client) StreamchatAiotdatalinkAntfinanceassistantEx(request *StreamchatAiotdatalinkAntfinanceassistantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StreamchatAiotdatalinkAntfinanceassistantResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &StreamchatAiotdatalinkAntfinanceassistantResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.antfinanceassistant.streamchat"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
