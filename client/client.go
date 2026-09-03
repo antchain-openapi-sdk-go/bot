@@ -4911,11 +4911,16 @@ type FileInfo struct {
 	//
 	// oss地址
 	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+	// 创建时间
+	// example:
+	//
+	// 11223344556778899
+	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty" require:"true"`
 	// id
 	// example:
 	//
 	// 11223344556778899
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
 }
 
 func (s FileInfo) String() string {
@@ -4938,6 +4943,11 @@ func (s *FileInfo) SetType(v string) *FileInfo {
 
 func (s *FileInfo) SetUrl(v string) *FileInfo {
 	s.Url = &v
+	return s
+}
+
+func (s *FileInfo) SetCreatedAt(v int64) *FileInfo {
+	s.CreatedAt = &v
 	return s
 }
 
@@ -5995,6 +6005,48 @@ func (s *TripStatistics) SetTotalCount(v int64) *TripStatistics {
 
 func (s *TripStatistics) SetPeriodCode(v int64) *TripStatistics {
 	s.PeriodCode = &v
+	return s
+}
+
+// 预览文件信息
+type PreviewFileInfo struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+	ExpireAt *int64  `json:"expire_at,omitempty" xml:"expire_at,omitempty" require:"true"`
+	Id       *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
+}
+
+func (s PreviewFileInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewFileInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewFileInfo) SetName(v string) *PreviewFileInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *PreviewFileInfo) SetType(v string) *PreviewFileInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *PreviewFileInfo) SetUrl(v string) *PreviewFileInfo {
+	s.Url = &v
+	return s
+}
+
+func (s *PreviewFileInfo) SetExpireAt(v int64) *PreviewFileInfo {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *PreviewFileInfo) SetId(v string) *PreviewFileInfo {
+	s.Id = &v
 	return s
 }
 
@@ -23111,6 +23163,118 @@ func (s *FliedownloadIotagentSessionResponse) SetResultMsg(v string) *Fliedownlo
 }
 
 func (s *FliedownloadIotagentSessionResponse) SetFile(v *FileInfo) *FliedownloadIotagentSessionResponse {
+	s.File = v
+	return s
+}
+
+type FilepreviewIotagentSessionRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	WorkspaceId       *string `json:"workspace_id,omitempty" xml:"workspace_id,omitempty" require:"true"`
+	// 待上传文件
+	FileObject io.Reader `json:"fileObject,omitempty" xml:"fileObject,omitempty"`
+	// 待上传文件名
+	FileObjectName *string `json:"fileObjectName,omitempty" xml:"fileObjectName,omitempty"`
+	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+	InstanceId     *string `json:"instance_id,omitempty" xml:"instance_id,omitempty" require:"true"`
+	SessionId      *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+	UserId         *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	AgentId        *string `json:"agent_id,omitempty" xml:"agent_id,omitempty" require:"true"`
+}
+
+func (s FilepreviewIotagentSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FilepreviewIotagentSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetAuthToken(v string) *FilepreviewIotagentSessionRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetProductInstanceId(v string) *FilepreviewIotagentSessionRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetWorkspaceId(v string) *FilepreviewIotagentSessionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetFileObject(v io.Reader) *FilepreviewIotagentSessionRequest {
+	s.FileObject = v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetFileObjectName(v string) *FilepreviewIotagentSessionRequest {
+	s.FileObjectName = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetFileId(v string) *FilepreviewIotagentSessionRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetInstanceId(v string) *FilepreviewIotagentSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetSessionId(v string) *FilepreviewIotagentSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetUserId(v string) *FilepreviewIotagentSessionRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionRequest) SetAgentId(v string) *FilepreviewIotagentSessionRequest {
+	s.AgentId = &v
+	return s
+}
+
+type FilepreviewIotagentSessionResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string          `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	File      *PreviewFileInfo `json:"file,omitempty" xml:"file,omitempty"`
+}
+
+func (s FilepreviewIotagentSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FilepreviewIotagentSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FilepreviewIotagentSessionResponse) SetReqMsgId(v string) *FilepreviewIotagentSessionResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionResponse) SetResultCode(v string) *FilepreviewIotagentSessionResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionResponse) SetResultMsg(v string) *FilepreviewIotagentSessionResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *FilepreviewIotagentSessionResponse) SetFile(v *PreviewFileInfo) *FilepreviewIotagentSessionResponse {
 	s.File = v
 	return s
 }
@@ -52300,6 +52464,89 @@ func (s *QueryIotagentUseridsResponse) SetPages(v []*string) *QueryIotagentUseri
 	return s
 }
 
+type TestIotagentPluginRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// string
+	// 待上传文件
+	FileObject io.Reader `json:"fileObject,omitempty" xml:"fileObject,omitempty"`
+	// 待上传文件名
+	FileObjectName *string `json:"fileObjectName,omitempty" xml:"fileObjectName,omitempty"`
+	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+	PluginId       *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty" require:"true"`
+}
+
+func (s TestIotagentPluginRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestIotagentPluginRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestIotagentPluginRequest) SetAuthToken(v string) *TestIotagentPluginRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *TestIotagentPluginRequest) SetProductInstanceId(v string) *TestIotagentPluginRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *TestIotagentPluginRequest) SetFileObject(v io.Reader) *TestIotagentPluginRequest {
+	s.FileObject = v
+	return s
+}
+
+func (s *TestIotagentPluginRequest) SetFileObjectName(v string) *TestIotagentPluginRequest {
+	s.FileObjectName = &v
+	return s
+}
+
+func (s *TestIotagentPluginRequest) SetFileId(v string) *TestIotagentPluginRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *TestIotagentPluginRequest) SetPluginId(v string) *TestIotagentPluginRequest {
+	s.PluginId = &v
+	return s
+}
+
+type TestIotagentPluginResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+}
+
+func (s TestIotagentPluginResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestIotagentPluginResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestIotagentPluginResponse) SetReqMsgId(v string) *TestIotagentPluginResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *TestIotagentPluginResponse) SetResultCode(v string) *TestIotagentPluginResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *TestIotagentPluginResponse) SetResultMsg(v string) *TestIotagentPluginResponse {
+	s.ResultMsg = &v
+	return s
+}
+
 type ExecThingsdidOneapiRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -54078,7 +54325,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.21.12"),
+				"sdk_version":      tea.String("1.21.15"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -56751,6 +56998,42 @@ func (client *Client) FliedownloadIotagentSessionEx(request *FliedownloadIotagen
 	}
 	_result = &FliedownloadIotagentSessionResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.session.fliedownload"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件预览
+//
+// Summary: 文件预览
+func (client *Client) FilepreviewIotagentSession(request *FilepreviewIotagentSessionRequest) (_result *FilepreviewIotagentSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FilepreviewIotagentSessionResponse{}
+	_body, _err := client.FilepreviewIotagentSessionEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件预览
+//
+// Summary: 文件预览
+func (client *Client) FilepreviewIotagentSessionEx(request *FilepreviewIotagentSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FilepreviewIotagentSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &FilepreviewIotagentSessionResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.session.filepreview"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66753,6 +67036,72 @@ func (client *Client) QueryIotagentUseridsEx(request *QueryIotagentUseridsReques
 	}
 	_result = &QueryIotagentUseridsResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.userids.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 测试用
+//
+// Summary: 测试用
+func (client *Client) TestIotagentPlugin(request *TestIotagentPluginRequest) (_result *TestIotagentPluginResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TestIotagentPluginResponse{}
+	_body, _err := client.TestIotagentPluginEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 测试用
+//
+// Summary: 测试用
+func (client *Client) TestIotagentPluginEx(request *TestIotagentPluginRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TestIotagentPluginResponse, _err error) {
+	if !tea.BoolValue(util.IsUnset(request.FileObject)) {
+		uploadReq := &CreateAntcloudGatewayxFileUploadRequest{
+			AuthToken: request.AuthToken,
+			ApiCode:   tea.String("blockchain.bot.iotagent.plugin.test"),
+			FileName:  request.FileObjectName,
+		}
+		uploadResp, _err := client.CreateAntcloudGatewayxFileUploadEx(uploadReq, headers, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		if !tea.BoolValue(antchainutil.IsSuccess(uploadResp.ResultCode, tea.String("ok"))) {
+			testIotagentPluginResponse := &TestIotagentPluginResponse{
+				ReqMsgId:   uploadResp.ReqMsgId,
+				ResultCode: uploadResp.ResultCode,
+				ResultMsg:  uploadResp.ResultMsg,
+			}
+			_result = testIotagentPluginResponse
+			return _result, _err
+		}
+
+		uploadHeaders := antchainutil.ParseUploadHeaders(uploadResp.UploadHeaders)
+		_err = antchainutil.PutObject(request.FileObject, uploadHeaders, uploadResp.UploadUrl)
+		if _err != nil {
+			return _result, _err
+		}
+		request.FileId = uploadResp.FileId
+		request.FileObject = nil
+	}
+
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &TestIotagentPluginResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.plugin.test"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
