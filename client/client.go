@@ -17272,6 +17272,139 @@ func (s *QueryAiotdatalinkAskdataResponse) SetRowNum(v string) *QueryAiotdatalin
 	return s
 }
 
+type ChatAiotdatalinkAskdataRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 场景编码
+	SceneCode *string `json:"scene_code,omitempty" xml:"scene_code,omitempty"`
+	// 问数问题
+	Question *string `json:"question,omitempty" xml:"question,omitempty" require:"true"`
+	// 会话ID
+	ConversationId *string `json:"conversation_id,omitempty" xml:"conversation_id,omitempty" require:"true"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 序列号，用于表示同一时间请求序号
+	Caller *string `json:"caller,omitempty" xml:"caller,omitempty"`
+}
+
+func (s ChatAiotdatalinkAskdataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatAiotdatalinkAskdataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetAuthToken(v string) *ChatAiotdatalinkAskdataRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetProductInstanceId(v string) *ChatAiotdatalinkAskdataRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetTenantId(v string) *ChatAiotdatalinkAskdataRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetSceneCode(v string) *ChatAiotdatalinkAskdataRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetQuestion(v string) *ChatAiotdatalinkAskdataRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetConversationId(v string) *ChatAiotdatalinkAskdataRequest {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetUserId(v string) *ChatAiotdatalinkAskdataRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataRequest) SetCaller(v string) *ChatAiotdatalinkAskdataRequest {
+	s.Caller = &v
+	return s
+}
+
+type ChatAiotdatalinkAskdataResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 任务Id
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty"`
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// 任务状态， ACCEPTED 提交，RESOLVING_MODEL 解析寓意，INTERPRETING 生成SQL，SQL_VALIDATING sql 校验，EXECUTING 执行查询，ANALYZING 保存结果，COMPLETE 任务完成，FAILED 任务失败，CANCELLED 任务取消
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// json 格式字符串
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// 数据总条数
+	RowNum *int64 `json:"row_num,omitempty" xml:"row_num,omitempty"`
+}
+
+func (s ChatAiotdatalinkAskdataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatAiotdatalinkAskdataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetReqMsgId(v string) *ChatAiotdatalinkAskdataResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetResultCode(v string) *ChatAiotdatalinkAskdataResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetResultMsg(v string) *ChatAiotdatalinkAskdataResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetJobId(v string) *ChatAiotdatalinkAskdataResponse {
+	s.JobId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetRequestId(v string) *ChatAiotdatalinkAskdataResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetStatus(v string) *ChatAiotdatalinkAskdataResponse {
+	s.Status = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetData(v string) *ChatAiotdatalinkAskdataResponse {
+	s.Data = &v
+	return s
+}
+
+func (s *ChatAiotdatalinkAskdataResponse) SetRowNum(v int64) *ChatAiotdatalinkAskdataResponse {
+	s.RowNum = &v
+	return s
+}
+
 type CreateXrUserticketRequest struct {
 	// OAuth模式下的授权token
 	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
@@ -55027,7 +55160,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.21.16"),
+				"sdk_version":      tea.String("1.21.17"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -55510,6 +55643,42 @@ func (client *Client) QueryAiotdatalinkAskdataEx(request *QueryAiotdatalinkAskda
 	}
 	_result = &QueryAiotdatalinkAskdataResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.askdata.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 智能问数chat 接口
+//
+// Summary: 智能问数chat 接口
+func (client *Client) ChatAiotdatalinkAskdata(request *ChatAiotdatalinkAskdataRequest) (_result *ChatAiotdatalinkAskdataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChatAiotdatalinkAskdataResponse{}
+	_body, _err := client.ChatAiotdatalinkAskdataEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 智能问数chat 接口
+//
+// Summary: 智能问数chat 接口
+func (client *Client) ChatAiotdatalinkAskdataEx(request *ChatAiotdatalinkAskdataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChatAiotdatalinkAskdataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ChatAiotdatalinkAskdataResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.askdata.chat"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
