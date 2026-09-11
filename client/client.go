@@ -14431,6 +14431,58 @@ func (s *DeviceCollectResult) SetAntchainId(v string) *DeviceCollectResult {
 	return s
 }
 
+// 音频规格
+type AudioSpec struct {
+	// 容器，如 WAV
+	// example:
+	//
+	// WAV
+	Container *string `json:"container,omitempty" xml:"container,omitempty" require:"true"`
+	// 编码，如 PCM_S16LE
+	// example:
+	//
+	// PCM_S16LE
+	Codec *string `json:"codec,omitempty" xml:"codec,omitempty" require:"true"`
+	// 采样率，单位 Hz，如 16000
+	// example:
+	//
+	// 16000
+	SampleRate *int64 `json:"sample_rate,omitempty" xml:"sample_rate,omitempty" require:"true"`
+	// 声道数，如 1
+	// example:
+	//
+	// 1
+	Channels *int64 `json:"channels,omitempty" xml:"channels,omitempty" require:"true"`
+}
+
+func (s AudioSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AudioSpec) GoString() string {
+	return s.String()
+}
+
+func (s *AudioSpec) SetContainer(v string) *AudioSpec {
+	s.Container = &v
+	return s
+}
+
+func (s *AudioSpec) SetCodec(v string) *AudioSpec {
+	s.Codec = &v
+	return s
+}
+
+func (s *AudioSpec) SetSampleRate(v int64) *AudioSpec {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *AudioSpec) SetChannels(v int64) *AudioSpec {
+	s.Channels = &v
+	return s
+}
+
 // 代扣服务返回对象
 type AntdigitalWithHoldResponse struct {
 	// 网关返回码
@@ -17084,6 +17136,139 @@ func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetResultMsg(v strin
 
 func (s *StreamchatAiotdatalinkAntfinanceassistantResponse) SetChatCompletionObject(v string) *StreamchatAiotdatalinkAntfinanceassistantResponse {
 	s.ChatCompletionObject = &v
+	return s
+}
+
+type QueryAiotdatalinkAskdataRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 租户ID
+	TenantId *string `json:"tenant_id,omitempty" xml:"tenant_id,omitempty" require:"true"`
+	// 场景编码
+	SceneCode *string `json:"scene_code,omitempty" xml:"scene_code,omitempty"`
+	// 问数的问题
+	Question *string `json:"question,omitempty" xml:"question,omitempty" require:"true"`
+	// 会话ID
+	ConversationId *string `json:"conversation_id,omitempty" xml:"conversation_id,omitempty" require:"true"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 序列号，用于表示同一时间请求序号
+	Caller *string `json:"caller,omitempty" xml:"caller,omitempty"`
+}
+
+func (s QueryAiotdatalinkAskdataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAiotdatalinkAskdataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetAuthToken(v string) *QueryAiotdatalinkAskdataRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetProductInstanceId(v string) *QueryAiotdatalinkAskdataRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetTenantId(v string) *QueryAiotdatalinkAskdataRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetSceneCode(v string) *QueryAiotdatalinkAskdataRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetQuestion(v string) *QueryAiotdatalinkAskdataRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetConversationId(v string) *QueryAiotdatalinkAskdataRequest {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetUserId(v string) *QueryAiotdatalinkAskdataRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataRequest) SetCaller(v string) *QueryAiotdatalinkAskdataRequest {
+	s.Caller = &v
+	return s
+}
+
+type QueryAiotdatalinkAskdataResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	// 任务ID
+	JobId *string `json:"job_id,omitempty" xml:"job_id,omitempty"`
+	// 请求ID
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// 任务状态， ACCEPTED 提交，RESOLVING_MODEL 解析寓意，INTERPRETING 生成SQL，SQL_VALIDATING sql 校验，EXECUTING 执行查询，ANALYZING 保存结果，COMPLETE 任务完成，FAILED 任务失败，CANCELLED  任务取消
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// json 格式字符串
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// 数据总条数
+	RowNum *string `json:"row_num,omitempty" xml:"row_num,omitempty"`
+}
+
+func (s QueryAiotdatalinkAskdataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAiotdatalinkAskdataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetReqMsgId(v string) *QueryAiotdatalinkAskdataResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetResultCode(v string) *QueryAiotdatalinkAskdataResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetResultMsg(v string) *QueryAiotdatalinkAskdataResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetJobId(v string) *QueryAiotdatalinkAskdataResponse {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetRequestId(v string) *QueryAiotdatalinkAskdataResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetStatus(v string) *QueryAiotdatalinkAskdataResponse {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetData(v string) *QueryAiotdatalinkAskdataResponse {
+	s.Data = &v
+	return s
+}
+
+func (s *QueryAiotdatalinkAskdataResponse) SetRowNum(v string) *QueryAiotdatalinkAskdataResponse {
+	s.RowNum = &v
 	return s
 }
 
@@ -23276,6 +23461,523 @@ func (s *FilepreviewIotagentSessionResponse) SetResultMsg(v string) *Filepreview
 
 func (s *FilepreviewIotagentSessionResponse) SetFile(v *PreviewFileInfo) *FilepreviewIotagentSessionResponse {
 	s.File = v
+	return s
+}
+
+type PushIotagentAudioscribeRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// string
+	// 待上传文件
+	FileObject io.Reader `json:"fileObject,omitempty" xml:"fileObject,omitempty"`
+	// 待上传文件名
+	FileObjectName *string `json:"fileObjectName,omitempty" xml:"fileObjectName,omitempty"`
+	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+	MessageId      *string `json:"message_id,omitempty" xml:"message_id,omitempty" require:"true"`
+	TargetPluginId *string `json:"target_plugin_id,omitempty" xml:"target_plugin_id,omitempty" require:"true"`
+	// 如： audio_push、status_query、detail_query、asr_retry、summary_retry
+	MessageType *string `json:"message_type,omitempty" xml:"message_type,omitempty" require:"true"`
+	// 业务字段，JSON格式
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty" require:"true"`
+	// Unix Epoch 毫秒
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
+}
+
+func (s PushIotagentAudioscribeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushIotagentAudioscribeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushIotagentAudioscribeRequest) SetAuthToken(v string) *PushIotagentAudioscribeRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetProductInstanceId(v string) *PushIotagentAudioscribeRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetFileObject(v io.Reader) *PushIotagentAudioscribeRequest {
+	s.FileObject = v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetFileObjectName(v string) *PushIotagentAudioscribeRequest {
+	s.FileObjectName = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetFileId(v string) *PushIotagentAudioscribeRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetType(v string) *PushIotagentAudioscribeRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetMessageId(v string) *PushIotagentAudioscribeRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetTargetPluginId(v string) *PushIotagentAudioscribeRequest {
+	s.TargetPluginId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetMessageType(v string) *PushIotagentAudioscribeRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetPayload(v string) *PushIotagentAudioscribeRequest {
+	s.Payload = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeRequest) SetTimestamp(v int64) *PushIotagentAudioscribeRequest {
+	s.Timestamp = &v
+	return s
+}
+
+type PushIotagentAudioscribeResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg      *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	MessageId      *string `json:"message_id,omitempty" xml:"message_id,omitempty"`
+	TargetPluginId *string `json:"target_plugin_id,omitempty" xml:"target_plugin_id,omitempty"`
+	MessageType    *string `json:"message_type,omitempty" xml:"message_type,omitempty"`
+	// 业务响应，json格式
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
+	// Unix Epoch 毫秒
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s PushIotagentAudioscribeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushIotagentAudioscribeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushIotagentAudioscribeResponse) SetReqMsgId(v string) *PushIotagentAudioscribeResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetResultCode(v string) *PushIotagentAudioscribeResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetResultMsg(v string) *PushIotagentAudioscribeResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetType(v string) *PushIotagentAudioscribeResponse {
+	s.Type = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetMessageId(v string) *PushIotagentAudioscribeResponse {
+	s.MessageId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetTargetPluginId(v string) *PushIotagentAudioscribeResponse {
+	s.TargetPluginId = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetMessageType(v string) *PushIotagentAudioscribeResponse {
+	s.MessageType = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetPayload(v string) *PushIotagentAudioscribeResponse {
+	s.Payload = &v
+	return s
+}
+
+func (s *PushIotagentAudioscribeResponse) SetTimestamp(v int64) *PushIotagentAudioscribeResponse {
+	s.Timestamp = &v
+	return s
+}
+
+type ExecIotagentPluginRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// dt-plugin
+	Type      *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+	MessageId *string `json:"message_id,omitempty" xml:"message_id,omitempty" require:"true"`
+	// audio_scribe
+	TargetPluginId *string `json:"target_plugin_id,omitempty" xml:"target_plugin_id,omitempty" require:"true"`
+	MessageType    *string `json:"message_type,omitempty" xml:"message_type,omitempty" require:"true"`
+	// 业务数据，JSON格式
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty" require:"true"`
+	// Unix Epoch 毫秒
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty" require:"true"`
+}
+
+func (s ExecIotagentPluginRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecIotagentPluginRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecIotagentPluginRequest) SetAuthToken(v string) *ExecIotagentPluginRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetProductInstanceId(v string) *ExecIotagentPluginRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetType(v string) *ExecIotagentPluginRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetMessageId(v string) *ExecIotagentPluginRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetTargetPluginId(v string) *ExecIotagentPluginRequest {
+	s.TargetPluginId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetMessageType(v string) *ExecIotagentPluginRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetPayload(v string) *ExecIotagentPluginRequest {
+	s.Payload = &v
+	return s
+}
+
+func (s *ExecIotagentPluginRequest) SetTimestamp(v int64) *ExecIotagentPluginRequest {
+	s.Timestamp = &v
+	return s
+}
+
+type ExecIotagentPluginResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg      *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
+	TargetPluginId *string `json:"target_plugin_id,omitempty" xml:"target_plugin_id,omitempty"`
+	MessageId      *string `json:"message_id,omitempty" xml:"message_id,omitempty"`
+	MessageType    *string `json:"message_type,omitempty" xml:"message_type,omitempty"`
+	// 业务响应数据，JSON格式
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
+	// Unix Epoch 毫秒
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s ExecIotagentPluginResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecIotagentPluginResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecIotagentPluginResponse) SetReqMsgId(v string) *ExecIotagentPluginResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetResultCode(v string) *ExecIotagentPluginResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetResultMsg(v string) *ExecIotagentPluginResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetType(v string) *ExecIotagentPluginResponse {
+	s.Type = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetTargetPluginId(v string) *ExecIotagentPluginResponse {
+	s.TargetPluginId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetMessageId(v string) *ExecIotagentPluginResponse {
+	s.MessageId = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetMessageType(v string) *ExecIotagentPluginResponse {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetPayload(v string) *ExecIotagentPluginResponse {
+	s.Payload = &v
+	return s
+}
+
+func (s *ExecIotagentPluginResponse) SetTimestamp(v int64) *ExecIotagentPluginResponse {
+	s.Timestamp = &v
+	return s
+}
+
+type PushIotagentWorkspaceRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	FileName          *string `json:"file_name,omitempty" xml:"file_name,omitempty" require:"true"`
+	MediaType         *string `json:"media_type,omitempty" xml:"media_type,omitempty" require:"true"`
+	SizeBytes         *int64  `json:"size_bytes,omitempty" xml:"size_bytes,omitempty" require:"true"`
+	Sha256            *string `json:"sha256,omitempty" xml:"sha256,omitempty"`
+	ClientId          *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	SessionId         *string `json:"session_id,omitempty" xml:"session_id,omitempty" require:"true"`
+}
+
+func (s PushIotagentWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushIotagentWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PushIotagentWorkspaceRequest) SetAuthToken(v string) *PushIotagentWorkspaceRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetProductInstanceId(v string) *PushIotagentWorkspaceRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetFileName(v string) *PushIotagentWorkspaceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetMediaType(v string) *PushIotagentWorkspaceRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetSizeBytes(v int64) *PushIotagentWorkspaceRequest {
+	s.SizeBytes = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetSha256(v string) *PushIotagentWorkspaceRequest {
+	s.Sha256 = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetClientId(v string) *PushIotagentWorkspaceRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceRequest) SetSessionId(v string) *PushIotagentWorkspaceRequest {
+	s.SessionId = &v
+	return s
+}
+
+type PushIotagentWorkspaceResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	FileId    *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// 短期OSS PUT 预签名URL
+	UploadUrl *string `json:"upload_url,omitempty" xml:"upload_url,omitempty"`
+	ExpireAt  *string `json:"expire_at,omitempty" xml:"expire_at,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s PushIotagentWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PushIotagentWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PushIotagentWorkspaceResponse) SetReqMsgId(v string) *PushIotagentWorkspaceResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceResponse) SetResultCode(v string) *PushIotagentWorkspaceResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceResponse) SetResultMsg(v string) *PushIotagentWorkspaceResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceResponse) SetFileId(v string) *PushIotagentWorkspaceResponse {
+	s.FileId = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceResponse) SetUploadUrl(v string) *PushIotagentWorkspaceResponse {
+	s.UploadUrl = &v
+	return s
+}
+
+func (s *PushIotagentWorkspaceResponse) SetExpireAt(v string) *PushIotagentWorkspaceResponse {
+	s.ExpireAt = &v
+	return s
+}
+
+type ConfirmIotagentWorkspaceRequest struct {
+	// OAuth模式下的授权token
+	AuthToken         *string `json:"auth_token,omitempty" xml:"auth_token,omitempty"`
+	ProductInstanceId *string `json:"product_instance_id,omitempty" xml:"product_instance_id,omitempty"`
+	// 待上传文件
+	FileObject io.Reader `json:"fileObject,omitempty" xml:"fileObject,omitempty"`
+	// 待上传文件名
+	FileObjectName *string `json:"fileObjectName,omitempty" xml:"fileObjectName,omitempty"`
+	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+	SizeBytes      *int64  `json:"size_bytes,omitempty" xml:"size_bytes,omitempty"`
+	Sha256         *string `json:"sha256,omitempty" xml:"sha256,omitempty"`
+}
+
+func (s ConfirmIotagentWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmIotagentWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetAuthToken(v string) *ConfirmIotagentWorkspaceRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetProductInstanceId(v string) *ConfirmIotagentWorkspaceRequest {
+	s.ProductInstanceId = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetFileObject(v io.Reader) *ConfirmIotagentWorkspaceRequest {
+	s.FileObject = v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetFileObjectName(v string) *ConfirmIotagentWorkspaceRequest {
+	s.FileObjectName = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetFileId(v string) *ConfirmIotagentWorkspaceRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetSizeBytes(v int64) *ConfirmIotagentWorkspaceRequest {
+	s.SizeBytes = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceRequest) SetSha256(v string) *ConfirmIotagentWorkspaceRequest {
+	s.Sha256 = &v
+	return s
+}
+
+type ConfirmIotagentWorkspaceResponse struct {
+	// 请求唯一ID，用于链路跟踪和问题排查
+	ReqMsgId *string `json:"req_msg_id,omitempty" xml:"req_msg_id,omitempty"`
+	// 结果码，一般OK表示调用成功
+	ResultCode *string `json:"result_code,omitempty" xml:"result_code,omitempty"`
+	// 异常信息的文本描述
+	ResultMsg *string `json:"result_msg,omitempty" xml:"result_msg,omitempty"`
+	FileId    *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	FileName  *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	MediaType *string `json:"media_type,omitempty" xml:"media_type,omitempty"`
+	SizeBytes *int64  `json:"size_bytes,omitempty" xml:"size_bytes,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty" pattern:"\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})"`
+}
+
+func (s ConfirmIotagentWorkspaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmIotagentWorkspaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetReqMsgId(v string) *ConfirmIotagentWorkspaceResponse {
+	s.ReqMsgId = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetResultCode(v string) *ConfirmIotagentWorkspaceResponse {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetResultMsg(v string) *ConfirmIotagentWorkspaceResponse {
+	s.ResultMsg = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetFileId(v string) *ConfirmIotagentWorkspaceResponse {
+	s.FileId = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetFileName(v string) *ConfirmIotagentWorkspaceResponse {
+	s.FileName = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetMediaType(v string) *ConfirmIotagentWorkspaceResponse {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetSizeBytes(v int64) *ConfirmIotagentWorkspaceResponse {
+	s.SizeBytes = &v
+	return s
+}
+
+func (s *ConfirmIotagentWorkspaceResponse) SetCreatedAt(v string) *ConfirmIotagentWorkspaceResponse {
+	s.CreatedAt = &v
 	return s
 }
 
@@ -54325,7 +55027,7 @@ func (client *Client) DoRequest(version *string, action *string, protocol *strin
 				"req_msg_id":       antchainutil.GetNonce(),
 				"access_key":       client.AccessKeyId,
 				"base_sdk_version": tea.String("TeaSDK-2.0"),
-				"sdk_version":      tea.String("1.21.15"),
+				"sdk_version":      tea.String("1.21.16"),
 				"_prod_code":       tea.String("BOT"),
 				"_prod_channel":    tea.String("undefined"),
 			}
@@ -54772,6 +55474,42 @@ func (client *Client) StreamchatAiotdatalinkAntfinanceassistantEx(request *Strea
 	}
 	_result = &StreamchatAiotdatalinkAntfinanceassistantResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.antfinanceassistant.streamchat"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 智能问数sse接口
+//
+// Summary: 智能问数sse接口
+func (client *Client) QueryAiotdatalinkAskdata(request *QueryAiotdatalinkAskdataRequest) (_result *QueryAiotdatalinkAskdataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryAiotdatalinkAskdataResponse{}
+	_body, _err := client.QueryAiotdatalinkAskdataEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 智能问数sse接口
+//
+// Summary: 智能问数sse接口
+func (client *Client) QueryAiotdatalinkAskdataEx(request *QueryAiotdatalinkAskdataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryAiotdatalinkAskdataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &QueryAiotdatalinkAskdataResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.aiotdatalink.askdata.query"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57034,6 +57772,180 @@ func (client *Client) FilepreviewIotagentSessionEx(request *FilepreviewIotagentS
 	}
 	_result = &FilepreviewIotagentSessionResponse{}
 	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.session.filepreview"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 插件接口
+//
+// Summary: 插件接口
+func (client *Client) PushIotagentAudioscribe(request *PushIotagentAudioscribeRequest) (_result *PushIotagentAudioscribeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushIotagentAudioscribeResponse{}
+	_body, _err := client.PushIotagentAudioscribeEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 插件接口
+//
+// Summary: 插件接口
+func (client *Client) PushIotagentAudioscribeEx(request *PushIotagentAudioscribeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushIotagentAudioscribeResponse, _err error) {
+	if !tea.BoolValue(util.IsUnset(request.FileObject)) {
+		uploadReq := &CreateAntcloudGatewayxFileUploadRequest{
+			AuthToken: request.AuthToken,
+			ApiCode:   tea.String("blockchain.bot.iotagent.audioscribe.push"),
+			FileName:  request.FileObjectName,
+		}
+		uploadResp, _err := client.CreateAntcloudGatewayxFileUploadEx(uploadReq, headers, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		if !tea.BoolValue(antchainutil.IsSuccess(uploadResp.ResultCode, tea.String("ok"))) {
+			pushIotagentAudioscribeResponse := &PushIotagentAudioscribeResponse{
+				ReqMsgId:   uploadResp.ReqMsgId,
+				ResultCode: uploadResp.ResultCode,
+				ResultMsg:  uploadResp.ResultMsg,
+			}
+			_result = pushIotagentAudioscribeResponse
+			return _result, _err
+		}
+
+		uploadHeaders := antchainutil.ParseUploadHeaders(uploadResp.UploadHeaders)
+		_err = antchainutil.PutObject(request.FileObject, uploadHeaders, uploadResp.UploadUrl)
+		if _err != nil {
+			return _result, _err
+		}
+		request.FileId = uploadResp.FileId
+		request.FileObject = nil
+	}
+
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &PushIotagentAudioscribeResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.audioscribe.push"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 插件通用HTTP接口
+//
+// Summary: 插件通用HTTP接口
+func (client *Client) ExecIotagentPlugin(request *ExecIotagentPluginRequest) (_result *ExecIotagentPluginResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecIotagentPluginResponse{}
+	_body, _err := client.ExecIotagentPluginEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 插件通用HTTP接口
+//
+// Summary: 插件通用HTTP接口
+func (client *Client) ExecIotagentPluginEx(request *ExecIotagentPluginRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecIotagentPluginResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ExecIotagentPluginResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.plugin.exec"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件上传
+//
+// Summary: 文件上传
+func (client *Client) PushIotagentWorkspace(request *PushIotagentWorkspaceRequest) (_result *PushIotagentWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PushIotagentWorkspaceResponse{}
+	_body, _err := client.PushIotagentWorkspaceEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件上传
+//
+// Summary: 文件上传
+func (client *Client) PushIotagentWorkspaceEx(request *PushIotagentWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushIotagentWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &PushIotagentWorkspaceResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.workspace.push"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件上传确认
+//
+// Summary: 文件上传确认
+func (client *Client) ConfirmIotagentWorkspace(request *ConfirmIotagentWorkspaceRequest) (_result *ConfirmIotagentWorkspaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ConfirmIotagentWorkspaceResponse{}
+	_body, _err := client.ConfirmIotagentWorkspaceEx(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Description:
+//
+// Description: 文件上传确认
+//
+// Summary: 文件上传确认
+func (client *Client) ConfirmIotagentWorkspaceEx(request *ConfirmIotagentWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConfirmIotagentWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = &ConfirmIotagentWorkspaceResponse{}
+	_body, _err := client.DoRequest(tea.String("1.0"), tea.String("blockchain.bot.iotagent.workspace.confirm"), tea.String("HTTPS"), tea.String("POST"), tea.String("/gateway.do"), tea.ToMap(request), headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
